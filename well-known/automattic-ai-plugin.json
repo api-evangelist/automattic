@@ -1,0 +1,25 @@
+{
+	"schema_version": "v1",
+	"name_for_human": "Jetpack",
+	"name_for_model": "a8c_jetpack",
+	"description_for_human": "List and create blog posts on your Jetpack and WordPress.com sites.",
+	"description_for_model": "List and create blog posts on the user's Jetpack and WordPress.com blogs and sites.",
+	"auth": {
+		"type": "oauth",
+		"client_url": "https://public-api.wordpress.com/oauth2/authorize",
+		"scope": "ai-plugin",
+		"authorization_url": "https://public-api.wordpress.com/oauth2/token",
+		"authorization_content_type": "application/x-www-form-urlencoded",
+		"verification_tokens": {
+			"openai": "d6aeef743910446491626403ae32d413"
+		}
+	},
+	"api": {
+	  "type": "openapi",
+	  "url": "https://public-api.wordpress.com/wpcom/v2/ai-plugin/openapi.yaml",
+	  "is_user_authenticated": true
+	},
+	"logo_url": "https://public-api.wordpress.com/ai-plugin/jetpack-logo_128.png",
+	"contact_email": "dan.walmsley@a8c.com",
+	"legal_info_url": "https://wordpress.com/tos/"
+}

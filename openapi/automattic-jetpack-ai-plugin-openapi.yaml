@@ -1,0 +1,177 @@
+openapi: 3.0.2
+info:
+  title: Jetpack AI-Plugin API
+  description: List and create blog posts on your Jetpack and WordPress.com sites.
+  version: 'v1'
+servers:
+  - url: https://public-api.wordpress.com
+paths:
+  /wpcom/v2/ai-plugin/sites:
+    get:
+      operationId: getSites
+      summary: Get the list of sites
+      parameters:
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: The page number of the results to return.
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getSitesResponse'
+  /wpcom/v2/sites/{site_id}/ai-plugin/posts:
+    get:
+      operationId: getPosts
+      summary: Get the list of posts for a site
+      parameters:
+        - name: site_id
+          in: path
+          description: The site ID
+          required: true
+          schema:
+            type: integer
+        - name: page
+          in: query
+          description: The page number of the results to return.
+          schema:
+            type: integer
+            default: 1
+        - name: search
+          in: query
+          description: Limit results to those matching a string.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getPostsResponse'
+    post:
+      operationId: createPost
+      summary: Create a post
+      parameters:
+        - name: site_id
+          in: path
+          description: The site ID
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPost'
+      responses:
+        "201":
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePost'
+  /wpcom/v2/sites/{site_id}/ai-plugin/posts/{post_id}:
+    get:
+      operationId: getPost
+      summary: Get a post
+      parameters:
+        - name: site_id
+          in: path
+          description: The site ID
+          required: true
+          schema:
+            type: integer
+        - name: post_id
+          in: path
+          description: The post ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsePost'
+components:
+  schemas:
+    # object types
+    Site:
+      type: object
+      description: A site
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        is_default:
+          type: boolean
+          description: Whether this is the default site. Use this site for all requests that don't specify a site ID.
+    ResponsePost:
+      type: object
+      description: A post
+      properties:
+        id:
+          type: integer
+        date:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        link:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+          description: The content in Markdown format
+        _links:
+          type: object
+          properties:
+            edit:
+              type: string
+            preview:
+              type: string
+    RequestPost:
+      type: object
+      description: A post
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+
+    # APIs
+    getSitesResponse:
+      type: object
+      properties:
+        sites:
+          type: array
+          items:
+            $ref: '#/components/schemas/Site'
+        total_pages:
+          type: integer
+          description: The total number of pages worth of sites
+    getPostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponsePost'
+        total_pages:
+          type: integer
+          description: The total number of pages worth of posts
