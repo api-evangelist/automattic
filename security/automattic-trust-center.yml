@@ -1,0 +1,35 @@
+generated: '2026-07-31'
+method: searched
+probe: true
+url: https://wpvip.com/trust/
+product: WordPress VIP (Automattic)
+certifications:
+- FedRAMP Moderate
+- SOC 2 Type I
+- ISO 27001
+- SOC 1
+- GovRAMP
+- TX-RAMP
+accessibility:
+- WCAG 2.0 AA
+- Section 508
+- WCAG 2.2 AA (stated target)
+related:
+- url: https://wpvip.com/security/
+  kind: security overview
+  http_status: 200
+- url: https://automattic.com/security/
+  kind: corporate security page
+  http_status: 200
+note: >-
+  Automattic's trust surface is published under its enterprise product, WordPress VIP, at
+  https://wpvip.com/trust/ (HTTP 200). No trust.automattic.com or automattic.com/trust/ exists —
+  automattic.com/trust/ returns 404. The certifications above are VIP attestations and should not
+  be read as covering the general WordPress.com REST API.
+evidence:
+- source: https://wpvip.com/security/
+  keywords: [fedramp moderate, soc 2 type i, iso 27001, soc 1, govramp, tx-ramp, trust center]
+- source: https://wpvip.com/trust/
+  http_status: 200
+x-evidence:
+  fetched: '2026-07-31'

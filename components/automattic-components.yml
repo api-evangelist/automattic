@@ -1,0 +1,48 @@
+generated: '2026-07-31'
+method: searched
+source: npm registry + https://github.com/Automattic/wp-calypso
+summary: >-
+  Automattic publishes its Calypso design-system component libraries to npm as first-party React
+  packages. These are client-side UI components for building WordPress.com-style interfaces, and
+  are distinct from the server-side API clients catalogued in packages/.
+families:
+- family: Calypso UI
+  loader: npm / bundler (React)
+  repository: https://github.com/Automattic/wp-calypso
+  components:
+  - name: '@automattic/components'
+    version: 4.1.0
+    url: https://www.npmjs.com/package/@automattic/components
+    description: Automattic Components — the shared Calypso React component library.
+    official: true
+  - name: '@automattic/composite-checkout'
+    version: 2.0.2
+    url: https://www.npmjs.com/package/@automattic/composite-checkout
+    description: React components and helpers for building a checkout flow.
+    official: true
+  - name: '@automattic/calypso-products'
+    version: 1.3.0
+    url: https://www.npmjs.com/package/@automattic/calypso-products
+    description: Product/plan metadata module used by Calypso surfaces.
+    official: true
+  - name: '@automattic/calypso-color-schemes'
+    version: 4.0.0
+    url: https://www.npmjs.com/package/@automattic/calypso-color-schemes
+    description: Calypso shared style bits (color schemes).
+    official: true
+hosted_surfaces:
+- name: WordPress.com checkout URL
+  kind: hosted/prebuilt
+  description: >-
+    A pre-configured wordpress.com checkout URL can be generated for products or subscription
+    renewal (exposed as the wpcom-checkout-url MCP tool); the checkout page itself is hosted by
+    Automattic.
+  reference: mcp/automattic-mcp.yml
+not_included:
+- name: '@wordpress/components'
+  reason: >-
+    The Gutenberg component library is a WordPress project, catalogued in the WordPress repo, not
+    an Automattic-branded package.
+x-evidence:
+  fetched: '2026-07-31'
+  method: registry.npmjs.org metadata; repository field resolves to Automattic/wp-calypso

@@ -1,0 +1,72 @@
+generated: '2026-07-31'
+method: searched
+source: https://github.com/Automattic/vip-cli
+docs: https://docs.wpvip.com/vip-cli/
+clis:
+- name: vip
+  product: WordPress VIP
+  description: >-
+    First-party CLI for interacting with and managing WordPress VIP applications — environments,
+    databases, imports/exports, deploy tokens, logs, and a local development environment.
+  repository: https://github.com/Automattic/vip-cli
+  package: '@automattic/vip'
+  registry: npm
+  changelog: https://docs.wpvip.com/changelogs/vip-cli/
+  install:
+  - method: npm
+    command: npm install -g @automattic/vip
+  - method: sea
+    command: vip sea
+    note: single-executable-application build published by the project
+  auth:
+    command: vip login
+    note: browser-based authentication against WordPress VIP; `vip whoami` reports the active identity
+  command_groups:
+  - group: app
+    commands: [vip app, vip app list, vip app deploy, vip app deploy validate, vip app deploy token,
+      vip app deploy token generate]
+  - group: backup
+    commands: [vip backup, vip backup db]
+  - group: cache
+    commands: [vip cache, vip cache purge url]
+  - group: config
+    commands: [vip config, vip config envvar, vip config envvar get, vip config envvar get-all,
+      vip config envvar list, vip config envvar set, vip config envvar delete,
+      vip config software, vip config software get, vip config software update]
+  - group: db
+    commands: [vip db, vip db phpmyadmin]
+  - group: defensive-mode
+    commands: [vip defensive-mode, vip defensive-mode enable, vip defensive-mode disable,
+      vip defensive-mode configure]
+  - group: dev-env
+    commands: [vip dev-env, vip dev-env create, vip dev-env start, vip dev-env stop,
+      vip dev-env destroy, vip dev-env update, vip dev-env info, vip dev-env list,
+      vip dev-env logs, vip dev-env purge, vip dev-env shell, vip dev-env exec,
+      vip dev-env import, vip dev-env import sql, vip dev-env import media,
+      vip dev-env sync, vip dev-env sync sql, vip dev-env envvar, vip dev-env envvar get,
+      vip dev-env envvar get-all, vip dev-env envvar list, vip dev-env envvar set,
+      vip dev-env envvar delete]
+  - group: export
+    commands: [vip export, vip export sql]
+  - group: import
+    commands: [vip import, vip import sql, vip import sql status, vip import media,
+      vip import media status, vip import media abort, vip import validate sql,
+      vip import validate files]
+  - group: logs
+    commands: [vip logs, vip slowlogs]
+  - group: wp
+    commands: [vip wp]
+    note: runs WP-CLI commands against a VIP environment
+  - group: misc
+    commands: [vip whoami, vip logout, vip sync, vip search-replace, vip sea]
+  source_of_command_list: https://github.com/Automattic/vip-cli/tree/trunk/src/bin
+related:
+- name: wp-cli
+  note: >-
+    WP-CLI is the WordPress core command line interface and is catalogued in the WordPress repo,
+    not here; `vip wp` proxies it against a VIP environment.
+x-evidence:
+  fetched: '2026-07-31'
+  method: >-
+    GitHub contents API listing of Automattic/vip-cli src/bin (75 command entry points) plus the
+    published docs at docs.wpvip.com/vip-cli/

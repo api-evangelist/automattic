@@ -1,18 +1,219 @@
 aid: automattic
 name: Automattic
-description: 'Automattic is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Automattic is the company behind WordPress.com, Jetpack, WooCommerce, Tumblr, Gravatar, Akismet,
+  WordPress VIP, Pocket Casts, Day One, Beeper and Simplenote. Its developer platform centres on the
+  WordPress.com REST API at public-api.wordpress.com, which serves three parallel namespaces — the
+  WordPress.com-native /rest/v1.x family, the WordPress-core-compatible /wp/v2 family, and the
+  WordPress.com and Jetpack platform extensions in /wpcom/v2 — all behind a single OAuth 2.1 and
+  OpenID Connect authorization server with PKCE, dynamic client registration and resource
+  indicators. Every /rest/ version publishes a machine-readable help document and every /wp/ and
+  /wpcom/ namespace publishes a route index, so the whole surface is self-describing even though
+  Automattic does not ship OpenAPI for it. Automattic also runs a hosted Model Context Protocol
+  server for WordPress.com, publishes OpenAPI for Akismet and for the Jetpack ai-plugin surface, and
+  exposes a GraphQL Platform API for the enterprise WordPress VIP product.
+image: https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png
 url: https://raw.githubusercontent.com/api-evangelist/automattic/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-07-31'
 modified: '2026-07-31'
 tags:
 - Company
-apis: []
+- Content Management
+- Publishing
+- Blogging
+- Website Hosting
+- Web Publishing
+- Content
+- Comments
+- Spam Filtering
+- Media
+- Analytics
+- Domains
+- E-Commerce
+- Open Source
+- Developer Tools
+- Model Context Protocol
+apis:
+- name: WordPress.com REST API v1.1
+  description: >-
+    The primary WordPress.com REST API. 253 endpoints covering sites, posts, pages, comments,
+    media, taxonomy, menus, themes, stats, Reader subscriptions, notifications, sharing and account
+    management. Self-describing: every endpoint's method, path, parameters and response fields are
+    published at /rest/v1.1/help.
+  humanURL: https://developer.wordpress.com/docs/api/
+  baseURL: https://public-api.wordpress.com/rest/v1.1
+  image: https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png
+  tags:
+  - Content Management
+  - Publishing
+  - Comments
+  - Media
+  - Analytics
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  - type: Overlay
+    url: overlays/automattic-wordpress-com-rest-v1-1-overlay.yaml
+  - type: Documentation
+    url: https://developer.wordpress.com/docs/api/
+  - type: APIReference
+    url: https://developer.wordpress.com/docs/api/rest-api-reference/
+  - type: GettingStarted
+    url: https://developer.wordpress.com/docs/api/getting-started/
+  - type: Console
+    url: https://developer.wordpress.com/docs/api/console/
+- name: WordPress.com REST API v1.2
+  description: >-
+    Additive alternate version of the WordPress.com REST API. Publishes only the 38 endpoints whose
+    contract differs from v1.1; clients mix versions per endpoint rather than migrating wholesale.
+  humanURL: https://developer.wordpress.com/docs/api/
+  baseURL: https://public-api.wordpress.com/rest/v1.2
+  tags:
+  - Content Management
+  - Publishing
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-wordpress-com-rest-v1-2-openapi.yml
+  - type: Overlay
+    url: overlays/automattic-wordpress-com-rest-v1-2-overlay.yaml
+  - type: Documentation
+    url: https://developer.wordpress.com/docs/api/
+- name: WordPress.com REST API v1.3
+  description: >-
+    Additive alternate version of the WordPress.com REST API, publishing 19 endpoints including
+    WordPress.com marketplace search.
+  humanURL: https://developer.wordpress.com/docs/api/
+  baseURL: https://public-api.wordpress.com/rest/v1.3
+  tags:
+  - Content Management
+  - Marketplace
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-wordpress-com-rest-v1-3-openapi.yml
+  - type: Overlay
+    url: overlays/automattic-wordpress-com-rest-v1-3-overlay.yaml
+  - type: Documentation
+    url: https://developer.wordpress.com/docs/api/
+- name: WordPress.com REST API - wp/v2 namespace
+  description: >-
+    The WordPress core REST API shape as served by WordPress.com, site-scoped at
+    /wp/v2/sites/{site}/. 348 operations across posts, pages, comments, media, taxonomies, block
+    types, block patterns, global styles, templates, plugins, themes, settings and the WordPress
+    Abilities API. Chosen when portability with self-hosted WordPress matters.
+  humanURL: https://developer.wordpress.com/docs/api/
+  baseURL: https://public-api.wordpress.com/wp/v2
+  tags:
+  - Content Management
+  - Publishing
+  - Open Source
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-wordpress-com-wp-v2-openapi.yml
+  - type: Overlay
+    url: overlays/automattic-wordpress-com-wp-v2-overlay.yaml
+  - type: Documentation
+    url: https://developer.wordpress.com/docs/api/
+- name: WordPress.com REST API - wpcom/v2 namespace
+  description: >-
+    The WordPress.com and Jetpack platform extension namespace — 1,716 operations covering hosting
+    and code deployments, domains and DNS, plans and checkout, marketplace, agency tooling,
+    Jetpack modules, AI features and the hosted MCP server. The largest of the three namespaces.
+  humanURL: https://developer.wordpress.com/docs/api/
+  baseURL: https://public-api.wordpress.com/wpcom/v2
+  tags:
+  - Website Hosting
+  - Domains
+  - E-Commerce
+  - Developer Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+  - type: Overlay
+    url: overlays/automattic-wordpress-com-wpcom-v2-overlay.yaml
+  - type: Documentation
+    url: https://developer.wordpress.com/docs/api/
+- name: WordPress.com MCP Server
+  description: >-
+    Automattic's hosted Model Context Protocol server for WordPress.com. Streamable HTTP transport
+    secured with OAuth 2.1 (PKCE S256, dynamic client registration, token rotation, no client
+    secret). Twelve documented tools spanning content authoring, site editor context, account and
+    site administration, domains, plans and checkout. Read-only tools are enabled by default and
+    write tools must be explicitly turned on. Available on all WordPress.com paid plans.
+  humanURL: https://developer.wordpress.com/docs/mcp/
+  baseURL: https://public-api.wordpress.com/wpcom/v2/mcp/v1
+  tags:
+  - Model Context Protocol
+  - Developer Tools
+  - Content Management
+  properties:
+  - type: MCPServer
+    url: mcp/automattic-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/automattic-tool-crosswalk.yml
+  - type: Documentation
+    url: https://developer.wordpress.com/docs/mcp/
+  - type: APIReference
+    url: https://developer.wordpress.com/docs/mcp/tools/
+- name: Akismet API
+  description: >-
+    Akismet is Automattic's spam-classification service. Six operations — key verification, comment
+    check, submit spam, submit ham, key sites and usage limit — authenticated with an Akismet API
+    key. Automattic publishes an OpenAPI 3.0.3 document for it.
+  humanURL: https://akismet.com/development/api/
+  baseURL: https://rest.akismet.com
+  tags:
+  - Spam Filtering
+  - Comments
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-akismet-openapi.yml
+  - type: Overlay
+    url: overlays/automattic-akismet-overlay.yaml
+  - type: Documentation
+    url: https://akismet.com/development/api/
+  - type: SourceCode
+    url: https://github.com/Automattic/akismet-api
+- name: Jetpack AI-Plugin API
+  description: >-
+    A small OpenAPI-described surface for listing and creating blog posts across a user's Jetpack
+    and WordPress.com sites, published alongside the OpenAI plugin manifest at
+    /.well-known/ai-plugin.json.
+  humanURL: https://developer.wordpress.com/docs/api/
+  baseURL: https://public-api.wordpress.com
+  tags:
+  - Publishing
+  - Content Management
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-jetpack-ai-plugin-openapi.yaml
+  - type: Overlay
+    url: overlays/automattic-jetpack-ai-plugin-overlay.yaml
+  - type: PluginManifest
+    url: well-known/automattic-ai-plugin.json
+- name: WordPress VIP Platform API
+  description: >-
+    The GraphQL API for WordPress VIP, Automattic's enterprise WordPress and Node.js platform.
+    Documented operation categories cover apps, domains, organizations, users, integrations,
+    security and observability. Introspection is authentication-gated, so no SDL is captured.
+  humanURL: https://docs.wpvip.com/vip-api/
+  baseURL: https://api.wpvip.com/graphql
+  tags:
+  - Website Hosting
+  - Developer Tools
+  - Enterprise
+  properties:
+  - type: GraphQL
+    url: graphql/automattic-vip-platform-api.yml
+  - type: Documentation
+    url: https://docs.wpvip.com/vip-api/
+  - type: GettingStarted
+    url: https://docs.wpvip.com/vip-api/getting-started
+  - type: APIReference
+    url: https://docs.wpvip.com/vip-api/reference
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +221,95 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
+  url: https://automattic.com/
+- type: DeveloperPortal
+  url: https://developer.wordpress.com/
+- type: Documentation
+  url: https://developer.wordpress.com/docs/api/
+- type: APIReference
+  url: https://developer.wordpress.com/docs/api/rest-api-reference/
+- type: GettingStarted
+  url: https://developer.wordpress.com/docs/api/getting-started/
+- type: Support
+  url: https://wordpress.com/support/
+- type: Blog
+  url: https://automattic.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/Automattic
+- type: Pricing
+  url: https://wordpress.com/pricing/
+- type: SignUp
+  url: https://developer.wordpress.com/apps/new/
+- type: Login
+  url: https://wordpress.com/log-in
+- type: TermsOfService
+  url: https://wordpress.com/tos/
+- type: PrivacyPolicy
+  url: https://automattic.com/privacy/
+- type: StatusPage
+  url: https://automatticstatus.com/
+- type: Security
+  url: https://automattic.com/security/
+- type: TrustCenter
+  url: security/automattic-trust-center.yml
+- type: Compliance
+  url: https://wpvip.com/trust/
+- type: Authentication
+  url: authentication/automattic-authentication.yml
+- type: OAuthScopes
+  url: scopes/automattic-scopes.yml
+- type: OpenIDConnect
+  url: well-known/automattic-openid-configuration.json
+- type: WellKnown
+  url: well-known/automattic-well-known.yml
+- type: SecurityTxt
+  url: well-known/automattic-security.txt
+- type: VulnerabilityDisclosure
+  url: security/automattic-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/automattic-domain-security.yml
+- type: Conformance
+  url: conformance/automattic-conformance.yml
+- type: Conventions
+  url: conventions/automattic-conventions.yml
+- type: ErrorCatalog
+  url: errors/automattic-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/automattic-lifecycle.yml
+- type: ChangeLog
+  url: changelog/automattic-changelog.yml
+- type: ReleaseNotes
+  url: https://developer.wordpress.com/changelog/
+- type: DataModel
+  url: data-model/automattic-data-model.yml
+- type: Packages
+  url: packages/automattic-packages.yml
+- type: SDKs
+  url: packages/automattic-packages.yml
+- type: CLI
+  url: cli/automattic-cli.yml
+- type: Components
+  url: components/automattic-components.yml
+- type: Sandbox
+  url: sandbox/automattic-sandbox.yml
+- type: Console
+  url: https://developer.wordpress.com/docs/api/console/
+- type: Webhooks
+  url: asyncapi/automattic-wordpress-com-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AgenticAccess
+  url: agentic-access/automattic-agentic-access.yml
+- type: LLMsTxt
+  url: llms/automattic-llms.txt
+- type: MCPServer
+  url: mcp/automattic-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/automattic-tool-crosswalk.yml
+- type: SecondaryMarketListing
   url: https://forgeglobal.com/automattic_stock/
+x-enrichment:
+  date: '2026-07-31'
+  status: enriched
+  artifacts_added: 48
+  pass: local-v1

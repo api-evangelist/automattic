@@ -1,0 +1,57 @@
+generated: '2026-07-31'
+method: searched
+source: https://wordpress.com/support/webhooks/
+spec_type: Webhooks
+asyncapi_published: false
+asyncapi_note: >-
+  Automattic publishes no AsyncAPI document for any of its event surfaces. This artifact captures
+  the webhook catalog Automattic does document, so the event surface is recorded rather than
+  fabricated as a spec.
+summary: >-
+  WordPress.com sites can push outbound HTTP POST webhooks on three WordPress action hooks. The
+  feature descends from the HookPress plugin (exposing WordPress action hooks as outbound
+  webhooks) and is configured per site in wp-admin by an administrator, not through the REST API.
+delivery:
+  transport: http
+  method: POST
+  content: form fields selected at configuration time, plus a `hook` field carrying the action title
+  configuration_ui: /wp-admin/options-general.php?page=webhooks
+  who_can_configure: site administrators only
+  applies_to: WordPress.com sites without plugins enabled
+events:
+- name: comment_post
+  description: Fires after a comment is saved.
+  example_fields: [comment_ID, comment_author, comment_content, comment_date, user_id]
+- name: publish_post
+  description: Fires when a post is published, or edited into published status.
+  example_fields: [ID, post_title, post_content, post_author, post_date, post_url]
+- name: publish_page
+  description: Fires when a page is published, or edited into published status.
+  example_fields: [ID, post_title, post_content, post_author, post_date, post_url]
+common_envelope_field:
+  name: hook
+  description: The action title of the hook that fired.
+related_webhook_surfaces:
+- name: Code deployment webhooks
+  scope: WordPress.com hosting
+  management_operations:
+  - getWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooks
+  - postWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooks
+  - postWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookIdTest
+  - getWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookIdDeliveries
+  spec: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+  note: >-
+    CRUD + test + delivery-history endpoints for deployment webhooks exist in the wpcom/v2 route
+    index. Automattic publishes no event catalog for them, so no event names are asserted here.
+- name: Akismet webhook
+  operation: null
+  route: /wp/v2/sites/{wpcom_site}/akismet/v1/webhook
+  spec: openapi/automattic-wordpress-com-wp-v2-openapi.yml
+  note: inbound endpoint for the Akismet service; no published event catalog.
+limitations:
+- Webhook settings do not apply to plugin-enabled WordPress.com sites.
+- No retry policy, signing secret, or delivery-guarantee documentation is published.
+- No AsyncAPI, no CloudEvents, and no event schema registry.
+x-evidence:
+  fetched: '2026-07-31'
+  urls: [https://wordpress.com/support/webhooks/]

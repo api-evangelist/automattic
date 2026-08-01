@@ -1,0 +1,111 @@
+generated: '2026-07-31'
+method: searched
+source: https://public-api.wordpress.com/.well-known/openid-configuration
+docs: https://developer.wordpress.com/docs/api/oauth2/
+note: >-
+  The scope list is taken verbatim from the WordPress.com OAuth 2.0 authorization server metadata
+  (scopes_supported), and the descriptions from Automattic's published OAuth2 documentation. The
+  same list is repeated in the RFC 9728 protected-resource metadata that guards the MCP server.
+  This file supersedes the derived pass, which only saw the scope names carried into the OpenAPI
+  security schemes.
+schemes:
+- name: oauth2
+  source: https://public-api.wordpress.com/.well-known/oauth-authorization-server
+  issuer: https://public-api.wordpress.com
+  spec: OAuth 2.1
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+    tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+  - flow: refreshToken
+    tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+  - flow: clientCredentials
+    tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+  pkce: [S256]
+  revocation_endpoint: https://public-api.wordpress.com/oauth2-1/revoke
+  introspection_endpoint: https://public-api.wordpress.com/oauth2-1/token-info
+  registration_endpoint: https://public-api.wordpress.com/oauth2-1/register
+  userinfo_endpoint: https://public-api.wordpress.com/oauth2-1/userinfo
+  jwks_uri: https://public-api.wordpress.com/.well-known/jwks.json
+  resource_indicators_supported: true
+  token_expiry: two weeks (per https://developer.wordpress.com/docs/api/oauth2/)
+  legacy_endpoints:
+    authorizationUrl: https://public-api.wordpress.com/oauth2/authorize
+    tokenUrl: https://public-api.wordpress.com/oauth2/token
+scopes:
+- scope: global
+  description: Comprehensive access across all of the user's WordPress.com sites and services.
+  flows: [authorizationCode]
+- scope: auth
+  description: Limited scope providing access only to the /me/ endpoint.
+  flows: [authorizationCode]
+- scope: openid
+  description: OpenID Connect — request an ID token.
+  flows: [authorizationCode]
+- scope: profile
+  description: OpenID Connect profile claims (name, preferred_username, picture, updated_at).
+  flows: [authorizationCode]
+- scope: email
+  description: OpenID Connect email claims (email, email_verified).
+  flows: [authorizationCode]
+- scope: users
+  description: View user information.
+  flows: [authorizationCode]
+- scope: sites
+  description: View general site information and options.
+  flows: [authorizationCode]
+- scope: posts
+  description: View and manage posts.
+  flows: [authorizationCode]
+- scope: comments
+  description: View and manage post comments.
+  flows: [authorizationCode]
+- scope: taxonomy
+  description: View and manage tags and categories.
+  flows: [authorizationCode]
+- scope: follow
+  description: Follow and unfollow blogs.
+  flows: [authorizationCode]
+- scope: sharing
+  description: Connect social media services.
+  flows: [authorizationCode]
+- scope: freshly-pressed
+  description: View Freshly Pressed posts.
+  flows: [authorizationCode]
+- scope: notifications
+  description: View and manage user notifications.
+  flows: [authorizationCode]
+- scope: insights
+  description: View analytics for your application.
+  flows: [authorizationCode]
+- scope: read
+  description: Manage and view Reader subscriptions.
+  flows: [authorizationCode]
+- scope: stats
+  description: View site statistics.
+  flows: [authorizationCode]
+- scope: media
+  description: Manage site media.
+  flows: [authorizationCode]
+- scope: menus
+  description: View and manage site menus.
+  flows: [authorizationCode]
+- scope: batch
+  description: Batch multiple GET requests.
+  flows: [authorizationCode]
+- scope: videos
+  description: View video information.
+  flows: [authorizationCode]
+claims_supported: [sub, iss, aud, exp, iat, auth_time, nonce, name, preferred_username, picture,
+  email, email_verified, updated_at]
+scoping_note: >-
+  A WordPress.com token can additionally be bound to a single site. The /me response exposes
+  token_scope and token_site_id, so a client can tell at runtime whether it holds a global or a
+  site-scoped grant.
+x-evidence:
+  fetched: '2026-07-31'
+  urls:
+  - https://public-api.wordpress.com/.well-known/openid-configuration
+  - https://public-api.wordpress.com/.well-known/oauth-authorization-server
+  - https://public-api.wordpress.com/.well-known/oauth-protected-resource
+  - https://developer.wordpress.com/docs/api/oauth2/

@@ -1,0 +1,84 @@
+generated: '2026-07-31'
+method: searched
+source: npm registry metadata + github.com/Automattic
+note: >-
+  official: true is set only where the npm `repository` field resolves to a repo inside the
+  Automattic GitHub organisation. Third-party clients for these APIs exist on PyPI, RubyGems and
+  Packagist but are not first-party and are not listed here.
+packages:
+- language: javascript
+  registry: npm
+  name: wpcom
+  version: 7.1.1
+  url: https://www.npmjs.com/package/wpcom
+  install: npm install wpcom
+  repository: https://github.com/Automattic/wp-calypso
+  docs: https://github.com/Automattic/wpcom.js
+  license: MIT
+  description: Official JavaScript library for the WordPress.com REST API (Node.js and browsers).
+  official: true
+  covers: [openapi/automattic-wordpress-com-rest-v1-1-openapi.yml]
+- language: javascript
+  registry: npm
+  name: wpcom-xhr-request
+  version: 1.3.1
+  url: https://www.npmjs.com/package/wpcom-xhr-request
+  install: npm install wpcom-xhr-request
+  repository: https://github.com/Automattic/wp-calypso
+  license: MIT
+  description: REST API requests to WordPress.com via XMLHttpRequest (and CORS).
+  official: true
+- language: javascript
+  registry: npm
+  name: wpcom-oauth
+  version: 0.3.4
+  url: https://www.npmjs.com/package/wpcom-oauth
+  install: npm install wpcom-oauth
+  repository: https://github.com/Automattic/node-wpcom-oauth
+  license: MIT
+  description: WordPress.com OAuth2 authorization module for Node.js.
+  official: true
+- language: javascript
+  registry: npm
+  name: '@automattic/mcp-wordpress-remote'
+  version: 0.4.0
+  url: https://www.npmjs.com/package/@automattic/mcp-wordpress-remote
+  install: npx @automattic/mcp-wordpress-remote
+  repository: https://github.com/Automattic/mcp-wordpress-remote
+  license: MIT
+  description: MCP WordPress Remote proxy server — connects MCP clients to WordPress / WordPress.com.
+  official: true
+  covers: [mcp/automattic-mcp.yml]
+- language: javascript
+  registry: npm
+  name: '@automattic/wp-feature-api'
+  version: 0.1.8
+  url: https://www.npmjs.com/package/@automattic/wp-feature-api
+  install: npm install @automattic/wp-feature-api
+  repository: https://github.com/Automattic/wp-feature-api
+  license: GPL-2.0-or-later
+  description: Client-side SDK for the WordPress Feature API.
+  official: true
+- language: javascript
+  registry: npm
+  name: '@automattic/vip'
+  version: 4.1.0
+  url: https://www.npmjs.com/package/@automattic/vip
+  install: npm install -g @automattic/vip
+  repository: https://github.com/Automattic/vip-cli
+  description: The WordPress VIP JavaScript library and CLI.
+  official: true
+  kind: cli
+  covers: [cli/automattic-cli.yml]
+registries_probed:
+  npm: hit
+  pypi: 'no first-party Automattic package found (the `akismet` PyPI project is community-maintained)'
+  rubygems: 'no first-party Automattic gem found (the `akismet` gem is community-maintained)'
+  packagist: 'automattic/akismet not published; the Akismet WordPress plugin ships through the WordPress.org plugin directory'
+  maven_central: none
+  nuget: none
+  crates_io: none
+  pkg_go_dev: none
+x-evidence:
+  fetched: '2026-07-31'
+  method: registry.npmjs.org metadata reads; repository field used to establish first-party status

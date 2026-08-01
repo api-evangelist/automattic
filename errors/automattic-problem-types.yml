@@ -1,0 +1,75 @@
+generated: '2026-07-31'
+method: probed
+source: live probes of public-api.wordpress.com and rest.akismet.com on 2026-07-31
+format: vendor-json
+rfc9457: false
+summary: >-
+  Automattic runs two different error envelopes on one host. The WordPress.com-native /rest/v1.x
+  namespace returns a flat {error, message} pair; the WordPress-core-compatible /wp/v2 and
+  /wpcom/v2 namespaces return the WordPress REST shape {code, message, data:{status}}. Neither is
+  RFC 9457 application/problem+json. Akismet does not use a JSON envelope at all — it returns a
+  bare text body and signals failure detail in a response header.
+envelopes:
+- id: wpcom-v1
+  applies_to: [/rest/v1, /rest/v1.1, /rest/v1.2, /rest/v1.3]
+  content_type: application/json
+  fields:
+    error: machine-readable error slug
+    message: human-readable message
+- id: wp-rest
+  applies_to: [/wp/v2, /wpcom/v2]
+  content_type: application/json
+  fields:
+    code: machine-readable error slug
+    message: human-readable message
+    data.status: HTTP status repeated in the body
+- id: akismet-text
+  applies_to: [https://rest.akismet.com]
+  content_type: text/plain
+  note: >-
+    Returns a bare token body ("valid" / "invalid" / "true" / "false"); failure detail is carried
+    in the X-akismet-debug-help response header rather than a JSON envelope. See
+    openapi/automattic-akismet-openapi.yml.
+problems:
+- status: 403
+  envelope: wpcom-v1
+  code: authorization_required
+  title: An active access token must be used to query information about the current user.
+  remediation: 'Obtain an OAuth 2.1 access token and send it as `Authorization: Bearer <token>`.'
+  observed_at: https://public-api.wordpress.com/rest/v1.1/me
+  source_operation: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml#getMe
+- status: 404
+  envelope: wpcom-v1
+  code: unknown_blog
+  title: Unknown blog
+  remediation: Check the {site} path segment — it must be a numeric site ID or a domain WordPress.com knows.
+  observed_at: https://public-api.wordpress.com/rest/v1.1/sites/does-not-exist-abc123.wordpress.com
+  source_operation: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml#getSitesBySite
+- status: 401
+  envelope: wp-rest
+  code: rest_unauthorized
+  title: Authentication required.
+  remediation: Send an OAuth 2.1 bearer token. Returned with an RFC 9728 WWW-Authenticate challenge on the MCP endpoint.
+  observed_at: https://public-api.wordpress.com/wpcom/v2/mcp/v1
+- status: 401
+  envelope: wp-rest
+  code: rest_forbidden
+  title: Sorry, you are not allowed to do that.
+  remediation: The token is missing the scope or site capability required for this endpoint.
+  observed_at: https://public-api.wordpress.com/wp/v2/sites/en.blog.wordpress.com/settings
+  source_operation: openapi/automattic-wordpress-com-wp-v2-openapi.yml#getWpV2SitesbyWpcomSiteSettings
+- status: 404
+  envelope: wp-rest
+  code: rest_no_route
+  title: No route was found matching the URL and request method.
+  remediation: Check the namespace, version and HTTP method; consult the route index at /wp/v2/ or /wpcom/v2/.
+  observed_at: https://public-api.wordpress.com/wpcom/v2/nope
+envelope_override:
+  param: http_envelope
+  description: >-
+    Setting http_envelope=true on any /rest/v1.x request forces HTTP 200 and moves the real status
+    code and headers into the JSON body, so agents must inspect the body — not the transport
+    status — whenever this parameter is set.
+x-evidence:
+  fetched: '2026-07-31'
+  method: unauthenticated HTTP requests; bodies quoted verbatim

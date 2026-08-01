@@ -1,0 +1,66 @@
+generated: '2026-07-31'
+method: searched
+source: https://developer.wordpress.com/changelog/
+summary: >-
+  Automattic does not publish a dated changelog for the WordPress.com REST API itself. The dated,
+  versioned changelog on the WordPress.com developer site covers Studio, its local WordPress
+  development app; WordPress VIP publishes a separate platform changelog. Both are recorded here
+  because they are the only dated release feeds Automattic publishes for developer-facing surfaces.
+changelogs:
+- name: WordPress.com Studio
+  url: https://developer.wordpress.com/changelog/
+  scheme: semver
+  current_version: 1.17.0
+  breaking_changes_flagged: false
+  entries:
+  - version: 1.17.0
+    highlights: [WXR file imports, redesigned settings interface, improved session continuity,
+      global instructions in Studio Code, security hardening, dependency updates]
+  - version: 1.16.0
+    highlights: [Studio Code message copying and image pasting, theme creation, token-limit fix,
+      model version replaced, data-liberation workflow improvements]
+  - version: 1.15.0
+    highlights: [Xdebug fixes, inline screenshots in conversations, message editing after
+      interruption, '/liberate command for site recreation', PHP binary updates]
+  - version: 1.14.0
+    highlights: ['Windows PHP username length fix', '/liberate and /publish commands',
+      model update, plugin recommendation improvements, file diff display]
+  - version: 1.13.0
+    highlights: [Windows DLL update fixes a PHP error, sidebar keyboard shortcut, preview vs
+      WordPress.com site differentiation, attachment handling, SEO audit skill]
+  - version: 1.12.0
+    highlights: [PHP runtime options, Studio Code content validation, simplified CLI install,
+      pull-reprint improvements, Kurdish locale, performance work]
+  - version: 1.11.0
+    highlights: [Studio Code becomes the default interface, site status checks, dark theme fixes,
+      Terms of Service disclaimer, dependency updates]
+  - version: 1.10.0
+    highlights: [remote-session beta, native PHP runtime beta, Linux beta builds, custom db.php
+      preserved, core dependency updates]
+  - version: 1.9.0
+    highlights: [Blueprints Gallery, shared WordPress.com sites between app and CLI, remote session
+      improvements, blueprint upload fixes]
+  - version: 1.8.0
+    highlights: [resizable sidebar, '.deployignore support for Sync', zip bundling for Blueprints,
+      '/rank-me-up SEO skill', path traversal vulnerability fix]
+- name: WordPress VIP platform
+  url: https://docs.wpvip.com/changelogs/
+  scheme: dated
+  scoped_feeds:
+  - name: VIP-CLI
+    url: https://docs.wpvip.com/changelogs/vip-cli/
+  note: platform-level changelog for the enterprise product, including the CLI
+- name: VIP Lobby
+  url: https://lobby.vip.wordpress.com/
+  scheme: dated posts
+  note: announcement feed covering VIP-CLI and the VIP Go API
+api_changelog:
+  exists: false
+  note: >-
+    No dated changelog exists for the /rest/v1.x, /wp/v2 or /wpcom/v2 namespaces. Change is
+    discoverable only by diffing the self-describing help documents and route indexes — which is
+    exactly what the openapi/ artifacts in this repo capture, dated.
+x-evidence:
+  fetched: '2026-07-31'
+  urls: [https://developer.wordpress.com/changelog/, https://docs.wpvip.com/changelogs/,
+    https://lobby.vip.wordpress.com/]

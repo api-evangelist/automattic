@@ -1,0 +1,52 @@
+generated: '2026-07-31'
+method: searched
+source: https://docs.wpvip.com/vip-api/
+summary: >-
+  WordPress VIP (Automattic's enterprise platform) exposes a GraphQL Platform API. The endpoint is
+  published and documented, but introspection is authentication-gated, so no SDL is captured here.
+  No schema has been fabricated.
+endpoint: https://api.wpvip.com/graphql
+docs: https://docs.wpvip.com/vip-api/
+getting_started: https://docs.wpvip.com/vip-api/getting-started
+reference: https://docs.wpvip.com/vip-api/reference
+introspection:
+  attempted: true
+  query: '{__schema{queryType{name}}}'
+  http_status: 401
+  body: '{"status":"error","message":"Unauthorized"}'
+  gated: true
+  note: >-
+    Both POST introspection and GET on https://api.wpvip.com/graphql return 401 Unauthorized
+    without a VIP token, so the SDL requires an authenticated introspection by a VIP customer.
+sdl_captured: false
+documented_surface:
+  execution_model: https://docs.wpvip.com/vip-api/execution-model
+  authorization_and_directives: https://docs.wpvip.com/vip-api/authorization-and-directives
+  pagination: https://docs.wpvip.com/vip-api/pagination
+  nested_traversal: https://docs.wpvip.com/vip-api/nested-traversal-guide
+  operation_categories:
+  - name: Apps operations
+    url: https://docs.wpvip.com/vip-api/category/apps-operations
+  - name: Domains operations
+    url: https://docs.wpvip.com/vip-api/category/domains-operations
+  - name: Organizations operations
+    url: https://docs.wpvip.com/vip-api/category/organizations-operations
+  - name: Users operations
+    url: https://docs.wpvip.com/vip-api/category/users-operations
+  - name: Integrations operations
+    url: https://docs.wpvip.com/vip-api/category/integrations-operations
+  - name: Security operations
+    url: https://docs.wpvip.com/vip-api/category/security-operations
+  - name: Observability operations
+    url: https://docs.wpvip.com/vip-api/category/observability-operations
+  - name: Common types
+    url: https://docs.wpvip.com/vip-api/category/common-types
+clients:
+- name: '@automattic/vip'
+  kind: cli
+  url: https://www.npmjs.com/package/@automattic/vip
+  note: VIP-CLI is the first-party client for this API.
+x-evidence:
+  fetched: '2026-07-31'
+  urls: [https://docs.wpvip.com/llms.txt, https://docs.wpvip.com/vip-api/getting-started,
+    https://api.wpvip.com/graphql]

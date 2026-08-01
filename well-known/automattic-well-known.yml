@@ -1,0 +1,76 @@
+generated: '2026-07-31'
+method: searched
+source: live probes of Automattic hosts on 2026-07-31
+notes: >-
+  Automattic serves its RFC 9116 security.txt from the corporate host (automattic.com,
+  mirrored on wordpress.com) and its OAuth/OIDC discovery documents from the API host
+  (public-api.wordpress.com). The API host also still serves the legacy OpenAI plugin
+  manifest for Jetpack, which points at a real OpenAPI document.
+hosts:
+- host: https://public-api.wordpress.com
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: automattic-openid-configuration.json
+    standard: OpenID Connect Discovery 1.0
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: automattic-oauth-authorization-server.json
+    standard: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: automattic-oauth-protected-resource.json
+    standard: RFC 9728
+    note: describes the WordPress.com MCP server as the protected resource
+  - path: /.well-known/jwks.json
+    status: 200
+    standard: RFC 7517
+    note: not mirrored locally; keys rotate
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: automattic-ai-plugin.json
+    standard: OpenAI plugin manifest v1
+    note: points at https://public-api.wordpress.com/wpcom/v2/ai-plugin/openapi.yaml
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://automattic.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: automattic-security.txt
+    standard: RFC 9116
+    note: PGP-signed; canonical URL declared as https://automattic.com/.well-known/security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://wordpress.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: mirror of the automattic.com document (same PGP-signed body)
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+- host: https://rest.akismet.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+x-evidence:
+  fetched: '2026-07-31'
+  method: HTTP GET, redirects followed

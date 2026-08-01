@@ -1,0 +1,59 @@
+generated: '2026-07-31'
+method: searched
+source: https://developer.wordpress.com/docs/api/
+versioning:
+  scheme: uri-path
+  current:
+    rest: v1.1
+    wp: v2
+    wpcom: v2
+  published_versions: [/rest/v1, /rest/v1.1, /rest/v1.2, /rest/v1.3, /wp/v2, /wpcom/v2]
+  docs: https://developer.wordpress.com/docs/api/
+  model: >-
+    Parallel additive versions. v1.2 and v1.3 publish only the endpoints that differ from v1.1
+    (38 and 19 endpoints respectively against v1.1's 253), and the v1.1 help document carries an
+    `alternates` group naming the alternate version of an endpoint. Clients mix versions per
+    endpoint rather than migrating wholesale.
+  self_description: >-
+    Every /rest/ version publishes a machine-readable help document at
+    https://public-api.wordpress.com/rest/<version>/help (Accept: application/json), and every
+    /wp/ and /wpcom/ namespace publishes a route index at its namespace root.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    Automattic publishes no dated API deprecation policy, no RFC 8594 Sunset/Deprecation header
+    support, and no migration timetable for the /rest/v1 namespace, which remains reachable
+    alongside v1.1-v1.3. The OAuth2 documentation does mark the implicit flow as legacy/deprecated
+    and the password grant as development/testing only.
+  deprecated_flows:
+  - flow: implicit
+    status: legacy/deprecated
+    source: https://developer.wordpress.com/docs/api/oauth2/
+  - flow: password
+    status: development and testing only
+    source: https://developer.wordpress.com/docs/api/oauth2/
+status_page:
+  url: https://automatticstatus.com/
+  http_status: 200
+  scope: Automattic services
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA is published for the WordPress.com REST API. WordPress VIP publishes enterprise SLAs commercially.
+support:
+  responsible_use_policy: https://developer.wordpress.com/docs/api/guidelines-for-responsible-use-of-automattics-apis/
+  terms_of_service: https://wordpress.com/tos/
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in any harvested spec is flagged deprecated — neither the /rest/ help documents nor
+  the /wp/ and /wpcom/ route indexes carry a deprecation flag, so deprecation state is not
+  machine-discoverable on this API.
+x-evidence:
+  fetched: '2026-07-31'
+  urls:
+  - https://developer.wordpress.com/docs/api/
+  - https://developer.wordpress.com/docs/api/oauth2/
+  - https://automatticstatus.com/
+  - https://public-api.wordpress.com/rest/v1.1/help

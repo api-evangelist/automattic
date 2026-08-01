@@ -1,0 +1,36 @@
+generated: '2026-07-31'
+method: generated
+source: >-
+  Grounded in operationIds verified present in openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  and openapi/automattic-akismet-openapi.yml, plus the cross-cutting rules captured in
+  conventions/automattic-conventions.yml and errors/automattic-problem-types.yml.
+note: >-
+  Automattic publishes no AGENTS.md or provider-authored agent skills for the WordPress.com REST
+  API, so these are generated. Every operationId referenced was grepped from the spec.
+skills:
+- file: automattic-publish-post.md
+  name: Publish a post to a WordPress.com site
+  api: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  operations: [getMe, getMeSites, postSitesBySitePostsNew, getSitesBySitePostsByPostId,
+    postSitesBySitePostsByPostId]
+- file: automattic-upload-media.md
+  name: Upload media and attach it to a post
+  api: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  operations: [getMeSites, postSitesBySiteMediaNew, getSitesBySiteMedia,
+    getSitesBySiteMediaByMediaId, postSitesBySitePostsByPostId]
+- file: automattic-moderate-comments.md
+  name: Triage and moderate comments
+  api: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  operations: [getSitesBySiteComments, getSitesBySiteCommentsByCommentId,
+    postSitesBySiteCommentsByCommentId, postSitesBySiteCommentsByCommentIdDelete,
+    getSitesBySiteCommentsTree]
+- file: automattic-akismet-spam-check.md
+  name: Classify content with Akismet and train the model
+  api: openapi/automattic-akismet-openapi.yml
+  operations: [postVerifyKey, postCommentCheck, postSubmitSpam, postSubmitHam, getUsageLimit,
+    getKeySites]
+- file: automattic-read-site-stats.md
+  name: Read a WordPress.com site's traffic stats
+  api: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  operations: [getSitesBySite, getSitesBySiteStats, getSitesBySiteStatsTopPosts,
+    getSitesBySiteStatsSearchTerms, getMeSites]

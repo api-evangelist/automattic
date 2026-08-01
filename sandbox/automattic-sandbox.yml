@@ -1,0 +1,51 @@
+generated: '2026-07-31'
+method: searched
+source: https://developer.wordpress.com/docs/api/console/
+summary: >-
+  Automattic does not run a test-mode/live-mode split with magic test values. Its developer test
+  surface is instead (a) an interactive console that executes real authenticated calls against the
+  live WordPress.com REST API, (b) a free WordPress.com site you can point at, and (c) Studio, a
+  local WordPress development environment. There are no test keys, no test cards, and no
+  sandbox host.
+test_live_separation:
+  modes: []
+  key_prefixes: []
+  separate_host: false
+  note: >-
+    One host (public-api.wordpress.com) serves production only. Safety comes from OAuth scope and
+    site capability, not from a sandbox mode.
+consoles:
+- name: WordPress.com Developer Console
+  url: https://developer.wordpress.com/docs/api/console/
+  description: >-
+    Interactive console for the /rest/, /wp/ and /wpcom/ namespaces. Requests are authenticated
+    with the signed-in WordPress.com account and hit live data.
+  live_data: true
+- name: WordPress.com Studio
+  url: https://developer.wordpress.com/studio/
+  changelog: https://developer.wordpress.com/changelog/
+  description: >-
+    Local WordPress development app — spin up a throwaway local site, then sync or publish to
+    WordPress.com. The practical safe place to exercise write flows.
+  live_data: false
+- name: VIP local development environment
+  command: vip dev-env create
+  docs: https://docs.wpvip.com/vip-cli/
+  description: Containerised local WordPress VIP environment driven from VIP-CLI.
+  live_data: false
+- name: Akismet key verification
+  operation: postVerifyKey
+  spec: openapi/automattic-akismet-openapi.yml
+  description: >-
+    verify-key is the closest thing Akismet ships to a sandbox call — it validates a key without
+    consuming a classification. Akismet publishes no test-mode key.
+test_values: []
+test_values_note: >-
+  Automattic publishes no magic test identifiers, test cards, or fixture triggers for any of these
+  APIs. Nothing has been invented here.
+fixtures_and_triggers: []
+time_simulation:
+  supported: false
+x-evidence:
+  fetched: '2026-07-31'
+  urls: [https://developer.wordpress.com/docs/api/console/, https://docs.wpvip.com/vip-cli/]

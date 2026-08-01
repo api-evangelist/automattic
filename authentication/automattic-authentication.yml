@@ -1,0 +1,102 @@
+generated: '2026-07-31'
+method: searched
+source: https://public-api.wordpress.com/.well-known/openid-configuration
+docs: https://developer.wordpress.com/docs/api/oauth2/
+summary:
+  types: [oauth2, openIdConnect, http, apiKey]
+  oauth2_flows: [authorizationCode, refreshToken, clientCredentials]
+  api_key_in: [body]
+  note: >-
+    One OAuth 2.1 / OpenID Connect authorization server covers all three WordPress.com REST
+    namespaces and the hosted MCP server. Akismet is the exception: it is a separate product on a
+    separate host with a plain API key passed as a request field.
+schemes:
+- name: oauth2
+  type: oauth2
+  spec: OAuth 2.1
+  issuer: https://public-api.wordpress.com
+  discovery: https://public-api.wordpress.com/.well-known/oauth-authorization-server
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+    tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+    scopes: 21
+  - flow: refreshToken
+    tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+  - flow: clientCredentials
+    tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+  pkce: [S256]
+  dynamic_client_registration: https://public-api.wordpress.com/oauth2-1/register
+  token_endpoint_auth_methods: [client_secret_basic, client_secret_post, none]
+  revocation: https://public-api.wordpress.com/oauth2-1/revoke
+  introspection: https://public-api.wordpress.com/oauth2-1/token-info
+  resource_indicators_supported: true
+  token_expiry: two weeks
+  scopes_artifact: scopes/automattic-scopes.yml
+  applies_to: [/rest/v1.x, /wp/v2, /wpcom/v2, /wpcom/v2/mcp/v1]
+  sources:
+  - https://public-api.wordpress.com/.well-known/oauth-authorization-server
+  - openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  - openapi/automattic-wordpress-com-wp-v2-openapi.yml
+  - openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+- name: openIdConnect
+  type: openIdConnect
+  openIdConnectUrl: https://public-api.wordpress.com/.well-known/openid-configuration
+  id_token_signing_alg_values_supported: [RS256]
+  subject_types_supported: [public]
+  userinfo_endpoint: https://public-api.wordpress.com/oauth2-1/userinfo
+  jwks_uri: https://public-api.wordpress.com/.well-known/jwks.json
+  claims_supported: [sub, iss, aud, exp, iat, auth_time, nonce, name, preferred_username, picture,
+    email, email_verified, updated_at]
+  sources: [https://public-api.wordpress.com/.well-known/openid-configuration]
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Authorization: Bearer <access_token> — the wire format for every OAuth 2.1 token.'
+  bearer_methods_supported: [header]
+  sources:
+  - https://public-api.wordpress.com/.well-known/oauth-protected-resource
+  - openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: >-
+    Application Passwords are documented as a shortcut for personal and development use against
+    WordPress.com, in place of the full OAuth2 flow.
+  docs: https://developer.wordpress.com/docs/api/
+  sources: [https://developer.wordpress.com/docs/api/]
+- name: akismetApiKey
+  type: apiKey
+  in: body
+  parameter_name: key
+  description: >-
+    Akismet authenticates with an API key sent as a request field alongside a `blog` field
+    identifying the site. There is no OAuth on this API and no bearer header.
+  applies_to: [https://rest.akismet.com]
+  sources: [openapi/automattic-akismet-openapi.yml, https://akismet.com/development/api/]
+- name: vipPlatformToken
+  type: http
+  scheme: bearer
+  description: >-
+    The WordPress VIP GraphQL Platform API requires a VIP token; unauthenticated requests to
+    https://api.wpvip.com/graphql return 401 Unauthorized.
+  docs: https://docs.wpvip.com/vip-api/getting-started
+  sources: [graphql/automattic-vip-platform-api.yml]
+legacy_and_deprecated:
+- item: implicit flow
+  status: legacy/deprecated
+  source: https://developer.wordpress.com/docs/api/oauth2/
+- item: password grant
+  status: development and testing only
+  source: https://developer.wordpress.com/docs/api/oauth2/
+- item: /oauth2/authorize and /oauth2/token
+  status: >-
+    older endpoint pair still documented and still referenced by the ai-plugin manifest; the
+    /oauth2-1/ pair is what the discovery documents advertise.
+x-evidence:
+  fetched: '2026-07-31'
+  urls:
+  - https://public-api.wordpress.com/.well-known/openid-configuration
+  - https://public-api.wordpress.com/.well-known/oauth-authorization-server
+  - https://public-api.wordpress.com/.well-known/oauth-protected-resource
+  - https://developer.wordpress.com/docs/api/oauth2/

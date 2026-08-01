@@ -1,0 +1,101 @@
+generated: '2026-07-31'
+method: searched
+source: >-
+  https://public-api.wordpress.com/.well-known/openid-configuration,
+  https://public-api.wordpress.com/.well-known/oauth-protected-resource,
+  https://automattic.com/.well-known/security.txt, https://wpvip.com/security/
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    OAuth 2.1 authorization server with authorization_code, refresh_token and client_credentials
+    grants, published at /.well-known/oauth-authorization-server.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: https://public-api.wordpress.com/.well-known/oauth-authorization-server returns 200.
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: true
+  evidence: >-
+    https://public-api.wordpress.com/.well-known/oauth-protected-resource returns 200 and the MCP
+    endpoint answers 401 with a WWW-Authenticate Bearer resource_metadata challenge.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = ["S256"].
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint published with registration_endpoint_auth_methods_supported = ["none"].
+- id: rfc8707-resource-indicators
+  conforms: true
+  evidence: resource_indicators_supported = true.
+- id: oidc-core
+  conforms: true
+  evidence: >-
+    openid-configuration publishes userinfo_endpoint, jwks_uri, id_token_signing_alg_values_supported
+    ["RS256"], subject_types_supported ["public"] and a claims_supported list.
+- id: rfc7009-token-revocation
+  conforms: true
+  evidence: revocation_endpoint = https://public-api.wordpress.com/oauth2-1/revoke.
+- id: rfc7662-token-introspection
+  conforms: true
+  evidence: introspection_endpoint = https://public-api.wordpress.com/oauth2-1/token-info.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: PGP-signed /.well-known/security.txt on automattic.com and wordpress.com.
+- id: mcp
+  conforms: true
+  evidence: >-
+    Hosted MCP server at https://public-api.wordpress.com/wpcom/v2/mcp/v1 over streamable HTTP with
+    OAuth 2.1; documented tool reference at https://developer.wordpress.com/docs/mcp/tools/.
+- id: openapi
+  conforms: true
+  evidence: >-
+    Automattic publishes OpenAPI 3.0.x for Akismet (github.com/Automattic/akismet-api spec.yml) and
+    for the Jetpack ai-plugin surface
+    (https://public-api.wordpress.com/wpcom/v2/ai-plugin/openapi.yaml). The main WordPress.com REST
+    API is self-describing but not published as OpenAPI.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors are vendor JSON envelopes, not application/problem+json. See errors/automattic-problem-types.yml.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no Sunset or Deprecation headers observed; no published deprecation policy.
+- id: asyncapi
+  conforms: false
+  evidence: no AsyncAPI document published for any Automattic event surface.
+- id: a2a
+  conforms: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json return 404 on automattic.com,
+    wordpress.com, developer.wordpress.com and public-api.wordpress.com.
+- id: idempotency-key
+  conforms: false
+  evidence: no idempotency key documented or present in any harvested route index.
+- id: json-api
+  conforms: false
+  evidence: responses are plain JSON, not JSON:API documents.
+- id: graphql
+  conforms: false
+  evidence: no first-party GraphQL endpoint published for the WordPress.com platform API.
+compliance_programs:
+- product: WordPress VIP
+  url: https://wpvip.com/security/
+  trust_center: https://wpvip.com/trust/
+  certifications:
+  - FedRAMP Moderate
+  - SOC 2 Type I
+  - ISO 27001 (data centers)
+  - SOC 1 (data centers)
+  - GovRAMP
+  - TX-RAMP
+  accessibility:
+  - WCAG 2.0 AA
+  - Section 508
+  - WCAG 2.2 AA (stated target)
+  note: >-
+    These are WordPress VIP (Automattic's enterprise CMS) attestations. Automattic does not publish
+    an equivalent certification list for the general WordPress.com REST API.
+- product: Automattic (corporate)
+  url: https://automattic.com/security/
+  note: Corporate security page; bug bounty run through HackerOne.
+x-evidence:
+  fetched: '2026-07-31'

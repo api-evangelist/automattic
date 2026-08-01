@@ -1,0 +1,121 @@
+generated: '2026-07-31'
+method: searched
+status: published
+source: https://developer.wordpress.com/docs/mcp/
+server:
+  name: wordpress-com
+  vendor: Automattic
+  transport: http
+  url: https://public-api.wordpress.com/wpcom/v2/mcp/v1
+  docs: https://developer.wordpress.com/docs/mcp/
+  tools_reference: https://developer.wordpress.com/docs/mcp/tools/
+  availability: All WordPress.com paid plans (free accounts excluded)
+  clients_documented: [Claude Desktop, Claude Code, ChatGPT, Codex, Cursor, VS Code]
+authentication:
+  model: OAuth 2.1
+  features: [PKCE (S256), Dynamic Client Registration, token rotation, no client secret required]
+  authorization_server: https://public-api.wordpress.com
+  authorization_endpoint: https://public-api.wordpress.com/oauth2-1/authorize
+  token_endpoint: https://public-api.wordpress.com/oauth2-1/token
+  registration_endpoint: https://public-api.wordpress.com/oauth2-1/register
+  protected_resource_metadata: https://public-api.wordpress.com/.well-known/oauth-protected-resource
+  bearer_methods_supported: [header]
+defaults:
+  read_only_tools: enabled
+  write_tools: disabled
+  note: >-
+    Per the WordPress.com MCP docs, all read-only tools are enabled by default and write
+    tools must be explicitly turned on.
+introspection:
+  tools_list_probed: true
+  tools_list_status: 401
+  tools_list_body: '{"code":"rest_unauthorized","message":"Authentication required.","data":{"status":401}}'
+  www_authenticate: >-
+    Bearer resource_metadata="https://public-api.wordpress.com/.well-known/oauth-protected-resource?resource=wpcom/v2/mcp/v1"
+  note: >-
+    Live tools/list is auth-gated, so per-tool inputSchema requires an authenticated
+    introspection. The tool names, descriptions and operation lists below are taken verbatim
+    from Automattic's published MCP Tools Reference, not from a live handshake.
+tools:
+- name: wpcom-mcp-content-authoring
+  kind: facade
+  description: >-
+    Create, read, update, and delete content on a WordPress.com site — posts, pages,
+    comments, media, categories, tags, block patterns, and content search.
+  read_operations: [posts.list, posts.get, pages.list, pages.get, comments.list, comments.get,
+    media.list, media.get, categories.list, categories.get, tags.list, tags.get,
+    patterns.list, patterns.get, synced-patterns.list, synced-patterns.get, content-search]
+  write_operations: [posts.create, posts.update, posts.delete, pages.create, pages.update,
+    pages.delete, comments.create, comments.update, comments.delete, media.create,
+    media.update, media.delete, categories.create, categories.update, categories.delete,
+    tags.create, tags.update, tags.delete]
+- name: wpcom-mcp-site-editor-context
+  kind: facade
+  description: Query site design context — theme presets, applied styles, and registered block types.
+  read_operations: [theme.active, theme.presets, theme.styles, blocks.allowed]
+  write_operations: []
+- name: wpcom-mcp-account
+  kind: facade
+  description: >-
+    Manage the authenticated user's WordPress.com account — profile, notifications,
+    achievements, domains, connections, security, and currency.
+  read_operations: [profile.get, notifications.get, inbox.get, achievements.get, domains.list,
+    domains.get, domains.dns_records, connections.get, security.get, currency.preview]
+  write_operations: [profile.update, notifications.update, domains.set_primary, currency.change]
+- name: wpcom-mcp-site
+  kind: facade
+  description: >-
+    Manage a WordPress.com site — settings, statistics, plugins, activity log, themes,
+    and Jetpack module configuration.
+  read_operations: [settings.get, statistics.get, plugin.list, activity.get, theme.list,
+    monitor.status, newsletter.status, newsletter.get_settings, account-protection.status,
+    manage-site.status]
+  write_operations: [settings.update, theme.set, monitor.activate, monitor.deactivate,
+    account-protection.activate, account-protection.deactivate, manage-site.launch,
+    manage-site.set-visibility]
+- name: wpcom-user-sites
+  kind: standalone
+  access: read
+  description: >-
+    List the authenticated user's accessible sites across WordPress.com and self-hosted
+    Jetpack-connected sites.
+- name: wpcom-domain-purchase
+  kind: standalone
+  access: read
+  description: Search for available domains and generate checkout links for registration on WordPress.com.
+- name: wpcom-domain-update-dns-records
+  kind: standalone
+  access: write
+  description: Add or remove DNS records for a single custom domain you manage.
+- name: wpcom-domain-restore-default-dns-records
+  kind: standalone
+  access: write
+  description: Restore the WordPress.com default A records or the default www CNAME for a single custom domain.
+- name: wpcom-domain-update-nameservers
+  kind: standalone
+  access: write
+  description: Set the nameservers for a single custom domain.
+- name: wpcom-domain-set-mail-service
+  kind: standalone
+  access: write
+  description: Configure DNS records on a domain for an external mail service.
+- name: wpcom-checkout-url
+  kind: standalone
+  access: read
+  description: Generate a pre-configured WordPress.com checkout URL for products or subscription renewal.
+- name: wpcom-plans-list
+  kind: standalone
+  access: read
+  description: List WordPress.com plans with prices and per-tier feature lists.
+related_packages:
+- name: '@automattic/mcp-wordpress-remote'
+  registry: npm
+  url: https://www.npmjs.com/package/@automattic/mcp-wordpress-remote
+  role: local proxy for connecting MCP clients to WordPress / WordPress.com
+x-evidence:
+  fetched: '2026-07-31'
+  urls:
+  - https://developer.wordpress.com/docs/mcp/
+  - https://developer.wordpress.com/docs/mcp/tools/
+  - https://public-api.wordpress.com/.well-known/oauth-protected-resource
+  - https://public-api.wordpress.com/wpcom/v2/mcp/v1

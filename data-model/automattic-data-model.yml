@@ -1,0 +1,151 @@
+generated: '2026-07-31'
+method: derived
+source: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+note: >-
+  Derived from the response field sets Automattic publishes in its own self-describing help
+  document. Relationships are read off id-reference fields (site_ID, post_ID, author_ID, parent,
+  primary_blog) and off embedded object fields the API returns inline. Nothing is inferred beyond
+  what those fields state.
+root_entity: Site
+entities:
+- name: User
+  operation: getMe
+  path: /me
+  identifier: ID
+  key_fields: [ID, username, display_name, email, primary_blog, site_count, token_scope, token_site_id]
+  note: >-
+    The authenticated user. token_scope and token_site_id expose the OAuth grant on the identity
+    object itself, which is how an agent can tell whether it holds a global or site-scoped token.
+- name: Site
+  operation: getSitesBySite
+  path: /sites/{site}
+  identifier: ID
+  alternate_identifier: slug (domain)
+  key_fields: [ID, name, URL, jetpack, is_private, is_vip, is_wpcom_atomic, plan, products,
+    capabilities, post_count, subscribers_count, quota, organization_id]
+- name: Post
+  operation: getSitesBySitePostsByPostId
+  path: /sites/{site}/posts/{post_ID}
+  identifier: ID
+  global_identifier: global_ID
+  key_fields: [ID, site_ID, author, title, content, status, type, parent, terms, tags, categories,
+    attachments, featured_image, discussion, like_count]
+- name: Comment
+  operation: getSitesBySiteCommentsByCommentId
+  path: /sites/{site}/comments/{comment_ID}
+  identifier: ID
+  key_fields: [ID, post, author, content, status, parent, type, like_count]
+- name: Media
+  operation: getSitesBySiteMediaByMediaId
+  path: /sites/{site}/media/{media_ID}
+  identifier: ID
+  key_fields: [ID, post_ID, author_ID, URL, file, mime_type, extension, thumbnails, height, width]
+- name: Category
+  operation: getSitesBySiteCategories
+  path: /sites/{site}/categories
+  identifier: slug
+  collection_envelope: {found: integer, categories: array}
+- name: Tag
+  operation: getSitesBySiteTags
+  path: /sites/{site}/tags
+  identifier: slug
+  collection_envelope: {found: integer, tags: array}
+- name: Theme
+  operation: getThemesByThemeSlug
+  path: /themes/{theme_slug}
+  identifier: theme_slug
+- name: Plan
+  operation: getWpcomV2Plans
+  spec: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+  identifier: product_slug
+relationships:
+- from: User
+  to: Site
+  kind: has_many
+  via: site_count / getMeSites
+- from: User
+  to: Site
+  kind: has_one
+  role: primary
+  via: primary_blog
+- from: Site
+  to: Post
+  kind: has_many
+  via: /sites/{site}/posts/
+- from: Post
+  to: Site
+  kind: belongs_to
+  via: site_ID
+- from: Post
+  to: User
+  kind: belongs_to
+  role: author
+  via: author
+- from: Post
+  to: Post
+  kind: belongs_to
+  role: parent
+  via: parent
+- from: Post
+  to: Comment
+  kind: has_many
+  via: discussion.comment_count / /sites/{site}/posts/{post_ID}/replies/
+- from: Post
+  to: Media
+  kind: has_many
+  via: attachments
+- from: Post
+  to: Media
+  kind: has_one
+  role: featured image
+  via: featured_image
+- from: Post
+  to: Category
+  kind: has_many
+  via: categories
+- from: Post
+  to: Tag
+  kind: has_many
+  via: tags
+- from: Comment
+  to: Post
+  kind: belongs_to
+  via: post
+- from: Comment
+  to: Comment
+  kind: belongs_to
+  role: parent
+  via: parent
+- from: Comment
+  to: User
+  kind: belongs_to
+  role: author
+  via: author
+- from: Media
+  to: Post
+  kind: belongs_to
+  via: post_ID
+- from: Media
+  to: User
+  kind: belongs_to
+  role: uploader
+  via: author_ID
+- from: Site
+  to: Plan
+  kind: has_one
+  via: plan
+- from: Site
+  to: Theme
+  kind: has_one
+  via: /sites/{site}/themes/mine
+identifier_conventions:
+  site: >-
+    Every site-scoped path accepts either a numeric site ID or a domain in the {site} segment
+    ("Site ID or domain", per the help document).
+  global_id: >-
+    Posts carry a global_ID that is unique across all of WordPress.com, in addition to the
+    site-scoped ID — the join key for cross-site Reader endpoints.
+  slug_addressing: >-
+    Categories, tags and posts are also addressable by slug via the `slug:{value}` path form
+    (e.g. /sites/{site}/posts/slug:{post_slug}).
+render: null

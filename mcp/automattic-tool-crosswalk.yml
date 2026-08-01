@@ -1,0 +1,152 @@
+generated: '2026-07-31'
+method: derived
+source: mcp/automattic-mcp.yml + openapi/ (operationIds verified by grep against each spec)
+summary: >-
+  Automattic's WordPress.com MCP server exposes a small number of coarse "facade" tools whose
+  sub-operations (posts.list, media.create, …) fan out to the same WordPress.com REST surface the
+  OpenAPI documents describe. Because the live tools/list handshake is OAuth-gated, tools are bound
+  to backing operations by name and documented semantics, not by observed inputSchema — confidence
+  is recorded accordingly. Every operationId below was verified to exist verbatim in the referenced
+  spec file.
+surfaces:
+  openapi:
+  - openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  - openapi/automattic-wordpress-com-wp-v2-openapi.yml
+  - openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+  - openapi/automattic-jetpack-ai-plugin-openapi.yaml
+  - openapi/automattic-akismet-openapi.yml
+  graphql: null
+  mcp:
+    url: https://public-api.wordpress.com/wpcom/v2/mcp/v1
+    gated: true
+    gate: OAuth 2.1 bearer; tools/list returns 401 rest_unauthorized
+crosswalk:
+- tool: wpcom-mcp-content-authoring
+  category: content
+  binding: rest
+  confidence: high
+  note: >-
+    Facade tool. Sub-operations map onto the wp/v2 content endpoints (and their v1.1 equivalents);
+    listed below one sub-operation family at a time.
+  rest:
+  - getWpV2SitesbyWpcomSitePosts
+  - postWpV2SitesbyWpcomSitePosts
+  - getWpV2SitesbyWpcomSitePostsbyId
+  - putWpV2SitesbyWpcomSitePostsbyId
+  - deleteWpV2SitesbyWpcomSitePostsbyId
+  - getWpV2SitesbyWpcomSitePages
+  - postWpV2SitesbyWpcomSitePages
+  - getWpV2SitesbyWpcomSitePagesbyId
+  - getWpV2SitesbyWpcomSiteComments
+  - postWpV2SitesbyWpcomSiteComments
+  - getWpV2SitesbyWpcomSiteMedia
+  - postWpV2SitesbyWpcomSiteMedia
+  - getWpV2SitesbyWpcomSiteCategories
+  - postWpV2SitesbyWpcomSiteCategories
+  - getWpV2SitesbyWpcomSiteTags
+  - postWpV2SitesbyWpcomSiteTags
+  - getWpV2SitesbyWpcomSiteBlockPatternsPatterns
+  rest_spec: openapi/automattic-wordpress-com-wp-v2-openapi.yml
+  also_rest:
+    spec: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+    operations: [getSitesBySitePosts, postSitesBySitePostsNew, getSitesBySitePostsByPostId,
+      postSitesBySitePostsByPostId, postSitesBySitePostsDelete, getSitesBySiteMedia,
+      postSitesBySiteMediaNew, getSitesBySiteComments, getSitesBySiteCommentsByCommentId,
+      getSitesBySiteCategories, postSitesBySiteCategoriesNew, getSitesBySiteTags,
+      postSitesBySiteTagsNew, postSitesBySiteSearch]
+- tool: wpcom-mcp-site-editor-context
+  category: design
+  binding: rest
+  confidence: medium
+  note: theme presets/styles and allowed block types are read through the wp/v2 design endpoints.
+  rest: [getWpV2SitesbyWpcomSiteThemes, getWpV2SitesbyWpcomSiteBlockTypes]
+  rest_spec: openapi/automattic-wordpress-com-wp-v2-openapi.yml
+- tool: wpcom-mcp-account
+  category: account
+  binding: rest
+  confidence: medium
+  note: >-
+    profile/notifications/settings map to the v1.1 /me family; the domain sub-operations map to the
+    wpcom/v2 domains family.
+  rest: [getMe, getMeSettings, postMeSettings, postNotificationsRead, postNotificationsSeen]
+  rest_spec: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  also_rest:
+    spec: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+    operations: [getWpcomV2DomainsBulkActions, postWpcomV2DomainsBulkActionsSetAutoRenew]
+- tool: wpcom-mcp-site
+  category: site
+  binding: rest
+  confidence: medium
+  note: site settings/stats/plugins/themes read through v1.1 and wp/v2.
+  rest: [getSitesBySite, getSitesBySiteStats, getSitesBySiteThemes, getMeSitesPlugins]
+  rest_spec: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  also_rest:
+    spec: openapi/automattic-wordpress-com-wp-v2-openapi.yml
+    operations: [getWpV2SitesbyWpcomSiteSettings, putWpV2SitesbyWpcomSiteSettings,
+      getWpV2SitesbyWpcomSitePlugins]
+- tool: wpcom-user-sites
+  category: account
+  binding: rest
+  confidence: high
+  rest: [getMeSites, getMeSitesCompact]
+  rest_spec: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  also_rest:
+    spec: openapi/automattic-jetpack-ai-plugin-openapi.yaml
+    operations: [getSites]
+- tool: wpcom-plans-list
+  category: commerce
+  binding: rest
+  confidence: high
+  rest: [getWpcomV2Plans, getWpcomV2PlansDetails, getWpcomV2PlansFeatures]
+  rest_spec: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+- tool: wpcom-domain-purchase
+  category: domains
+  binding: rest
+  confidence: medium
+  note: availability search maps to the wpcom/v2 domain availability endpoints; the checkout link itself is composed server-side.
+  rest: [getWpcomV2DomainsBulkAvailabilityCheckbyDomainNames]
+  rest_spec: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+mcp_only:
+- tool: wpcom-domain-update-dns-records
+  reason: >-
+    No public DNS-record write operation is exposed in the harvested wpcom/v2 route index; the
+    tool composes a private/administrative domain management call.
+- tool: wpcom-domain-restore-default-dns-records
+  reason: same as wpcom-domain-update-dns-records — no matching public REST operation harvested.
+- tool: wpcom-domain-update-nameservers
+  reason: no matching public REST operation harvested.
+- tool: wpcom-domain-set-mail-service
+  reason: composite (writes several DNS records in one call); no single backing REST operation.
+- tool: wpcom-checkout-url
+  reason: >-
+    Generates a pre-configured wordpress.com checkout URL rather than calling a documented REST
+    operation; the closest REST surface is the ucp checkout-sessions family, which is not the same contract.
+rest_only:
+- capability: Reader / feeds
+  spec: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  note: /read/* family (subscriptions, tags, following) has no MCP tool.
+- capability: Stats and Insights
+  spec: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+  note: >-
+    only a coarse statistics.get sub-operation is exposed; the ~40 /sites/{site}/stats/* endpoints
+    are REST-only.
+- capability: Hosting, code deployments and deployment webhooks
+  spec: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+  note: no MCP tool.
+- capability: Marketplace, agency and partner endpoints
+  spec: openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+  note: no MCP tool.
+- capability: Akismet spam classification
+  spec: openapi/automattic-akismet-openapi.yml
+  note: separate product, separate host (rest.akismet.com); not exposed through the WordPress.com MCP server.
+coverage:
+  tools_documented: 12
+  tools_bound_to_rest: 7
+  mcp_only: 5
+  rest_operations_total: 2384
+  rest_operations_with_a_tool: 42
+  note: >-
+    rest_operations_total counts every operation across the seven OpenAPI documents in this repo
+    (253 v1.1 + 38 v1.2 + 19 v1.3 + 348 wp/v2 + 1716 wpcom/v2 + 4 Jetpack ai-plugin + 6 Akismet).
+    Tool coverage is deliberately narrow: the MCP server is a curated authoring/administration
+    surface, not a projection of the whole REST estate.

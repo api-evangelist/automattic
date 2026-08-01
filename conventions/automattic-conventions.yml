@@ -1,0 +1,144 @@
+generated: '2026-07-31'
+method: searched
+source: https://developer.wordpress.com/docs/api/
+derived_from:
+- openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+- openapi/automattic-wordpress-com-wp-v2-openapi.yml
+- openapi/automattic-wordpress-com-wpcom-v2-openapi.yml
+summary: >-
+  Automattic operates three parallel REST namespaces on one host — the WordPress.com-native
+  /rest/v1.x family, the WordPress-core-compatible /wp/v2 family, and the WordPress.com extensions
+  /wpcom/v2 family — all behind one OAuth 2.1 authorization server. The v1.x namespace layers a set
+  of WordPress.com-specific cross-cutting query parameters (fields, meta, pretty, http_envelope,
+  callback) on top of every endpoint.
+namespaces:
+- name: /rest/
+  versions: [v1, v1.1, v1.2, v1.3]
+  base: https://public-api.wordpress.com/rest/v1.1
+  note: WordPress.com-native namespace; self-describing help document at /rest/<ver>/help
+- name: /wp/
+  versions: [v2]
+  base: https://public-api.wordpress.com/wp/v2
+  note: WordPress core REST API shape, site-scoped as /wp/v2/sites/{site}/...
+- name: /wpcom/
+  versions: [v2]
+  base: https://public-api.wordpress.com/wpcom/v2
+  note: WordPress.com / Jetpack platform extensions (hosting, domains, plans, marketplace, AI)
+authentication:
+  style: OAuth 2.1 bearer token
+  header: 'Authorization: Bearer <access_token>'
+  authorization_server: https://public-api.wordpress.com
+  discovery: https://public-api.wordpress.com/.well-known/openid-configuration
+  pkce: S256
+  dynamic_client_registration: true
+  application_passwords: documented for personal/development use
+  docs: https://developer.wordpress.com/docs/api/oauth2/
+  artifact: authentication/automattic-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    Automattic does not document an idempotency key on any WordPress.com REST namespace, and no
+    Idempotency-Key parameter appears in the harvested route indexes. Write safety is instead
+    achieved through explicit resource-scoped write paths (e.g. POST /sites/{site}/posts/new vs
+    POST /sites/{site}/posts/{post_ID}) and through the /batch/ endpoint being GET-only.
+pagination:
+  v1_family:
+    style: page-and-number
+    params: [number, page, offset, order, order_by, before, after]
+    response_fields: [found, posts, comments, media]
+    note: >-
+      List endpoints return a `found` total alongside the collection; `number` caps page size and
+      `page`/`offset` walk the collection.
+  wp_v2_family:
+    style: page-and-per_page
+    params: [page, per_page, offset, order, orderby, search]
+    response_headers: [X-WP-Total, X-WP-TotalPages]
+    note: >-
+      X-WP-Total / X-WP-TotalPages are exposed to browsers via
+      Access-Control-Expose-Headers on public-api.wordpress.com (observed).
+field_selection:
+  supported: true
+  param: fields
+  scope: /rest/v1.x namespace
+  description: 'Comma-separated list restricting the response to named fields. Example: fields=ID,title'
+  wp_v2_equivalent: _fields
+expansion:
+  supported: true
+  param: meta
+  scope: /rest/v1.x namespace
+  description: >-
+    Comma-separated list of sub-resources named in the response's `meta` block to inline.
+    Example: meta=site,likes
+  wp_v2_equivalent: _embed
+response_shaping:
+  http_envelope:
+    param: http_envelope
+    type: boolean
+    description: >-
+      Forces HTTP 200 on every response and wraps the real status code and headers inside a JSON
+      envelope, for clients (in-browser JavaScript) that cannot see non-200 responses.
+  pretty:
+    param: pretty
+    type: boolean
+    description: Pretty-print the JSON response.
+  callback:
+    param: callback
+    type: string
+    description: JSONP callback function name.
+  context:
+    param: context
+    values: [display, edit]
+    description: >-
+      display (default) formats output as HTML with shortcodes parsed; edit leaves shortcodes
+      unparsed and preserves significant whitespace.
+cors:
+  supported: true
+  docs: https://developer.wordpress.com/docs/api/rest-api-javascript/
+  exposed_headers: [X-WP-Total, X-WP-TotalPages, Link]
+  allowed_headers: [Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type, X-Fingerprint]
+  note: observed on an OPTIONS/GET against public-api.wordpress.com
+versioning:
+  scheme: uri-path
+  form: /rest/v1.1, /rest/v1.2, /rest/v1.3, /wp/v2, /wpcom/v2
+  parallel_versions: true
+  note: >-
+    v1.2 and v1.3 are additive alternates rather than replacements — they publish only the
+    endpoints that changed, and clients mix versions per endpoint. The `alternates` group in the
+    v1.1 help document names the alternate versions of an endpoint.
+  artifact: lifecycle/automattic-lifecycle.yml
+error_envelope:
+  v1_family:
+    shape: {error: string, message: string}
+    content_type: application/json
+  wp_family:
+    shape: {code: string, message: string, data: {status: integer}}
+    content_type: application/json
+    example: '{"code":"rest_unauthorized","message":"Authentication required.","data":{"status":401}}'
+  rfc9457: false
+  artifact: errors/automattic-problem-types.yml
+rate_limiting:
+  documented_limits: false
+  headers: []
+  policy_url: https://developer.wordpress.com/docs/api/guidelines-for-responsible-use-of-automattics-apis/
+  note: >-
+    Automattic publishes a qualitative responsible-use policy ("place excessive API calls … as
+    determined by Automattic in its sole discretion") but no numeric quota, no documented 429
+    behaviour, and no rate-limit response headers.
+request_tracing:
+  request_id_header: null
+  observed_headers: [x-ac, server-timing, x-hacker]
+  note: >-
+    public-api.wordpress.com returns a Server-Timing header carrying CDN/datacenter and cache
+    state, but no correlation/request-id header is documented for support.
+batching:
+  supported: true
+  endpoint: /rest/v1.1/batch/
+  operation: getBatch
+  scope: GET requests only
+cross_links:
+  authentication: authentication/automattic-authentication.yml
+  scopes: scopes/automattic-scopes.yml
+  errors: errors/automattic-problem-types.yml
+  lifecycle: lifecycle/automattic-lifecycle.yml
+  mcp: mcp/automattic-mcp.yml

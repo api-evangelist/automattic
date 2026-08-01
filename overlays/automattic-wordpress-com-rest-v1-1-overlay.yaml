@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for WordPress.com REST API v1.1
+  version: 1.0.0
+extends: openapi/automattic-wordpress-com-rest-v1-1-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: automattic
+    x-apievangelist-generated: '2026-07-31'
+    x-apievangelist-provenance: derived from https://public-api.wordpress.com/rest/v1.1/help
+    x-apievangelist-operation-count: 253
+- target: $.info
+  update:
+    x-idempotency-supported: false
+    x-idempotency-note: Automattic documents no idempotency key on any WordPress.com namespace. See conventions/automattic-conventions.yml.
+- target: $.info
+  update:
+    x-error-format: vendor-json
+    x-rfc9457: false
+    x-error-catalog: errors/automattic-problem-types.yml
+- target: $.info
+  update:
+    x-rate-limit-documented: false
+    x-responsible-use-policy: https://developer.wordpress.com/docs/api/guidelines-for-responsible-use-of-automattics-apis/
+- target: $.info
+  update:
+    x-artifacts:
+      authentication: authentication/automattic-authentication.yml
+      scopes: scopes/automattic-scopes.yml
+      conventions: conventions/automattic-conventions.yml
+      lifecycle: lifecycle/automattic-lifecycle.yml
+      conformance: conformance/automattic-conformance.yml
+      data_model: data-model/automattic-data-model.yml
+      mcp: mcp/automattic-mcp.yml
