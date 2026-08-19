@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Akismet API",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "key-verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verify Akismet API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://rest.akismet.com/1.1/verify-key",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Verifies the provided Akismet API key to check its validity and ensure it can be used for API requests.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "spam",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check comment for spam",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://rest.akismet.com/1.1/comment-check",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Checks a comment against the Akismet spam database to determine if it is spam or not.\n"
+        },
+        {
+          "info": {
+            "name": "Submit spam",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://rest.akismet.com/1.1/submit-spam",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Submits a comment as spam to Akismet for retraining.\n"
+        },
+        {
+          "info": {
+            "name": "Submit ham (false positives)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://rest.akismet.com/1.1/submit-ham",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Submits a false positive (legitimate comment marked as spam) to Akismet for training purposes.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "key-usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Keep track of the sites that are using your Akismet API key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.akismet.com/1.2/key-sites",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The Akismet API key for authorization."
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "query",
+                "description": "The month for which you would like to get the report (in `YYYY-MM` format). Defaults to the current month.\n"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by site URL or partial site URL.\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format in which you would like the results to be returned. Allowed values are `json` (default) and `csv`. Defaults to `json`.\n"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "The column by which you would like the results to be sorted. Defaults to `total`.\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results returned in the report (defaults to 500).\n"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The offset of the results returned in the report (defaults to 0)."
+              }
+            ]
+          },
+          "docs": "Lists sites using your API key along with stats on their API usage.\n"
+        },
+        {
+          "info": {
+            "name": "Keep track of your Akismet API usage.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://rest.akismet.com/1.2/usage-limit",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "The Akismet API key for authorization."
+              }
+            ]
+          },
+          "docs": "Returns your API usage limit and your usage for the current month.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

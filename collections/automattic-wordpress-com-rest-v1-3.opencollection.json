@@ -1,0 +1,1515 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WordPress.com REST API v1.3",
+    "version": "v1.3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "batch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run several GET endpoints and return them as an array.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/batch/",
+            "params": [
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "urls",
+                "value": "",
+                "type": "query",
+                "description": "Array of endpoints to call"
+              }
+            ]
+          },
+          "docs": "Run several GET endpoints and return them as an array."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "domain-connect",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authorization request to apply a template to a domain using the Domain Connect Sync Flow method.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/domain-connect/authorize/v2/domainTemplates/providers/:provider_id/services/:service_id/apply",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path",
+                "description": "The provider id of the template being applied"
+              },
+              {
+                "name": "service_id",
+                "value": "",
+                "type": "path",
+                "description": "The service id of the template being applied"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "The domain the template should be applied to."
+              },
+              {
+                "name": "host",
+                "value": "",
+                "type": "query",
+                "description": "The subdomain label the template should be applied to"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "The public key ID."
+              },
+              {
+                "name": "sig",
+                "value": "",
+                "type": "query",
+                "description": "The query string parameter signature."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Optional opaque value passed through to redirect_uri."
+              }
+            ]
+          },
+          "docs": "Authorization request to apply a template to a domain using the Domain Connect Sync Flow method."
+        },
+        {
+          "info": {
+            "name": "Apply a template to a domain after a user has granted authorization using the Sync Flow method.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/domain-connect/authorize/v2/domainTemplates/providers/:provider_id/services/:service_id/apply/authorized",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path",
+                "description": "The provider id of the template being applied"
+              },
+              {
+                "name": "service_id",
+                "value": "",
+                "type": "path",
+                "description": "The service id of the template being applied"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "The domain the template should be applied to."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "The public key ID."
+              },
+              {
+                "name": "sig",
+                "value": "",
+                "type": "query",
+                "description": "The query string parameter signature."
+              },
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "query",
+                "description": "The optional list of groupIds to apply. If not present, all records will be applied."
+              },
+              {
+                "name": "dc-nonce",
+                "value": "",
+                "type": "query",
+                "description": "The nonce for this template request generated during the auth request."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Optional opaque value passed through to redirect_uri."
+              }
+            ]
+          },
+          "docs": "Apply a template to a domain after a user has granted authorization using the Sync Flow method."
+        },
+        {
+          "info": {
+            "name": "Returns an error for an unsupported Domain Connect endpoint.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/domain-connect/unsupported",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ]
+          },
+          "docs": "Returns an error for an unsupported Domain Connect endpoint."
+        },
+        {
+          "info": {
+            "name": "Determine if a a specific Domain Connect template is supported.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/domain-connect/v2/domainTemplates/providers/:provider_id/services/:service_id",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "path",
+                "description": "Provider ID as specified in the template"
+              },
+              {
+                "name": "service_id",
+                "value": "",
+                "type": "path",
+                "description": "Service ID as specified in the template"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ]
+          },
+          "docs": "Determine if a a specific Domain Connect template is supported."
+        },
+        {
+          "info": {
+            "name": "Get the settings to use for Domain Connect.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/domain-connect/v2/:domain/settings",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "path",
+                "description": "Domain name"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ]
+          },
+          "docs": "Get the settings to use for Domain Connect."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "marketplace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search the Wordpress.com Marketplace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/marketplace/search",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "List of fields to return. TBD See all fields."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Max 20 Default: 10."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Item number to return. Max 200"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The user's search query"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Lang analyzer to use for searching. e.g. \"en\", \"zh-cn\""
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "How to sort results. Default is score_default. Also supports: date_desc, date_asc, TBD"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filters applied to the search. Will be added as a part of a top level bool query"
+              },
+              {
+                "name": "aggregations",
+                "value": "",
+                "type": "query",
+                "description": "Return aggregations from matches to the search. See details."
+              },
+              {
+                "name": "page_handle",
+                "value": "",
+                "type": "query",
+                "description": "Base64 encoded query string for scrolling results from one page to the next. Overrides \"from\" and can add fitlers"
+              },
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "query",
+                "description": "Algorithm to use for search. Typically auto selected and supplied by page_handle."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Group id to search for, used as : to support multiple group types. A way to search across multiple sites."
+              },
+              {
+                "name": "track_total_hits",
+                "value": "",
+                "type": "query",
+                "description": "Controls whether to track result counts beyond 10000"
+              }
+            ]
+          },
+          "docs": "Search the Wordpress.com Marketplace"
+        },
+        {
+          "info": {
+            "name": "Get related marketplace products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/marketplace/:product_slug/related",
+            "params": [
+              {
+                "name": "product_slug",
+                "value": "",
+                "type": "path",
+                "description": "Marketplace product slug."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return Default: 4."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Offset to start from"
+              }
+            ]
+          },
+          "docs": "Get related marketplace products"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of current user's billing history and upcoming charges.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/me/billing-history",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Optionally limit the number of results returned. Default: 200."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Optionally offset the number of results returned. Default: 0."
+              }
+            ]
+          },
+          "docs": "Get list of current user's billing history and upcoming charges."
+        },
+        {
+          "info": {
+            "name": "Get list of current user's billing history and upcoming charges.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/me/billing-history/:filter",
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "path",
+                "description": "Optionally limit results to previous purchases (past) or upcoming charges (upcoming)"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Optionally limit the number of results returned. Default: 200. Only for past $filter."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Optionally offset the number of results returned. Default: 0. Only for past $filter."
+              }
+            ]
+          },
+          "docs": "Get list of current user's billing history and upcoming charges."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a list of the current user's sites with pagination, search, and sorting support.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/me/sites",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "options",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified options only. Comma-separated list. Example: options=login_url,timezone"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Identifier for the caller; used for perf tracking."
+              },
+              {
+                "name": "site_activity",
+                "value": "",
+                "type": "query",
+                "description": "all: (default) Return all sites both active or inactive.; active: Only return active sites.; inactive: Only return inactive sites."
+              },
+              {
+                "name": "site_visibility",
+                "value": "",
+                "type": "query",
+                "description": "all: (default) Return all sites user is a member of, both visible and hidden.; visible: Only return sites set to visible for the user.; hidden: Only return sites set to hidden for the user.; deleted: Only return sites set to deleted for the user."
+              },
+              {
+                "name": "include_a8c_owned",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include A8C owned sites. Default: true."
+              },
+              {
+                "name": "include_domain_only",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include domain-only sites Default: false."
+              },
+              {
+                "name": "include_redirect",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include redirect sites. Default: true."
+              },
+              {
+                "name": "include_staging",
+                "value": "",
+                "type": "query",
+                "description": "Whether to include staging sites. Default: true."
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns sites that satisfy the given filters only. Example: filters=jetpack,atomic,wpcom"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search sites by name, domain, or URL. Default: ''."
+              },
+              {
+                "name": "plan",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filter sites by plan."
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Filter sites by visibility."
+              },
+              {
+                "name": "sort_field",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by. Default: 'name'."
+              },
+              {
+                "name": "sort_direction",
+                "value": "",
+                "type": "query",
+                "description": "Sort direction: asc or desc. Default: 'asc'."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (1-indexed). Default: 1."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of sites per page. Default: 12."
+              }
+            ]
+          },
+          "docs": "Get a list of the current user's sites with pagination, search, and sorting support."
+        },
+        {
+          "info": {
+            "name": "Search within a site as you type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/sites/:site/search",
+            "params": [
+              {
+                "name": "site",
+                "value": "",
+                "type": "path",
+                "description": "Site ID or domain"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "List of fields to return. TBD See all fields."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return. Max 20 Default: 10."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Item number to return. Max 200"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The user's search query"
+              },
+              {
+                "name": "langs",
+                "value": "",
+                "type": "query",
+                "description": "List of lang analyzers to use for searching. e.g. \"en\", \"zh-cn\""
+              },
+              {
+                "name": "highlight_fields",
+                "value": "",
+                "type": "query",
+                "description": "List of fields to highlight."
+              },
+              {
+                "name": "highlight_phrase_only",
+                "value": "",
+                "type": "query",
+                "description": "When true, only highlight spans that match the full query phrase (not individual terms)."
+              },
+              {
+                "name": "highlight_filter_stopwords",
+                "value": "",
+                "type": "query",
+                "description": "List of stopwords to remove highlighting from, e.g. \"the\", \"an\"."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "How to sort results. Default is score_default. Also supports: date_desc, date_asc, TBD"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filters applied to the search. Will be added as a part of a top level bool query"
+              },
+              {
+                "name": "aggregations",
+                "value": "",
+                "type": "query",
+                "description": "Return aggregations from matches to the search. See details."
+              },
+              {
+                "name": "page_handle",
+                "value": "",
+                "type": "query",
+                "description": "Base64 encoded query string for scrolling results from one page to the next. Overrides \"from\" and can add fitlers"
+              },
+              {
+                "name": "algorithm",
+                "value": "",
+                "type": "query",
+                "description": "Algorithm to use for search. Typically auto selected and supplied by page_handle."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Group id to search for, used as : to support multiple group types. A way to search across multiple sites."
+              },
+              {
+                "name": "additional_blog_ids",
+                "value": "",
+                "type": "query",
+                "description": "List of additional blog_ids to run the search on."
+              },
+              {
+                "name": "custom_results",
+                "value": "",
+                "type": "query",
+                "description": "Internal use only for now"
+              }
+            ]
+          },
+          "docs": "Search within a site as you type"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "read",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a single post from a feed (by ID).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/read/feed/:feed_url_or_id/posts/:feed_item_id",
+            "params": [
+              {
+                "name": "feed_url_or_id",
+                "value": "",
+                "type": "path",
+                "description": "The URL for the feed you would like more details on, or the id of the Feed. If a URL is passed, it MUST be URL-encoded."
+              },
+              {
+                "name": "feed_item_id",
+                "value": "",
+                "type": "path",
+                "description": "The feed item ID"
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ]
+          },
+          "docs": "Get a single post from a feed (by ID)."
+        },
+        {
+          "info": {
+            "name": "Get an array of Reader lists the current user is following.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/read/lists",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "create_recommended_blogs_list",
+                "value": "",
+                "type": "query",
+                "description": "Should a recommended blogs list be created for the user if none exists?"
+              }
+            ]
+          },
+          "docs": "Get an array of Reader lists the current user is following."
+        },
+        {
+          "info": {
+            "name": "Get an array of Reader lists by user slug.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/read/lists/:user_slug",
+            "params": [
+              {
+                "name": "user_slug",
+                "value": "",
+                "type": "path",
+                "description": "The slug of the user whose lists to retrieve."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ]
+          },
+          "docs": "Get an array of Reader lists by user slug."
+        },
+        {
+          "info": {
+            "name": "Get a description of a Reader list.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/read/lists/:username/:list",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the owner of the list."
+              },
+              {
+                "name": "list",
+                "value": "",
+                "type": "path",
+                "description": "The specific list to retrieve."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ]
+          },
+          "docs": "Get a description of a Reader list."
+        },
+        {
+          "info": {
+            "name": "Update an existing Reader list for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://public-api.wordpress.com/rest/v1.3/read/lists/:username/:list/update",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username of the owner of the list."
+              },
+              {
+                "name": "list",
+                "value": "",
+                "type": "path",
+                "description": "The specific list to retrieve."
+              },
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing Reader list for the current user."
+        },
+        {
+          "info": {
+            "name": "Get default reader menu.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/read/menu/",
+            "params": [
+              {
+                "name": "context",
+                "value": "",
+                "type": "query",
+                "description": "display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc.."
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              }
+            ]
+          },
+          "docs": "Get default reader menu."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "tests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Test GET requests.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://public-api.wordpress.com/rest/v1.3/test/version/:ID",
+            "params": [
+              {
+                "name": "ID",
+                "value": "",
+                "type": "path",
+                "description": "An arbitrary integer"
+              },
+              {
+                "name": "http_envelope",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an \"envelope\" containing the \"real\" HTTP status code and headers."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "false: (default); true: Output pretty JSON"
+              },
+              {
+                "name": "meta",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Loads data from the endpoints found in the 'meta' part of the response. Comma-separated list. Example: meta=site,likes"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title"
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "An optional JSONP callback function."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Another arbitrary integer"
+              },
+              {
+                "name": "default_string",
+                "value": "",
+                "type": "query",
+                "description": "Default: 'default'."
+              },
+              {
+                "name": "default_int",
+                "value": "",
+                "type": "query",
+                "description": "Default: 100."
+              },
+              {
+                "name": "boolean_whitelist_defaults_to_false",
+                "value": "",
+                "type": "query",
+                "description": "false: (default) False; true: True"
+              },
+              {
+                "name": "boolean_whitelist_defaults_to_true",
+                "value": "",
+                "type": "query",
+                "description": "true: (default) TRUE; false: FALSE"
+              },
+              {
+                "name": "string_whitelist_defaults_to_foo",
+                "value": "",
+                "type": "query",
+                "description": "foo: (default) Foolish; bar: Barstow"
+              },
+              {
+                "name": "url",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "datetime",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Test GET requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

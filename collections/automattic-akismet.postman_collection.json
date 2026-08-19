@@ -1,0 +1,1537 @@
+{
+  "item": [
+    {
+      "id": "ce5f25ef-7d20-4b25-8501-2e9c3511f0ef",
+      "name": "key-verification",
+      "description": {
+        "content": "Verify Akismet API key",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "25205f9a-a987-47ea-8afe-9411328c7d90",
+          "name": "Verify Akismet API key",
+          "request": {
+            "name": "Verify Akismet API key",
+            "description": {
+              "content": "Verifies the provided Akismet API key to check its validity and ensure it can be used for API requests.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.1",
+                "verify-key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) The Akismet API key for authorization."
+                },
+                {
+                  "disabled": false,
+                  "key": "blog",
+                  "value": "<string>",
+                  "description": "(Required) The front page or home URL of the instance making the request."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "65066559-b4cd-4d3e-b156-2671c8da12da",
+              "name": "Key verification response.\n\nIf the verification returns \"invalid\", it usually includes an extra HTTP header with some debug information indicating exactly what was invalid about the call.\n",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.1",
+                    "verify-key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The Akismet API key for authorization.",
+                        "type": "text/plain"
+                      },
+                      "key": "key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The front page or home URL of the instance making the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "blog",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Extra context for any error that has occurred.",
+                  "key": "X-akismet-debug-help",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "valid",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9a2650c6-9b0d-4123-b54c-f41a28d76192",
+      "name": "spam",
+      "description": {
+        "content": "Check for spam, and submit spam or ham (false positives)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f0eb37e-321c-4305-9c10-2f003d947e86",
+          "name": "Check comment for spam",
+          "request": {
+            "name": "Check comment for spam",
+            "description": {
+              "content": "Checks a comment against the Akismet spam database to determine if it is spam or not.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.1",
+                "comment-check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) The Akismet API key for authorization."
+                },
+                {
+                  "disabled": false,
+                  "key": "blog",
+                  "value": "<string>",
+                  "description": "(Required) The front page or home URL of the instance making the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_ip",
+                  "value": "<string>",
+                  "description": "(Required) The IP address of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_agent",
+                  "value": "<string>",
+                  "description": "The user agent string of the comment submitter's browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author",
+                  "value": "<string>",
+                  "description": "The name of the comment author. Please provide a name or pseudonym.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author_email",
+                  "value": "<string>",
+                  "description": "The email address of the comment author."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author_url",
+                  "value": "<string>",
+                  "description": "The URL of the comment author."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_content",
+                  "value": "<string>",
+                  "description": "The content of the comment."
+                },
+                {
+                  "disabled": false,
+                  "key": "permalink",
+                  "value": "<string>",
+                  "description": "The permanent URL of the entry where the comment was submitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_type",
+                  "value": "<string>",
+                  "description": "The type of the comment. Accepted values are \"comment\", \"trackback\", \"pingback\", or a custom type."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_date_gmt",
+                  "value": "<dateTime>",
+                  "description": "The GMT date and time the comment was created."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_post_modified_gmt",
+                  "value": "<dateTime>",
+                  "description": "The GMT date and time the post containing the comment was last modified."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_parent",
+                  "value": "<string>",
+                  "description": "The ID of the parent comment, if applicable."
+                },
+                {
+                  "disabled": false,
+                  "key": "referrer",
+                  "value": "<string>",
+                  "description": "The referrer URL of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_role",
+                  "value": "<string>",
+                  "description": "The role of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_test",
+                  "value": "<boolean>",
+                  "description": "Indicates whether the submission is a test. Default is false."
+                },
+                {
+                  "disabled": false,
+                  "key": "recheck_reason",
+                  "value": "<string>",
+                  "description": "The reason for rechecking the comment."
+                },
+                {
+                  "disabled": false,
+                  "key": "honeypot_field_name",
+                  "value": "<string>",
+                  "description": "The name of the honeypot field."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_context",
+                  "value": "<string>",
+                  "description": "The context or location of the comment within the website."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "52f0fe65-f34b-4eec-b588-f0e7ff097738",
+              "name": "Comment check successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.1",
+                    "comment-check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The Akismet API key for authorization.",
+                        "type": "text/plain"
+                      },
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The front page or home URL of the instance making the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "blog",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The IP address of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The user agent string of the comment submitter's browser.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the comment author. Please provide a name or pseudonym.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The email address of the comment author.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The URL of the comment author.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author_url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The content of the comment.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The permanent URL of the entry where the comment was submitted.",
+                        "type": "text/plain"
+                      },
+                      "key": "permalink",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The type of the comment. Accepted values are \"comment\", \"trackback\", \"pingback\", or a custom type.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The GMT date and time the comment was created.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_date_gmt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The GMT date and time the post containing the comment was last modified.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_post_modified_gmt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The ID of the parent comment, if applicable.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_parent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The referrer URL of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "referrer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The role of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_role",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the submission is a test. Default is false.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_test",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The reason for rechecking the comment.",
+                        "type": "text/plain"
+                      },
+                      "key": "recheck_reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the honeypot field.",
+                        "type": "text/plain"
+                      },
+                      "key": "honeypot_field_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The context or location of the comment within the website.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_context",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Error code. A full list is available at https://akismet.com/developers/errors/.",
+                  "key": "X-akismet-alert-code",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Message describing the error code that can be shown to the end user.",
+                  "key": "X-akismet-alert-msg",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "Extra context for any error that has occurred.",
+                  "key": "X-akismet-debug-help",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "If this header is set to 'discard', then Akismet has determined that the comment is blatant \nspam, and you can safely discard it without saving it in any spam queue.\n",
+                  "key": "X-akismet-pro-tip",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "true",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b6f099d-13cb-4798-9ed2-f402b3320247",
+          "name": "Submit spam",
+          "request": {
+            "name": "Submit spam",
+            "description": {
+              "content": "Submits a comment as spam to Akismet for retraining.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.1",
+                "submit-spam"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) The Akismet API key for authorization."
+                },
+                {
+                  "disabled": false,
+                  "key": "blog",
+                  "value": "<string>",
+                  "description": "(Required) The front page or home URL of the instance making the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_ip",
+                  "value": "<string>",
+                  "description": "(Required) The IP address of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_agent",
+                  "value": "<string>",
+                  "description": "The user agent string of the comment submitter's browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author",
+                  "value": "<string>",
+                  "description": "The name of the comment author. Please provide a name or pseudonym.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author_email",
+                  "value": "<string>",
+                  "description": "The email address of the comment author."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author_url",
+                  "value": "<string>",
+                  "description": "The URL of the comment author."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_content",
+                  "value": "<string>",
+                  "description": "The content of the comment."
+                },
+                {
+                  "disabled": false,
+                  "key": "permalink",
+                  "value": "<string>",
+                  "description": "The permanent URL of the entry where the comment was submitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_type",
+                  "value": "<string>",
+                  "description": "The type of the comment. Accepted values are \"comment\", \"trackback\", \"pingback\", or a custom type."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_date_gmt",
+                  "value": "<dateTime>",
+                  "description": "The GMT date and time the comment was created."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_post_modified_gmt",
+                  "value": "<dateTime>",
+                  "description": "The GMT date and time the post containing the comment was last modified."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_parent",
+                  "value": "<string>",
+                  "description": "The ID of the parent comment, if applicable."
+                },
+                {
+                  "disabled": false,
+                  "key": "referrer",
+                  "value": "<string>",
+                  "description": "The referrer URL of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_role",
+                  "value": "<string>",
+                  "description": "The role of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_test",
+                  "value": "<boolean>",
+                  "description": "Indicates whether the submission is a test. Default is false."
+                },
+                {
+                  "disabled": false,
+                  "key": "recheck_reason",
+                  "value": "<string>",
+                  "description": "The reason for rechecking the comment."
+                },
+                {
+                  "disabled": false,
+                  "key": "honeypot_field_name",
+                  "value": "<string>",
+                  "description": "The name of the honeypot field."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_context",
+                  "value": "<string>",
+                  "description": "The context or location of the comment within the website."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aef5df31-54c2-4ad0-a568-8fb76b93b40f",
+              "name": "Successful submission",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.1",
+                    "submit-spam"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The Akismet API key for authorization.",
+                        "type": "text/plain"
+                      },
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The front page or home URL of the instance making the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "blog",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The IP address of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The user agent string of the comment submitter's browser.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the comment author. Please provide a name or pseudonym.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The email address of the comment author.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The URL of the comment author.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author_url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The content of the comment.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The permanent URL of the entry where the comment was submitted.",
+                        "type": "text/plain"
+                      },
+                      "key": "permalink",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The type of the comment. Accepted values are \"comment\", \"trackback\", \"pingback\", or a custom type.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The GMT date and time the comment was created.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_date_gmt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The GMT date and time the post containing the comment was last modified.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_post_modified_gmt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The ID of the parent comment, if applicable.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_parent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The referrer URL of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "referrer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The role of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_role",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the submission is a test. Default is false.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_test",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The reason for rechecking the comment.",
+                        "type": "text/plain"
+                      },
+                      "key": "recheck_reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the honeypot field.",
+                        "type": "text/plain"
+                      },
+                      "key": "honeypot_field_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The context or location of the comment within the website.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_context",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Thanks for making the web a better place.",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be0e2391-2bd6-47a1-bb49-f8fdacd1f086",
+          "name": "Submit ham (false positives)",
+          "request": {
+            "name": "Submit ham (false positives)",
+            "description": {
+              "content": "Submits a false positive (legitimate comment marked as spam) to Akismet for training purposes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.1",
+                "submit-ham"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) The Akismet API key for authorization."
+                },
+                {
+                  "disabled": false,
+                  "key": "blog",
+                  "value": "<string>",
+                  "description": "(Required) The front page or home URL of the instance making the request."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_ip",
+                  "value": "<string>",
+                  "description": "(Required) The IP address of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_agent",
+                  "value": "<string>",
+                  "description": "The user agent string of the comment submitter's browser."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author",
+                  "value": "<string>",
+                  "description": "The name of the comment author. Please provide a name or pseudonym.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author_email",
+                  "value": "<string>",
+                  "description": "The email address of the comment author."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_author_url",
+                  "value": "<string>",
+                  "description": "The URL of the comment author."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_content",
+                  "value": "<string>",
+                  "description": "The content of the comment."
+                },
+                {
+                  "disabled": false,
+                  "key": "permalink",
+                  "value": "<string>",
+                  "description": "The permanent URL of the entry where the comment was submitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_type",
+                  "value": "<string>",
+                  "description": "The type of the comment. Accepted values are \"comment\", \"trackback\", \"pingback\", or a custom type."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_date_gmt",
+                  "value": "<dateTime>",
+                  "description": "The GMT date and time the comment was created."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_post_modified_gmt",
+                  "value": "<dateTime>",
+                  "description": "The GMT date and time the post containing the comment was last modified."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_parent",
+                  "value": "<string>",
+                  "description": "The ID of the parent comment, if applicable."
+                },
+                {
+                  "disabled": false,
+                  "key": "referrer",
+                  "value": "<string>",
+                  "description": "The referrer URL of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_role",
+                  "value": "<string>",
+                  "description": "The role of the comment submitter."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_test",
+                  "value": "<boolean>",
+                  "description": "Indicates whether the submission is a test. Default is false."
+                },
+                {
+                  "disabled": false,
+                  "key": "recheck_reason",
+                  "value": "<string>",
+                  "description": "The reason for rechecking the comment."
+                },
+                {
+                  "disabled": false,
+                  "key": "honeypot_field_name",
+                  "value": "<string>",
+                  "description": "The name of the honeypot field."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment_context",
+                  "value": "<string>",
+                  "description": "The context or location of the comment within the website."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "48639edd-850e-4185-b270-5bbb2d96112a",
+              "name": "Successful submission",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.1",
+                    "submit-ham"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The Akismet API key for authorization.",
+                        "type": "text/plain"
+                      },
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The front page or home URL of the instance making the request.",
+                        "type": "text/plain"
+                      },
+                      "key": "blog",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The IP address of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_ip",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The user agent string of the comment submitter's browser.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_agent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the comment author. Please provide a name or pseudonym.\n",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The email address of the comment author.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author_email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The URL of the comment author.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_author_url",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The content of the comment.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_content",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The permanent URL of the entry where the comment was submitted.",
+                        "type": "text/plain"
+                      },
+                      "key": "permalink",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The type of the comment. Accepted values are \"comment\", \"trackback\", \"pingback\", or a custom type.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The GMT date and time the comment was created.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_date_gmt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The GMT date and time the post containing the comment was last modified.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_post_modified_gmt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The ID of the parent comment, if applicable.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_parent",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The referrer URL of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "referrer",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The role of the comment submitter.",
+                        "type": "text/plain"
+                      },
+                      "key": "user_role",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the submission is a test. Default is false.",
+                        "type": "text/plain"
+                      },
+                      "key": "is_test",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The reason for rechecking the comment.",
+                        "type": "text/plain"
+                      },
+                      "key": "recheck_reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The name of the honeypot field.",
+                        "type": "text/plain"
+                      },
+                      "key": "honeypot_field_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "The context or location of the comment within the website.",
+                        "type": "text/plain"
+                      },
+                      "key": "comment_context",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "Thanks for making the web a better place.",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0c13c78b-9838-4726-87c5-889a309d7152",
+      "name": "key-usage",
+      "description": {
+        "content": "Check which sites use your API key and how many requests are being made",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d33a7665-796f-4615-81f2-9469642d7cdd",
+          "name": "Keep track of the sites that are using your Akismet API key.",
+          "request": {
+            "name": "Keep track of the sites that are using your Akismet API key.",
+            "description": {
+              "content": "Lists sites using your API key along with stats on their API usage.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.2",
+                "key-sites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) The Akismet API key for authorization."
+                },
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<string>",
+                  "description": "The month for which you would like to get the report (in `YYYY-MM` format). Defaults to the current month.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter results by site URL or partial site URL.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The format in which you would like the results to be returned. Allowed values are `json` (default) and `csv`. Defaults to `json`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "The column by which you would like the results to be sorted. Defaults to `total`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The maximum number of results returned in the report (defaults to 500).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The offset of the results returned in the report (defaults to 0)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d07c1d8a-ce60-4580-8073-ffa635041c71",
+              "name": "Key sites response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.2",
+                    "key-sites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"2023-07\": [\n    {\n      \"site\": \"example.com\",\n      \"api_calls\": \"1000\",\n      \"spam\": \"434\",\n      \"ham\": \"544\",\n      \"missed_spam\": \"5\",\n      \"false_positives\": \"2\",\n      \"is_revoked\": false\n    },\n    {\n      \"site\": \"example.org\",\n      \"api_calls\": \"250\",\n      \"spam\": \"150\",\n      \"ham\": \"100\",\n      \"missed_spam\": \"0\",\n      \"false_positives\": \"1\",\n      \"is_revoked\": false\n    }\n  ],\n  \"limit\": 500,\n  \"offset\": 0,\n  \"total\": 2\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1ebde0e-ae63-4b72-96c0-2a3d915a399d",
+          "name": "Keep track of your Akismet API usage.",
+          "request": {
+            "name": "Keep track of your Akismet API usage.",
+            "description": {
+              "content": "Returns your API usage limit and your usage for the current month.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1.2",
+                "usage-limit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) The Akismet API key for authorization."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6de0114-8378-4d77-aba4-09db7423b5f5",
+              "name": "API usage response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1.2",
+                    "usage-limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"limit\": \"string\",\n  \"usage\": 7319,\n  \"percentage\": \"string\",\n  \"throttled\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://rest.akismet.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4524fd83-5130-4796-89a2-f487af46338f",
+    "name": "Akismet API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Developer API to interact with the Akismet spam detection service.\n\nContact Support:\n Name: Contact Akismet",
+      "type": "text/plain"
+    }
+  }
+}
