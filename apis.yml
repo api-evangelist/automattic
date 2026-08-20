@@ -33,6 +33,23 @@ tags:
 - Analytics
 - Domains
 - E-Commerce
+- Open-Source
+- Developer Tools
+- MCP
+tags_raw:
+- Company
+- Content Management
+- Publishing
+- Blogging
+- Website Hosting
+- Web Publishing
+- Content
+- Comments
+- Spam Filtering
+- Media
+- Analytics
+- Domains
+- E-Commerce
 - Open Source
 - Developer Tools
 - Model Context Protocol
@@ -108,6 +125,10 @@ apis:
   tags:
   - Content Management
   - Publishing
+  - Open-Source
+  tags_raw:
+  - Content Management
+  - Publishing
   - Open Source
   properties:
   - type: OpenAPI
@@ -145,6 +166,10 @@ apis:
   humanURL: https://developer.wordpress.com/docs/mcp/
   baseURL: https://public-api.wordpress.com/wpcom/v2/mcp/v1
   tags:
+  - MCP
+  - Developer Tools
+  - Content Management
+  tags_raw:
   - Model Context Protocol
   - Developer Tools
   - Content Management
