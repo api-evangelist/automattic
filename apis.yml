@@ -12,6 +12,19 @@ description: >-
   Automattic does not ship OpenAPI for it. Automattic also runs a hosted Model Context Protocol
   server for WordPress.com, publishes OpenAPI for Akismet and for the Jetpack ai-plugin surface, and
   exposes a GraphQL Platform API for the enterprise WordPress VIP product.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 image: https://automattic.com/wp-content/uploads/2024/11/cropped-automattic-logo-square.png
 url: https://raw.githubusercontent.com/api-evangelist/automattic/refs/heads/main/apis.yml
 x-type: company
