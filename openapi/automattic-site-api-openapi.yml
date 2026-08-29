@@ -1,0 +1,641 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API v1.1 Site API
+  version: v1.1
+  description: 'The WordPress.com REST API, operated by Automattic. Derived by API Evangelist from Automattic''s own self-describing help document at https://public-api.wordpress.com/rest/v1.1/help (Accept: application/json), which publishes every endpoint''s method, path, description, path/query/body parameters and response fields. Security schemes come from https://public-api.wordpress.com/.well-known/openid-configuration. The error envelope was observed live.'
+  termsOfService: https://wordpress.com/tos/
+  contact:
+    name: WordPress.com Developer Resources
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/rest/v1.1/help
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+security:
+- bearerAuth: []
+tags:
+- name: site
+paths:
+  /jetpack-blogs/:
+    get:
+      operationId: getJetpackBlogs
+      summary: Get a list of your Jetpack-enabled blogs.
+      description: Get a list of your Jetpack-enabled blogs.
+      tags:
+      - site
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the operation successful?
+                  blogs:
+                    type: array
+                    items: {}
+                    description: List of Jetpack-enabled blogs
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /jetpack-blogs/{blog_id}/:
+    get:
+      operationId: getJetpackBlogsByBlogId
+      summary: Get Jetpack settings.
+      description: Get Jetpack settings.
+      tags:
+      - site
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the operation successful?
+                  settings:
+                    type: array
+                    items: {}
+                    description: Available settings.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The blog id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postJetpackBlogsByBlogId
+      summary: Update Jetpack settings.
+      description: Update Jetpack settings.
+      tags:
+      - site
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the operation successful?
+                  message:
+                    type: string
+                    description: Message describing the error code.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The blog id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                monitor_active:
+                  type: string
+                  description: if true, monitoring will be enabled
+                email_notifications:
+                  type: string
+                  description: If true, email notifications will be enabled
+                wp_note_notifications:
+                  type: string
+                  description: If true, WordPress.com notifications will be enabled
+  /jetpack-blogs/{blog_id}/mine/delete:
+    post:
+      operationId: postJetpackBlogsByBlogIdMineDelete
+      summary: Disconnect a Jetpack-enabled blog from a WordPress.com user.
+      description: Disconnect a Jetpack-enabled blog from a WordPress.com user.
+      tags:
+      - site
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the operation successful?
+                  message:
+                    type: string
+                    description: Message describing the error code.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The blog id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /jetpack-blogs/{blog_id}/test-connection:
+    get:
+      operationId: getJetpackBlogsByBlogIdTestConnection
+      summary: Test connection of a Jetpack blog.
+      description: Test connection of a Jetpack blog.
+      tags:
+      - site
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connected:
+                    type: boolean
+                    description: Is the blog connected.
+                  message:
+                    type: string
+                    description: A notice to the user.
+                  error_code:
+                    type: string
+                    description: Present only when not connected and the cause is known. "xmlrpc_request_blocked" means the connection test reached the site but was rejected (e.g. firewall/WAF), as opposed to an invalid connection token.
+                  site_http_status:
+                    type: integer
+                    description: 'Present only alongside error_code: the HTTP status (4xx/5xx) the site returned for the connection test.'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The blog id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: is_stale_connection_healthy
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: The current state (possibly stale) of connection health of the Jetpack site.
+  /jetpack-blogs/{dest_blog_id}/source/{source_blog_id}/migrate/:
+    post:
+      operationId: postJetpackBlogsByDestBlogIdSourceBySourceBlogIdMigrate
+      summary: Migrate followers from a WordPress.com blog to a Jetpack-enabled blog.
+      description: Migrate followers from a WordPress.com blog to a Jetpack-enabled blog.
+      tags:
+      - site
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the operation successful?
+                  settings:
+                    type: array
+                    items: {}
+                    description: Available settings.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: dest_blog_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The Jetpack-enabled blog where followers are moving.
+      - name: source_blog_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The WordPress.com blog where followers currently reside.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'

@@ -1,0 +1,988 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Wc API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: wc
+paths:
+  /wpcom/v2/sites/{wpcom_site}/wc/meta/connection/connect:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcMetaConnectionConnect
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/meta/connection/connect
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_url
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/meta/connection/disconnect:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcMetaConnectionDisconnect
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/meta/connection/disconnect
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/meta/connection/status:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcMetaConnectionStatus
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/meta/connection/status
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/meta/products-{products_token}.csv:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcMetaProductsProductsTokenCsv
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/meta/products-{products_token}.csv
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: products_token
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/meta/{service}/{path}:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcMetabyServicebyPath
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/meta/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteWcMetabyServicebyPath
+      summary: POST /wpcom/v2/sites/{wpcom_site}/wc/meta/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2SitesbyWpcomSiteWcMetabyServicebyPath
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/wc/meta/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/partners/{partner}/remote-site-status:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcPartnersbyPartnerRemoteSiteStatus
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/partners/{partner}/remote-site-status
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: partner
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/partners/{partner}/revoke-token:
+    delete:
+      operationId: deleteWpcomV2SitesbyWpcomSiteWcPartnersbyPartnerRevokeToken
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/wc/partners/{partner}/revoke-token
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: partner
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/reddit/connection/connect:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcRedditConnectionConnect
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/reddit/connection/connect
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_url
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/reddit/connection/disconnect:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcRedditConnectionDisconnect
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/reddit/connection/disconnect
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/reddit/connection/status:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcRedditConnectionStatus
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/reddit/connection/status
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/reddit/products-{products_token}.csv:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcRedditProductsProductsTokenCsv
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/reddit/products-{products_token}.csv
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: products_token
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/reddit/{service}/{path}:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcRedditbyServicebyPath
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/reddit/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteWcRedditbyServicebyPath
+      summary: POST /wpcom/v2/sites/{wpcom_site}/wc/reddit/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteWcRedditbyServicebyPath
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/wc/reddit/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteWcRedditbyServicebyPath
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/wc/reddit/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2SitesbyWpcomSiteWcRedditbyServicebyPath
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/wc/reddit/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/snapchat/connection/connect:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcSnapchatConnectionConnect
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/snapchat/connection/connect
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: return_url
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/snapchat/connection/disconnect:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcSnapchatConnectionDisconnect
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/snapchat/connection/disconnect
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/snapchat/connection/status:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcSnapchatConnectionStatus
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/snapchat/connection/status
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/snapchat/products-{products_token}.csv:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcSnapchatProductsProductsTokenCsv
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/snapchat/products-{products_token}.csv
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: products_token
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/wc/snapchat/{service}/{path}:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWcSnapchatbyServicebyPath
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wc/snapchat/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteWcSnapchatbyServicebyPath
+      summary: POST /wpcom/v2/sites/{wpcom_site}/wc/snapchat/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2SitesbyWpcomSiteWcSnapchatbyServicebyPath
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/wc/snapchat/{service}/{path}
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/wc/meta/authorize:
+    get:
+      operationId: getWpcomV2WcMetaAuthorize
+      summary: GET /wpcom/v2/wc/meta/authorize
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: state
+        in: query
+        required: true
+        schema:
+          type: string
+        description: OAuth state parameter for security validation
+      - name: code
+        in: query
+        required: false
+        schema:
+          type: string
+        description: OAuth authorization code from Meta
+  /wpcom/v2/wc/reddit/authorize:
+    get:
+      operationId: getWpcomV2WcRedditAuthorize
+      summary: GET /wpcom/v2/wc/reddit/authorize
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: state
+        in: query
+        required: true
+        schema:
+          type: string
+        description: OAuth state parameter for security validation
+      - name: code
+        in: query
+        required: false
+        schema:
+          type: string
+        description: OAuth authorization code from Reddit
+  /wpcom/v2/wc/snapchat/authorize:
+    get:
+      operationId: getWpcomV2WcSnapchatAuthorize
+      summary: GET /wpcom/v2/wc/snapchat/authorize
+      tags:
+      - wc
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: state
+        in: query
+        required: true
+        schema:
+          type: string
+        description: OAuth state parameter for security validation
+      - name: code
+        in: query
+        required: true
+        schema:
+          type: string
+        description: OAuth authorization code from Snapchat
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

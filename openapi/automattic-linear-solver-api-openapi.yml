@@ -1,0 +1,383 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Linear Solver API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: linear-solver
+paths:
+  /wpcom/v2/linear-solver/bridges:
+    get:
+      operationId: getWpcomV2LinearSolverBridges
+      summary: GET /wpcom/v2/linear-solver/bridges
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/linear-solver/bridges/heartbeat:
+    post:
+      operationId: postWpcomV2LinearSolverBridgesHeartbeat
+      summary: POST /wpcom/v2/linear-solver/bridges/heartbeat
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/linear-solver/github-webhook:
+    post:
+      operationId: postWpcomV2LinearSolverGithubWebhook
+      summary: POST /wpcom/v2/linear-solver/github-webhook
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    put:
+      operationId: putWpcomV2LinearSolverGithubWebhook
+      summary: PUT /wpcom/v2/linear-solver/github-webhook
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    patch:
+      operationId: patchWpcomV2LinearSolverGithubWebhook
+      summary: PATCH /wpcom/v2/linear-solver/github-webhook
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/linear-solver/health:
+    get:
+      operationId: getWpcomV2LinearSolverHealth
+      summary: GET /wpcom/v2/linear-solver/health
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/linear-solver/register-tunnel:
+    post:
+      operationId: postWpcomV2LinearSolverRegisterTunnel
+      summary: POST /wpcom/v2/linear-solver/register-tunnel
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    put:
+      operationId: putWpcomV2LinearSolverRegisterTunnel
+      summary: PUT /wpcom/v2/linear-solver/register-tunnel
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    patch:
+      operationId: patchWpcomV2LinearSolverRegisterTunnel
+      summary: PATCH /wpcom/v2/linear-solver/register-tunnel
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/linear-solver/runs:
+    post:
+      operationId: postWpcomV2LinearSolverRuns
+      summary: POST /wpcom/v2/linear-solver/runs
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    get:
+      operationId: getWpcomV2LinearSolverRuns
+      summary: GET /wpcom/v2/linear-solver/runs
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/linear-solver/runs/{run_id}:
+    get:
+      operationId: getWpcomV2LinearSolverRunsbyRunId
+      summary: GET /wpcom/v2/linear-solver/runs/{run_id}
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/linear-solver/webhook:
+    post:
+      operationId: postWpcomV2LinearSolverWebhook
+      summary: POST /wpcom/v2/linear-solver/webhook
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    put:
+      operationId: putWpcomV2LinearSolverWebhook
+      summary: PUT /wpcom/v2/linear-solver/webhook
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    patch:
+      operationId: patchWpcomV2LinearSolverWebhook
+      summary: PATCH /wpcom/v2/linear-solver/webhook
+      tags:
+      - linear-solver
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,971 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Domains API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: domains
+paths:
+  /wpcom/v2/domains/auction/expired-domain-stats:
+    get:
+      operationId: getWpcomV2DomainsAuctionExpiredDomainStats
+      summary: GET /wpcom/v2/domains/auction/expired-domain-stats
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/domains/auction/expired-list-csv:
+    get:
+      operationId: getWpcomV2DomainsAuctionExpiredListCsv
+      summary: GET /wpcom/v2/domains/auction/expired-list-csv
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/domains/auction/renew:
+    post:
+      operationId: postWpcomV2DomainsAuctionRenew
+      summary: POST /wpcom/v2/domains/auction/renew
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/domains/auction/transfer{query_string}:
+    post:
+      operationId: postWpcomV2DomainsAuctionTransferQueryString
+      summary: POST /wpcom/v2/domains/auction/transfer{query_string}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query_string
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/bulk-actions:
+    get:
+      operationId: getWpcomV2DomainsBulkActions
+      summary: GET /wpcom/v2/domains/bulk-actions
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    delete:
+      operationId: deleteWpcomV2DomainsBulkActions
+      summary: DELETE /wpcom/v2/domains/bulk-actions
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/domains/bulk-actions/set-auto-renew:
+    post:
+      operationId: postWpcomV2DomainsBulkActionsSetAutoRenew
+      summary: POST /wpcom/v2/domains/bulk-actions/set-auto-renew
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/domains/bulk-actions/update-contact-info:
+    post:
+      operationId: postWpcomV2DomainsBulkActionsUpdateContactInfo
+      summary: POST /wpcom/v2/domains/bulk-actions/update-contact-info
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/domains/bulk-availability-check/{domain_names}:
+    get:
+      operationId: getWpcomV2DomainsBulkAvailabilityCheckbyDomainNames
+      summary: GET /wpcom/v2/domains/bulk-availability-check/{domain_names}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain_names
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/bundle:
+    get:
+      operationId: getWpcomV2DomainsBundle
+      summary: GET /wpcom/v2/domains/bundle
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+        description: Domain name (e.g. "flowers.com") to build a bundle suggestion for.
+  /wpcom/v2/domains/diagnostics/{domain}:
+    get:
+      operationId: getWpcomV2DomainsDiagnosticsbyDomain
+      summary: GET /wpcom/v2/domains/diagnostics/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/dns/email/set-default-records:
+    post:
+      operationId: postWpcomV2DomainsDnsEmailSetDefaultRecords
+      summary: POST /wpcom/v2/domains/dns/email/set-default-records
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                domain:
+                  description: The domain which default email DNS records will be restored
+              required:
+              - domain
+  /wpcom/v2/domains/dns/import/bind/{domain}:
+    post:
+      operationId: postWpcomV2DomainsDnsImportBindbyDomain
+      summary: POST /wpcom/v2/domains/dns/import/bind/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/dnssec/{domain}:
+    post:
+      operationId: postWpcomV2DomainsDnssecbyDomain
+      summary: POST /wpcom/v2/domains/dnssec/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2DomainsDnssecbyDomain
+      summary: PUT /wpcom/v2/domains/dnssec/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+              required:
+              - data
+    delete:
+      operationId: deleteWpcomV2DomainsDnssecbyDomain
+      summary: DELETE /wpcom/v2/domains/dnssec/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/dnssec/{domain}/nameserver:
+    get:
+      operationId: getWpcomV2DomainsDnssecbyDomainNameserver
+      summary: GET /wpcom/v2/domains/dnssec/{domain}/nameserver
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/dnssec/{domain}/registry:
+    get:
+      operationId: getWpcomV2DomainsDnssecbyDomainRegistry
+      summary: GET /wpcom/v2/domains/dnssec/{domain}/registry
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/glue-records:
+    post:
+      operationId: postWpcomV2DomainsGlueRecords
+      summary: POST /wpcom/v2/domains/glue-records
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name_server:
+                  type: string
+                ip_addresses:
+                  type: array
+                  items: {}
+              required:
+              - name_server
+              - ip_addresses
+    put:
+      operationId: putWpcomV2DomainsGlueRecords
+      summary: PUT /wpcom/v2/domains/glue-records
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name_server:
+                  type: string
+                ip_addresses:
+                  type: array
+                  items: {}
+              required:
+              - name_server
+              - ip_addresses
+    patch:
+      operationId: patchWpcomV2DomainsGlueRecords
+      summary: PATCH /wpcom/v2/domains/glue-records
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name_server:
+                  type: string
+                ip_addresses:
+                  type: array
+                  items: {}
+              required:
+              - name_server
+              - ip_addresses
+  /wpcom/v2/domains/glue-records/{domain}:
+    get:
+      operationId: getWpcomV2DomainsGlueRecordsbyDomain
+      summary: GET /wpcom/v2/domains/glue-records/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/glue-records/{name_server}:
+    delete:
+      operationId: deleteWpcomV2DomainsGlueRecordsbyNameServer
+      summary: DELETE /wpcom/v2/domains/glue-records/{name_server}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: name_server
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/list/mine:
+    get:
+      operationId: getWpcomV2DomainsListMine
+      summary: GET /wpcom/v2/domains/list/mine
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/domains/name-pulse/availability-check:
+    post:
+      operationId: postWpcomV2DomainsNamePulseAvailabilityCheck
+      summary: POST /wpcom/v2/domains/name-pulse/availability-check
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                domain_names:
+                  type: array
+                  items:
+                    type: string
+                  description: Domain names to check availability for (max 50)
+                include_pricing:
+                  type: boolean
+                  default: true
+                  description: Whether to include pricing data for available domains
+              required:
+              - domain_names
+  /wpcom/v2/domains/name-pulse/suggestions:
+    get:
+      operationId: getWpcomV2DomainsNamePulseSuggestions
+      summary: GET /wpcom/v2/domains/name-pulse/suggestions
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search term for domain suggestions
+      - name: providers
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Comma-separated provider names (donuts, verisign, domainsbot)
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Number of suggestions to return (1-200). If omitted, returns all available suggestions.
+      - name: timeout
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Total timeout in milliseconds
+      - name: tlds
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+        description: Comma-separated TLDs to include
+      - name: use_ai
+        in: query
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+        description: Enable AI suggestions (0 or 1)
+      - name: allow_premium
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Include premium domains
+      - name: language
+        in: query
+        required: false
+        schema:
+          type: string
+          default: en
+        description: Language for suggestions
+      - name: include_pricing
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Whether to include pricing data for suggestions
+      - name: exclude_exact_matches
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Exclude suggestions whose SLD exactly matches the query with spaces removed
+  /wpcom/v2/domains/point-to-wpcom:
+    post:
+      operationId: postWpcomV2DomainsPointToWpcom
+      summary: POST /wpcom/v2/domains/point-to-wpcom
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                domain:
+                  type: string
+              required:
+              - domain
+  /wpcom/v2/domains/propagation-status/{domain}:
+    get:
+      operationId: getWpcomV2DomainsPropagationStatusbyDomain
+      summary: GET /wpcom/v2/domains/propagation-status/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/secure-your-brand/{domain}:
+    get:
+      operationId: getWpcomV2DomainsSecureYourBrandbyDomain
+      summary: GET /wpcom/v2/domains/secure-your-brand/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/domains/ssl/{domain}:
+    get:
+      operationId: getWpcomV2DomainsSslbyDomain
+      summary: GET /wpcom/v2/domains/ssl/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2DomainsSslbyDomain
+      summary: POST /wpcom/v2/domains/ssl/{domain}
+      tags:
+      - domains
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

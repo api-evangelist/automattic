@@ -1,0 +1,318 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Telegram Bot API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: telegram-bot
+paths:
+  /wpcom/v2/telegram-bot/assistant-webhook/{assistant_bot}:
+    post:
+      operationId: postWpcomV2TelegramBotAssistantWebhookbyAssistantBot
+      summary: POST /wpcom/v2/telegram-bot/assistant-webhook/{assistant_bot}
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: assistant_bot
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/telegram-bot/connect:
+    post:
+      operationId: postWpcomV2TelegramBotConnect
+      summary: POST /wpcom/v2/telegram-bot/connect
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                auth_date:
+                  type: integer
+                hash:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                username:
+                  type: string
+                photo_url:
+                  type: string
+              required:
+              - id
+              - auth_date
+              - hash
+  /wpcom/v2/telegram-bot/connect-via-token:
+    post:
+      operationId: postWpcomV2TelegramBotConnectViaToken
+      summary: POST /wpcom/v2/telegram-bot/connect-via-token
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                telegram_id:
+                  type: integer
+                token:
+                  type: string
+                ts:
+                  type: integer
+                bot:
+                  type: string
+              required:
+              - telegram_id
+              - token
+              - ts
+  /wpcom/v2/telegram-bot/disconnect:
+    post:
+      operationId: postWpcomV2TelegramBotDisconnect
+      summary: POST /wpcom/v2/telegram-bot/disconnect
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/telegram-bot/local-agent-poll:
+    get:
+      operationId: getWpcomV2TelegramBotLocalAgentPoll
+      summary: GET /wpcom/v2/telegram-bot/local-agent-poll
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/telegram-bot/local-agent-respond:
+    post:
+      operationId: postWpcomV2TelegramBotLocalAgentRespond
+      summary: POST /wpcom/v2/telegram-bot/local-agent-respond
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chat_id:
+                  type: integer
+                text:
+                  type: string
+                caption:
+                  type: string
+                bot:
+                  type: string
+                action:
+                  type: string
+                  enum:
+                  - create
+                  - edit
+                  - delete
+                  - chat_action
+                  default: create
+                message_id:
+                  type: integer
+              required:
+              - chat_id
+              - bot
+  /wpcom/v2/telegram-bot/status:
+    get:
+      operationId: getWpcomV2TelegramBotStatus
+      summary: GET /wpcom/v2/telegram-bot/status
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/telegram-bot/webhook/{bot}:
+    post:
+      operationId: postWpcomV2TelegramBotWebhookbyBot
+      summary: POST /wpcom/v2/telegram-bot/webhook/{bot}
+      tags:
+      - telegram-bot
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: bot
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

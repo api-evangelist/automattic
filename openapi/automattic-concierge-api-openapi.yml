@@ -1,0 +1,536 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Concierge API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: concierge
+paths:
+  /wpcom/v2/concierge/initial:
+    get:
+      operationId: getWpcomV2ConciergeInitial
+      summary: GET /wpcom/v2/concierge/initial
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: begin_timestamp
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: the begin of the query time span.
+      - name: site_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: A unique identifier of a dotcom site.
+      - name: available_sessions
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: A unique array of site ids from sites that have concierge sessions available.
+  /wpcom/v2/concierge/schedules:
+    get:
+      operationId: getWpcomV2ConciergeSchedules
+      summary: GET /wpcom/v2/concierge/schedules
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/concierge/schedules/{id}/available_staff:
+    get:
+      operationId: getWpcomV2ConciergeSchedulesbyIdAvailableStaff
+      summary: GET /wpcom/v2/concierge/schedules/{id}/available_staff
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: begin_timestamp
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: the begin of the query time span.
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: the end of the query time span.
+  /wpcom/v2/concierge/schedules/{id}/available_times:
+    get:
+      operationId: getWpcomV2ConciergeSchedulesbyIdAvailableTimes
+      summary: GET /wpcom/v2/concierge/schedules/{id}/available_times
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: begin_timestamp
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: the begin of the query time span.
+  /wpcom/v2/concierge/schedules/{schedule_id}/appointments:
+    get:
+      operationId: getWpcomV2ConciergeSchedulesbyScheduleIdAppointments
+      summary: GET /wpcom/v2/concierge/schedules/{schedule_id}/appointments
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: begin_timestamp
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: the begin of the query time span.
+    post:
+      operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointments
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                begin_timestamp:
+                  type: integer
+                  description: the begin of the target appointment time span.
+                end_timestamp:
+                  type: integer
+                  description: the end of the target appointment time span.
+                customer_id:
+                  type: integer
+                  description: The user id of whom is making this appointment request.
+                site_id:
+                  type: integer
+                  description: The site id of which the appointment is about.
+                meta:
+                  type: string
+                  description: A json blob string that includes the meta data of this appointment.
+  /wpcom/v2/concierge/schedules/{schedule_id}/appointments/all:
+    get:
+      operationId: getWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsAll
+      summary: GET /wpcom/v2/concierge/schedules/{schedule_id}/appointments/all
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: username
+        in: query
+        required: false
+        schema:
+          type: string
+        description: wp username
+      - name: begin_timestamp
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: the begin of the query time span.
+      - name: end_timestamp
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: the end of the query time span.
+      - name: include_cancelled
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Indicated whether we should include cancelled appointments in the results
+  /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/cancel:
+    post:
+      operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdCancel
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/cancel
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appointment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: Text that explains why this appointment has been cancelled.
+  /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/detail:
+    get:
+      operationId: getWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdDetail
+      summary: GET /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/detail
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appointment_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reassign:
+    post:
+      operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdReassign
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reassign
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appointment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                staff_id:
+                  type: integer
+                  description: A unique identifier of whom is going to take over the appointment
+                availability_type:
+                  type: string
+                  description: Indicates availability category of picked staff as one one with buffer/without buffer/not scheduled
+  /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reschedule:
+    post:
+      operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdReschedule
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reschedule
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appointment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                begin_timestamp:
+                  type: integer
+                  description: The new appointment start time
+                meta:
+                  type: string
+                  description: A json blob string that includes the meta data of this appointment.
+  /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/update-conference-link:
+    post:
+      operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdUpdateConferenceLink
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/update-conference-link
+      tags:
+      - concierge
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: schedule_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: appointment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conference_link:
+                  type: string
+                  description: A URL for the screen share conference session.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

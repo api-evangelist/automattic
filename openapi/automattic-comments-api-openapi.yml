@@ -1,0 +1,2461 @@
+openapi: 3.2.0
+info:
+  title: Automattic Comments API
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged comments across 3 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-1-openapi.yml, automattic-wordpress-com-rest-v1-2-openapi.yml, automattic-wordpress-com-wp-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+- url: https://public-api.wordpress.com/rest/v1.2
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: comments
+paths:
+  /sites/{site}/comment-counts:
+    get:
+      operationId: getSitesBySiteCommentCounts
+      summary: Get comment counts for each available status
+      description: Get comment counts for each available status
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  all:
+                    type: integer
+                    description: Combined number of approved and unapproved comments
+                  approved:
+                    type: integer
+                    description: Number of approved comments
+                  pending:
+                    type: integer
+                    description: Number of unapproved comments
+                  trash:
+                    type: integer
+                    description: Number of trash comments
+                  spam:
+                    type: integer
+                    description: Number of spam comments
+                  post_trashed:
+                    type: integer
+                    description: Number of comments whose parent post has been trashed
+                  total_comments:
+                    type: integer
+                    description: Combined number of comments in each category
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: post_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: post ID for filtering the comment counts by post
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comment-history/{comment_ID}:
+    get:
+      operationId: getSitesBySiteCommentHistoryByCommentId
+      summary: Get the audit history for given comment
+      description: Get the audit history for given comment
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comment_history:
+                    type: array
+                    items: {}
+                    description: Array of arrays representing the comment history objects.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/:
+    get:
+      operationId: getSitesBySiteComments
+      summary: Get a list of recent comments.
+      description: Get a list of recent comments.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: integer
+                    description: The total number of comments found that match the request (ignoring limits, offsets, and pagination).
+                  site_ID:
+                    type: integer
+                    description: The site ID
+                  comments:
+                    type: array
+                    items: {}
+                    description: An array of comment objects.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: number
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The number of comments to return.  Limit: 100. When using hierarchical=1, number refers to the number of top-level comments returned. Default: 20.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 0-indexed offset. Not available if using hierarchical=1.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Return the Nth 1-indexed page of comments.  Takes precedence over the offset parameter. When using hierarchical=1, pagination is a bit different.  See the note on the number parameter.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - DESC
+          - ASC
+        description: 'DESC: (default) Return comments in descending order from newest to oldest.; ASC: Return comments in ascending order from oldest to newest.'
+      - name: hierarchical
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: (BETA) Order the comment list hierarchically.'
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return comments dated on or after the specified datetime. Not available if using hierarchical=1.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return comments dated on or before the specified datetime. Not available if using hierarchical=1.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - any
+          - comment
+          - trackback
+          - pingback
+          - pings
+        description: 'any: (default) Return all comments regardless of type.; comment: Return only regular comments.; trackback: Return only trackbacks.; pingback: Return only pingbacks.; pings: Return both trackbacks and pingbacks.'
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - approved
+          - unapproved
+          - spam
+          - trash
+          - all
+        description: 'approved: (default) Return only approved comments.; unapproved: Return only comments in the moderation queue.; spam: Return only comments marked as spam.; trash: Return only comments in the trash.; all: Return comments of all statuses.'
+      - name: author_wpcom_data
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default) Do not add wpcom_id and wpcom_login fields to comment author responses (default); true: Add wpcom_id and wpcom_login fields to comment author responses'
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/{comment_ID}:
+    get:
+      operationId: getSitesBySiteCommentsByCommentId
+      summary: Get a single comment.
+      description: Get a single comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The comment ID.
+                  post:
+                    type: object
+                    description: A reference to the comment's post.
+                  author:
+                    type: object
+                    description: The author of the comment.
+                  date:
+                    type: string
+                    format: date-time
+                    description: The comment's creation time.
+                  URL:
+                    type: string
+                    format: uri
+                    description: The full permalink URL to the comment.
+                  short_URL:
+                    type: string
+                    format: uri
+                    description: The wp.me short URL.
+                  content:
+                    type: string
+                    description: context dependent.
+                  raw_content:
+                    type: string
+                    description: Raw comment content.
+                  status:
+                    type: string
+                    description: 'approved: The comment has been approved.; unapproved: The comment has been held for review in the moderation queue.; spam: The comment has been marked as spam.; trash: The comment is in the trash.'
+                    enum:
+                    - approved
+                    - unapproved
+                    - spam
+                    - trash
+                  parent:
+                    type: string
+                    description: A reference to the comment's parent, if it has one.
+                  type:
+                    type: string
+                    description: 'comment: The comment is a regular comment.; trackback: The comment is a trackback.; pingback: The comment is a pingback.; review: The comment is a product review.'
+                    enum:
+                    - comment
+                    - trackback
+                    - pingback
+                    - review
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  i_like:
+                    type: boolean
+                    description: Does the current user like this comment?
+                  meta:
+                    type: object
+                    description: Meta data
+                  can_moderate:
+                    type: boolean
+                    description: Whether current user can moderate the comment.
+                  i_replied:
+                    type: boolean
+                    description: Has the current user replied to this comment?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postSitesBySiteCommentsByCommentId
+      summary: Edit a comment.
+      description: Edit a comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The comment ID.
+                  post:
+                    type: object
+                    description: A reference to the comment's post.
+                  author:
+                    type: object
+                    description: The author of the comment.
+                  date:
+                    type: string
+                    format: date-time
+                    description: The comment's creation time.
+                  URL:
+                    type: string
+                    format: uri
+                    description: The full permalink URL to the comment.
+                  short_URL:
+                    type: string
+                    format: uri
+                    description: The wp.me short URL.
+                  content:
+                    type: string
+                    description: context dependent.
+                  raw_content:
+                    type: string
+                    description: Raw comment content.
+                  status:
+                    type: string
+                    description: 'approved: The comment has been approved.; unapproved: The comment has been held for review in the moderation queue.; spam: The comment has been marked as spam.; trash: The comment is in the trash.'
+                    enum:
+                    - approved
+                    - unapproved
+                    - spam
+                    - trash
+                  parent:
+                    type: string
+                    description: A reference to the comment's parent, if it has one.
+                  type:
+                    type: string
+                    description: 'comment: The comment is a regular comment.; trackback: The comment is a trackback.; pingback: The comment is a pingback.; review: The comment is a product review.'
+                    enum:
+                    - comment
+                    - trackback
+                    - pingback
+                    - review
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  i_like:
+                    type: boolean
+                    description: Does the current user like this comment?
+                  meta:
+                    type: object
+                    description: Meta data
+                  can_moderate:
+                    type: boolean
+                    description: Whether current user can moderate the comment.
+                  i_replied:
+                    type: boolean
+                    description: Has the current user replied to this comment?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: string
+                  description: The comment author's name.
+                author_email:
+                  type: string
+                  description: The comment author's email.
+                author_url:
+                  type: string
+                  description: The comment author's URL.
+                content:
+                  type: string
+                  description: The comment text.
+                date:
+                  type: string
+                  format: date-time
+                  description: The comment's creation time.
+                status:
+                  type: string
+                  description: 'approved: (default) Approve the comment.; unapproved: Remove the comment from public view and send it to the moderation queue.; spam: Mark the comment as spam.; unspam: Unmark the comment as spam. Will attempt to set it to the previous status.; trash: Send a comment to the trash if trashing is enabled (see constant: EMPTY_TRASH_DAYS).; untrash: Untrash a comment. Only works when the comment is in the trash.'
+                  enum:
+                  - approved
+                  - unapproved
+                  - spam
+                  - unspam
+                  - trash
+                  - untrash
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/{comment_ID}/delete:
+    post:
+      operationId: postSitesBySiteCommentsByCommentIdDelete
+      summary: Delete a comment.
+      description: Delete a comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The comment ID.
+                  post:
+                    type: object
+                    description: A reference to the comment's post.
+                  author:
+                    type: object
+                    description: The author of the comment.
+                  date:
+                    type: string
+                    format: date-time
+                    description: The comment's creation time.
+                  URL:
+                    type: string
+                    format: uri
+                    description: The full permalink URL to the comment.
+                  short_URL:
+                    type: string
+                    format: uri
+                    description: The wp.me short URL.
+                  content:
+                    type: string
+                    description: context dependent.
+                  raw_content:
+                    type: string
+                    description: Raw comment content.
+                  status:
+                    type: string
+                    description: 'approved: The comment has been approved.; unapproved: The comment has been held for review in the moderation queue.; spam: The comment has been marked as spam.; trash: The comment is in the trash.; deleted: The comment has been deleted permanently.'
+                    enum:
+                    - approved
+                    - unapproved
+                    - spam
+                    - trash
+                    - deleted
+                  parent:
+                    type: string
+                    description: A reference to the comment's parent, if it has one.
+                  type:
+                    type: string
+                    description: 'comment: The comment is a regular comment.; trackback: The comment is a trackback.; pingback: The comment is a pingback.; review: The comment is a product review.'
+                    enum:
+                    - comment
+                    - trackback
+                    - pingback
+                    - review
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  i_like:
+                    type: boolean
+                    description: Does the current user like this comment?
+                  meta:
+                    type: object
+                    description: Meta data
+                  can_moderate:
+                    type: boolean
+                    description: Whether current user can moderate the comment.
+                  i_replied:
+                    type: boolean
+                    description: Has the current user replied to this comment?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/{comment_ID}/likes/:
+    get:
+      operationId: getSitesBySiteCommentsByCommentIdLikes
+      summary: Get the likes for a comment.
+      description: Get the likes for a comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: integer
+                    description: The total number of likes for this comment.
+                  i_like:
+                    type: boolean
+                    description: If authenticated, this returns the current like status for the user on this comment.
+                  likes:
+                    type: array
+                    items: {}
+                    description: An array of users who liked this comment.
+                  meta:
+                    type: object
+                    description: Metadata
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/{comment_ID}/likes/mine/:
+    get:
+      operationId: getSitesBySiteCommentsByCommentIdLikesMine
+      summary: Get your like status for a comment.
+      description: Get your like status for a comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  i_like:
+                    type: boolean
+                    description: Does the user like this comment?
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  meta:
+                    type: object
+                    description: Meta data
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/{comment_ID}/likes/mine/delete:
+    post:
+      operationId: postSitesBySiteCommentsByCommentIdLikesMineDelete
+      summary: Remove your like from a comment.
+      description: Remove your like from a comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the operation successful?
+                  i_like:
+                    type: boolean
+                    description: Does the user like this comment?
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  meta:
+                    type: object
+                    description: Meta data
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/{comment_ID}/likes/new:
+    post:
+      operationId: postSitesBySiteCommentsByCommentIdLikesNew
+      summary: Like a comment.
+      description: Like a comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the operation successful?
+                  i_like:
+                    type: boolean
+                    description: Does the user like this comment?
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  meta:
+                    type: object
+                    description: Meta data
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/comments/{comment_ID}/replies/new:
+    post:
+      operationId: postSitesBySiteCommentsByCommentIdRepliesNew
+      summary: Create a comment as a reply to another comment.
+      description: Create a comment as a reply to another comment.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The comment ID.
+                  post:
+                    type: object
+                    description: A reference to the comment's post.
+                  author:
+                    type: object
+                    description: The author of the comment.
+                  date:
+                    type: string
+                    format: date-time
+                    description: The comment's creation time.
+                  URL:
+                    type: string
+                    format: uri
+                    description: The full permalink URL to the comment.
+                  short_URL:
+                    type: string
+                    format: uri
+                    description: The wp.me short URL.
+                  content:
+                    type: string
+                    description: context dependent.
+                  raw_content:
+                    type: string
+                    description: Raw comment content.
+                  status:
+                    type: string
+                    description: 'approved: The comment has been approved.; unapproved: The comment has been held for review in the moderation queue.; spam: The comment has been marked as spam.; trash: The comment is in the trash.'
+                    enum:
+                    - approved
+                    - unapproved
+                    - spam
+                    - trash
+                  parent:
+                    type: string
+                    description: A reference to the comment's parent, if it has one.
+                  type:
+                    type: string
+                    description: 'comment: The comment is a regular comment.; trackback: The comment is a trackback.; pingback: The comment is a pingback.; review: The comment is a product review.'
+                    enum:
+                    - comment
+                    - trackback
+                    - pingback
+                    - review
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  i_like:
+                    type: boolean
+                    description: Does the current user like this comment?
+                  meta:
+                    type: object
+                    description: Meta data
+                  can_moderate:
+                    type: boolean
+                    description: Whether current user can moderate the comment.
+                  i_replied:
+                    type: boolean
+                    description: Has the current user replied to this comment?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: comment_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The comment ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The comment text.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/posts/{post_ID}/replies/:
+    get:
+      operationId: getSitesBySitePostsByPostIdReplies
+      summary: Get a list of recent comments on a post.
+      description: Get a list of recent comments on a post.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: integer
+                    description: The total number of comments found that match the request (ignoring limits, offsets, and pagination).
+                  site_ID:
+                    type: integer
+                    description: The site ID
+                  comments:
+                    type: array
+                    items: {}
+                    description: An array of comment objects.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: post_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: number
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The number of comments to return.  Limit: 100. When using hierarchical=1, number refers to the number of top-level comments returned. Default: 20.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 0-indexed offset. Not available if using hierarchical=1.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Return the Nth 1-indexed page of comments.  Takes precedence over the offset parameter. When using hierarchical=1, pagination is a bit different.  See the note on the number parameter.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - DESC
+          - ASC
+        description: 'DESC: (default) Return comments in descending order from newest to oldest.; ASC: Return comments in ascending order from oldest to newest.'
+      - name: hierarchical
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: (BETA) Order the comment list hierarchically.'
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return comments dated on or after the specified datetime. Not available if using hierarchical=1.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return comments dated on or before the specified datetime. Not available if using hierarchical=1.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - any
+          - comment
+          - trackback
+          - pingback
+          - pings
+        description: 'any: (default) Return all comments regardless of type.; comment: Return only regular comments.; trackback: Return only trackbacks.; pingback: Return only pingbacks.; pings: Return both trackbacks and pingbacks.'
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - approved
+          - unapproved
+          - spam
+          - trash
+          - all
+        description: 'approved: (default) Return only approved comments.; unapproved: Return only comments in the moderation queue.; spam: Return only comments marked as spam.; trash: Return only comments in the trash.; all: Return comments of all statuses.'
+      - name: author_wpcom_data
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default) Do not add wpcom_id and wpcom_login fields to comment author responses (default); true: Add wpcom_id and wpcom_login fields to comment author responses'
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/posts/{post_ID}/replies/new:
+    post:
+      operationId: postSitesBySitePostsByPostIdRepliesNew
+      summary: Create a comment on a post.
+      description: Create a comment on a post.
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The comment ID.
+                  post:
+                    type: object
+                    description: A reference to the comment's post.
+                  author:
+                    type: object
+                    description: The author of the comment.
+                  date:
+                    type: string
+                    format: date-time
+                    description: The comment's creation time.
+                  URL:
+                    type: string
+                    format: uri
+                    description: The full permalink URL to the comment.
+                  short_URL:
+                    type: string
+                    format: uri
+                    description: The wp.me short URL.
+                  content:
+                    type: string
+                    description: context dependent.
+                  raw_content:
+                    type: string
+                    description: Raw comment content.
+                  status:
+                    type: string
+                    description: 'approved: The comment has been approved.; unapproved: The comment has been held for review in the moderation queue.; spam: The comment has been marked as spam.; trash: The comment is in the trash.'
+                    enum:
+                    - approved
+                    - unapproved
+                    - spam
+                    - trash
+                  parent:
+                    type: string
+                    description: A reference to the comment's parent, if it has one.
+                  type:
+                    type: string
+                    description: 'comment: The comment is a regular comment.; trackback: The comment is a trackback.; pingback: The comment is a pingback.; review: The comment is a product review.'
+                    enum:
+                    - comment
+                    - trackback
+                    - pingback
+                    - review
+                  like_count:
+                    type: integer
+                    description: The number of likes for this comment.
+                  i_like:
+                    type: boolean
+                    description: Does the current user like this comment?
+                  meta:
+                    type: object
+                    description: Meta data
+                  can_moderate:
+                    type: boolean
+                    description: Whether current user can moderate the comment.
+                  i_replied:
+                    type: boolean
+                    description: Has the current user replied to this comment?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: post_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The comment text.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /wp/v2/sites/{wpcom_site}/comments:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteComments
+      summary: GET /wp/v2/sites/{wpcom_site}/comments
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to comments published after a given ISO8601 compliant date.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Limit result set to comments assigned to specific user IDs. Requires authorization.
+      - name: author_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Ensure result set excludes comments assigned to specific user IDs. Requires authorization.
+      - name: author_email
+        in: query
+        required: false
+        schema:
+          type: string
+          format: email
+        description: Limit result set to that from a specific author email. Requires authorization.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to comments published before a given ISO8601 compliant date.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to specific IDs.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - date
+          - date_gmt
+          - id
+          - include
+          - post
+          - parent
+          - type
+          default: date_gmt
+        description: Sort collection by comment attribute.
+      - name: parent
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to comments of specific parent IDs.
+      - name: parent_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes specific parent IDs.
+      - name: post
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to comments assigned to specific post IDs.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          default: approve
+        description: Limit result set to comments assigned a specific status. Requires authorization.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+          default: comment
+        description: Limit result set to comments assigned a specific type. Requires authorization.
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The password for the post if it is password protected.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteComments
+      summary: POST /wp/v2/sites/{wpcom_site}/comments
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  default: 0
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  default: 0
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/comments/{id}:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteCommentsbyId
+      summary: GET /wp/v2/sites/{wpcom_site}/comments/{id}
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The password for the parent post of the comment (if the post is password protected).
+    post:
+      operationId: postWpV2SitesbyWpcomSiteCommentsbyId
+      summary: POST /wp/v2/sites/{wpcom_site}/comments/{id}
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+    put:
+      operationId: putWpV2SitesbyWpcomSiteCommentsbyId
+      summary: PUT /wp/v2/sites/{wpcom_site}/comments/{id}
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+    patch:
+      operationId: patchWpV2SitesbyWpcomSiteCommentsbyId
+      summary: PATCH /wp/v2/sites/{wpcom_site}/comments/{id}
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author:
+                  type: integer
+                  description: The ID of the user object, if author was a user.
+                author_email:
+                  type: string
+                  format: email
+                  description: Email address for the comment author.
+                author_ip:
+                  type: string
+                  format: ip
+                  description: IP address for the comment author.
+                author_name:
+                  type: string
+                  description: Display name for the comment author.
+                author_url:
+                  type: string
+                  format: uri
+                  description: URL for the comment author.
+                author_user_agent:
+                  type: string
+                  description: User agent for the comment author.
+                content:
+                  type: object
+                  description: The content for the comment.
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the comment was published, as GMT.
+                parent:
+                  type: integer
+                  description: The ID for the parent of the comment.
+                post:
+                  type: integer
+                  description: The ID of the associated post object.
+                status:
+                  type: string
+                  description: State of the comment.
+                meta:
+                  type: object
+                  description: Meta fields.
+    delete:
+      operationId: deleteWpV2SitesbyWpcomSiteCommentsbyId
+      summary: DELETE /wp/v2/sites/{wpcom_site}/comments/{id}
+      tags:
+      - comments
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether to bypass Trash and force deletion.
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The password for the parent post of the comment (if the post is password protected).
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-1-openapi.yml
+- automattic-wordpress-com-rest-v1-2-openapi.yml
+- automattic-wordpress-com-wp-v2-openapi.yml

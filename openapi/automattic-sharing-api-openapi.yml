@@ -1,0 +1,2084 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API v1.1 Sharing API
+  version: v1.1
+  description: 'The WordPress.com REST API, operated by Automattic. Derived by API Evangelist from Automattic''s own self-describing help document at https://public-api.wordpress.com/rest/v1.1/help (Accept: application/json), which publishes every endpoint''s method, path, description, path/query/body parameters and response fields. Security schemes come from https://public-api.wordpress.com/.well-known/openid-configuration. The error envelope was observed live.'
+  termsOfService: https://wordpress.com/tos/
+  contact:
+    name: WordPress.com Developer Resources
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/rest/v1.1/help
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+security:
+- bearerAuth: []
+tags:
+- name: sharing
+paths:
+  /me/keyring-connections/:
+    get:
+      operationId: getMeKeyringConnections
+      summary: Get a list of all the keyring connections associated with the current user.
+      description: Get a list of all the keyring connections associated with the current user.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connections:
+                    type: array
+                    items: {}
+                    description: List of Keyring connection. See /me/keyring-connection/%d for individual connection descriptions.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: site
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Only return connections for the given site.
+      - name: force_external_users_refetch
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: True to force refetch external users, default false
+      - name: force_connection_test
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: True to force testing the connection and not use the cache, default false
+  /me/keyring-connections/{keyring_connection_ID}:
+    get:
+      operationId: getMeKeyringConnectionsByKeyringConnectionId
+      summary: Get a single Keyring connection that the current user has setup.
+      description: Get a single Keyring connection that the current user has setup.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the Keyring connection.
+                  user_ID:
+                    type: integer
+                    description: The user ID that the Keyring connection belongs to.
+                  type:
+                    type: string
+                    description: The type of service that this connection belongs to (publicize or other).
+                  service:
+                    type: string
+                    description: The name of the service associated with this Keyring connection.
+                  label:
+                    type: string
+                    description: The display friendly name of the service associated with this Keyring connection.
+                  issued:
+                    type: string
+                    format: date-time
+                    description: Date when the Keyring connection was first established.
+                  expires:
+                    type: string
+                    format: date-time
+                    description: Date when the Keyring connection expires, if any.
+                  external_ID:
+                    type: string
+                    description: An identifier for the user on the third-party service.
+                  external_name:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, usually a username or login name.
+                  external_display:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, typically defined by the user and the one that the user has chosen as their preferred identifier.
+                  external_profile_picture:
+                    type: string
+                    description: The URL to the user's profile picture on the third-party service.
+                  additional_external_users:
+                    type: array
+                    items: {}
+                    description: Array of additional external user objects (external_ID, external_name, external_display, external_profile_picture, external_category, external_meta) available for this Keyring connection (e.g. for Facebook pages)
+                  status:
+                    type: string
+                    description: The current status of the connection to the third-party service. "ok" for connections with no problems, and "broken" for connections that need to be fixed fixed.
+                  refresh_url:
+                    type: string
+                    format: uri
+                    description: The URL to refresh the Keyring token.
+                  sites:
+                    type: array
+                    items: {}
+                    description: An array of site IDs currently using this Keyring connection.
+                  meta:
+                    type: object
+                    description: Object with links to the publicize connection, help links and related items.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: keyring_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The connection ID to take action on.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /me/keyring-connections/{keyring_connection_ID}/delete:
+    post:
+      operationId: postMeKeyringConnectionsByKeyringConnectionIdDelete
+      summary: Delete the Keyring connection (and associated token) with the provided ID. Also deletes all associated publicize connect
+      description: Delete the Keyring connection (and associated token) with the provided ID. Also deletes all associated publicize connections.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the Keyring connection.
+                  deleted:
+                    type: boolean
+                    description: True if successfully deleted.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: keyring_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The connection ID to take action on.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /me/publicize-connections/:
+    get:
+      operationId: getMePublicizeConnections
+      summary: Get a list of publicize connections that the current user has set up.
+      description: Get a list of publicize connections that the current user has set up.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connections:
+                    type: array
+                    items: {}
+                    description: List of publicize connections. See /me/publicize-connections/%d for individual connection descriptions.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: service
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Only return connections for the given services.
+      - name: keyring_connection_ID
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Optional. Only return connections for the given keyring connection ID.
+      - name: site
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Only return connections for the given site that the user can publicize to. Includes global connections owned by other users on the site.
+  /me/publicize-connections/{publicize_connection_ID}:
+    get:
+      operationId: getMePublicizeConnectionsByPublicizeConnectionId
+      summary: Get a single publicize connection that the current user has set up.
+      description: Get a single publicize connection that the current user has set up.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the publicize connection.
+                  site_ID:
+                    type: integer
+                    description: The site ID that the publicize connection belongs to.
+                  user_ID:
+                    type: integer
+                    description: The user ID that the publicize connection belongs to.
+                  keyring_connection_ID:
+                    type: integer
+                    description: The ID of the associated keyring connection.
+                  keyring_connection_user_ID:
+                    type: integer
+                    description: The ID of the user who owns the associated keyring connection.
+                  shared:
+                    type: boolean
+                    description: Is this connection shared?
+                  service:
+                    type: string
+                    description: The name of the service associated with this publicize connection.
+                  label:
+                    type: string
+                    description: The display friendly name of the service associated with this publicize connection.
+                  issued:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection was first established.
+                  expires:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection expires, if any.
+                  external_ID:
+                    type: string
+                    description: An identifier for the user on the third-party service.
+                  external_name:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, usually a username or login name.
+                  external_display:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, typically defined by the user and the one that the user has chosen as their preferred identifier.
+                  external_profile_picture:
+                    type: string
+                    description: The URL to the profile picture associated with the third-party account, if the service provides one.
+                  external_profile_URL:
+                    type: string
+                    description: The URL to the external profile on the third-party website, if the service provides one.
+                  external_follower_count:
+                    type: string
+                    description: The number of followers that the user has on the third-party service, if the service returns a number.
+                  URL:
+                    type: string
+                    description: URL to the user's profile on the third-party service. NULL if there is no URL to link to.
+                  status:
+                    type: string
+                    description: The current status of the connection to the third-party service. "ok" for connections with no problems, and "broken" for connections that need to be fixed fixed.
+                  refresh_URL:
+                    type: string
+                    format: uri
+                    description: The URL to refresh the keyring token.
+                  meta:
+                    type: object
+                    description: Object with links to the publicize connection, help links and related items.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: publicize_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The publicize connection ID to fetch.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postMePublicizeConnectionsByPublicizeConnectionId
+      summary: Update a single publicize connection belonging to the current user.
+      description: Update a single publicize connection belonging to the current user.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the publicize connection.
+                  site_ID:
+                    type: integer
+                    description: The site ID that the publicize connection belongs to.
+                  user_ID:
+                    type: integer
+                    description: The user ID that the publicize connection belongs to.
+                  keyring_connection_ID:
+                    type: integer
+                    description: The ID of the associated keyring connection.
+                  keyring_connection_user_ID:
+                    type: integer
+                    description: The ID of the user who owns the associated keyring connection.
+                  shared:
+                    type: boolean
+                    description: Is this connection shared?
+                  service:
+                    type: string
+                    description: The name of the service associated with this publicize connection.
+                  label:
+                    type: string
+                    description: The display friendly name of the service associated with this publicize connection.
+                  issued:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection was first established.
+                  expires:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection expires, if any.
+                  external_ID:
+                    type: string
+                    description: An identifier for the user on the third-party service.
+                  external_name:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, usually a username or login name.
+                  external_display:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, typically defined by the user and the one that the user has chosen as their preferred identifier.
+                  external_profile_picture:
+                    type: string
+                    description: The URL to the profile picture associated with the third-party account, if the service provides one.
+                  external_profile_URL:
+                    type: string
+                    description: The URL to the external profile on the third-party website, if the service provides one.
+                  external_follower_count:
+                    type: string
+                    description: The number of followers that the user has on the third-party service, if the service returns a number.
+                  URL:
+                    type: string
+                    description: URL to the user's profile on the third-party service. NULL if there is no URL to link to.
+                  status:
+                    type: string
+                    description: The current status of the connection to the third-party service. "ok" for connections with no problems, and "broken" for connections that need to be fixed fixed.
+                  refresh_URL:
+                    type: string
+                    format: uri
+                    description: The URL to refresh the keyring token.
+                  meta:
+                    type: object
+                    description: Object with links to the publicize connection, help links and related items.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: publicize_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The publicize connection ID to take action on.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                shared:
+                  type: boolean
+                  description: Optional. True to make the connection global for all users of the site. False to ungloblalize it.
+                external_user_ID:
+                  type: string
+                  description: Optional. Use to associate a non-default external user (from the keyring connection) with this publicize connection. e.g. associate a Facebook page. False to reset to default.
+  /me/publicize-connections/{publicize_connection_ID}/delete:
+    post:
+      operationId: postMePublicizeConnectionsByPublicizeConnectionIdDelete
+      summary: Delete the specified publicize connection.
+      description: Delete the specified publicize connection.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the publicize connection.
+                  deleted:
+                    type: boolean
+                    description: True if successfully deleted.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: publicize_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The connection ID to take action on.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /meta/external-services/:
+    get:
+      operationId: getMetaExternalServices
+      summary: Get a list of third-party services that WordPress.com or Jetpack sites can integrate with via keyring.
+      description: Get a list of third-party services that WordPress.com or Jetpack sites can integrate with via keyring.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: array
+                    items: {}
+                    description: List of supported services. See /meta/external-services/%s for service descriptions.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Only return services for the given type. Currently the only supported types are `publicize` or `other`.
+  /meta/external-services/{service}:
+    get:
+      operationId: getMetaExternalServicesByService
+      summary: Get information about a single external service that WordPress.com or Jetpack sites can integrate with via keyring.
+      description: Get information about a single external service that WordPress.com or Jetpack sites can integrate with via keyring.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: string
+                    description: Service identifier.
+                  label:
+                    type: string
+                    description: Display friendly name for the service.
+                  type:
+                    type: string
+                    description: Service type (publicize or other).
+                  description:
+                    type: string
+                    description: Explanation of what the integration with this service does.
+                  genericon:
+                    type: object
+                    description: Object containing the class name and unicode character used for the genericon or noticon icon for this service.
+                  icon:
+                    type: string
+                    description: 2x PNG of the icon if genericons cannot be used.
+                  connect_url:
+                    type: string
+                    description: The URL for connecting a new Keyring connection with this service.
+                  multiple_external_user_ID_support:
+                    type: boolean
+                    description: Does this service support setting a non-default value for the external user ID (e.g. a Facebook page or Tumblr non-default blog) to be used as the publicize connection?
+                  jetpack_support:
+                    type: boolean
+                    description: Is this service supported in Jetpack?
+                  jetpack_module_required:
+                    type: string
+                    description: The slug of the module that is required to be activated in Jetpack for this service integration to work, if any.
+                  warnings:
+                    type: array
+                    items: {}
+                    description: Any issues this type of connection may be experencing
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: service
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Which service you want information about (facebook, twitter, etc). See /meta/external-services/ for list of supported services.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /meta/sharing-buttons:
+    get:
+      operationId: getMetaSharingButtons
+      summary: Get a list of external services for which sharing buttons are supported.
+      description: Get a list of external services for which sharing buttons are supported.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: array
+                    items: {}
+                    description: List of supported services with information about each
+                  more:
+                    type: string
+                    description: The Genericon unicode character for the More icon
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/publicize-connections/:
+    get:
+      operationId: getSitesBySitePublicizeConnections
+      summary: Get a list of publicize connections that are associated with the specified site.
+      description: Get a list of publicize connections that are associated with the specified site.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connections:
+                    type: array
+                    items: {}
+                    description: List of publicize connections. See /sites/%s/publicize-connections/%d for individual connection descriptions.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: service
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Only return connections for the given services.
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Only return connections associated to the given user ID.
+      - name: keyring_connection_ID
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Optional. Only return connections for the given Keyring connection ID.
+  /sites/{site}/publicize-connections/new:
+    post:
+      operationId: postSitesBySitePublicizeConnectionsNew
+      summary: Create a new publicize connection that is associated with the specified site.
+      description: Create a new publicize connection that is associated with the specified site.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the publicize connection.
+                  site_ID:
+                    type: integer
+                    description: The site ID that the publicize connection belongs to.
+                  user_ID:
+                    type: integer
+                    description: The user ID that the publicize connection belongs to.
+                  shared:
+                    type: boolean
+                    description: Is this connection shared?
+                  keyring_connection_ID:
+                    type: integer
+                    description: The ID of the associated Keyring connection.
+                  keyring_connection_user_ID:
+                    type: integer
+                    description: The ID of the user who owns the associated keyring connection.
+                  service:
+                    type: string
+                    description: The name of the service associated with this publicize connection.
+                  label:
+                    type: string
+                    description: The display friendly name of the service associated with this publicize connection.
+                  issued:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection was first established.
+                  expires:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection expires, if any.
+                  external_ID:
+                    type: string
+                    description: An identifier for the user on the third-party service.
+                  external_name:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, usually a username or login name.
+                  external_display:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, typically defined by the user and the one that the user has chosen as their preferred identifier.
+                  external_profile_picture:
+                    type: string
+                    description: The URL to the profile picture associated with the third-party account, if the service provides one.
+                  external_profile_URL:
+                    type: string
+                    description: The URL to the external profile on the third-party website, if the service provides one.
+                  external_follower_count:
+                    type: string
+                    description: The number of followers that the user has on the third-party service, if the service returns a number.
+                  URL:
+                    type: string
+                    description: URL to the user's profile on the third-party service. NULL if there is no URL to link to.
+                  status:
+                    type: string
+                    description: The current status of the connection to the third-party service. "ok" for connections with no problems, and "broken" for connections that need to be fixed fixed.
+                  refresh_URL:
+                    type: string
+                    format: uri
+                    description: The URL to refresh the Keyring token.
+                  meta:
+                    type: object
+                    description: Object with links to the publicize connection, help links and related items.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                keyring_connection_ID:
+                  type: integer
+                  description: The Keyring connection ID to use for the new publicize connection.
+                shared:
+                  type: boolean
+                  description: Optional. True to make the connection global for all users of the site.
+                external_user_ID:
+                  type: string
+                  description: Optional. Use to associate a non-default external user (from the Keyring connection) with this publicize connection. e.g. associate a Facebook page.
+  /sites/{site}/publicize-connections/{publicize_connection_ID}:
+    get:
+      operationId: getSitesBySitePublicizeConnectionsByPublicizeConnectionId
+      summary: Get a single publicize connection that is associated with the specified site.
+      description: Get a single publicize connection that is associated with the specified site.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the publicize connection.
+                  site_ID:
+                    type: integer
+                    description: The site ID that the publicize connection belongs to.
+                  user_ID:
+                    type: integer
+                    description: The user ID that the publicize connection belongs to.
+                  keyring_connection_ID:
+                    type: integer
+                    description: The ID of the associated keyring connection.
+                  keyring_connection_user_ID:
+                    type: integer
+                    description: The ID of the user who owns the associated keyring connection.
+                  shared:
+                    type: boolean
+                    description: Is this connection shared?
+                  service:
+                    type: string
+                    description: The name of the service associated with this publicize connection.
+                  label:
+                    type: string
+                    description: The display friendly name of the service associated with this publicize connection.
+                  issued:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection was first established.
+                  expires:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection expires, if any.
+                  external_ID:
+                    type: string
+                    description: An identifier for the user on the third-party service.
+                  external_name:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, usually a username or login name.
+                  external_display:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, typically defined by the user and the one that the user has chosen as their preferred identifier.
+                  external_profile_picture:
+                    type: string
+                    description: The URL to the profile picture associated with the third-party account, if the service provides one.
+                  external_profile_URL:
+                    type: string
+                    description: The URL to the external profile on the third-party website, if the service provides one.
+                  external_follower_count:
+                    type: string
+                    description: The number of followers that the user has on the third-party service, if the service returns a number.
+                  read_only:
+                    type: boolean
+                    description: Returns true if the connection is available as read-only for the current user. This usually means the connection is shared and owned by a different user. The current user receives a reduced amount of information about the connection and cannot update or delete it.
+                  status:
+                    type: string
+                    description: The current status of the connection to the third-party service. "ok" for connections with no problems, and "broken" for connections that need to be fixed fixed.
+                  refresh_URL:
+                    type: string
+                    format: uri
+                    description: The URL to refresh the Keyring token.
+                  meta:
+                    type: object
+                    description: Object with links to the publicize connection, help links and related items.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: publicize_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The publicize connection ID to fetch.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postSitesBySitePublicizeConnectionsByPublicizeConnectionId
+      summary: Update a single publicize connection belonging to the specified site.
+      description: Update a single publicize connection belonging to the specified site.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the publicize connection.
+                  site_ID:
+                    type: integer
+                    description: The site ID that the publicize connection belongs to.
+                  user_ID:
+                    type: integer
+                    description: The user ID that the publicize connection belongs to.
+                  keyring_connection_ID:
+                    type: integer
+                    description: The ID of the associated Keyring connection.
+                  keyring_connection_user_ID:
+                    type: integer
+                    description: The ID of the user who owns the associated keyring connection.
+                  shared:
+                    type: boolean
+                    description: Is this connection shared?
+                  service:
+                    type: string
+                    description: The name of the service associated with this publicize connection.
+                  label:
+                    type: string
+                    description: The display friendly name of the service associated with this publicize connection.
+                  issued:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection was first established.
+                  expires:
+                    type: string
+                    format: date-time
+                    description: Date when the publicize connection expires, if any.
+                  external_ID:
+                    type: string
+                    description: An identifier for the user on the third-party service.
+                  external_name:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, usually a username or login name.
+                  external_display:
+                    type: string
+                    description: A display friendly identifier for the user on the third-party service, typically defined by the user and the one that the user has chosen as their preferred identifier.
+                  external_profile_picture:
+                    type: string
+                    description: The URL to the profile picture associated with the third-party account, if the service provides one.
+                  external_profile_URL:
+                    type: string
+                    description: The URL to the external profile on the third-party website, if the service provides one.
+                  external_follower_count:
+                    type: string
+                    description: The number of followers that the user has on the third-party service, if the service returns a number.
+                  URL:
+                    type: string
+                    description: URL to the user's profile on the third-party service. NULL if there is no URL to link to.
+                  status:
+                    type: string
+                    description: The current status of the connection to the third-party service. "ok" for connections with no problems, and "broken" for connections that need to be fixed fixed.
+                  refresh_URL:
+                    type: string
+                    format: uri
+                    description: The URL to refresh the Keyring token.
+                  meta:
+                    type: object
+                    description: Object with links to the publicize connection, help links and related items.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The site ID to take action on.
+      - name: publicize_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The publicize connection ID to take action on.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                shared:
+                  type: boolean
+                  description: Optional. True to make the connection global for all users of the site. False to ungloblalize it.
+                external_user_ID:
+                  type: string
+                  description: Optional. Use to associate a non-default external user (from the Keyring connection) with this publicize connection. e.g. associate a Facebook page. False to reset to default.
+  /sites/{site}/publicize-connections/{publicize_connection_ID}/delete:
+    post:
+      operationId: postSitesBySitePublicizeConnectionsByPublicizeConnectionIdDelete
+      summary: Delete the specified publicize connection.
+      description: Delete the specified publicize connection.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the publicize connection.
+                  deleted:
+                    type: boolean
+                    description: True if successfully deleted.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: publicize_connection_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The connection ID to take action on.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/sharing-buttons:
+    post:
+      operationId: postSitesBySiteSharingButtons
+      summary: Edit all sharing buttons for a site.
+      description: Edit all sharing buttons for a site.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Confirmation that all sharing buttons were updated as specified
+                  updated:
+                    type: array
+                    items: {}
+                    description: An array of updated sharing buttons
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sharing_buttons:
+                  type: array
+                  items: {}
+                  description: An array of sharing button objects
+  /sites/{site}/sharing-buttons/:
+    get:
+      operationId: getSitesBySiteSharingButtons
+      summary: Get a list of a site's sharing buttons.
+      description: Get a list of a site's sharing buttons.
+      tags:
+      - sharing
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: integer
+                    description: The total number of sharing buttons found that match the request.
+                  sharing_buttons:
+                    type: array
+                    items: {}
+                    description: Array of sharing button objects
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: enabled_only
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: If true, only enabled sharing buttons are included in the response
+      - name: visibility
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The type of enabled sharing buttons to filter by, either "visible" or "hidden"
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'

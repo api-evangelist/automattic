@@ -1,0 +1,584 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API v1.3 Domain Connect API
+  version: v1.3
+  description: 'The WordPress.com REST API, operated by Automattic. Derived by API Evangelist from Automattic''s own self-describing help document at https://public-api.wordpress.com/rest/v1.3/help (Accept: application/json), which publishes every endpoint''s method, path, description, path/query/body parameters and response fields. Security schemes come from https://public-api.wordpress.com/.well-known/openid-configuration. The error envelope was observed live.'
+  termsOfService: https://wordpress.com/tos/
+  contact:
+    name: WordPress.com Developer Resources
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/rest/v1.3/help
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com/rest/v1.3
+security:
+- bearerAuth: []
+tags:
+- name: domain-connect
+paths:
+  /domain-connect/authorize/v2/domainTemplates/providers/{provider_id}/services/{service_id}/apply:
+    get:
+      operationId: getDomainConnectAuthorizeV2DomaintemplatesProvidersByProviderIdServicesByServiceIdApply
+      summary: Authorization request to apply a template to a domain using the Domain Connect Sync Flow method.
+      description: Authorization request to apply a template to a domain using the Domain Connect Sync Flow method.
+      tags:
+      - domain-connect
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: True if the template was successfully applied.
+                  records:
+                    type: array
+                    items: {}
+                    description: The complete list of DNS records for the domain after the template was applied.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The provider id of the template being applied
+      - name: service_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The service id of the template being applied
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The domain the template should be applied to.
+      - name: host
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The subdomain label the template should be applied to
+      - name: key
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The public key ID.
+      - name: sig
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The query string parameter signature.
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional opaque value passed through to redirect_uri.
+  /domain-connect/authorize/v2/domainTemplates/providers/{provider_id}/services/{service_id}/apply/authorized:
+    get:
+      operationId: getDomainConnectAuthorizeV2DomaintemplatesProvidersByProviderIdServicesByServiceIdApplyAuthorized
+      summary: Apply a template to a domain after a user has granted authorization using the Sync Flow method.
+      description: Apply a template to a domain after a user has granted authorization using the Sync Flow method.
+      tags:
+      - domain-connect
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: True if the template was successfully applied.
+                  records:
+                    type: array
+                    items: {}
+                    description: The complete list of DNS records for the domain after the template was applied.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The provider id of the template being applied
+      - name: service_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The service id of the template being applied
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The domain the template should be applied to.
+      - name: key
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The public key ID.
+      - name: sig
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The query string parameter signature.
+      - name: groupId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The optional list of groupIds to apply. If not present, all records will be applied.
+      - name: dc-nonce
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The nonce for this template request generated during the auth request.
+      - name: state
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional opaque value passed through to redirect_uri.
+  /domain-connect/unsupported:
+    get:
+      operationId: getDomainConnectUnsupported
+      summary: Returns an error for an unsupported Domain Connect endpoint.
+      description: Returns an error for an unsupported Domain Connect endpoint.
+      tags:
+      - domain-connect
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /domain-connect/v2/domainTemplates/providers/{provider_id}/services/{service_id}:
+    get:
+      operationId: getDomainConnectV2DomaintemplatesProvidersByProviderIdServicesByServiceId
+      summary: Determine if a a specific Domain Connect template is supported.
+      description: Determine if a a specific Domain Connect template is supported.
+      tags:
+      - domain-connect
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: provider_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Provider ID as specified in the template
+      - name: service_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Service ID as specified in the template
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /domain-connect/v2/{domain}/settings:
+    get:
+      operationId: getDomainConnectV2ByDomainSettings
+      summary: Get the settings to use for Domain Connect.
+      description: Get the settings to use for Domain Connect.
+      tags:
+      - domain-connect
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  settings:
+                    type: array
+                    items: {}
+                    description: List of the Domain Connect settings
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Domain name
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'

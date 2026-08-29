@@ -1,0 +1,168 @@
+openapi: 3.2.0
+info:
+  title: Automattic Alternates API
+  contact:
+    name: WordPress.com Developer Resources
+    url: https://developer.wordpress.com/docs/api/
+  termsOfService: https://wordpress.com/tos/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged alternates across 2 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-1-openapi.yml, automattic-wordpress-com-rest-v1-2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+- url: https://public-api.wordpress.com/rest/v1.2
+security:
+- bearerAuth: []
+tags:
+- name: alternates
+paths:
+  /support/alternates/{site}/posts/{post_ID}:
+    get:
+      operationId: getSupportAlternatesBySitePostsByPostId
+      summary: Get alternates for support article (by ID).
+      description: Get alternates for support article (by ID).
+      tags:
+      - alternates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Support site ID or domain
+      - name: post_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: locale
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Locale slug
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-1-openapi.yml
+- automattic-wordpress-com-rest-v1-2-openapi.yml

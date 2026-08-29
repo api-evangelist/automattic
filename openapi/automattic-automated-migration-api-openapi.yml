@@ -1,0 +1,309 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Automated Migration API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: automated-migration
+paths:
+  /wpcom/v2/sites/{wpcom_site}/automated-migration:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAutomatedMigration
+      summary: POST /wpcom/v2/sites/{wpcom_site}/automated-migration
+      tags:
+      - automated-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  default: en
+                  description: User current locale.
+                from_url:
+                  type: string
+                  description: The URL of the source blog or a backup to migrate from.
+                migration_type:
+                  type: string
+                  enum:
+                  - credentials
+                  - backup
+                  description: The type of migration to perform. Can be either "credentials" or "backup".
+                username:
+                  type: string
+                  description: The username to use for the credentials migration.
+                password:
+                  type: string
+                  description: The password to use for the credentials migration.
+                notes:
+                  type: string
+                  default: ''
+                  description: Additional notes to include with the migration request.
+              required:
+              - from_url
+              - migration_type
+  /wpcom/v2/sites/{wpcom_site}/automated-migration/application-passwords:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAutomatedMigrationApplicationPasswords
+      summary: POST /wpcom/v2/sites/{wpcom_site}/automated-migration/application-passwords
+      tags:
+      - automated-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                from_url:
+                  type: string
+                  description: The URL of the site.
+                username:
+                  type: string
+                  description: The login of the user.
+                password:
+                  type: string
+                  description: The application password for the user.
+              required:
+              - from_url
+              - username
+              - password
+  /wpcom/v2/sites/{wpcom_site}/automated-migration/application-passwords/setup:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAutomatedMigrationApplicationPasswordsSetup
+      summary: POST /wpcom/v2/sites/{wpcom_site}/automated-migration/application-passwords/setup
+      tags:
+      - automated-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  type: string
+                  description: The URL of the source site.
+              required:
+              - source
+  /wpcom/v2/sites/{wpcom_site}/automated-migration/cancel-migration:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAutomatedMigrationCancelMigration
+      summary: POST /wpcom/v2/sites/{wpcom_site}/automated-migration/cancel-migration
+      tags:
+      - automated-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/automated-migration/find-ticket:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAutomatedMigrationFindTicket
+      summary: GET /wpcom/v2/sites/{wpcom_site}/automated-migration/find-ticket
+      tags:
+      - automated-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/automated-migration/wpcom-survey:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAutomatedMigrationWpcomSurvey
+      summary: POST /wpcom/v2/sites/{wpcom_site}/automated-migration/wpcom-survey
+      tags:
+      - automated-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                intents:
+                  type: array
+                  items:
+                    type: string
+                  description: An array of user intents. Must contain at least one valid intent.
+                other_details:
+                  type: string
+                  description: Optional additional details.
+              required:
+              - intents
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

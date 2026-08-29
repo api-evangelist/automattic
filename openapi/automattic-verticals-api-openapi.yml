@@ -1,0 +1,249 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Verticals API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: verticals
+paths:
+  /wpcom/v2/verticals:
+    get:
+      operationId: getWpcomV2Verticals
+      summary: GET /wpcom/v2/verticals
+      tags:
+      - verticals
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Term (e.g &quot;rest&quot;) to search for matching verticals.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: -1
+        description: Limit the number of verticals returned. -1 for no limits.
+      - name: site_type
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: ID of site type (e.g. &quot;1&quot; for &quot;business) to use for preview.
+      - name: allow_synonyms
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Informs the site verticals class whether to allow matching against vertical synonyms.
+      - name: suggest_theme
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether or not to return a suggested theme for verticals. If a theme is suggested the preview may be a screenshot.
+  /wpcom/v2/verticals/prompt:
+    get:
+      operationId: getWpcomV2VerticalsPrompt
+      summary: GET /wpcom/v2/verticals/prompt
+      tags:
+      - verticals
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: segment_id
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: Unique ID of the segment for which the to fetch the prompt values(e.g. 1 )
+  /wpcom/v2/verticals/{vertical_id}/images:
+    get:
+      operationId: getWpcomV2VerticalsbyVerticalIdImages
+      summary: GET /wpcom/v2/verticals/{vertical_id}/images
+      tags:
+      - verticals
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: vertical_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orientation
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - portrait
+          - landscape
+          - square
+        description: Orientation of the pictures to retrieve.
+  /wpcom/v2/verticals/{vertical_id}/templates:
+    get:
+      operationId: getWpcomV2VerticalsbyVerticalIdTemplates
+      summary: GET /wpcom/v2/verticals/{vertical_id}/templates
+      tags:
+      - verticals
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: vertical_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/verticals/{vertical_id}/templates/{template_slug}:
+    get:
+      operationId: getWpcomV2VerticalsbyVerticalIdTemplatesbyTemplateSlug
+      summary: GET /wpcom/v2/verticals/{vertical_id}/templates/{template_slug}
+      tags:
+      - verticals
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: vertical_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: template_slug
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

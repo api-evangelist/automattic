@@ -1,0 +1,900 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wp/v2 namespace Template Parts API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wp/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wp/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: template-parts
+paths:
+  /wp/v2/sites/{wpcom_site}/template-parts:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteTemplateParts
+      summary: GET /wp/v2/sites/{wpcom_site}/template-parts
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: wp_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Limit to the specified post id.
+      - name: area
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit to the specified template part area.
+      - name: post_type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Post type to get the templates for.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteTemplateParts
+      summary: POST /wp/v2/sites/{wpcom_site}/template-parts
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type: string
+                  default: ''
+                  description: Content of template.
+                title:
+                  type: string
+                  default: ''
+                  description: Title of template.
+                description:
+                  type: string
+                  default: ''
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  default: publish
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+                area:
+                  type: string
+                  description: Where the template part is intended for use (header, footer, etc.)
+              required:
+              - slug
+  /wp/v2/sites/{wpcom_site}/template-parts/lookup:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteTemplatePartsLookup
+      summary: GET /wp/v2/sites/{wpcom_site}/template-parts/lookup
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: slug
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The slug of the template to get the fallback for
+      - name: is_custom
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Indicates if a template is custom or part of the template hierarchy
+      - name: template_prefix
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The template prefix for the created template. This is used to extract the main template type, e.g. in `taxonomy-books` extracts the `taxonomy`
+  /wp/v2/sites/{wpcom_site}/template-parts/{id}:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyId
+      summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteTemplatePartsbyId
+      summary: POST /wp/v2/sites/{wpcom_site}/template-parts/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type: string
+                  description: Content of template.
+                title:
+                  type: string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+                area:
+                  type: string
+                  description: Where the template part is intended for use (header, footer, etc.)
+    put:
+      operationId: putWpV2SitesbyWpcomSiteTemplatePartsbyId
+      summary: PUT /wp/v2/sites/{wpcom_site}/template-parts/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type: string
+                  description: Content of template.
+                title:
+                  type: string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+                area:
+                  type: string
+                  description: Where the template part is intended for use (header, footer, etc.)
+    patch:
+      operationId: patchWpV2SitesbyWpcomSiteTemplatePartsbyId
+      summary: PATCH /wp/v2/sites/{wpcom_site}/template-parts/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type: string
+                  description: Content of template.
+                title:
+                  type: string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+                area:
+                  type: string
+                  description: Where the template part is intended for use (header, footer, etc.)
+    delete:
+      operationId: deleteWpV2SitesbyWpcomSiteTemplatePartsbyId
+      summary: DELETE /wp/v2/sites/{wpcom_site}/template-parts/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether to bypass Trash and force deletion.
+  /wp/v2/sites/{wpcom_site}/template-parts/{id}/autosaves:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyIdAutosaves
+      summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{id}/autosaves
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteTemplatePartsbyIdAutosaves
+      summary: POST /wp/v2/sites/{wpcom_site}/template-parts/{id}/autosaves
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique slug identifying the template.
+                theme:
+                  type: string
+                  description: Theme identifier for the template.
+                type:
+                  type: string
+                  description: Type of template.
+                content:
+                  type: string
+                  description: Content of template.
+                title:
+                  type: string
+                  description: Title of template.
+                description:
+                  type: string
+                  description: Description of template.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: Status of template.
+                author:
+                  type: integer
+                  description: The ID for the author of the template.
+                area:
+                  type: string
+                  description: Where the template part is intended for use (header, footer, etc.)
+  /wp/v2/sites/{wpcom_site}/template-parts/{parent}/autosaves/{id}:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyParentAutosavesbyId
+      summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{parent}/autosaves/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+  /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyParentRevisions
+      summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to specific IDs.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - date
+          - id
+          - include
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+        description: Sort collection by object attribute.
+  /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions/{id}:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyParentRevisionsbyId
+      summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    delete:
+      operationId: deleteWpV2SitesbyWpcomSiteTemplatePartsbyParentRevisionsbyId
+      summary: DELETE /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions/{id}
+      tags:
+      - template-parts
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: parent
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Required to be true, as revisions do not support trashing.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

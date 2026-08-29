@@ -1,0 +1,2340 @@
+openapi: 3.2.0
+info:
+  title: Automattic Media API
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged media across 4 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-1-openapi.yml, automattic-wordpress-com-rest-v1-2-openapi.yml, automattic-wordpress-com-wp-v2-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+- url: https://public-api.wordpress.com/rest/v1.2
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: media
+paths:
+  /sites/{site}/media/:
+    get:
+      operationId: getSitesBySiteMedia
+      summary: Get a list of items in the media library.
+      description: Get a list of items in the media library.
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  media:
+                    type: array
+                    items: {}
+                    description: Array of media objects
+                  found:
+                    type: integer
+                    description: The number of total results found
+                  meta:
+                    type: object
+                    description: Meta data
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: number
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The number of media items to return. Limit: 100. Default: 20.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 0-indexed offset.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Return the Nth 1-indexed page of posts. Takes precedence over the offset parameter.
+      - name: page_handle
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A page handle, returned from a previous API call as a meta.next_page property. This is the most efficient way to fetch the next page of results.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - DESC
+          - ASC
+        description: 'DESC: (default) Return files in descending order. For dates, that means newest to oldest.; ASC: Return files in ascending order. For dates, that means oldest to newest.'
+      - name: order_by
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - date
+          - title
+          - ID
+        description: 'date: (default) Order by the uploaded time of each file.; title: Order lexicographically by file titles.; ID: Order by media ID.'
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Search query.
+      - name: post_ID
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Default is showing all items. The post where the media item is attached. 0 shows unattached media items.
+      - name: mime_type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Default is empty. Filter by mime type (e.g., 'image/jpeg', 'application/pdf'). Partial searches also work (e.g. passing 'image' will search for all image files).
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return media items uploaded after the specified datetime.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return media items uploaded before the specified datetime.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/media/new:
+    post:
+      operationId: postSitesBySiteMediaNew
+      summary: Upload a new piece of media.
+      description: Upload a new piece of media.
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  media:
+                    type: array
+                    items: {}
+                    description: Array of uploaded media objects
+                  errors:
+                    type: array
+                    items: {}
+                    description: Array of error messages of uploading media failures
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                media:
+                  type: string
+                  description: 'An array of media to attach to the post. To upload media, the entire request should be multipart/form-data encoded. Accepts  jpg, jpeg, png, gif, pdf, doc, ppt, odt, pptx, docx, pps, ppsx, xls, xlsx, key. Audio and Video may also be available. See allowed_file_types in the options response of the site endpoint.Example:curl \--form ''media[]=@/path/to/file.jpg'' \-H ''Authorization: BEARER your-token'' \''https://public-api.wordpress.com/rest/v1/sites/123/media/new'''
+                media_urls:
+                  type: array
+                  items: {}
+                  description: An array of URLs to upload to the post. Errors produced by media uploads, if any, will be in `media_errors` in the response.
+                attrs:
+                  type: array
+                  items: {}
+                  description: 'An array of attributes (`title`, `description`, `caption` `alt` for images, `artist` for audio, `album` for audio, and `parent_id`) are supported to assign to the media uploaded via the `media` or `media_urls` properties. You must use a numeric index for the keys of `attrs` which follows the same sequence as `media` and `media_urls`. Example:curl \--form ''media[]=@/path/to/file1.jpg'' \--form ''media_urls[]=http://example.com/file2.jpg'' \ \--form ''attrs[0][caption]=This will be the caption for file1.jpg'' \--form ''attrs[1][title]=This will be the title for file2.jpg'' \-H ''Authorization: BEARER your-token'' \''https://public-api.wordpress.com/rest/v1/sites/123/media/new'''
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/media/{media_ID}:
+    get:
+      operationId: getSitesBySiteMediaByMediaId
+      summary: Get a single media item (by ID).
+      description: Get a single media item (by ID).
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the media item
+                  date:
+                    type: string
+                    format: date-time
+                    description: The date the media was uploaded
+                  post_ID:
+                    type: integer
+                    description: ID of the post this media is attached to
+                  author_ID:
+                    type: integer
+                    description: ID of the user who uploaded the media
+                  URL:
+                    type: string
+                    description: URL to the file
+                  guid:
+                    type: string
+                    description: Unique identifier
+                  file:
+                    type: string
+                    description: Filename
+                  extension:
+                    type: string
+                    description: File extension
+                  mime_type:
+                    type: string
+                    description: File MIME type
+                  title:
+                    type: string
+                    description: Filename
+                  caption:
+                    type: string
+                    description: User-provided caption of the file
+                  description:
+                    type: string
+                    description: Description of the file
+                  alt:
+                    type: string
+                    description: Alternative text for image files.
+                  thumbnails:
+                    type: object
+                    description: Media item thumbnail URL options
+                  height:
+                    type: integer
+                    description: (Image & video only) Height of the media item
+                  width:
+                    type: integer
+                    description: (Image & video only) Width of the media item
+                  length:
+                    type: integer
+                    description: (Video & audio only) Duration of the media item, in seconds
+                  exif:
+                    type: array
+                    items: {}
+                    description: (Image & audio only) Exif (meta) information about the media item
+                  rating:
+                    type: string
+                    description: (Video only) VideoPress rating of the video
+                  display_embed:
+                    type: string
+                    description: Video only. Whether to share or not the video.
+                  allow_download:
+                    type: string
+                    description: Video only. Whether the video can be downloaded or not.
+                  videopress_guid:
+                    type: string
+                    description: (Video only) VideoPress GUID of the video when uploaded on a blog with VideoPress
+                  videopress_processing_done:
+                    type: boolean
+                    description: (Video only) If the video is uploaded on a blog with VideoPress, this will return the status of processing on the video.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: media_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The ID of the media item
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postSitesBySiteMediaByMediaId
+      summary: Edit basic information about a media item.
+      description: Edit basic information about a media item.
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the media item
+                  date:
+                    type: string
+                    format: date-time
+                    description: The date the media was uploaded
+                  post_ID:
+                    type: integer
+                    description: ID of the post this media is attached to
+                  author_ID:
+                    type: integer
+                    description: ID of the user who uploaded the media
+                  URL:
+                    type: string
+                    description: URL to the file
+                  guid:
+                    type: string
+                    description: Unique identifier
+                  file:
+                    type: string
+                    description: File name
+                  extension:
+                    type: string
+                    description: File extension
+                  mime_type:
+                    type: string
+                    description: File mime type
+                  title:
+                    type: string
+                    description: File name
+                  caption:
+                    type: string
+                    description: User provided caption of the file
+                  description:
+                    type: string
+                    description: Description of the file
+                  alt:
+                    type: string
+                    description: Alternative text for image files.
+                  thumbnails:
+                    type: object
+                    description: Media item thumbnail URL options
+                  height:
+                    type: integer
+                    description: (Image & video only) Height of the media item
+                  width:
+                    type: integer
+                    description: (Image & video only) Width of the media item
+                  length:
+                    type: integer
+                    description: (Video & audio only) Duration of the media item, in seconds
+                  exif:
+                    type: array
+                    items: {}
+                    description: (Image & audio only) Exif (meta) information about the media item
+                  rating:
+                    type: string
+                    description: (Video only) VideoPress rating of the video
+                  display_embed:
+                    type: string
+                    description: Video only. Whether to share or not the video.
+                  allow_download:
+                    type: string
+                    description: Video only. Whether the video can be downloaded or not.
+                  privacy_setting:
+                    type: integer
+                    description: Video only. The privacy level for the video.
+                  videopress_guid:
+                    type: string
+                    description: (Video only) VideoPress GUID of the video when uploaded on a blog with VideoPress
+                  videopress_processing_done:
+                    type: boolean
+                    description: (Video only) If the video is uploaded on a blog with VideoPress, this will return the status of processing on the video.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: media_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The ID of the media item
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parent_id:
+                  type: integer
+                  description: ID of the post this media is attached to
+                title:
+                  type: string
+                  description: The file name.
+                caption:
+                  type: string
+                  description: File caption.
+                description:
+                  type: string
+                  description: Description of the file.
+                alt:
+                  type: string
+                  description: Alternative text for image files.
+                rating:
+                  type: string
+                  description: Video only. Video rating.
+                display_embed:
+                  type: string
+                  description: Video only. Whether to share or not the video.
+                allow_download:
+                  type: string
+                  description: Video only. Whether the video can be downloaded or not.
+                privacy_setting:
+                  type: integer
+                  description: Video only. The privacy level for the video.
+                artist:
+                  type: string
+                  description: Audio Only. Artist metadata for the audio track.
+                album:
+                  type: string
+                  description: Audio Only. Album metadata for the audio track.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/media/{media_ID}/delete:
+    post:
+      operationId: postSitesBySiteMediaByMediaIdDelete
+      summary: 'Delete a piece of media. Note: Media is deleted and not trashed.'
+      description: 'Delete a piece of media. Note: Media is deleted and not trashed.'
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Returns deleted if the media was successfully deleted
+                  ID:
+                    type: integer
+                    description: The ID of the media item
+                  date:
+                    type: string
+                    format: date-time
+                    description: The date the media was uploaded
+                  post_ID:
+                    type: integer
+                    description: ID of the post this media is attached to
+                  author_ID:
+                    type: integer
+                    description: ID of the user who uploaded the media
+                  URL:
+                    type: string
+                    description: URL to the file
+                  guid:
+                    type: string
+                    description: Unique identifier
+                  file:
+                    type: string
+                    description: File name
+                  extension:
+                    type: string
+                    description: File extension
+                  mime_type:
+                    type: string
+                    description: File mime type
+                  title:
+                    type: string
+                    description: File name
+                  caption:
+                    type: string
+                    description: User-provided caption of the file
+                  description:
+                    type: string
+                    description: Description of the file
+                  alt:
+                    type: string
+                    description: Alternative text for image files.
+                  thumbnails:
+                    type: object
+                    description: Media item thumbnail URL options
+                  height:
+                    type: integer
+                    description: (Image & video only) Height of the media item
+                  width:
+                    type: integer
+                    description: (Image & video only) Width of the media item
+                  length:
+                    type: integer
+                    description: (Video & audio only) Duration of the media item, in seconds
+                  exif:
+                    type: array
+                    items: {}
+                    description: (Image & audio only) Exif (meta) information about the media item
+                  videopress_guid:
+                    type: string
+                    description: (Video only) VideoPress GUID of the video when uploaded on a blog with VideoPress
+                  videopress_processing_done:
+                    type: boolean
+                    description: (Video only) If the video is Uuploaded on a blog with VideoPress, this will return the status of processing on the Video
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: media_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The media ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/media/{media_ID}/edit:
+    post:
+      operationId: postSitesBySiteMediaByMediaIdEdit
+      summary: Edit a media item.
+      description: Edit a media item.
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the media item
+                  date:
+                    type: string
+                    format: date-time
+                    description: The date the media was uploaded
+                  post_ID:
+                    type: integer
+                    description: ID of the post this media is attached to
+                  author_ID:
+                    type: integer
+                    description: ID of the user who uploaded the media
+                  URL:
+                    type: string
+                    description: URL to the file
+                  guid:
+                    type: string
+                    description: Unique identifier
+                  file:
+                    type: string
+                    description: File name
+                  extension:
+                    type: string
+                    description: File extension
+                  mime_type:
+                    type: string
+                    description: File mime type
+                  title:
+                    type: string
+                    description: File name
+                  caption:
+                    type: string
+                    description: User provided caption of the file
+                  description:
+                    type: string
+                    description: Description of the file
+                  alt:
+                    type: string
+                    description: Alternative text for image files.
+                  thumbnails:
+                    type: object
+                    description: Media item thumbnail URL options
+                  height:
+                    type: integer
+                    description: (Image & video only) Height of the media item
+                  width:
+                    type: integer
+                    description: (Image & video only) Width of the media item
+                  length:
+                    type: integer
+                    description: (Video & audio only) Duration of the media item, in seconds
+                  exif:
+                    type: array
+                    items: {}
+                    description: (Image & audio only) Exif (meta) information about the media item
+                  videopress_guid:
+                    type: string
+                    description: (Video only) VideoPress GUID of the video when uploaded on a blog with VideoPress
+                  videopress_processing_done:
+                    type: boolean
+                    description: (Video only) If the video is uploaded on a blog with VideoPress, this will return the status of processing on the video.
+                  revision_history:
+                    type: object
+                    description: An object with `items` and `original` keys. `original` is an object with data about the original image. `items` is an array of snapshots of the previous images of this Media. Each item has the `URL`, `file, `extension`, `date`, and `mime_type` fields.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: media_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The ID of the media item
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                parent_id:
+                  type: integer
+                  description: ID of the post this media is attached to
+                title:
+                  type: string
+                  description: The file name.
+                caption:
+                  type: string
+                  description: File caption.
+                description:
+                  type: string
+                  description: Description of the file.
+                alt:
+                  type: string
+                  description: Alternative text for image files.
+                artist:
+                  type: string
+                  description: Audio Only. Artist metadata for the audio track.
+                album:
+                  type: string
+                  description: Audio Only. Album metadata for the audio track.
+                media:
+                  type: string
+                  description: 'An object file to attach to the post. To upload media, the entire request should be multipart/form-data encoded. Multiple media items will be displayed in a gallery. Accepts jpg, jpeg, png, gif, pdf, doc, ppt, odt, pptx, docx, pps, ppsx, xls, xlsx, key. Audio and Video may also be available. See allowed_file_types in the options response of the site endpoint. Example:curl \--form ''title=Image'' \--form ''media=@/path/to/file.jpg'' \-H ''Authorization: BEARER your-token'' \''https://public-api.wordpress.com/rest/v1/sites/123/media/new'''
+                attrs:
+                  type: object
+                  description: An Object of attributes (`title`, `description` and `caption`) are supported to assign to the media uploaded via the `media` or `media_url`
+                media_url:
+                  type: string
+                  description: An URL of the image to attach to a post.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /wp/v2/sites/{wpcom_site}/media:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteMedia
+      summary: GET /wp/v2/sites/{wpcom_site}/media
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts published after a given ISO8601 compliant date.
+      - name: modified_after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to posts assigned to specific authors.
+      - name: author_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes posts assigned to specific authors.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts published before a given ISO8601 compliant date.
+      - name: modified_before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to specific IDs.
+      - name: search_semantics
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - exact
+        description: How to interpret the search input.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+        description: Sort collection by post attribute.
+      - name: parent
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to items with particular parent IDs.
+      - name: parent_exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to all items except those of a particular parent ID.
+      - name: search_columns
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: string
+        description: Array of column names to be searched.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to posts with one or more specific slugs.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: array
+          default: inherit
+          items:
+            type: string
+        description: Limit result set to posts assigned one or more statuses.
+      - name: media_type
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to attachments of a particular media type or media types.
+      - name: mime_type
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to attachments of a particular MIME type or MIME types.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteMedia
+      summary: POST /wp/v2/sites/{wpcom_site}/media
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: A named status for the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                jetpack_sharing_enabled:
+                  type: boolean
+                  description: Are sharing buttons enabled?
+                filename:
+                  type: string
+                  description: Original attachment file name
+                filesize:
+                  type: number
+                  description: Attachment file size
+                jetpack_likes_enabled:
+                  type: boolean
+                  description: Are Likes enabled?
+                alt_text:
+                  type: string
+                  description: Alternative text to display when attachment is not displayed.
+                caption:
+                  type: object
+                  description: The attachment caption.
+                description:
+                  type: object
+                  description: The attachment description.
+                post:
+                  type: integer
+                  description: The ID for the associated post of the attachment.
+                generate_sub_sizes:
+                  type: boolean
+                  default: true
+                  description: Whether to generate image sub sizes.
+                convert_format:
+                  type: boolean
+                  default: true
+                  description: Whether to convert image formats.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of an external image to sideload into the media library, instead of uploading a file.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/media/{id}:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteMediabyId
+      summary: GET /wp/v2/sites/{wpcom_site}/media/{id}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteMediabyId
+      summary: POST /wp/v2/sites/{wpcom_site}/media/{id}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: A named status for the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                jetpack_sharing_enabled:
+                  type: boolean
+                  description: Are sharing buttons enabled?
+                filename:
+                  type: string
+                  description: Original attachment file name
+                filesize:
+                  type: number
+                  description: Attachment file size
+                jetpack_likes_enabled:
+                  type: boolean
+                  description: Are Likes enabled?
+                alt_text:
+                  type: string
+                  description: Alternative text to display when attachment is not displayed.
+                caption:
+                  type: object
+                  description: The attachment caption.
+                description:
+                  type: object
+                  description: The attachment description.
+                post:
+                  type: integer
+                  description: The ID for the associated post of the attachment.
+    put:
+      operationId: putWpV2SitesbyWpcomSiteMediabyId
+      summary: PUT /wp/v2/sites/{wpcom_site}/media/{id}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: A named status for the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                jetpack_sharing_enabled:
+                  type: boolean
+                  description: Are sharing buttons enabled?
+                filename:
+                  type: string
+                  description: Original attachment file name
+                filesize:
+                  type: number
+                  description: Attachment file size
+                jetpack_likes_enabled:
+                  type: boolean
+                  description: Are Likes enabled?
+                alt_text:
+                  type: string
+                  description: Alternative text to display when attachment is not displayed.
+                caption:
+                  type: object
+                  description: The attachment caption.
+                description:
+                  type: object
+                  description: The attachment description.
+                post:
+                  type: integer
+                  description: The ID for the associated post of the attachment.
+    patch:
+      operationId: patchWpV2SitesbyWpcomSiteMediabyId
+      summary: PATCH /wp/v2/sites/{wpcom_site}/media/{id}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - spam
+                  description: A named status for the post.
+                title:
+                  type: object
+                  description: The title for the post.
+                author:
+                  type: integer
+                  description: The ID for the author of the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                comment_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not comments are open on the post.
+                ping_status:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+                  description: Whether or not the post can be pinged.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                jetpack_sharing_enabled:
+                  type: boolean
+                  description: Are sharing buttons enabled?
+                filename:
+                  type: string
+                  description: Original attachment file name
+                filesize:
+                  type: number
+                  description: Attachment file size
+                jetpack_likes_enabled:
+                  type: boolean
+                  description: Are Likes enabled?
+                alt_text:
+                  type: string
+                  description: Alternative text to display when attachment is not displayed.
+                caption:
+                  type: object
+                  description: The attachment caption.
+                description:
+                  type: object
+                  description: The attachment description.
+                post:
+                  type: integer
+                  description: The ID for the associated post of the attachment.
+    delete:
+      operationId: deleteWpV2SitesbyWpcomSiteMediabyId
+      summary: DELETE /wp/v2/sites/{wpcom_site}/media/{id}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether to bypass Trash and force deletion.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/media/{id}/edit:
+    post:
+      operationId: postWpV2SitesbyWpcomSiteMediabyIdEdit
+      summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/edit
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                src:
+                  type: string
+                  format: uri
+                  description: URL to the edited image file.
+                modifiers:
+                  type: array
+                  items:
+                    type: object
+                  description: Array of image edits.
+                rotation:
+                  type: integer
+                  description: 'The amount to rotate the image clockwise in degrees. DEPRECATED: Use `modifiers` instead.'
+                x:
+                  type: number
+                  description: 'As a percentage of the image, the x position to start the crop from. DEPRECATED: Use `modifiers` instead.'
+                y:
+                  type: number
+                  description: 'As a percentage of the image, the y position to start the crop from. DEPRECATED: Use `modifiers` instead.'
+                width:
+                  type: number
+                  description: 'As a percentage of the image, the width to crop the image to. DEPRECATED: Use `modifiers` instead.'
+                height:
+                  type: number
+                  description: 'As a percentage of the image, the height to crop the image to. DEPRECATED: Use `modifiers` instead.'
+                caption:
+                  type: object
+                  description: The attachment caption.
+                description:
+                  type: object
+                  description: The attachment description.
+                title:
+                  type: object
+                  description: The title for the post.
+                post:
+                  type: integer
+                  description: The ID for the associated post of the attachment.
+                alt_text:
+                  type: string
+                  description: Alternative text to display when attachment is not displayed.
+              required:
+              - src
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/media/{id}/finalize:
+    post:
+      operationId: postWpV2SitesbyWpcomSiteMediabyIdFinalize
+      summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/finalize
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sub_sizes:
+                  type: array
+                  default: []
+                  items:
+                    type: object
+                  description: Array of sub-size metadata collected from sideload responses.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/media/{id}/post-process:
+    post:
+      operationId: postWpV2SitesbyWpcomSiteMediabyIdPostProcess
+      summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/post-process
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - create-image-subsizes
+              required:
+              - action
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/media/{id}/sideload:
+    post:
+      operationId: postWpV2SitesbyWpcomSiteMediabyIdSideload
+      summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/sideload
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image_size:
+                  type: string
+                  items:
+                    type: string
+                  description: Image size. Can be a single size name or an array of size names to register the same file under multiple sizes.
+                convert_format:
+                  type: boolean
+                  default: true
+                  description: Whether to convert image formats.
+              required:
+              - image_size
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/media/videopress-playback-jwt/{guid}:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteMediaVideopressPlaybackJwtbyGuid
+      summary: POST /wpcom/v2/sites/{wpcom_site}/media/videopress-playback-jwt/{guid}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteMediaVideopressPlaybackJwtbyGuid
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/media/videopress-playback-jwt/{guid}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteMediaVideopressPlaybackJwtbyGuid
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/media/videopress-playback-jwt/{guid}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/media/videopress-privacy-details/{guid}:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteMediaVideopressPrivacyDetailsbyGuid
+      summary: POST /wpcom/v2/sites/{wpcom_site}/media/videopress-privacy-details/{guid}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteMediaVideopressPrivacyDetailsbyGuid
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/media/videopress-privacy-details/{guid}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteMediaVideopressPrivacyDetailsbyGuid
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/media/videopress-privacy-details/{guid}
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/media/videopress-upload-jwt:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteMediaVideopressUploadJwt
+      summary: POST /wpcom/v2/sites/{wpcom_site}/media/videopress-upload-jwt
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteMediaVideopressUploadJwt
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/media/videopress-upload-jwt
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteMediaVideopressUploadJwt
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/media/videopress-upload-jwt
+      tags:
+      - media
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-1-openapi.yml
+- automattic-wordpress-com-rest-v1-2-openapi.yml
+- automattic-wordpress-com-wp-v2-openapi.yml
+- automattic-wordpress-com-wpcom-v2-openapi.yml

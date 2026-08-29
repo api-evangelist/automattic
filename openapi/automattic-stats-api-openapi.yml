@@ -1,0 +1,5144 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API v1.1 Stats API
+  version: v1.1
+  description: 'The WordPress.com REST API, operated by Automattic. Derived by API Evangelist from Automattic''s own self-describing help document at https://public-api.wordpress.com/rest/v1.1/help (Accept: application/json), which publishes every endpoint''s method, path, description, path/query/body parameters and response fields. Security schemes come from https://public-api.wordpress.com/.well-known/openid-configuration. The error envelope was observed live.'
+  termsOfService: https://wordpress.com/tos/
+  contact:
+    name: WordPress.com Developer Resources
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/rest/v1.1/help
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+security:
+- bearerAuth: []
+tags:
+- name: stats
+paths:
+  /sites/{site}/stats:
+    get:
+      operationId: getSitesBySiteStats
+      summary: Get a site's stats
+      description: Get a site's stats
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  stats:
+                    type: array
+                    items: {}
+                    description: Stats about the requested site
+                  visits:
+                    type: array
+                    items: {}
+                    description: Visits to the requested site
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/archives:
+    get:
+      operationId: getSitesBySiteStatsArchives
+      summary: View a site's archives
+      description: View a site's archives
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the views of archives pages on those days (omitted when summarize=true)
+                  summary:
+                    type: object
+                    description: Summary of archives page views over the specified period (omitted when summarize=false)
+                  period:
+                    type: string
+                    description: The period represented in the stats returned
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+      - name: skip_archives
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Skip home/archives pages from the results
+      - name: migrate_archive_homepage
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Migrate archive homepage views to update the Home page / Archive display
+  /sites/{site}/stats/clicks:
+    get:
+      operationId: getSitesBySiteStatsClicks
+      summary: View a site's outbound clicks
+      description: View a site's outbound clicks
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the clicks that occurred on those days (omitted when summarize=true)
+                  summary:
+                    type: object
+                    description: Summary of clicks that occured over the specified period  (omitted when summarize=false)
+                  period:
+                    type: string
+                    description: The period represented in the stats returned
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+  /sites/{site}/stats/clicks/emails/summary:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsSummary
+      summary: View the total number of email clicks for each post.
+      description: View the total number of email clicks for each post.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  period:
+                    type: string
+                    description: The period for which stats are returned
+                  posts:
+                    type: array
+                    items: {}
+                    description: An array of posts with the total views for each post
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 10.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - year
+          - alltime
+        description: 'hour: (default) The output will return results over the past [num] hours; day: The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years; alltime: The output will return results from all time'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results, accepts Y-m-d format
+  /sites/{site}/stats/clicks/emails/{post_id}:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsByPostId
+      summary: View chart stats related to email clicks by period.
+      description: View chart stats related to email clicks by period.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: An object containing the clicks.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Number of periods to include in the results
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+        description: 'hour: (default) The output will return results over the next [quantity] hours; day: The output will return results over the next [quantity] days'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results, accepts Y-m-d or Y-m-d\Th:00:00
+  /sites/{site}/stats/clicks/emails/{post_id}/client:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsByPostIdClient
+      summary: View email clicks by client.
+      description: View email clicks by client.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clients:
+                    type: object
+                    description: An object containing the email clicks by client.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/clicks/emails/{post_id}/country:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsByPostIdCountry
+      summary: View email clicks by country.
+      description: View email clicks by country.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  countries:
+                    type: object
+                    description: An object containing the email clicks by country.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/clicks/emails/{post_id}/device:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsByPostIdDevice
+      summary: View email clicks by device.
+      description: View email clicks by device.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  devices:
+                    type: object
+                    description: An object containing the email clicks by device.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/clicks/emails/{post_id}/link:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsByPostIdLink
+      summary: View email clicks by link.
+      description: View email clicks by link.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  links:
+                    type: object
+                    description: An object containing the email clicks by link.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/clicks/emails/{post_id}/rate:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsByPostIdRate
+      summary: View email clicks rate by post. Returns mock data.
+      description: View email clicks rate by post. Returns mock data.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_clicks:
+                    type: number
+                    description: Total number of email clicks for that post over the time.
+                  total_opens:
+                    type: number
+                    description: Total number of email opens for that post.
+                  unique_opens:
+                    type: number
+                    description: Number of unique users who opened the email.
+                  unique_clicks:
+                    type: number
+                    description: Number of unique users who clicked on the email.
+                  total_sends:
+                    type: number
+                    description: Total number of recipients where the email was sent.
+                  clicks_rate:
+                    type: number
+                    description: The click rate value in decimal format, result of unique_clicks / total_sends.
+                  opens_rate:
+                    type: number
+                    description: The open rate value in decimal format, result of unique_opens / total_sends.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/clicks/emails/{post_id}/user-content-link:
+    get:
+      operationId: getSitesBySiteStatsClicksEmailsByPostIdUserContentLink
+      summary: View email clicks by user content link.
+      description: View email clicks by user content link.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  links:
+                    type: object
+                    description: An object containing the email clicks by user content link.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/comment-followers:
+    get:
+      operationId: getSitesBySiteStatsCommentFollowers
+      summary: View a site's comment followers
+      description: View a site's comment followers
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                    description: The current page of results returned
+                  pages:
+                    type: integer
+                    description: The total number of pages of results available
+                  total:
+                    type: integer
+                    description: The total number of results available
+                  posts:
+                    type: array
+                    items: {}
+                    description: An array containing the posts
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The page of results to return. Default: 1.'
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The number of results to return per page. Numbers larger than 20 will default to 20. Default: 20.'
+  /sites/{site}/stats/comments:
+    get:
+      operationId: getSitesBySiteStatsComments
+      summary: View a site's top comment authors and most-commented posts
+      description: View a site's top comment authors and most-commented posts
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  authors:
+                    type: array
+                    items: {}
+                    description: An array of top comment authors
+                  posts:
+                    type: array
+                    items: {}
+                    description: Array of most-commented posts
+                  monthly_comments:
+                    type: integer
+                    description: Average number of comments per month
+                  total_comments:
+                    type: integer
+                    description: Number of total comments
+                  most_active_day:
+                    type: string
+                    description: Day with most comment-activity
+                  most_active_time:
+                    type: string
+                    description: Time with most comment-activity
+                  most_commented_post:
+                    type: array
+                    items: {}
+                    description: Most commented post
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/country-views:
+    get:
+      operationId: getSitesBySiteStatsCountryViews
+      summary: View a site's views by country
+      description: View a site's views by country
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the country views that occurred on those days (omitted when summarize=true)
+                  summary:
+                    type: array
+                    items: {}
+                    description: Summary of country views that occured over the specified period  (omitted when summarize=false)
+                  country-info:
+                    type: array
+                    items: {}
+                    description: An array containing country info
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'the maximum number of countries to include in the results Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+  /sites/{site}/stats/devices/{device_property_name}:
+    get:
+      operationId: getSitesBySiteStatsDevicesByDevicePropertyName
+      summary: Fetch site's Device properties statistics.
+      description: Fetch site's Device properties statistics.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  top_values:
+                    type: object
+                    description: Each key is a string with one Device property. Each value is an integer indicating how many views had this Device property(s). For screensize the integer refers to percentage.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: device_property_name
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - screensize
+          - platform
+          - browser
+        description: 'screensize: (default) Stats for screen sizes; platform: Stats for operating systems; browser: Stats for browsers'
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: days
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'number of days to include in the query Default: 1.'
+  /sites/{site}/stats/emails/summary:
+    get:
+      operationId: getSitesBySiteStatsEmailsSummary
+      summary: View the total number of email opens and clicks for each post.
+      description: View the total number of email opens and clicks for each post.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  posts:
+                    type: array
+                    items: {}
+                    description: An array of posts with the total opens/clicks for each post
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 10.'
+      - name: sort_field
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - opens
+          - clicks
+          - post_id
+          - post_date
+        description: 'opens: (default) Sort by the number of opens; clicks: Sort by the number of clicks; post_id: Sort by the post id; post_date: Sort by the post date'
+      - name: sort_order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+        description: 'asc: (default) Sort in ascending order; desc: Sort in descending order'
+  /sites/{site}/stats/file-downloads:
+    get:
+      operationId: getSitesBySiteStatsFileDownloads
+      summary: View a site's file downloads
+      description: View a site's file downloads
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  period:
+                    type: string
+                    description: The period (day|week|month|year)
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the file downloads that occurred on those days
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'number of periods to include in the query Default: 1.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'the maximum number of files to include for each group of results Default: 10.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+  /sites/{site}/stats/followers:
+    get:
+      operationId: getSitesBySiteStatsFollowers
+      summary: View a site's followers
+      description: View a site's followers
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: integer
+                    description: The current page of results returned
+                  pages:
+                    type: integer
+                    description: The total number of pages of results available
+                  total:
+                    type: integer
+                    description: The total number of followers
+                  total_email:
+                    type: integer
+                    description: The total number of email-only followers
+                  total_wpcom:
+                    type: integer
+                    description: The total number of WordPress.com followers
+                  subscribers:
+                    type: array
+                    items: {}
+                    description: An array containing the subscribers
+                  is_owner_subscribed:
+                    type: boolean
+                    description: Has the site owner been subscribing to the blog
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'One of: ''wpcom'' or ''email''. Default: ''wpcom''.'
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The page of results to return. Default: 1.'
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The number of results to return per page. Defaults to 20. Maximum 100. Default: 20.'
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Returns followers with matching email addresses. Only works in combination with type="email".
+      - name: filter_admin
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'Filter admin from being subscribers count if the value is true. Default: false.'
+  /sites/{site}/stats/highlights:
+    get:
+      operationId: getSitesBySiteStatsHighlights
+      summary: View highlight metrics from the last seven days.
+      description: View highlight metrics from the last seven days.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comments:
+                    type: integer
+                    description: The number of comments in the specified time period
+                  likes:
+                    type: integer
+                    description: The number of likes in the specified time period
+                  views:
+                    type: integer
+                    description: The number of views in the specified time period
+                  visitors:
+                    type: integer
+                    description: The number of visitors in the specified time period
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/location-views/{geo_mode}:
+    get:
+      operationId: getSitesBySiteStatsLocationViewsByGeoMode
+      summary: View a site's views by country, region and city
+      description: View a site's views by country, region and city
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the country views that occurred on those days (omitted when summarize=true)
+                  summary:
+                    type: array
+                    items: {}
+                    description: Summary of country views that occured over the specified period  (omitted when summarize=false)
+                  country-info:
+                    type: array
+                    items: {}
+                    description: An array containing location info
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: geo_mode
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - country
+          - region
+          - city
+        description: 'country: (default) Stats per country; region: Stats per region; city: Stats per city'
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'the maximum number of countries to include in the results Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+      - name: filter_by_country
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The ISO-3166-1 country code to filter results with
+  /sites/{site}/stats/opens/emails/summary:
+    get:
+      operationId: getSitesBySiteStatsOpensEmailsSummary
+      summary: View the total number of email opens for each post.
+      description: View the total number of email opens for each post.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  period:
+                    type: string
+                    description: The period for which stats are returned
+                  posts:
+                    type: array
+                    items: {}
+                    description: An array of posts with the total views for each post
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 10.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - year
+          - alltime
+        description: 'hour: (default) The output will return results over the past [num] hours; day: The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years; alltime: The output will return results from all time'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results, accepts Y-m-d format
+  /sites/{site}/stats/opens/emails/{post_id}:
+    get:
+      operationId: getSitesBySiteStatsOpensEmailsByPostId
+      summary: View multiple stats related to email opens by post.
+      description: View multiple stats related to email opens by post.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    description: An object containing the opens rate, and the opens and sends counts.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - year
+        description: 'hour: (default) The output will return results over the past [num] hours; day: The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results, accepts Y-m-d or Y-m-d\Th:00:00
+      - name: stats_fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'A comma-separated list of the fields requested in the response Default: ''timeline,opens_rate,client,country,device''.'
+  /sites/{site}/stats/opens/emails/{post_id}/client:
+    get:
+      operationId: getSitesBySiteStatsOpensEmailsByPostIdClient
+      summary: View email opens stats by client.
+      description: View email opens stats by client.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clients:
+                    type: object
+                    description: An object containing the email opens by client.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/opens/emails/{post_id}/country:
+    get:
+      operationId: getSitesBySiteStatsOpensEmailsByPostIdCountry
+      summary: View email opens stats by country.
+      description: View email opens stats by country.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  countries:
+                    type: object
+                    description: An object containing the email opens by country.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/opens/emails/{post_id}/device:
+    get:
+      operationId: getSitesBySiteStatsOpensEmailsByPostIdDevice
+      summary: View email opens stats by device.
+      description: View email opens stats by device.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  devices:
+                    type: object
+                    description: An object containing the email opens by device.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/opens/emails/{post_id}/rate:
+    get:
+      operationId: getSitesBySiteStatsOpensEmailsByPostIdRate
+      summary: View email opens rate by post.
+      description: View email opens rate by post.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_opens:
+                    type: number
+                    description: Total number of email opens for that post over the time.
+                  total_sends:
+                    type: number
+                    description: Total number of recipients where the email was sent.
+                  opens_rate:
+                    type: number
+                    description: The opens rate value in decimal format, result of total_opens / total_sends.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/post/{post_id}:
+    get:
+      operationId: getSitesBySiteStatsPostByPostId
+      summary: View a post's views
+      description: View a post's views
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  years:
+                    type: array
+                    items: {}
+                    description: Views grouped by years and months
+                  averages:
+                    type: array
+                    items: {}
+                    description: Per-day average of views grouped by years and months
+                  weeks:
+                    type: array
+                    items: {}
+                    description: Daily views for recent weeks
+                  like_count:
+                    type: integer
+                    description: The number of likes for this post. Null when no specific post is requested.
+                  discussion:
+                    type: object
+                    description: Discussion data for the post, currently the `comment_count`. Null when no specific post is requested.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The post's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/publicize:
+    get:
+      operationId: getSitesBySiteStatsPublicize
+      summary: View a site's publicize follower counts
+      description: View a site's publicize follower counts
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  services:
+                    type: array
+                    items: {}
+                    description: An array of services and follower stats
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/referrers:
+    get:
+      operationId: getSitesBySiteStatsReferrers
+      summary: View a site's referrers
+      description: View a site's referrers
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the referrer views that occurred on those days (omitted when summarize=true)
+                  summary:
+                    type: object
+                    description: Summary of referrer views that occured over the specified period  (omitted when summarize=false)
+                  period:
+                    type: string
+                    description: The period represented in the stats returned
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+  /sites/{site}/stats/referrers/spam:
+    get:
+      operationId: getSitesBySiteStatsReferrersSpam
+      summary: List referrers marked as spam
+      description: List referrers marked as spam
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  domains:
+                    type: array
+                    items: {}
+                    description: List of spam-blocked referrer domains
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+  /sites/{site}/stats/referrers/spam/delete:
+    post:
+      operationId: postSitesBySiteStatsReferrersSpamDelete
+      summary: Unreport a referrer as spam
+      description: Unreport a referrer as spam
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether or not the report was successful
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The domain of the site being unreported as spam
+  /sites/{site}/stats/referrers/spam/new:
+    post:
+      operationId: postSitesBySiteStatsReferrersSpamNew
+      summary: Report a referrer as spam
+      description: Report a referrer as spam
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Whether or not the report was successful
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: domain
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The domain of the site being reported as spam
+  /sites/{site}/stats/search-terms:
+    get:
+      operationId: getSitesBySiteStatsSearchTerms
+      summary: View search terms used to find the site
+      description: View search terms used to find the site
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the searches that occurred on those days (omitted when summarize=true)
+                  summary:
+                    type: object
+                    description: Summary of searches that occured over the specified period (omitted when summarize=false)
+                  period:
+                    type: string
+                    description: The period represented in the stats returned
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+  /sites/{site}/stats/streak:
+    get:
+      operationId: getSitesBySiteStatsStreak
+      summary: Get stats for Calendar Heatmap. Returns data with each post timestamp.
+      description: Get stats for Calendar Heatmap. Returns data with each post timestamp.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: startDate
+        in: query
+        required: false
+        schema:
+          type: string
+        description: start date for query
+      - name: endDate
+        in: query
+        required: false
+        schema:
+          type: string
+        description: end date for query
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: maximum number of posts to return
+  /sites/{site}/stats/summary:
+    get:
+      operationId: getSitesBySiteStatsSummary
+      summary: View a site's summarized views, visitors, likes and comments
+      description: View a site's summarized views, visitors, likes and comments
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The date that determines the most recent period for which stats are returned
+                  period:
+                    type: string
+                    description: The period for which stats are returned
+                  views:
+                    type: integer
+                    description: The number of views during the given period, up to 'date'
+                  visitors:
+                    type: integer
+                    description: The number of visitors during the given period
+                  likes:
+                    type: integer
+                    description: The number of likes during the given period
+                  reblogs:
+                    type: integer
+                    description: The number of reblogs during the given period
+                  comments:
+                    type: integer
+                    description: The number of comments during the given period
+                  followers:
+                    type: integer
+                    description: The total number of site followers
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days, the last day being ''date''; week: The output will return results over the past [num] weeks, the last week being the one including ''date''; month: The output will return results over the past [num] months, the last month being the one including ''date''; year: The output will return results over the past [num] years, the last year being the one including ''date'''
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The date that determines the most recent period for which results are returned
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+  /sites/{site}/stats/tags:
+    get:
+      operationId: getSitesBySiteStatsTags
+      summary: View a site's views by tags and categories
+      description: View a site's views by tags and categories
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  tags:
+                    type: array
+                    items: {}
+                    description: An array of tags and tag-views for the requested site
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'the maximum number of tags to include in result Default: 10.'
+  /sites/{site}/stats/top-authors:
+    get:
+      operationId: getSitesBySiteStatsTopAuthors
+      summary: View a site's top authors
+      description: View a site's top authors
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the author views that occurred on those days (omitted when summarize=true)
+                  summary:
+                    type: array
+                    items: {}
+                    description: Summary of author views that occured over the specified period  (omitted when summarize=false)
+                  period:
+                    type: string
+                    description: The period used for the stats returned
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'the maximum number of authors to include in results Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+  /sites/{site}/stats/top-posts:
+    get:
+      operationId: getSitesBySiteStatsTopPosts
+      summary: View a site's top posts and pages by views
+      description: View a site's top posts and pages by views
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the post views that occurred on those days  (omitted when summarize=true)
+                  summary:
+                    type: array
+                    items: {}
+                    description: Summary of post views that occured over the specified period  (omitted when summarize=false)
+                  period:
+                    type: string
+                    description: The period for which stats are returned
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of periods to include in the results Default: 1.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+      - name: skip_archives
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Skip home/archives pages from the results
+      - name: migrate_archive_homepage
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Migrate archive homepage views to update the Home page / Archive display
+  /sites/{site}/stats/utm/{utm_param_name}:
+    get:
+      operationId: getSitesBySiteStatsUtmByUtmParamName
+      summary: Fetch site's UTM param statistics.
+      description: Fetch site's UTM param statistics.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  top_utm_values:
+                    type: object
+                    description: Each key is either a string with one UTM value, or a string with json encoded array containing multiple UTM values (when $utm_param_name contains comma). Each value is an integer indicating how many views had this UTM parameter(s).
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: utm_param_name
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - utm_id
+          - utm_source
+          - utm_medium
+          - utm_campaign
+          - utm_term
+          - utm_content
+          - utm_source_platform
+          - utm_creative_format
+          - utm_marketing_tactic
+          - utm_source,utm_medium
+          - utm_campaign,utm_source,utm_medium
+        description: 'utm_id: (default) Stats for utm_id parameter; utm_source: Stats for utm_source parameter; utm_medium: Stats for utm_medium parameter; utm_campaign: Stats for utm_campaign parameter; utm_term: Stats for utm_term parameter; utm_content: Stats for utm_content parameter; utm_source_platform: Stats for utm_source_platform parameter; utm_creative_format: Stats for utm_creative_format parameter; utm_marketing_tactic: Stats for utm_marketing_tactic parameter; utm_source,utm_medium: Stats for combinations of two UTM parameters: utm_source, utm_medium; utm_campaign,utm_source,utm_medium: Stats for combinations of three UTM parameters: utm_campaign, utm_source, utm_medium'
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: days
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'number of days to include in the query Default: 1.'
+      - name: post_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: post's id, set this if you want to fetch stats for a specific post only
+      - name: query_top_posts
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'return top posts for utm combinations Default: false.'
+  /sites/{site}/stats/utm/{utm_param_name}/top_posts:
+    get:
+      operationId: getSitesBySiteStatsUtmByUtmParamNameTopPosts
+      summary: Fetch top posts for a given UTM parameter value.
+      description: Fetch top posts for a given UTM parameter value.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  top_posts:
+                    type: array
+                    items: {}
+                    description: Array of objects containing `id` (post id), `href` (link to post), `title` and `views` (how many times a post was opened with given UTM values).
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: utm_param_name
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - utm_id
+          - utm_source
+          - utm_medium
+          - utm_campaign
+          - utm_term
+          - utm_content
+          - utm_source_platform
+          - utm_creative_format
+          - utm_marketing_tactic
+          - utm_source,utm_medium
+          - utm_campaign,utm_source,utm_medium
+        description: 'utm_id: (default) Stats for utm_id parameter; utm_source: Stats for utm_source parameter; utm_medium: Stats for utm_medium parameter; utm_campaign: Stats for utm_campaign parameter; utm_term: Stats for utm_term parameter; utm_content: Stats for utm_content parameter; utm_source_platform: Stats for utm_source_platform parameter; utm_creative_format: Stats for utm_creative_format parameter; utm_marketing_tactic: Stats for utm_marketing_tactic parameter; utm_source,utm_medium: Stats for combinations of two UTM parameters: utm_source, utm_medium; utm_campaign,utm_source,utm_medium: Stats for combinations of three UTM parameters: utm_campaign, utm_source, utm_medium'
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: utm_param_values
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Required. UTM parameter values for which to fetch breakdown by posts. When $utm_param_name contains comma this should be the string containing a json-encoded array.
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The maximum number of results to return Default: 10.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the start date to calculate days included in results
+      - name: days
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'number of days to include in the query Default: 1.'
+  /sites/{site}/stats/video-plays:
+    get:
+      operationId: getSitesBySiteStatsVideoPlays
+      summary: View a site's video plays
+      description: View a site's video plays
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned
+                  days:
+                    type: array
+                    items: {}
+                    description: An array of days and the video plays that occurred on those days
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'number of periods to include in the query Default: 1.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: starting date when requesting a range of results
+      - name: max
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'the maximum number of videos to include for each group of results Default: 10.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        description: 'day: (default) The output will return results over the past [num] days; week: The output will return results over the past [num] weeks; month: The output will return results over the past [num] months; year: The output will return results over the past [num] years'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+      - name: complete_stats
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'Request complete stats (views, impressions and watch_time) instead of plays only Default: false.'
+      - name: check_stats_module
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'Check for stats module to short-circuit the request Default: true.'
+      - name: summarize
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Return summary data instead of detailed period data
+  /sites/{site}/stats/video/{post_id}:
+    get:
+      operationId: getSitesBySiteStatsVideoByPostId
+      summary: View the details of a single video
+      description: View the details of a single video
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most recent day for which stats are returned, when range parameters are used
+                  period:
+                    type: string
+                    description: The bucket granularity of the results, when range parameters are used
+                  fields:
+                    type: array
+                    items: {}
+                    description: An array containing the fields returned
+                  data:
+                    type: array
+                    items: {}
+                    description: An array containing the visits data
+                  total:
+                    type: object
+                    description: Totals over the requested window for the requested metric(s), keyed by metric name. retention_rate is play-weighted.
+                  pages:
+                    type: array
+                    items: {}
+                    description: An array of URLs of pages the video was played on
+                  pages_detail:
+                    type: array
+                    items: {}
+                    description: An array of pages the video was played on, each with url, post_id, and title (post_id and title are null for off-site pages)
+                  post:
+                    type: object
+                    description: Information about the video post object, including `poster` — the URL of the video's poster image, or null
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The video's id
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: statType
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'The metric to return: views|plays|impressions|watch_time|retention_rate|all. views and plays are equivalent. Default: ''views''.'
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'The bucket granularity: day|week|month|year. Without date/start_date/num it selects the legacy trailing window instead. Default: ''day''.'
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Number of periods to include in the results. -1 returns the full series since the video was published.
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The most recent day to include in results
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The start date for the results; overrides num
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset
+  /sites/{site}/stats/views/posts:
+    get:
+      operationId: getSitesBySiteStatsViewsPosts
+      summary: View the total number of views for each post.
+      description: View the total number of views for each post.
+      tags:
+      - stats
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: The most-recent day for which stats are returned.
+                  posts:
+                    type: array
+                    items: {}
+                    description: An array of posts with the total views for each post.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site's id or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: post_ids
+        in: query
+        required: false
+        schema:
+          type: string
+        description: comma separated list of post ids. Maximum of 100 post_ids per request.
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'number of days to include in the query. Maximum of 30. Default: 1.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: the most recent day to include in results, in YYYY-MM-DD format. Defaults to today.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The offset, in hours, from GMT for which to fetch results. If omitted, defaults to site's offset.
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'

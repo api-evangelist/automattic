@@ -1,0 +1,2000 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Analytics API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: analytics
+paths:
+  /wpcom/v2/sites/{wpcom_site}/analytics/options/campaigns:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsCampaigns
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/campaigns
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Search query to filter items.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned in result set.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned (alternative to per_page).
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order by parameter.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASC
+          - DESC
+          default: ASC
+        description: Order parameter.
+      - name: cachebuster
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Cachebuster parameter to force fresh data retrieval.
+  /wpcom/v2/sites/{wpcom_site}/analytics/options/channels:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsChannels
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/channels
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Search query to filter items.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned in result set.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned (alternative to per_page).
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order by parameter.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASC
+          - DESC
+          default: ASC
+        description: Order parameter.
+      - name: cachebuster
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Cachebuster parameter to force fresh data retrieval.
+  /wpcom/v2/sites/{wpcom_site}/analytics/options/channels-sources:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsChannelsSources
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/channels-sources
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Search query to filter items.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned in result set.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned (alternative to per_page).
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order by parameter.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASC
+          - DESC
+          default: ASC
+        description: Order parameter.
+      - name: cachebuster
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Cachebuster parameter to force fresh data retrieval.
+  /wpcom/v2/sites/{wpcom_site}/analytics/options/sources:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsSources
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/sources
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Search query to filter items.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned in result set.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Maximum number of items to be returned (alternative to per_page).
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Order by parameter.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ASC
+          - DESC
+          default: ASC
+        description: Order parameter.
+      - name: cachebuster
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Cachebuster parameter to force fresh data retrieval.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/bookings/by-date:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsBookingsByDate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/bookings/by-date
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report. e.g. 2020-01-01T12:00:00.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report. e.g. 2020-03-01T16:00:00.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The time interval for the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The order date field to use for filtering (created, paid, completed). When specified, filters by order dates instead of booking dates.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/coupons:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCoupons
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/coupons
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - discount_amount
+          - orders_count
+          - coupon_code
+          - total_sales
+          default: discount_amount
+        description: Field to sort by.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Sort direction.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/coupons/by-date:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCouponsByDate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/coupons/by-date
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: Time interval for grouping data.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/customers/by-date:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCustomersByDate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/customers/by-date
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The time interval for the report.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/customers/new-returning:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCustomersNewReturning
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/customers/new-returning
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/forecast-with-narrative:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAnalyticsReportsForecastWithNarrative
+      summary: POST /wpcom/v2/sites/{wpcom_site}/analytics/reports/forecast-with-narrative
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                from:
+                  type: string
+                  format: date-time
+                  description: Start of the historical training window (ISO-8601 datetime).
+                to:
+                  type: string
+                  format: date-time
+                  description: End of the historical training window (ISO-8601 datetime).
+                prediction_periods:
+                  type: integer
+                prediction_granularity:
+                  type: string
+                  enum:
+                  - day
+                  - week
+                  - month
+                narrative:
+                  type: boolean
+                  default: true
+              required:
+              - product_id
+              - from
+              - to
+              - prediction_periods
+              - prediction_granularity
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/log-diagnostics:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAnalyticsReportsLogDiagnostics
+      summary: POST /wpcom/v2/sites/{wpcom_site}/analytics/reports/log-diagnostics
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                scan_id:
+                  type: string
+                generated_at:
+                  type: string
+                local_evidence:
+                  type: array
+                  items:
+                    type: object
+                metadata:
+                  type: object
+              required:
+              - local_evidence
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution-by-product/{view}/summary:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionByProductbyViewSummary
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution-by-product/{view}/summary
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: view
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items from this given ISO8601 compliant date.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items upto this given ISO8601 compliant date.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The interval length to be used in the graph.
+      - name: include_unassigned
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Include unassigned items in the result set.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/compare:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionbyViewCompare
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/compare
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: view
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: item
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit comparison to the specified items.
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items from this given ISO8601 compliant date.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items upto this given ISO8601 compliant date.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The interval length to be used in the graph.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/items:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionbyViewItems
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/items
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: view
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items from this given ISO8601 compliant date.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items upto this given ISO8601 compliant date.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+        description: Maximum number of items to be returned in result set.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - item
+          - net_sales
+          - gross_sales
+          - total_sales
+          - orders_count
+          - refunds
+          - fees
+          - taxes
+          - coupons
+          - shipping
+          - total_customers
+          - new_customers
+          - repeat_orders
+          - avg_order_value
+          - avg_items
+          default: net_sales
+        description: Sort collection by item attribute.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: item
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit comparison to the specified items.
+      - name: include_unassigned
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Include unassigned items in the result set.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/summary:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionbyViewSummary
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/summary
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: view
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items from this given ISO8601 compliant date.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Attribution items upto this given ISO8601 compliant date.
+      - name: compare_from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Compare attribution items from this given ISO8601 compliant date.
+      - name: compare_to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Compare attribution items upto this given ISO8601 compliant date.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The interval length to be used in the graph.
+      - name: include_unassigned
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+        description: Include unassigned items in the result set.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders-by-product-type/by-date:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrdersByProductTypeByDate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders-by-product-type/by-date
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report. e.g. 2020-01-01T12:00:00.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report. e.g. 2020-03-01T16:00:00.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The time interval for the report.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders/by-date:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrdersByDate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders/by-date
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report. e.g. 2020-01-01T12:00:00.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report. e.g. 2020-03-01T16:00:00.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The time interval for the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/products:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsProducts
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/products
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - product_net_revenue
+          - product_gross_revenue
+          - total_quantity
+          - orders_count
+          - product_name
+          - sku
+          - product_type
+          default: product_net_revenue
+        description: Field to sort by.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Sort direction.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+        description: Maximum number of items to be returned in result set.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/segment-narrative:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAnalyticsReportsSegmentNarrative
+      summary: POST /wpcom/v2/sites/{wpcom_site}/analytics/reports/segment-narrative
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cohort:
+                  type: object
+                  description: Optional cohort context — surfaces the merchant's pre-filter to the LLM so the playbook adapts.
+                segments:
+                  type: array
+                  items:
+                    type: object
+                  description: Aggregate per-segment summaries — no PII.
+              required:
+              - segments
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-conversion-rate:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByConversionRate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-conversion-rate
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report. e.g. 2020-01-01T12:00:00.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report. e.g. 2020-03-01T16:00:00.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The interval for the report.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-date:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByDate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-date
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report. e.g. 2020-01-01T12:00:00.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report. e.g. 2020-03-01T16:00:00.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: The interval for the report.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-device:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByDevice
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-device
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report. e.g. 2020-01-01T12:00:00.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report. e.g. 2020-03-01T16:00:00.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-location:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByLocation
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-location
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report. e.g. 2020-01-01T12:00:00.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report. e.g. 2020-03-01T16:00:00.
+      - name: group_by
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - country
+          - region
+          default: country
+        description: How to group location items. Use "country" for worldwide and "region" to group within a country (requires country_code).
+      - name: country_code
+        in: query
+        required: false
+        schema:
+          type: string
+        description: ISO-3166-1 alpha-2 country code. Required when group_by=region.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/taxes/breakdown:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsTaxesBreakdown
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/taxes/breakdown
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - total_tax
+          - order_tax
+          - shipping_tax
+          - orders_count
+          - tax_rate_code
+          default: total_tax
+        description: Field to sort by.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Sort direction.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+  /wpcom/v2/sites/{wpcom_site}/analytics/reports/taxes/by-date:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsTaxesByDate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/taxes/by-date
+      tags:
+      - analytics
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: Start date/time (ISO8601) for the report.
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+        description: End date/time (ISO8601) for the report.
+      - name: date_type
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - created
+          - paid
+          - completed
+        description: The date field to use for filtering (created, paid, completed). Defaults to site setting.
+      - name: interval
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+          - quarter
+          - year
+        description: Time interval for grouping data.
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: object
+        description: Filters to apply to the report.
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Fields to include in the response.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

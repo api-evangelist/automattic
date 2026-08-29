@@ -1,0 +1,71 @@
+openapi: 3.2.0
+info:
+  title: Akismet Key Verification API
+  description: Developer API to interact with the Akismet spam detection service.
+  version: 1.0.1
+  contact:
+    name: Contact Akismet
+    url: https://akismet.com/contact
+servers:
+- url: https://rest.akismet.com
+tags:
+- name: key-verification
+  description: Verify Akismet API key
+paths:
+  /1.1/verify-key:
+    post:
+      operationId: postVerifyKey
+      summary: Verify Akismet API key
+      description: 'Verifies the provided Akismet API key to check its validity and ensure it can be used for API requests.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/KeyVerificationParameters'
+      responses:
+        '200':
+          description: 'Key verification response.
+
+
+            If the verification returns "invalid", it usually includes an extra HTTP header with some debug information indicating exactly what was invalid about the call.
+
+            '
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                valid:
+                  value: valid
+                invalid:
+                  value: invalid
+          headers:
+            X-akismet-debug-help:
+              $ref: '#/components/headers/DebugHelpHeader'
+      tags:
+      - key-verification
+components:
+  headers:
+    DebugHelpHeader:
+      description: Extra context for any error that has occurred.
+      schema:
+        type: string
+  schemas:
+    KeyVerificationParameters:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The Akismet API key for authorization.
+        blog:
+          type: string
+          description: The front page or home URL of the instance making the request.
+      required:
+      - key
+      - blog
+externalDocs:
+  description: Akismet Developers Documentation
+  url: https://akismet.com/developers

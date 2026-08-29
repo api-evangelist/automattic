@@ -1,0 +1,122 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Newspack Manager API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: newspack-manager
+paths:
+  /wpcom/v2/newspack-manager/log:
+    post:
+      operationId: postWpcomV2NewspackManagerLog
+      summary: POST /wpcom/v2/newspack-manager/log
+      tags:
+      - newspack-manager
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error_code:
+                  type: string
+                  description: The error code that will be sent to the error_code field in logstash
+                type:
+                  type: string
+                  description: The type of log. Can be either "error" or "debug". The log will be written to logstash in a feature called newspack_{$type}
+                message:
+                  type: string
+                  description: The message that will be sent to the message field in logstash
+                log_level:
+                  type: integer
+                  description: 'All messages will be sent to logstash. If log_level is 3, the message will also be sent to the #newspack-errors Slack channel. If log_level is 4, the message will be sent to the #newspack-product Slack channel.'
+                url:
+                  type: string
+                  description: The URL that will be sent to the url field in logstash
+                data:
+                  type: string
+                  description: Extra data that will be sent to the extra field in logstash
+                user_email:
+                  type: string
+                  description: The user email related to the log entry. Will be sent to the external_user_id field in logstash
+              required:
+              - error_code
+              - type
+              - message
+              - log_level
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

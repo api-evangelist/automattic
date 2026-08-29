@@ -1,0 +1,179 @@
+openapi: 3.2.0
+info:
+  title: Akismet Spam API
+  description: Developer API to interact with the Akismet spam detection service.
+  version: 1.0.1
+  contact:
+    name: Contact Akismet
+    url: https://akismet.com/contact
+servers:
+- url: https://rest.akismet.com
+tags:
+- name: spam
+  description: Check for spam, and submit spam or ham (false positives)
+paths:
+  /1.1/comment-check:
+    post:
+      operationId: postCommentCheck
+      summary: Check comment for spam
+      description: 'Checks a comment against the Akismet spam database to determine if it is spam or not.
+
+        '
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StandardParameters'
+      responses:
+        '200':
+          description: Comment check successful
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                spam:
+                  value: 'true'
+                ham:
+                  value: 'false'
+                error:
+                  value: invalid
+          headers:
+            X-akismet-alert-code:
+              description: Error code. A full list is available at https://akismet.com/developers/errors/.
+              schema:
+                type: string
+            X-akismet-alert-msg:
+              description: Message describing the error code that can be shown to the end user.
+              schema:
+                type: string
+            X-akismet-debug-help:
+              $ref: '#/components/headers/DebugHelpHeader'
+            X-akismet-pro-tip:
+              description: "If this header is set to 'discard', then Akismet has determined that the comment is blatant \nspam, and you can safely discard it without saving it in any spam queue.\n"
+              schema:
+                type: string
+      tags:
+      - spam
+  /1.1/submit-spam:
+    post:
+      operationId: postSubmitSpam
+      summary: Submit spam
+      description: 'Submits a comment as spam to Akismet for retraining.
+
+        '
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StandardParameters'
+      responses:
+        '200':
+          $ref: '#/components/responses/ThanksResponse'
+      tags:
+      - spam
+  /1.1/submit-ham:
+    post:
+      operationId: postSubmitHam
+      summary: Submit ham (false positives)
+      description: 'Submits a false positive (legitimate comment marked as spam) to Akismet for training purposes.
+
+        '
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/StandardParameters'
+      responses:
+        '200':
+          $ref: '#/components/responses/ThanksResponse'
+      tags:
+      - spam
+components:
+  schemas:
+    StandardParameters:
+      type: object
+      properties:
+        api_key:
+          type: string
+          description: The Akismet API key for authorization.
+        blog:
+          type: string
+          description: The front page or home URL of the instance making the request.
+        user_ip:
+          type: string
+          description: The IP address of the comment submitter.
+        user_agent:
+          type: string
+          description: The user agent string of the comment submitter's browser.
+        comment_author:
+          type: string
+          description: 'The name of the comment author. Please provide a name or pseudonym.
+
+            '
+        comment_author_email:
+          type: string
+          description: The email address of the comment author.
+        comment_author_url:
+          type: string
+          description: The URL of the comment author.
+        comment_content:
+          type: string
+          description: The content of the comment.
+        permalink:
+          type: string
+          description: The permanent URL of the entry where the comment was submitted.
+        comment_type:
+          type: string
+          description: The type of the comment. Accepted values are "comment", "trackback", "pingback", or a custom type.
+        comment_date_gmt:
+          type: string
+          format: date-time
+          description: The GMT date and time the comment was created.
+        comment_post_modified_gmt:
+          type: string
+          format: date-time
+          description: The GMT date and time the post containing the comment was last modified.
+        comment_parent:
+          type: string
+          description: The ID of the parent comment, if applicable.
+        referrer:
+          type: string
+          description: The referrer URL of the comment submitter.
+        user_role:
+          type: string
+          description: The role of the comment submitter.
+        is_test:
+          type: boolean
+          description: Indicates whether the submission is a test. Default is false.
+        recheck_reason:
+          type: string
+          description: The reason for rechecking the comment.
+        honeypot_field_name:
+          type: string
+          description: The name of the honeypot field.
+        comment_context:
+          type: string
+          description: The context or location of the comment within the website.
+      required:
+      - api_key
+      - blog
+      - user_ip
+  responses:
+    ThanksResponse:
+      description: Successful submission
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            thanks:
+              value: Thanks for making the web a better place.
+  headers:
+    DebugHelpHeader:
+      description: Extra context for any error that has occurred.
+      schema:
+        type: string
+externalDocs:
+  description: Akismet Developers Documentation
+  url: https://akismet.com/developers

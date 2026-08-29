@@ -1,0 +1,212 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Text Completion API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: text-completion
+paths:
+  /wpcom/v2/text-completion:
+    post:
+      operationId: postWpcomV2TextCompletion
+      summary: POST /wpcom/v2/text-completion
+      tags:
+      - text-completion
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  description: A prompt to be completed by the completion service.
+                messages:
+                  type: array
+                  items: {}
+                  description: The JSON-encoded list of messages to be completed by the completion service.
+                token:
+                  type: string
+                  description: The JWT token to authenticate the request.
+                feature:
+                  type: string
+                  description: A string identifier for your feature, used for logging purposes.
+                temperature:
+                  type: number
+                  description: What sampling temperature to use, between 0 and 2.
+                functions:
+                  type: array
+                  items: {}
+                  description: Schema for functions as specified in OpenAI docs.
+                response_format:
+                  type: string
+                  enum:
+                  - json_object
+                  - text
+                  description: The format of the response.
+                seed:
+                  type: number
+                  description: The seed to use for reproducible outputs, e.g. unit testing.
+                model:
+                  type: string
+                  description: The model to use for completion.
+              required:
+              - token
+              - feature
+  /wpcom/v2/text-completion/stream:
+    get:
+      operationId: getWpcomV2TextCompletionStream
+      summary: GET /wpcom/v2/text-completion/stream
+      tags:
+      - text-completion
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: prompt
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A prompt to be completed by the completion service.
+      - name: messages
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: The JSON-encoded list of messages to be completed by the completion service.
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The JWT token to authenticate the request.
+      - name: feature
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A string identifier for your feature, used for logging purposes.
+      - name: temperature
+        in: query
+        required: false
+        schema:
+          type: number
+        description: What sampling temperature to use, between 0 and 2.
+      - name: functions
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Schema for functions as specified in OpenAI docs.
+      - name: response_format
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - json_object
+          - text
+        description: The format of the response.
+      - name: seed
+        in: query
+        required: false
+        schema:
+          type: number
+        description: The seed to use for reproducible outputs, e.g. unit testing.
+      - name: model
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The model to use for completion.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

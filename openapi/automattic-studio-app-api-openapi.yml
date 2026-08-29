@@ -1,0 +1,588 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Studio App API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: studio-app
+paths:
+  /wpcom/v2/sites/{wpcom_site}/studio-app/sync/backup:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteStudioAppSyncBackup
+      summary: POST /wpcom/v2/sites/{wpcom_site}/studio-app/sync/backup
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                options:
+                  type: array
+                  default:
+                  - all
+                  items:
+                    type: string
+                  description: The types of data to include in the backup
+                include_path_list:
+                  type: array
+                  items:
+                    type: string
+                  description: List of specific paths to include when using the "paths" option
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteStudioAppSyncBackup
+      summary: GET /wpcom/v2/sites/{wpcom_site}/studio-app/sync/backup
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: backup_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The identifier of the backup to retrieve the status for
+  /wpcom/v2/sites/{wpcom_site}/studio-app/sync/get-latest-rewind-id:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteStudioAppSyncGetLatestRewindId
+      summary: GET /wpcom/v2/sites/{wpcom_site}/studio-app/sync/get-latest-rewind-id
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/studio-app/sync/import:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteStudioAppSyncImport
+      summary: POST /wpcom/v2/sites/{wpcom_site}/studio-app/sync/import
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                options:
+                  type: array
+                  default:
+                  - all
+                  items:
+                    type: string
+                  description: The options for the import
+                list_sync_items:
+                  type: array
+                  items:
+                    type: string
+                  description: List of specific paths to include when using the "paths" option
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteStudioAppSyncImport
+      summary: GET /wpcom/v2/sites/{wpcom_site}/studio-app/sync/import
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/studio-app/sync/import/initiate:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteStudioAppSyncImportInitiate
+      summary: POST /wpcom/v2/sites/{wpcom_site}/studio-app/sync/import/initiate
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                import_attachment_id:
+                  type: integer
+                  description: The ID of the import attachment containing the Studio site archive
+                options:
+                  type: array
+                  default:
+                  - all
+                  items:
+                    type: string
+                  description: The options for the import
+                list_sync_items:
+                  type: array
+                  items:
+                    type: string
+                  description: List of specific paths to include when using the "paths" option
+              required:
+              - import_attachment_id
+  /wpcom/v2/studio-app/ai-assistant/chat:
+    post:
+      operationId: postWpcomV2StudioAppAiAssistantChat
+      summary: POST /wpcom/v2/studio-app/ai-assistant/chat
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                messages:
+                  type: array
+                  items: {}
+                  description: The messages to send to the AI assistant.
+              required:
+              - messages
+  /wpcom/v2/studio-app/ai-assistant/quota:
+    get:
+      operationId: getWpcomV2StudioAppAiAssistantQuota
+      summary: GET /wpcom/v2/studio-app/ai-assistant/quota
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/studio-app/ai-assistant/welcome:
+    get:
+      operationId: getWpcomV2StudioAppAiAssistantWelcome
+      summary: GET /wpcom/v2/studio-app/ai-assistant/welcome
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/studio-app/blueprints:
+    get:
+      operationId: getWpcomV2StudioAppBlueprints
+      summary: GET /wpcom/v2/studio-app/blueprints
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Locale code for translating titles and excerpts (e.g., fr, es, de)
+  /wpcom/v2/studio-app/feature-flags:
+    get:
+      operationId: getWpcomV2StudioAppFeatureFlags
+      summary: GET /wpcom/v2/studio-app/feature-flags
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/studio-app/install.ps1:
+    get:
+      operationId: getWpcomV2StudioAppInstallPs1
+      summary: GET /wpcom/v2/studio-app/install.ps1
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/studio-app/install.sh:
+    get:
+      operationId: getWpcomV2StudioAppInstallSh
+      summary: GET /wpcom/v2/studio-app/install.sh
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/studio-app/token:
+    delete:
+      operationId: deleteWpcomV2StudioAppToken
+      summary: DELETE /wpcom/v2/studio-app/token
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/studio-app/updates:
+    get:
+      operationId: getWpcomV2StudioAppUpdates
+      summary: GET /wpcom/v2/studio-app/updates
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: platform
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: arch
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: studioArch
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - nightly
+      - name: product
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - wordpress-com-studio
+          - wordpress-com-studio-cli
+          default: wordpress-com-studio
+  /wpcom/v2/studio-app/updates/RELEASES:
+    get:
+      operationId: getWpcomV2StudioAppUpdatesReleases
+      summary: GET /wpcom/v2/studio-app/updates/RELEASES
+      tags:
+      - studio-app
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: platform
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: arch
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: studioArch
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - nightly
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

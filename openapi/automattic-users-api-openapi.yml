@@ -1,0 +1,4891 @@
+openapi: 3.2.0
+info:
+  title: Automattic Users API
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged users across 5 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-1-openapi.yml, automattic-wordpress-com-rest-v1-2-openapi.yml, automattic-wordpress-com-rest-v1-3-openapi.yml, automattic-wordpress-com-wp-v2-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+- url: https://public-api.wordpress.com/rest/v1.2
+- url: https://public-api.wordpress.com/rest/v1.3
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: users
+paths:
+  /me:
+    get:
+      operationId: getMe
+      summary: Get metadata about the current user.
+      description: Get metadata about the current user.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: Numeric user ID
+                  display_name:
+                    type: string
+                    description: The name to display for a user
+                  username:
+                    type: string
+                    description: Login name of a user
+                  email:
+                    type: string
+                    description: Email address
+                  primary_blog:
+                    type: integer
+                    description: ID of a user's primary blog
+                  primary_blog_url:
+                    type: string
+                    description: URL to primary blog
+                  primary_blog_is_jetpack:
+                    type: boolean
+                    description: Is the primary blog a jetpack site
+                  has_jetpack_partner_access:
+                    type: boolean
+                    description: True if the user can access the Jetpack Partner API
+                  jetpack_partner_types:
+                    type: array
+                    items: {}
+                    description: The partner types of the partner accounts this user has access to.
+                  language:
+                    type: string
+                    description: User language setting
+                  locale_variant:
+                    type: string
+                    description: User locale variant, if any
+                  token_site_id:
+                    type: integer
+                    description: ID of the user's site that the current token provides access to
+                  token_scope:
+                    type: array
+                    items: {}
+                    description: Scopes that the current access token provides access to
+                  token_client_id:
+                    type: integer
+                    description: Client ID of the application that the current access token was issued to
+                  avatar_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar image URL
+                  profile_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar Profile URL
+                  verified:
+                    type: boolean
+                    description: Has the account been verified (via WordPress.com Connect)?
+                  email_verified:
+                    type: boolean
+                    description: Has the account been verified (via email)?
+                  date:
+                    type: string
+                    format: date-time
+                    description: Datetime the user joined WordPress.com
+                  site_count:
+                    type: integer
+                    description: Number of sites where the user is a member
+                  jetpack_site_count:
+                    type: integer
+                    description: Number of Jetpack sites where the user is a member
+                  atomic_site_count:
+                    type: integer
+                    description: Number of atomic sites where the user is a member
+                  garden_site_count:
+                    type: integer
+                    description: Number of garden sites where the user is a member
+                  visible_site_count:
+                    type: integer
+                    description: Number of sites where the user is a member, set to visible in user settings
+                  jetpack_visible_site_count:
+                    type: integer
+                    description: Number of Jetpack sites where the user is a member, set to visible in user settings
+                  atomic_visible_site_count:
+                    type: integer
+                    description: Number of atomic sites where the user is a member, set to visible in user settings
+                  garden_visible_site_count:
+                    type: integer
+                    description: Number of garden sites where the user is a member, set to visible in user settings
+                  has_unseen_notes:
+                    type: boolean
+                    description: Does the account have unseen notifications
+                  newest_note_type:
+                    type: string
+                    description: notification type slug for newest unseen notification or blank if no unseen notes
+                  phone_account:
+                    type: boolean
+                    description: If this is a phone account then the user doenst have a verified email address
+                  meta:
+                    type: object
+                    description: Metadata
+                  is_valid_google_apps_country:
+                    type: boolean
+                    description: Is the user somewhere where Google Workspace can be purchased?
+                  user_ip_country_code:
+                    type: string
+                    description: Country code for the user’s IP address
+                  logout_URL:
+                    type: string
+                    format: uri
+                    description: URL to sign user out of WordPress.com
+                  is_new_reader:
+                    type: boolean
+                    description: Is the user new to the Reader?
+                  social_login_connections:
+                    type: array
+                    items: {}
+                    description: Array of active social login connections
+                  social_signup_service:
+                    type: string
+                    description: The name of the social service this account is linked to
+                  abtests:
+                    type: object
+                    description: User's assigned A/B test variations, where the key is the test name and the value is the variation
+                  lasagna_jwt:
+                    type: string
+                    description: Lasagna service JWT
+                  i18n_empathy_mode:
+                    type: boolean
+                    description: Has the user enabled I18n empathy mode?
+                  use_fallback_for_incomplete_languages:
+                    type: boolean
+                    description: Should UI be displayed in default locale for languages with incomplete translations
+                  had_hosting_trial:
+                    type: boolean
+                    description: Has the user had a hosting trial
+                  is_subscription_only:
+                    type: boolean
+                    description: Is the user a subscription only user
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: abtests
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Comma separated names of A/B tests the user may have an assigned variation for
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/billing-history:
+    get:
+      operationId: getMeBillingHistory
+      summary: Get list of current user's billing history and upcoming charges.
+      description: Get list of current user's billing history and upcoming charges.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  billing_history:
+                    type: array
+                    items: {}
+                    description: Limited list of current user's previous purchases.
+                  billing_history_total:
+                    type: integer
+                    description: Number of current user's previous purchases.
+                  upcoming_charges:
+                    type: array
+                    items: {}
+                    description: List of current user's upcoming charges.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/connected-applications/:
+    get:
+      operationId: getMeConnectedApplications
+      summary: Get current user's connected applications.
+      description: Get current user's connected applications.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connected_applications:
+                    type: array
+                    items: {}
+                    description: A list of current user's connected applications.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/connected-applications/{ID}:
+    get:
+      operationId: getMeConnectedApplicationsById
+      summary: Get one of current user's connected applications.
+      description: Get one of current user's connected applications.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  connection_ID:
+                    type: integer
+                    description: The ID of the connection.
+                  title:
+                    type: string
+                    description: The name of the application.
+                  icon:
+                    type: string
+                    format: uri
+                    description: The URL the application's icon.
+                  URL:
+                    type: string
+                    format: uri
+                    description: The URL of the application.
+                  description:
+                    type: string
+                    description: The description provided by the application's creator.
+                  permissions:
+                    type: array
+                    items: {}
+                    description: An array of permissions that the application has.
+                  authorized:
+                    type: string
+                    description: The date when the application was authorized.
+                  blog:
+                    type: string
+                    description: An array of information about a blog the application has access to.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The ID of the connected application's connection.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/connected-applications/{ID}/delete:
+    post:
+      operationId: postMeConnectedApplicationsByIdDelete
+      summary: Delete one of current user's connected application access tokens.
+      description: Delete one of current user's connected application access tokens.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the application access token successfully deleted?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The ID of the connected application's connection.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/likes/:
+    get:
+      operationId: getMeLikes
+      summary: Get a list of the current user's likes.
+      description: Get a list of the current user's likes.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: integer
+                    description: The total number of likes for this token.
+                  likes:
+                    type: array
+                    items: {}
+                    description: An array of likes for this token.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: number
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The number of likes to return. Limit: 100. Default: 20.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The index to start counting from.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Return the Nth 1-indexed page of likes. Takes precedence over the offset parameter. Limit: 10.'
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - DESC
+          - ASC
+        description: 'DESC: (default) (default) Return likes newest to oldest.; ASC: Return likes oldest to newest.'
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return likes dated on or after the specified datetime.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return likes dated on or before the specified datetime.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/preferences/:
+    get:
+      operationId: getMePreferences
+      summary: Get the current user's settings.
+      description: Get the current user's settings.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  calypso_preferences:
+                    type: object
+                    description: Get the preferences associated with a user's WordPress.com Calypso experience.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postMePreferences
+      summary: Update the current user's preferences.
+      description: Update the current user's preferences.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  calypso_preferences:
+                    type: object
+                    description: Get the preferences associated with a user's WordPress.com Calypso experience.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calypso_preferences:
+                  type: object
+                  description: Set the preferences associated with a user's WordPress.com Calypso experience.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/settings/:
+    get:
+      operationId: getMeSettings
+      summary: Get the current user's settings.
+      description: Get the current user's settings.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enable_translator:
+                    type: boolean
+                    description: Is in-page translation enabled for the current user?
+                  surprise_me:
+                    type: boolean
+                    description: Is "Surprise Me" mode enabled for the current user?
+                  post_post_flag:
+                    type: boolean
+                    description: Is Post-post is enabled for the current user?
+                  holidaysnow:
+                    type: boolean
+                    description: Is holiday snow enabled for the current user? - (deprecated)
+                  user_login:
+                    type: string
+                    description: Get the current user's username.
+                  display_name:
+                    type: string
+                    description: Get the current user's display name.
+                  first_name:
+                    type: string
+                    description: Get the current user's first name.
+                  last_name:
+                    type: string
+                    description: Get the current user's last name.
+                  description:
+                    type: string
+                    description: Get the current user's About Me HTML.
+                  user_email:
+                    type: string
+                    description: Get the current user's email address.
+                  user_email_change_pending:
+                    type: boolean
+                    description: Is an email change pending for the current user?
+                  new_user_email:
+                    type: string
+                    description: Get the email address a pending change would switch to.
+                  user_URL:
+                    type: string
+                    format: uri
+                    description: Get the current user's public profile URL setting.
+                  language:
+                    type: string
+                    description: Get the current user's interface language code.
+                  avatar_URL:
+                    type: string
+                    format: uri
+                    description: Get the current user's Gravatar image URL.
+                  primary_site_ID:
+                    type: integer
+                    description: Get the current user's primary site ID.
+                  comment_like_notification:
+                    type: boolean
+                    description: Are comment likes notification emails enabled for the current user?
+                  mentions_notification:
+                    type: boolean
+                    description: Are mentions notification emails enabled for the current user?
+                  subscription_delivery_email_default:
+                    type: string
+                    description: Get the default email delivery frequency for new subscriptions (never, instantly, daily or weekly).
+                  subscription_delivery_jabber_default:
+                    type: boolean
+                    description: Will new follows include jabber subscription?
+                  subscription_delivery_mail_option:
+                    type: string
+                    description: 'Get how subscription emails should be formatted: as HTML (html) or as plain text (text).'
+                  subscription_delivery_day:
+                    type: integer
+                    description: 'Get when subscription emails should be delivered: 0: Sunday, 1: Monday, etc. (Applies when subscription_delivery_email_default equals weekly.)'
+                  subscription_delivery_hour:
+                    type: integer
+                    description: Get at what UTC hour of the day subscription emails should be delivered (0 = midnight, 1 = 1am, etc.). Must be between 0 and 23, inclusive. (Applies when subscription_delivery_email_default equals daily or weekly.)
+                  subscription_delivery_email_blocked:
+                    type: boolean
+                    description: Are all WordPress.com subscription emails blocked for the current user?
+                  two_step_enabled:
+                    type: boolean
+                    description: Is two-step enabled for the current user?
+                  two_step_sms_enabled:
+                    type: boolean
+                    description: Is the user using SMS as their second factor (instead of a code generating app)?
+                  two_step_backup_codes_printed:
+                    type: boolean
+                    description: Has the current user printed their backup codes?
+                  two_step_sms_country:
+                    type: string
+                    description: Get the country for SMS backup for the current user (e.g. "US").
+                  two_step_sms_phone_number:
+                    type: string
+                    description: Get the phone number for SMS backup for the current user (should not include + or country code).
+                  two_step_app_enabled:
+                    type: boolean
+                    description: Is the user using an authenticator app as their second factor?
+                  two_step_security_key_enabled:
+                    type: boolean
+                    description: Is the user using a security key (passkey) as a second factor?
+                  two_step_enhanced_security:
+                    type: boolean
+                    description: Did the user opted in for enhanced two step account protection?
+                  calypso_preferences:
+                    type: object
+                    description: Get the preferences associated with a user's WordPress.com Calypso experience.
+                  jetpack_connect:
+                    type: array
+                    items: {}
+                    description: Get the urls of the jetpack sites the user have attempted to connect from Calypso
+                  locale_variant:
+                    type: string
+                    description: The locale variant locale code, if any.
+                  tracks_opt_out:
+                    type: boolean
+                    description: Did the user opted out of Tracks?
+                  woomobile_crash_reporting_opt_out:
+                    type: string
+                    description: Has the user opted out of crash reporting? null = no choice recorded.
+                  i18n_empathy_mode:
+                    type: boolean
+                    description: Has the user enabled I18n empathy mode?
+                  use_fallback_for_incomplete_languages:
+                    type: boolean
+                    description: Should UI be displayed in default locale for languages with incomplete translations
+                  gravatar_profile_hidden:
+                    type: boolean
+                    description: Is the gravatar profile hidden for this user?
+                  is_dev_account:
+                    type: boolean
+                    description: Is this a developer account?
+                  last_admin_activity_timestamp:
+                    type: string
+                    description: Get Unix timestamp the user was last seen in the admin.
+                  advertising_targeting_opt_out:
+                    type: boolean
+                    description: Did the user opt out of advertising targeting?
+                  p2_disable_autofollow_on_comment:
+                    type: boolean
+                    description: Don't automatically subscribe to notifications for a P2 post whenever you leave a comment on it.
+                  mcp_abilities:
+                    type: array
+                    items: {}
+                    description: List of MCP Abilities enabled.
+                  ai_assistant:
+                    type: boolean
+                    description: User-level AI assistant override. True if explicitly enabled, false if explicitly disabled, null if not set (falls back to site-level).
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postMeSettings
+      summary: Update the current user's settings.
+      description: Update the current user's settings.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enable_translator:
+                    type: boolean
+                    description: Is in-page translation enabled for the current user?
+                  surprise_me:
+                    type: boolean
+                    description: Is "Surprise Me" mode enabled for the current user?
+                  post_post_flag:
+                    type: boolean
+                    description: Is Post-post enabled for the current user?
+                  holidaysnow:
+                    type: boolean
+                    description: Is holiday snow enabled for the current user? - (deprecated)
+                  password:
+                    type: string
+                    description: Always an empty string.
+                  display_name:
+                    type: string
+                    description: Get the current user's display name.
+                  first_name:
+                    type: string
+                    description: Get the current user's first name.
+                  last_name:
+                    type: string
+                    description: Get the current user's last name.
+                  description:
+                    type: string
+                    description: Get the current user's About Me HTML.
+                  user_email:
+                    type: string
+                    description: Get the current user's email address.
+                  user_email_change_pending:
+                    type: boolean
+                    description: Is an email change pending for the current user?
+                  new_user_email:
+                    type: string
+                    description: Get the email address a pending change would switch to.
+                  user_URL:
+                    type: string
+                    format: uri
+                    description: Get the current user's public profile URL setting.
+                  language:
+                    type: string
+                    description: Get the current user's interface language code.
+                  primary_site_ID:
+                    type: integer
+                    description: Get the current user's primary site ID.
+                  comment_like_notification:
+                    type: boolean
+                    description: Are comment likes notification emails enabled for the current user?
+                  mentions_notification:
+                    type: boolean
+                    description: Are mentions notification emails enabled for the current user?
+                  subscription_delivery_email_default:
+                    type: string
+                    description: Get the default email delivery frequency for new subscriptions (never, instantly, daily or weekly).
+                  subscription_delivery_jabber_default:
+                    type: boolean
+                    description: Should new follows include jabber subscription?
+                  subscription_delivery_mail_option:
+                    type: string
+                    description: 'Get how subscription emails should be formatted: as HTML (html) or as plain text (text).'
+                  subscription_delivery_day:
+                    type: integer
+                    description: 'Get when subscription emails should be delivered: 0: Sunday, 1: Monday, etc. (Applies when subscription_delivery_email_default equals weekly.)'
+                  subscription_delivery_hour:
+                    type: integer
+                    description: Get at what UTC hour of the day subscription emails should be delivered (0 = midnight, 1 = 1am, etc.). Must be between 0 and 23, inclusive. (Applies when subscription_delivery_email_default equals daily or weekly.)
+                  subscription_delivery_email_blocked:
+                    type: boolean
+                    description: Are all WordPress.com subscription emails blocked for the current user?
+                  two_step_backup_codes_printed:
+                    type: boolean
+                    description: Has the current user printed their backup codes?
+                  two_step_sms_country:
+                    type: string
+                    description: Get the country for SMS backup for the current user (e.g. "US").
+                  two_step_sms_phone_number:
+                    type: string
+                    description: Get the phone number for SMS backup for the current user (should not include + or country code).
+                  calypso_preferences:
+                    type: object
+                    description: Get the preferences associated with a user's WordPress.com Calypso experience.
+                  jetpack_connect:
+                    type: array
+                    items: {}
+                    description: Get the urls of the jetpack sites the user have attempted to connect from Calypso
+                  locale_variant:
+                    type: string
+                    description: The locale variant locale code, if any.
+                  tracks_opt_out:
+                    type: boolean
+                    description: Did the user opted out of Tracks?
+                  woomobile_crash_reporting_opt_out:
+                    type: string
+                    description: Has the user opted out of crash reporting? null = no choice recorded.
+                  i18n_empathy_mode:
+                    type: boolean
+                    description: Has the user enabled I18n empathy mode?
+                  use_fallback_for_incomplete_languages:
+                    type: boolean
+                    description: Should UI be displayed in default locale for languages with incomplete translations
+                  gravatar_profile_hidden:
+                    type: boolean
+                    description: Is the gravatar profile hidden for this user?
+                  is_dev_account:
+                    type: boolean
+                    description: Is this a developer account?
+                  last_admin_activity_timestamp:
+                    type: string
+                    description: Get the Unix timestamp the user was last seen in the admin.
+                  advertising_targeting_opt_out:
+                    type: boolean
+                    description: Did the user opt out of advertising targeting?
+                  p2_disable_autofollow_on_comment:
+                    type: boolean
+                    description: Don't automatically subscribe to notifications for a P2 post whenever you leave a comment on it.
+                  mcp_abilities:
+                    type: array
+                    items: {}
+                    description: List of MCP Abilities enabled.
+                  ai_assistant:
+                    type: boolean
+                    description: User-level AI assistant override. True if explicitly enabled, false if explicitly disabled, null if not set (falls back to site-level).
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enable_translator:
+                  type: boolean
+                  description: Is in-page translation enabled for the current user?
+                surprise_me:
+                  type: boolean
+                  description: Is "Surprise Me" mode enabled for the current user?
+                post_post_flag:
+                  type: boolean
+                  description: Is Post-post enabled for the current user?
+                holidaysnow:
+                  type: boolean
+                  description: Is holiday snow enabled for the current user? - (deprecated)
+                password:
+                  type: string
+                  description: Set the current user's password.
+                display_name:
+                  type: string
+                  description: Set the current user's display name.
+                first_name:
+                  type: string
+                  description: Set the current user's first name.
+                last_name:
+                  type: string
+                  description: Set the current user's last name.
+                description:
+                  type: string
+                  description: Set the current user's About Me HTML.
+                user_email:
+                  type: string
+                  description: Set this value to initiate a change to the current user's email address.
+                user_email_change_pending:
+                  type: boolean
+                  description: Is a change to the user's email address pending? (The client may set this to false to cancel a pending change.)
+                user_URL:
+                  type: string
+                  format: uri
+                  description: Set the current user's public profile URL setting.
+                language:
+                  type: string
+                  description: Set the current user's interface language code.
+                primary_site_ID:
+                  type: integer
+                  description: Set the current user's primary site ID.
+                comment_like_notification:
+                  type: boolean
+                  description: Are comment likes notification emails enabled for the current user?
+                mentions_notification:
+                  type: boolean
+                  description: Are mentions notification emails enabled for the current user?
+                subscription_delivery_email_default:
+                  type: string
+                  description: Set the default email delivery frequency for new subscriptions (never, instantly, daily or weekly).
+                subscription_delivery_jabber_default:
+                  type: boolean
+                  description: Is jabber subscription enabled for new follows?
+                subscription_delivery_mail_option:
+                  type: string
+                  description: 'Set how subscription emails should be formatted: as HTML (html) or as plain text (text).'
+                subscription_delivery_day:
+                  type: integer
+                  description: 'Set when subscription emails should be delivered: 0: Sunday, 1: Monday, etc. (Applies when subscription_delivery_email_default equals weekly.)'
+                subscription_delivery_hour:
+                  type: integer
+                  description: Set at what UTC hour of the day subscription emails should be delivered (0 = midnight, 1 = 1am, etc.). Must be between 0 and 23, inclusive. (Applies when subscription_delivery_email_default equals daily or weekly.)
+                subscription_delivery_email_blocked:
+                  type: boolean
+                  description: Are all WordPress.com subscription emails blocked for the current user?
+                two_step_backup_codes_printed:
+                  type: boolean
+                  description: Has the current user printed their backup codes?
+                two_step_sms_country:
+                  type: string
+                  description: Set the country for SMS backup for the current user (e.g. "US").
+                two_step_sms_phone_number:
+                  type: string
+                  description: Set the phone number for SMS backup for the current user (should not include + or country code).
+                two_step_enhanced_security:
+                  type: boolean
+                  description: Should we enforce the use of security keys (passkeys) for this account?
+                calypso_preferences:
+                  type: object
+                  description: Set the preferences associated with a user's WordPress.com Calypso experience.
+                jetpack_connect:
+                  type: string
+                  description: Add a new jetpack site slug to the jetpack connect sites list of the user
+                tracks_opt_out:
+                  type: boolean
+                  description: Did the user opted out of Tracks?
+                woomobile_crash_reporting_opt_out:
+                  type: string
+                  description: Has the user opted out of crash reporting? null = no choice recorded.
+                i18n_empathy_mode:
+                  type: boolean
+                  description: Has the user enabled I18n empathy mode?
+                use_fallback_for_incomplete_languages:
+                  type: boolean
+                  description: Should UI be displayed in default locale for languages with incomplete translations
+                gravatar_profile_hidden:
+                  type: boolean
+                  description: Is the gravatar profile hidden for this user?
+                is_dev_account:
+                  type: boolean
+                  description: Is this a developer account?
+                advertising_targeting_opt_out:
+                  type: boolean
+                  description: Did the user opt out of advertising targeting?
+                p2_disable_autofollow_on_comment:
+                  type: boolean
+                  description: Don't automatically subscribe to notifications for a P2 post whenever you leave a comment on it.
+                mcp_abilities:
+                  type: array
+                  items: {}
+                  description: List of MCP Abilities enabled.
+                ai_assistant:
+                  type: boolean
+                  description: Override the AI assistant setting at the user level. Set to true to enable, false to disable, or null to clear (fall back to site-level).
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/settings/password/validate:
+    post:
+      operationId: postMeSettingsPasswordValidate
+      summary: Verify strength of a user's new password.
+      description: Verify strength of a user's new password.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  passed:
+                    type: boolean
+                    description: Whether password validated or not.
+                  test_results:
+                    type: string
+                    description: 'passed: (array) Array of test name and test explanation.; failed: (array) Array of test name and test explanation.'
+                    enum:
+                    - passed
+                    - failed
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: The users's potential new password.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/settings/profile-links/:
+    get:
+      operationId: getMeSettingsProfileLinks
+      summary: Get current user's profile links.
+      description: Get current user's profile links.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  profile_links:
+                    type: array
+                    items: {}
+                    description: A list of current user's profile links.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/settings/profile-links/new:
+    post:
+      operationId: postMeSettingsProfileLinksNew
+      summary: Add a link to current user's profile.
+      description: Add a link to current user's profile.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the link successfully added to the current user's profile?
+                  title:
+                    type: string
+                    description: The description of the link added.
+                  value:
+                    type: string
+                    description: The link added itself.
+                  link_slug:
+                    type: string
+                    description: The slug of the new profile link.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+                  description: The profile link to add to the current user.
+                title:
+                  type: string
+                  description: Description of the profile link.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/settings/profile-links/{slug}/delete:
+    post:
+      operationId: postMeSettingsProfileLinksBySlugDelete
+      summary: Delete a link from current user's profile.
+      description: Delete a link from current user's profile.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the link successfully deleted from the current user's profile?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The URL of the profile link.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/two-step:
+    get:
+      operationId: getMeTwoStep
+      summary: Get information about current user's two factor configuration.
+      description: Get information about current user's two factor configuration.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/two-step/sms/new:
+    post:
+      operationId: postMeTwoStepSmsNew
+      summary: Sends a two-step code via SMS to the current user.
+      description: Sends a two-step code via SMS to the current user.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sent:
+                    type: boolean
+                    description: Was the code sent?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/invites/new:
+    post:
+      operationId: postSitesBySiteInvitesNew
+      summary: Invite one or more users to your site.
+      description: Invite one or more users to your site.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sent:
+                    type: array
+                    items: {}
+                    description: A list of email addresses or wpcom usernames that were successfully invited
+                  errors:
+                    type: array
+                    items: {}
+                    description: A list of email address or wpcom usernames that were not invited. Formatted as $username_or_email => WP_Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                invitees:
+                  type: string
+                  description: List of email addresses or wpcom users names to invite.
+                role:
+                  type: string
+                  description: The role of the invitees on the blog.
+                message:
+                  type: string
+                  description: A message that will be appended to the invitation email.
+                source:
+                  type: string
+                  description: Optional. The source of the follow e.g. calypso
+                is_external:
+                  type: boolean
+                  description: Optional. Whether to mark the user or users as external contributors to the blog.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/users:
+    get:
+      operationId: getSitesBySiteUsers
+      summary: List the users of a site.
+      description: List the users of a site.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: integer
+                    description: The total number of authors found that match the request (ignoring limits and offsets).
+                  users:
+                    type: array
+                    items: {}
+                    description: Array of user objects
+                  authors:
+                    type: array
+                    items: {}
+                    description: Array of author objects.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: number
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Limit the total number of authors returned. Default: 20.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The first n authors to be skipped in the returned array.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - DESC
+          - ASC
+        description: 'DESC: (default) Return authors in descending order.; ASC: Return authors in ascending order.'
+      - name: order_by
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - ID
+          - login
+          - nicename
+          - email
+          - url
+          - registered
+          - display_name
+          - post_count
+        description: 'ID: (default) Order by ID (default).; login: Order by username.; nicename: Order by nicename.; email: Order by author email address.; url: Order by author URL.; registered: Order by registered date.; display_name: Order by display name.; post_count: Order by number of posts published.'
+      - name: authors_only
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Set to true to fetch authors only
+      - name: include_viewers
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Set to true to include viewers for Simple sites. When you pass in this parameter, order, order_by and search_columns are ignored. Currently, `search` is limited to the first page of results.
+      - name: type
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Specify the post type to query authors for. Only works when combined with the `authors_only` flag. Defaults to 'post'. Post types besides post and page need to be whitelisted using the rest_api_allowed_post_types filter.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Find matching users.
+      - name: search_columns
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Specify which columns to check for matching users. Can be any of 'ID', 'user_login', 'user_email', 'user_url', 'user_nicename', and 'display_name'. Only works when combined with `search` parameter.
+      - name: role
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Specify a specific user role to fetch.
+      - name: capability
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Specify a specific capability to fetch. You can specify multiple by comma-separating them, in which case the user needs to match all capabilities provided.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/users/login:{user_id}:
+    get:
+      operationId: getSitesBySiteUsersLoginUserId
+      summary: Get details of a user of a site by login.
+      description: Get details of a user of a site by login.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the user
+                  login:
+                    type: string
+                    description: The login username of the user
+                  email:
+                    type: string
+                    description: The email of the user
+                  name:
+                    type: string
+                    description: The name to display for the user
+                  first_name:
+                    type: string
+                    description: The first name of the user
+                  last_name:
+                    type: string
+                    description: The last name of the user
+                  nice_name:
+                    type: string
+                    description: The nice_name to display for the user
+                  URL:
+                    type: string
+                    description: The primary blog of the user
+                  avatar_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar image URL
+                  profile_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar Profile URL
+                  site_ID:
+                    type: integer
+                    description: ID of the user's primary blog
+                  roles:
+                    type: string
+                    description: The role or roles of the user
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site ID or domain.
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The user's login.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/users/{user_ID}/delete:
+    post:
+      operationId: postSitesBySiteUsersByUserIdDelete
+      summary: Deletes or removes a user of a site.
+      description: Deletes or removes a user of a site.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Was the deletion of user successful?
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site ID or domain.
+      - name: user_ID
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The user's ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reassign:
+                  type: integer
+                  description: An optional id of a user to reassign posts to.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/users/{user_id}:
+    post:
+      operationId: postSitesBySiteUsersByUserId
+      summary: Update details of a user of a site.
+      description: Update details of a user of a site.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the user
+                  login:
+                    type: string
+                    description: The login username of the user
+                  email:
+                    type: string
+                    description: The email of the user
+                  name:
+                    type: string
+                    description: The name to display for the user
+                  first_name:
+                    type: string
+                    description: The first name of the user
+                  last_name:
+                    type: string
+                    description: The last name of the user
+                  nice_name:
+                    type: string
+                    description: The nice_name to display for the user
+                  URL:
+                    type: string
+                    description: The primary blog of the user
+                  avatar_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar image URL
+                  profile_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar Profile URL
+                  site_ID:
+                    type: integer
+                    description: ID of the user's primary blog
+                  roles:
+                    type: string
+                    description: The role or roles of the user
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The site ID or domain.
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: The user's ID.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ID:
+                  type: integer
+                  description: The ID of the user
+                login:
+                  type: string
+                  description: The login username of the user
+                email:
+                  type: string
+                  description: The email of the user
+                name:
+                  type: string
+                  description: The name to display for the user
+                first_name:
+                  type: string
+                  description: The first name of the user
+                last_name:
+                  type: string
+                  description: The last name of the user
+                nice_name:
+                  type: string
+                  description: The nice_name to display for the user
+                URL:
+                  type: string
+                  description: The primary blog of the user
+                avatar_URL:
+                  type: string
+                  format: uri
+                  description: Gravatar image URL
+                profile_URL:
+                  type: string
+                  format: uri
+                  description: Gravatar Profile URL
+                site_ID:
+                  type: integer
+                  description: ID of the user's primary blog
+                roles:
+                  type: string
+                  description: The role or roles of the user
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /users/suggest:
+    get:
+      operationId: getUsersSuggest
+      summary: Get a list of possible users to suggest for @mentions.
+      description: Get a list of possible users to suggest for @mentions.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suggestions:
+                    type: array
+                    items: {}
+                    description: A list of matching users (authors, editors and administrators.)  The token holder must also be an author, editor or administrator on the site.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: site_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The site ID to look for matching users on.
+      - name: site
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The domain to look for matching users on. (Overrides site_id.)
+      - name: filter
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. A string to filter possible users against.
+      - name: image_size
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Optional. The size of the image to return in pixels. (Default 96, minimum 1, maximum 2048.)
+      - name: client
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. A string identifying the consumer of the data.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /users/{user}:
+    get:
+      operationId: getUsersByUser
+      summary: Get metadata about a user.
+      description: Get metadata about a user.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The ID of the user
+                  user_login:
+                    type: string
+                    description: The login username of the user
+                  first_name:
+                    type: string
+                    description: The first name of the user
+                  last_name:
+                    type: string
+                    description: The last name of the user
+                  display_name:
+                    type: string
+                    description: The name to display for a user
+                  nice_name:
+                    type: string
+                    description: The URL-friendly user name
+                  description:
+                    type: string
+                    description: The profile description of the user
+                  avatar_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar image URL
+                  profile_URL:
+                    type: string
+                    format: uri
+                    description: Gravatar Profile URL
+                  primary_blog:
+                    type: string
+                    description: Details of a user's primary blog
+                  recommended_blogs_count:
+                    type: integer
+                    description: Number of blogs recommended for this user
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: user
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The user ID or username of the user.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/billing-history/{filter}:
+    get:
+      operationId: getMeBillingHistoryByFilter
+      summary: Get list of current user's billing history and upcoming charges.
+      description: Get list of current user's billing history and upcoming charges.
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  billing_history:
+                    type: array
+                    items: {}
+                    description: Optional. List of current user's previous purchases.
+                  upcoming_charges:
+                    type: array
+                    items: {}
+                    description: Optional. List of current user's upcoming charges.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: filter
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Optionally limit results to previous purchases (past) or upcoming charges (upcoming)
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Optionally limit the number of results returned. Default: 200. Only for past $filter.'
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Optionally offset the number of results returned. Default: 0. Only for past $filter.'
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.3
+  /wp/v2/sites/{wpcom_site}/users:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteUsers
+      summary: GET /wp/v2/sites/{wpcom_site}/users
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to specific IDs.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - include
+          - name
+          - registered_date
+          - slug
+          - include_slugs
+          - email
+          - url
+          default: name
+        description: Sort collection by user attribute.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to users with one or more specific slugs.
+      - name: roles
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to users matching at least one specific role provided. Accepts csv list or single role.
+      - name: capabilities
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to users matching at least one specific capability provided. Accepts csv list or single capability.
+      - name: who
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - authors
+        description: Limit result set to users who are considered authors.
+      - name: has_published_posts
+        in: query
+        required: false
+        schema:
+          type: string
+          items:
+            type: string
+        description: Limit result set to users who have published posts.
+      - name: search_columns
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: string
+        description: Array of column names to be searched.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteUsers
+      summary: POST /wp/v2/sites/{wpcom_site}/users
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  - af
+                  - am
+                  - an
+                  - ar
+                  - as
+                  - ast
+                  - az
+                  - bel
+                  - bg
+                  - bn
+                  - bo
+                  - br
+                  - bs
+                  - ca
+                  - ckb
+                  - cs
+                  - cv
+                  - cy
+                  - da
+                  - de
+                  - de-ch
+                  - de_formal
+                  - dv
+                  - el
+                  - el-po
+                  - en
+                  - en-gb
+                  - eo
+                  - es
+                  - es-cl
+                  - es-mx
+                  - et
+                  - eu
+                  - fa
+                  - fi
+                  - fo
+                  - fr
+                  - fr-be
+                  - fr-ca
+                  - fr-ch
+                  - fur
+                  - fy
+                  - ga
+                  - gd
+                  - gl
+                  - gu
+                  - he
+                  - hi
+                  - hr
+                  - hu
+                  - hy
+                  - id
+                  - is
+                  - it
+                  - ja
+                  - ka
+                  - kab
+                  - kal
+                  - kir
+                  - kk
+                  - km
+                  - kn
+                  - ko
+                  - la
+                  - lo
+                  - lt
+                  - lv
+                  - mk
+                  - ml
+                  - mn
+                  - mr
+                  - ms
+                  - mt
+                  - mwl
+                  - nb
+                  - ne
+                  - nl
+                  - nn
+                  - oci
+                  - pa
+                  - pl
+                  - ps
+                  - pt
+                  - pt-br
+                  - ro
+                  - ru
+                  - rup
+                  - si
+                  - sk
+                  - skr
+                  - sl
+                  - snd
+                  - so
+                  - sq
+                  - sr
+                  - sr_latin
+                  - su
+                  - sv
+                  - ta
+                  - te
+                  - th
+                  - tir
+                  - tl
+                  - tr
+                  - ug
+                  - uk
+                  - ur
+                  - uz
+                  - vi
+                  - yi
+                  - yo
+                  - zh-cn
+                  - zh-hk
+                  - zh-sg
+                  - zh-tw
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+              required:
+              - username
+              - email
+              - password
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/users/me:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteUsersMe
+      summary: GET /wp/v2/sites/{wpcom_site}/users/me
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteUsersMe
+      summary: POST /wp/v2/sites/{wpcom_site}/users/me
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  - af
+                  - am
+                  - an
+                  - ar
+                  - as
+                  - ast
+                  - az
+                  - bel
+                  - bg
+                  - bn
+                  - bo
+                  - br
+                  - bs
+                  - ca
+                  - ckb
+                  - cs
+                  - cv
+                  - cy
+                  - da
+                  - de
+                  - de-ch
+                  - de_formal
+                  - dv
+                  - el
+                  - el-po
+                  - en
+                  - en-gb
+                  - eo
+                  - es
+                  - es-cl
+                  - es-mx
+                  - et
+                  - eu
+                  - fa
+                  - fi
+                  - fo
+                  - fr
+                  - fr-be
+                  - fr-ca
+                  - fr-ch
+                  - fur
+                  - fy
+                  - ga
+                  - gd
+                  - gl
+                  - gu
+                  - he
+                  - hi
+                  - hr
+                  - hu
+                  - hy
+                  - id
+                  - is
+                  - it
+                  - ja
+                  - ka
+                  - kab
+                  - kal
+                  - kir
+                  - kk
+                  - km
+                  - kn
+                  - ko
+                  - la
+                  - lo
+                  - lt
+                  - lv
+                  - mk
+                  - ml
+                  - mn
+                  - mr
+                  - ms
+                  - mt
+                  - mwl
+                  - nb
+                  - ne
+                  - nl
+                  - nn
+                  - oci
+                  - pa
+                  - pl
+                  - ps
+                  - pt
+                  - pt-br
+                  - ro
+                  - ru
+                  - rup
+                  - si
+                  - sk
+                  - skr
+                  - sl
+                  - snd
+                  - so
+                  - sq
+                  - sr
+                  - sr_latin
+                  - su
+                  - sv
+                  - ta
+                  - te
+                  - th
+                  - tir
+                  - tl
+                  - tr
+                  - ug
+                  - uk
+                  - ur
+                  - uz
+                  - vi
+                  - yi
+                  - yo
+                  - zh-cn
+                  - zh-hk
+                  - zh-sg
+                  - zh-tw
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+    put:
+      operationId: putWpV2SitesbyWpcomSiteUsersMe
+      summary: PUT /wp/v2/sites/{wpcom_site}/users/me
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  - af
+                  - am
+                  - an
+                  - ar
+                  - as
+                  - ast
+                  - az
+                  - bel
+                  - bg
+                  - bn
+                  - bo
+                  - br
+                  - bs
+                  - ca
+                  - ckb
+                  - cs
+                  - cv
+                  - cy
+                  - da
+                  - de
+                  - de-ch
+                  - de_formal
+                  - dv
+                  - el
+                  - el-po
+                  - en
+                  - en-gb
+                  - eo
+                  - es
+                  - es-cl
+                  - es-mx
+                  - et
+                  - eu
+                  - fa
+                  - fi
+                  - fo
+                  - fr
+                  - fr-be
+                  - fr-ca
+                  - fr-ch
+                  - fur
+                  - fy
+                  - ga
+                  - gd
+                  - gl
+                  - gu
+                  - he
+                  - hi
+                  - hr
+                  - hu
+                  - hy
+                  - id
+                  - is
+                  - it
+                  - ja
+                  - ka
+                  - kab
+                  - kal
+                  - kir
+                  - kk
+                  - km
+                  - kn
+                  - ko
+                  - la
+                  - lo
+                  - lt
+                  - lv
+                  - mk
+                  - ml
+                  - mn
+                  - mr
+                  - ms
+                  - mt
+                  - mwl
+                  - nb
+                  - ne
+                  - nl
+                  - nn
+                  - oci
+                  - pa
+                  - pl
+                  - ps
+                  - pt
+                  - pt-br
+                  - ro
+                  - ru
+                  - rup
+                  - si
+                  - sk
+                  - skr
+                  - sl
+                  - snd
+                  - so
+                  - sq
+                  - sr
+                  - sr_latin
+                  - su
+                  - sv
+                  - ta
+                  - te
+                  - th
+                  - tir
+                  - tl
+                  - tr
+                  - ug
+                  - uk
+                  - ur
+                  - uz
+                  - vi
+                  - yi
+                  - yo
+                  - zh-cn
+                  - zh-hk
+                  - zh-sg
+                  - zh-tw
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+    patch:
+      operationId: patchWpV2SitesbyWpcomSiteUsersMe
+      summary: PATCH /wp/v2/sites/{wpcom_site}/users/me
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  - af
+                  - am
+                  - an
+                  - ar
+                  - as
+                  - ast
+                  - az
+                  - bel
+                  - bg
+                  - bn
+                  - bo
+                  - br
+                  - bs
+                  - ca
+                  - ckb
+                  - cs
+                  - cv
+                  - cy
+                  - da
+                  - de
+                  - de-ch
+                  - de_formal
+                  - dv
+                  - el
+                  - el-po
+                  - en
+                  - en-gb
+                  - eo
+                  - es
+                  - es-cl
+                  - es-mx
+                  - et
+                  - eu
+                  - fa
+                  - fi
+                  - fo
+                  - fr
+                  - fr-be
+                  - fr-ca
+                  - fr-ch
+                  - fur
+                  - fy
+                  - ga
+                  - gd
+                  - gl
+                  - gu
+                  - he
+                  - hi
+                  - hr
+                  - hu
+                  - hy
+                  - id
+                  - is
+                  - it
+                  - ja
+                  - ka
+                  - kab
+                  - kal
+                  - kir
+                  - kk
+                  - km
+                  - kn
+                  - ko
+                  - la
+                  - lo
+                  - lt
+                  - lv
+                  - mk
+                  - ml
+                  - mn
+                  - mr
+                  - ms
+                  - mt
+                  - mwl
+                  - nb
+                  - ne
+                  - nl
+                  - nn
+                  - oci
+                  - pa
+                  - pl
+                  - ps
+                  - pt
+                  - pt-br
+                  - ro
+                  - ru
+                  - rup
+                  - si
+                  - sk
+                  - skr
+                  - sl
+                  - snd
+                  - so
+                  - sq
+                  - sr
+                  - sr_latin
+                  - su
+                  - sv
+                  - ta
+                  - te
+                  - th
+                  - tir
+                  - tl
+                  - tr
+                  - ug
+                  - uk
+                  - ur
+                  - uz
+                  - vi
+                  - yi
+                  - yo
+                  - zh-cn
+                  - zh-hk
+                  - zh-sg
+                  - zh-tw
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+    delete:
+      operationId: deleteWpV2SitesbyWpcomSiteUsersMe
+      summary: DELETE /wp/v2/sites/{wpcom_site}/users/me
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Required to be true, as users do not support trashing.
+      - name: reassign
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: Reassign the deleted user's posts and links to this user ID.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/users/{id}:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteUsersbyId
+      summary: GET /wp/v2/sites/{wpcom_site}/users/{id}
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteUsersbyId
+      summary: POST /wp/v2/sites/{wpcom_site}/users/{id}
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  - af
+                  - am
+                  - an
+                  - ar
+                  - as
+                  - ast
+                  - az
+                  - bel
+                  - bg
+                  - bn
+                  - bo
+                  - br
+                  - bs
+                  - ca
+                  - ckb
+                  - cs
+                  - cv
+                  - cy
+                  - da
+                  - de
+                  - de-ch
+                  - de_formal
+                  - dv
+                  - el
+                  - el-po
+                  - en
+                  - en-gb
+                  - eo
+                  - es
+                  - es-cl
+                  - es-mx
+                  - et
+                  - eu
+                  - fa
+                  - fi
+                  - fo
+                  - fr
+                  - fr-be
+                  - fr-ca
+                  - fr-ch
+                  - fur
+                  - fy
+                  - ga
+                  - gd
+                  - gl
+                  - gu
+                  - he
+                  - hi
+                  - hr
+                  - hu
+                  - hy
+                  - id
+                  - is
+                  - it
+                  - ja
+                  - ka
+                  - kab
+                  - kal
+                  - kir
+                  - kk
+                  - km
+                  - kn
+                  - ko
+                  - la
+                  - lo
+                  - lt
+                  - lv
+                  - mk
+                  - ml
+                  - mn
+                  - mr
+                  - ms
+                  - mt
+                  - mwl
+                  - nb
+                  - ne
+                  - nl
+                  - nn
+                  - oci
+                  - pa
+                  - pl
+                  - ps
+                  - pt
+                  - pt-br
+                  - ro
+                  - ru
+                  - rup
+                  - si
+                  - sk
+                  - skr
+                  - sl
+                  - snd
+                  - so
+                  - sq
+                  - sr
+                  - sr_latin
+                  - su
+                  - sv
+                  - ta
+                  - te
+                  - th
+                  - tir
+                  - tl
+                  - tr
+                  - ug
+                  - uk
+                  - ur
+                  - uz
+                  - vi
+                  - yi
+                  - yo
+                  - zh-cn
+                  - zh-hk
+                  - zh-sg
+                  - zh-tw
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+    put:
+      operationId: putWpV2SitesbyWpcomSiteUsersbyId
+      summary: PUT /wp/v2/sites/{wpcom_site}/users/{id}
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  - af
+                  - am
+                  - an
+                  - ar
+                  - as
+                  - ast
+                  - az
+                  - bel
+                  - bg
+                  - bn
+                  - bo
+                  - br
+                  - bs
+                  - ca
+                  - ckb
+                  - cs
+                  - cv
+                  - cy
+                  - da
+                  - de
+                  - de-ch
+                  - de_formal
+                  - dv
+                  - el
+                  - el-po
+                  - en
+                  - en-gb
+                  - eo
+                  - es
+                  - es-cl
+                  - es-mx
+                  - et
+                  - eu
+                  - fa
+                  - fi
+                  - fo
+                  - fr
+                  - fr-be
+                  - fr-ca
+                  - fr-ch
+                  - fur
+                  - fy
+                  - ga
+                  - gd
+                  - gl
+                  - gu
+                  - he
+                  - hi
+                  - hr
+                  - hu
+                  - hy
+                  - id
+                  - is
+                  - it
+                  - ja
+                  - ka
+                  - kab
+                  - kal
+                  - kir
+                  - kk
+                  - km
+                  - kn
+                  - ko
+                  - la
+                  - lo
+                  - lt
+                  - lv
+                  - mk
+                  - ml
+                  - mn
+                  - mr
+                  - ms
+                  - mt
+                  - mwl
+                  - nb
+                  - ne
+                  - nl
+                  - nn
+                  - oci
+                  - pa
+                  - pl
+                  - ps
+                  - pt
+                  - pt-br
+                  - ro
+                  - ru
+                  - rup
+                  - si
+                  - sk
+                  - skr
+                  - sl
+                  - snd
+                  - so
+                  - sq
+                  - sr
+                  - sr_latin
+                  - su
+                  - sv
+                  - ta
+                  - te
+                  - th
+                  - tir
+                  - tl
+                  - tr
+                  - ug
+                  - uk
+                  - ur
+                  - uz
+                  - vi
+                  - yi
+                  - yo
+                  - zh-cn
+                  - zh-hk
+                  - zh-sg
+                  - zh-tw
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+    patch:
+      operationId: patchWpV2SitesbyWpcomSiteUsersbyId
+      summary: PATCH /wp/v2/sites/{wpcom_site}/users/{id}
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Login name for the user.
+                name:
+                  type: string
+                  description: Display name for the user.
+                first_name:
+                  type: string
+                  description: First name for the user.
+                last_name:
+                  type: string
+                  description: Last name for the user.
+                email:
+                  type: string
+                  format: email
+                  description: The email address for the user.
+                url:
+                  type: string
+                  format: uri
+                  description: URL of the user.
+                description:
+                  type: string
+                  description: Description of the user.
+                locale:
+                  type: string
+                  enum:
+                  - ''
+                  - en_US
+                  - af
+                  - am
+                  - an
+                  - ar
+                  - as
+                  - ast
+                  - az
+                  - bel
+                  - bg
+                  - bn
+                  - bo
+                  - br
+                  - bs
+                  - ca
+                  - ckb
+                  - cs
+                  - cv
+                  - cy
+                  - da
+                  - de
+                  - de-ch
+                  - de_formal
+                  - dv
+                  - el
+                  - el-po
+                  - en
+                  - en-gb
+                  - eo
+                  - es
+                  - es-cl
+                  - es-mx
+                  - et
+                  - eu
+                  - fa
+                  - fi
+                  - fo
+                  - fr
+                  - fr-be
+                  - fr-ca
+                  - fr-ch
+                  - fur
+                  - fy
+                  - ga
+                  - gd
+                  - gl
+                  - gu
+                  - he
+                  - hi
+                  - hr
+                  - hu
+                  - hy
+                  - id
+                  - is
+                  - it
+                  - ja
+                  - ka
+                  - kab
+                  - kal
+                  - kir
+                  - kk
+                  - km
+                  - kn
+                  - ko
+                  - la
+                  - lo
+                  - lt
+                  - lv
+                  - mk
+                  - ml
+                  - mn
+                  - mr
+                  - ms
+                  - mt
+                  - mwl
+                  - nb
+                  - ne
+                  - nl
+                  - nn
+                  - oci
+                  - pa
+                  - pl
+                  - ps
+                  - pt
+                  - pt-br
+                  - ro
+                  - ru
+                  - rup
+                  - si
+                  - sk
+                  - skr
+                  - sl
+                  - snd
+                  - so
+                  - sq
+                  - sr
+                  - sr_latin
+                  - su
+                  - sv
+                  - ta
+                  - te
+                  - th
+                  - tir
+                  - tl
+                  - tr
+                  - ug
+                  - uk
+                  - ur
+                  - uz
+                  - vi
+                  - yi
+                  - yo
+                  - zh-cn
+                  - zh-hk
+                  - zh-sg
+                  - zh-tw
+                  description: Locale for the user.
+                nickname:
+                  type: string
+                  description: The nickname for the user.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the user.
+                roles:
+                  type: array
+                  items:
+                    type: string
+                  description: Roles assigned to the user.
+                password:
+                  type: string
+                  description: Password for the user (never included).
+                meta:
+                  type: object
+                  description: Meta fields.
+    delete:
+      operationId: deleteWpV2SitesbyWpcomSiteUsersbyId
+      summary: DELETE /wp/v2/sites/{wpcom_site}/users/{id}
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Required to be true, as users do not support trashing.
+      - name: reassign
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: Reassign the deleted user's posts and links to this user ID.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/users/username/suggestions:
+    get:
+      operationId: getWpcomV2UsersUsernameSuggestions
+      summary: GET /wpcom/v2/users/username/suggestions
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+        description: A string from which to derive suggestions. May be a single word, multiple words, or email address.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/users/{user_id}/sites:
+    get:
+      operationId: getWpcomV2UsersbyUserIdSites
+      summary: GET /wpcom/v2/users/{user_id}/sites
+      tags:
+      - users
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: caller
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - reader
+        description: String that identifies the caller. Based on this value, the endpoint can apply additional filtering to the returned sites.
+      - name: owner
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether the requester is the profile owner. Only honored when the authenticated user matches user_id; when trusted, hidden sites are included and each site is annotated with is_hidden.
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-1-openapi.yml
+- automattic-wordpress-com-rest-v1-2-openapi.yml
+- automattic-wordpress-com-rest-v1-3-openapi.yml
+- automattic-wordpress-com-wp-v2-openapi.yml
+- automattic-wordpress-com-wpcom-v2-openapi.yml

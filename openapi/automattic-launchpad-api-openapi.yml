@@ -1,0 +1,516 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Launchpad API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: launchpad
+paths:
+  /wpcom/v2/sites/{wpcom_site}/launchpad:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteLaunchpad
+      summary: GET /wpcom/v2/sites/{wpcom_site}/launchpad
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: checklist_slug
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - build
+          - free
+          - link-in-bio
+          - link-in-bio-tld
+          - newsletter
+          - intent-newsletter-goal
+          - create-course-goal
+          - videopress
+          - write
+          - design-first
+          - intent-build
+          - intent-write
+          - intent-free-newsletter
+          - intent-paid-newsletter
+          - earn
+          - host-site
+          - subscribers
+          - assembler-first
+          - readymade-template
+          - ai-assembler
+          - legacy-site-setup
+          - sell
+          - entrepreneur-site-setup
+          - post-migration
+          - start-writing
+        description: Checklist slug
+      - name: launchpad_context
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Screen where Launchpand instance is loaded.
+      - name: use_goals
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Should the launchpad data use site goals or intent.
+      - name: enable_checklist_for_goals
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: string
+        description: Used by the client to signal to Jetpack which launchpad goals have been enabled (e.g. via feature flags)
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteLaunchpad
+      summary: POST /wpcom/v2/sites/{wpcom_site}/launchpad
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                checklist_statuses:
+                  type: object
+                  description: Launchpad statuses
+                launchpad_screen:
+                  type: string
+                  enum:
+                  - 'off'
+                  - minimized
+                  - full
+                  - skipped
+                  description: Launchpad screen
+                is_checklist_dismissed:
+                  type: object
+                  description: Marks a checklist as dismissed by the user
+                hide_fse_next_steps_modal:
+                  type: boolean
+                  description: Controls whether we show or hide the next steps modal in the full site editor
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteLaunchpad
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/launchpad
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                checklist_statuses:
+                  type: object
+                  description: Launchpad statuses
+                launchpad_screen:
+                  type: string
+                  enum:
+                  - 'off'
+                  - minimized
+                  - full
+                  - skipped
+                  description: Launchpad screen
+                is_checklist_dismissed:
+                  type: object
+                  description: Marks a checklist as dismissed by the user
+                hide_fse_next_steps_modal:
+                  type: boolean
+                  description: Controls whether we show or hide the next steps modal in the full site editor
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteLaunchpad
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/launchpad
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                checklist_statuses:
+                  type: object
+                  description: Launchpad statuses
+                launchpad_screen:
+                  type: string
+                  enum:
+                  - 'off'
+                  - minimized
+                  - full
+                  - skipped
+                  description: Launchpad screen
+                is_checklist_dismissed:
+                  type: object
+                  description: Marks a checklist as dismissed by the user
+                hide_fse_next_steps_modal:
+                  type: boolean
+                  description: Controls whether we show or hide the next steps modal in the full site editor
+  /wpcom/v2/sites/{wpcom_site}/launchpad/navigator:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteLaunchpadNavigator
+      summary: GET /wpcom/v2/sites/{wpcom_site}/launchpad/navigator
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteLaunchpadNavigator
+      summary: POST /wpcom/v2/sites/{wpcom_site}/launchpad/navigator
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                active_checklist_slug:
+                  type: string
+                  description: The slug of the checklist to set as active.
+                remove_checklist_slug:
+                  type: string
+                  enum:
+                  - build
+                  - free
+                  - link-in-bio
+                  - link-in-bio-tld
+                  - newsletter
+                  - intent-newsletter-goal
+                  - create-course-goal
+                  - videopress
+                  - write
+                  - design-first
+                  - intent-build
+                  - intent-write
+                  - intent-free-newsletter
+                  - intent-paid-newsletter
+                  - earn
+                  - host-site
+                  - subscribers
+                  - assembler-first
+                  - readymade-template
+                  - ai-assembler
+                  - legacy-site-setup
+                  - sell
+                  - entrepreneur-site-setup
+                  - post-migration
+                  - start-writing
+                  description: The slug of the checklist to remove from the active list.
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteLaunchpadNavigator
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/launchpad/navigator
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                active_checklist_slug:
+                  type: string
+                  description: The slug of the checklist to set as active.
+                remove_checklist_slug:
+                  type: string
+                  enum:
+                  - build
+                  - free
+                  - link-in-bio
+                  - link-in-bio-tld
+                  - newsletter
+                  - intent-newsletter-goal
+                  - create-course-goal
+                  - videopress
+                  - write
+                  - design-first
+                  - intent-build
+                  - intent-write
+                  - intent-free-newsletter
+                  - intent-paid-newsletter
+                  - earn
+                  - host-site
+                  - subscribers
+                  - assembler-first
+                  - readymade-template
+                  - ai-assembler
+                  - legacy-site-setup
+                  - sell
+                  - entrepreneur-site-setup
+                  - post-migration
+                  - start-writing
+                  description: The slug of the checklist to remove from the active list.
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteLaunchpadNavigator
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/launchpad/navigator
+      tags:
+      - launchpad
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                active_checklist_slug:
+                  type: string
+                  description: The slug of the checklist to set as active.
+                remove_checklist_slug:
+                  type: string
+                  enum:
+                  - build
+                  - free
+                  - link-in-bio
+                  - link-in-bio-tld
+                  - newsletter
+                  - intent-newsletter-goal
+                  - create-course-goal
+                  - videopress
+                  - write
+                  - design-first
+                  - intent-build
+                  - intent-write
+                  - intent-free-newsletter
+                  - intent-paid-newsletter
+                  - earn
+                  - host-site
+                  - subscribers
+                  - assembler-first
+                  - readymade-template
+                  - ai-assembler
+                  - legacy-site-setup
+                  - sell
+                  - entrepreneur-site-setup
+                  - post-migration
+                  - start-writing
+                  description: The slug of the checklist to remove from the active list.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

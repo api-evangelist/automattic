@@ -1,0 +1,1191 @@
+openapi: 3.2.0
+info:
+  title: Automattic Me API
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged me across 2 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-1-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: me
+paths:
+  /me/mailboxes:
+    get:
+      operationId: getMeMailboxes
+      summary: List all email mailboxes the current user has access to across all manageable sites.
+      description: List all email mailboxes the current user has access to across all manageable sites.
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mailboxes:
+                    type: array
+                    items: {}
+                    description: List of mailbox records with account_type, domain, mailbox, last_access_time
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: include_all_managed_domains
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Include domains on managed sites that the current user does not own. Defaults to false, which returns only domains the user pays for.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /wpcom/v2/me/blocks/sites:
+    get:
+      operationId: getWpcomV2MeBlocksSites
+      summary: GET /wpcom/v2/me/blocks/sites
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/connections:
+    get:
+      operationId: getWpcomV2MeConnections
+      summary: GET /wpcom/v2/me/connections
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: force_external_users_refetch
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: force_connection_test
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/connections/{token_id}:
+    get:
+      operationId: getWpcomV2MeConnectionsbyTokenId
+      summary: GET /wpcom/v2/me/connections/{token_id}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: token_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force_external_users_refetch
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: force_connection_test
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+    delete:
+      operationId: deleteWpcomV2MeConnectionsbyTokenId
+      summary: DELETE /wpcom/v2/me/connections/{token_id}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: token_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: force_external_users_refetch
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: force_connection_test
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/education-student-validation:
+    post:
+      operationId: postWpcomV2MeEducationStudentValidation
+      summary: POST /wpcom/v2/me/education-student-validation
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Education student validation code.
+              required:
+              - code
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/following:
+    get:
+      operationId: getWpcomV2MeFollowing
+      summary: GET /wpcom/v2/me/following
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: ignore_user_blogs
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/following/recommendations:
+    get:
+      operationId: getWpcomV2MeFollowingRecommendations
+      summary: GET /wpcom/v2/me/following/recommendations
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: number
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 5
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/get-apps/send-download-sms:
+    post:
+      operationId: postWpcomV2MeGetAppsSendDownloadSms
+      summary: POST /wpcom/v2/me/get-apps/send-download-sms
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/gutenberg:
+    get:
+      operationId: getWpcomV2MeGutenberg
+      summary: GET /wpcom/v2/me/gutenberg
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2MeGutenberg
+      summary: POST /wpcom/v2/me/gutenberg
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                editor:
+                  type: string
+                platform:
+                  type: string
+              required:
+              - editor
+              - platform
+    put:
+      operationId: putWpcomV2MeGutenberg
+      summary: PUT /wpcom/v2/me/gutenberg
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                editor:
+                  type: string
+                platform:
+                  type: string
+              required:
+              - editor
+              - platform
+    patch:
+      operationId: patchWpcomV2MeGutenberg
+      summary: PATCH /wpcom/v2/me/gutenberg
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                editor:
+                  type: string
+                platform:
+                  type: string
+              required:
+              - editor
+              - platform
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/legacy-contacts:
+    get:
+      operationId: getWpcomV2MeLegacyContacts
+      summary: GET /wpcom/v2/me/legacy-contacts
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2MeLegacyContacts
+      summary: POST /wpcom/v2/me/legacy-contacts
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                notes:
+                  type: string
+                  default: ''
+              required:
+              - email
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/legacy-contacts/{legacy_contact_id}:
+    get:
+      operationId: getWpcomV2MeLegacyContactsbyLegacyContactId
+      summary: GET /wpcom/v2/me/legacy-contacts/{legacy_contact_id}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: legacy_contact_id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2MeLegacyContactsbyLegacyContactId
+      summary: DELETE /wpcom/v2/me/legacy-contacts/{legacy_contact_id}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: legacy_contact_id
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/locale:
+    get:
+      operationId: getWpcomV2MeLocale
+      summary: GET /wpcom/v2/me/locale
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2MeLocale
+      summary: POST /wpcom/v2/me/locale
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  description: An updated locale.
+              required:
+              - locale
+    put:
+      operationId: putWpcomV2MeLocale
+      summary: PUT /wpcom/v2/me/locale
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  description: An updated locale.
+              required:
+              - locale
+    patch:
+      operationId: patchWpcomV2MeLocale
+      summary: PATCH /wpcom/v2/me/locale
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  description: An updated locale.
+              required:
+              - locale
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/preferences:
+    get:
+      operationId: getWpcomV2MePreferences
+      summary: GET /wpcom/v2/me/preferences
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: preference_key
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A calypso preference key to retrieve the value of. If not provided, all preferences will be returned.
+    post:
+      operationId: postWpcomV2MePreferences
+      summary: POST /wpcom/v2/me/preferences
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calypso_preferences:
+                  type: object
+                  description: A calypso preferences subset to be merged with the existing preferences.
+              required:
+              - calypso_preferences
+    put:
+      operationId: putWpcomV2MePreferences
+      summary: PUT /wpcom/v2/me/preferences
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calypso_preferences:
+                  type: object
+                  description: A calypso preferences subset to be merged with the existing preferences.
+              required:
+              - calypso_preferences
+    patch:
+      operationId: patchWpcomV2MePreferences
+      summary: PATCH /wpcom/v2/me/preferences
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calypso_preferences:
+                  type: object
+                  description: A calypso preferences subset to be merged with the existing preferences.
+              required:
+              - calypso_preferences
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/profile:
+    get:
+      operationId: getWpcomV2MeProfile
+      summary: GET /wpcom/v2/me/profile
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/sites/stats/summary:
+    get:
+      operationId: getWpcomV2MeSitesStatsSummary
+      summary: GET /wpcom/v2/me/sites/stats/summary
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional offset in hours to shift stats. Ints between -24 and 24 are allowed.
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: string
+          default: day
+        description: 'Duration of time units to report on. String: ''year'', ''month'', ''week'' or default ''day''.'
+      - name: num
+        in: query
+        required: false
+        schema:
+          type: string
+          default: 1
+        description: 'Number of periods to include in report. Counts backward from date parameter. For example: period=day, num=5, date=2023-06-06 would include 2023-06-02 00:00-2023-06-06 23:59.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: End date of report in YYYY-MM-DD form. If blank, defaults to the current date right now in each blog's local time (this allows for different end dates per blog).
+      - name: site_limit
+        in: query
+        required: false
+        schema:
+          type: string
+          default: 75
+        description: Limit of how many sites to return. Defaults to 75. Max value allowed is 150.
+      - name: site_offset
+        in: query
+        required: false
+        schema:
+          type: string
+          default: 0
+        description: Offset of which sites to return. Default is 0. Use site_limit and site_offset together to paginate results.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/ssh-keys:
+    get:
+      operationId: getWpcomV2MeSshKeys
+      summary: GET /wpcom/v2/me/ssh-keys
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2MeSshKeys
+      summary: POST /wpcom/v2/me/ssh-keys
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+              required:
+              - key
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/me/ssh-keys/{name}:
+    post:
+      operationId: postWpcomV2MeSshKeysbyName
+      summary: POST /wpcom/v2/me/ssh-keys/{name}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+              required:
+              - key
+    put:
+      operationId: putWpcomV2MeSshKeysbyName
+      summary: PUT /wpcom/v2/me/ssh-keys/{name}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+              required:
+              - key
+    patch:
+      operationId: patchWpcomV2MeSshKeysbyName
+      summary: PATCH /wpcom/v2/me/ssh-keys/{name}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+              required:
+              - key
+    delete:
+      operationId: deleteWpcomV2MeSshKeysbyName
+      summary: DELETE /wpcom/v2/me/ssh-keys/{name}
+      tags:
+      - me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-1-openapi.yml
+- automattic-wordpress-com-wpcom-v2-openapi.yml

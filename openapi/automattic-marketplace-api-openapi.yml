@@ -1,0 +1,1143 @@
+openapi: 3.2.0
+info:
+  title: Automattic Marketplace API
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged marketplace across 2 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-3-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.3
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: marketplace
+paths:
+  /marketplace/search:
+    get:
+      operationId: getMarketplaceSearch
+      summary: Search the Wordpress.com Marketplace
+      description: Search the Wordpress.com Marketplace
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: The total number of results in the index.
+                  corrected_query:
+                    type: string
+                    description: If there were no results for the query and the query got auto corrected, then this string will be non-false and contain the query that was used to obtain results.
+                  page_handle:
+                    type: string
+                    description: Query string for passing to "page_handle" param to get the next set of results.
+                  results:
+                    type: array
+                    items: {}
+                    description: The Elasticsearch formatted search results
+                  aggregations:
+                    type: array
+                    items: {}
+                    description: The Elasticsearch formatted aggregation results
+                  suggestions:
+                    type: array
+                    items: {}
+                    description: A list of suggestions for this query.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: List of fields to return. TBD See all fields.
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of results to return. Max 20 Default: 10.'
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Item number to return. Max 200
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The user's search query
+      - name: lang
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Lang analyzer to use for searching. e.g. "en", "zh-cn"
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'How to sort results. Default is score_default. Also supports: date_desc, date_asc, TBD'
+      - name: filter
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Filters applied to the search. Will be added as a part of a top level bool query
+      - name: aggregations
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Return aggregations from matches to the search. See details.
+      - name: page_handle
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Base64 encoded query string for scrolling results from one page to the next. Overrides "from" and can add fitlers
+      - name: algorithm
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algorithm to use for search. Typically auto selected and supplied by page_handle.
+      - name: group_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Group id to search for, used as : to support multiple group types. A way to search across multiple sites.'
+      - name: track_total_hits
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Controls whether to track result counts beyond 10000
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.3
+  /marketplace/{product_slug}/related:
+    get:
+      operationId: getMarketplaceByProductSlugRelated
+      summary: Get related marketplace products
+      description: Get related marketplace products
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items: {}
+                    description: The top level "hits" object from the Elasticsearch query response with post_id and blog_id fields of the related items.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: product_slug
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Marketplace product slug.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of results to return Default: 4.'
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset to start from
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.3
+  /wpcom/v2/marketplace/jetpack-scan:
+    post:
+      operationId: postWpcomV2MarketplaceJetpackScan
+      summary: POST /wpcom/v2/marketplace/jetpack-scan
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                signature:
+                  type: string
+                  description: The signature of the request
+                signature_ts:
+                  type: number
+                  description: The timestamp used to sign the request
+              required:
+              - signature
+              - signature_ts
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/products:
+    get:
+      operationId: getWpcomV2MarketplaceProducts
+      summary: GET /wpcom/v2/marketplace/products
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/products/{id}:
+    get:
+      operationId: getWpcomV2MarketplaceProductsbyId
+      summary: GET /wpcom/v2/marketplace/products/{id}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/products/{slug}:
+    get:
+      operationId: getWpcomV2MarketplaceProductsbySlug
+      summary: GET /wpcom/v2/marketplace/products/{slug}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2MarketplaceProductsbySlug
+      summary: POST /wpcom/v2/marketplace/products/{slug}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook_url:
+                  type: string
+                  description: The product webhook URL
+                saas_landing_page:
+                  type: string
+                  description: The vendor landing page URL
+    put:
+      operationId: putWpcomV2MarketplaceProductsbySlug
+      summary: PUT /wpcom/v2/marketplace/products/{slug}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook_url:
+                  type: string
+                  description: The product webhook URL
+                saas_landing_page:
+                  type: string
+                  description: The vendor landing page URL
+    patch:
+      operationId: patchWpcomV2MarketplaceProductsbySlug
+      summary: PATCH /wpcom/v2/marketplace/products/{slug}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook_url:
+                  type: string
+                  description: The product webhook URL
+                saas_landing_page:
+                  type: string
+                  description: The vendor landing page URL
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/billing-intent:
+    post:
+      operationId: postWpcomV2MarketplaceVendorBillingIntent
+      summary: POST /wpcom/v2/marketplace/vendor/billing-intent
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_slug:
+                  type: string
+                  description: The slug of product to create billing intent for.
+                blog_id:
+                  type: string
+                  description: The ID of the site this billing intent belongs to.
+                user_id:
+                  type: string
+                  description: The ID of the user this billing intent belongs to.
+                name:
+                  type: string
+                  description: The name of the product for billing intent.
+                price:
+                  type: integer
+                  description: The price of product for charging user.
+                billing_period:
+                  type: string
+                  enum:
+                  - month
+                  - year
+                  default: year
+                  description: The billing period for the billing intent.
+                return_url:
+                  type: string
+                  format: uri
+                  description: The url where users will be redirected upon successful purchase of product
+              required:
+              - product_slug
+              - blog_id
+              - user_id
+              - name
+              - price
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/billing-intent-siteless:
+    post:
+      operationId: postWpcomV2MarketplaceVendorBillingIntentSiteless
+      summary: POST /wpcom/v2/marketplace/vendor/billing-intent-siteless
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_slug:
+                  type: string
+                  description: The accounting slug of product to create billing intent for.
+                name:
+                  type: string
+                  description: The name of the product for the billing intent.
+                price:
+                  type: integer
+                  description: The price for the billing intent.
+                currency:
+                  type: string
+                  description: The currency for the billing intent. Defaults to 'USD'.
+                billing_period:
+                  type: string
+                  enum:
+                  - month
+                  - year
+                  default: year
+                  description: The billing period for the billing intent.
+                return_url:
+                  type: string
+                  format: uri
+                  description: The url where users will be redirected upon successful purchase of product
+              required:
+              - product_slug
+              - name
+              - price
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/billing-intent/{intent_id}:
+    get:
+      operationId: getWpcomV2MarketplaceVendorBillingIntentbyIntentId
+      summary: GET /wpcom/v2/marketplace/vendor/billing-intent/{intent_id}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: intent_id
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/schema:
+    get:
+      operationId: getWpcomV2MarketplaceVendorSchema
+      summary: GET /wpcom/v2/marketplace/vendor/schema
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/subscriptions:
+    get:
+      operationId: getWpcomV2MarketplaceVendorSubscriptions
+      summary: GET /wpcom/v2/marketplace/vendor/subscriptions
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: Maximum number of items to be returned in result set.
+      - name: product_slug
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a product_slug.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}:
+    get:
+      operationId: getWpcomV2MarketplaceVendorSubscriptionsbyOwnershipId
+      summary: GET /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: ownership_id
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}/addon:
+    post:
+      operationId: postWpcomV2MarketplaceVendorSubscriptionsbyOwnershipIdAddon
+      summary: POST /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}/addon
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: ownership_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the product for billing intent.
+                price:
+                  type: integer
+                  description: The price of product for charging user.
+                return_url:
+                  type: string
+                  format: uri
+                  description: The url where users will be redirected upon successful purchase of product
+              required:
+              - name
+              - price
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}/cancel:
+    post:
+      operationId: postWpcomV2MarketplaceVendorSubscriptionsbyOwnershipIdCancel
+      summary: POST /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}/cancel
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: ownership_id
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/subscriptions/{wpcom_site}/{product_slug}:
+    get:
+      operationId: getWpcomV2MarketplaceVendorSubscriptionsbyWpcomSitebyProductSlug
+      summary: GET /wpcom/v2/marketplace/vendor/subscriptions/{wpcom_site}/{product_slug}
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: product_slug
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/vendor/webhooks:
+    post:
+      operationId: postWpcomV2MarketplaceVendorWebhooks
+      summary: POST /wpcom/v2/marketplace/vendor/webhooks
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook_url:
+                  type: string
+                  format: uri
+                  description: A webhook url for testing.
+                event:
+                  type: string
+                  enum:
+                  - provision_license
+                  - subscription_cancelled
+                  - subscription_created
+                  - subscription_domain_changed
+                  - subscription_refunded
+                  - subscription_renewed
+                  default: subscription_created
+                  description: A subscription event type to request webhook. Default `subscription_created`.
+                domain:
+                  type: string
+                  default: example.wordpress.com
+                  description: A test domain for testing. Default `example.wordpress.com`.
+                product_slug:
+                  type: string
+                  default: product-slug
+                  description: A product slug for testing. Default `product-slug`.
+                billing_cycle:
+                  type: string
+                  enum:
+                  - yearly
+                  - monthly
+                  default: yearly
+                  description: A billing cycle for testing. Default `yearly`.
+                intent_id:
+                  type: integer
+                  description: The billing intent id for testing.
+              required:
+              - webhook_url
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/marketplace/{type}/updates:
+    get:
+      operationId: getWpcomV2MarketplacebyTypeUpdates
+      summary: GET /wpcom/v2/marketplace/{type}/updates
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/marketplace/products/reinstall:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMarketplaceProductsReinstall
+      summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/products/reinstall
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/stats:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMarketplaceReviewsbyProductTypebyProductSlugStats
+      summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/stats
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: product_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: product_slug
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/validate:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMarketplaceReviewsbyProductTypebyProductSlugValidate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/validate
+      tags:
+      - marketplace
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: product_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: product_slug
+        in: path
+        required: true
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-3-openapi.yml
+- automattic-wordpress-com-wpcom-v2-openapi.yml

@@ -1,0 +1,356 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Jurassic Ninja API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: jurassic-ninja
+paths:
+  /wpcom/v2/jurassic-ninja/create-new-site-from-zip:
+    post:
+      operationId: postWpcomV2JurassicNinjaCreateNewSiteFromZip
+      summary: POST /wpcom/v2/jurassic-ninja/create-new-site-from-zip
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wordpress_version:
+                  type: string
+                  description: The WordPress version to be used.
+                connected_site_id:
+                  type: integer
+  /wpcom/v2/jurassic-ninja/delete:
+    post:
+      operationId: postWpcomV2JurassicNinjaDelete
+      summary: POST /wpcom/v2/jurassic-ninja/delete
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_id:
+                  type: integer
+              required:
+              - site_id
+  /wpcom/v2/jurassic-ninja/delete/all:
+    post:
+      operationId: postWpcomV2JurassicNinjaDeleteAll
+      summary: POST /wpcom/v2/jurassic-ninja/delete/all
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/jurassic-ninja/extend:
+    post:
+      operationId: postWpcomV2JurassicNinjaExtend
+      summary: POST /wpcom/v2/jurassic-ninja/extend
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                domain:
+                  type: string
+                api_token:
+                  type: string
+              required:
+              - domain
+              - api_token
+  /wpcom/v2/jurassic-ninja/list:
+    get:
+      operationId: getWpcomV2JurassicNinjaList
+      summary: GET /wpcom/v2/jurassic-ninja/list
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/jurassic-ninja/status:
+    get:
+      operationId: getWpcomV2JurassicNinjaStatus
+      summary: GET /wpcom/v2/jurassic-ninja/status
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: site_id
+        in: query
+        required: true
+        schema:
+          type: integer
+  /wpcom/v2/jurassic-ninja/update-site-from-zip:
+    post:
+      operationId: postWpcomV2JurassicNinjaUpdateSiteFromZip
+      summary: POST /wpcom/v2/jurassic-ninja/update-site-from-zip
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_id:
+                  type: integer
+                wordpress_version:
+                  type: string
+                  description: The WordPress version to be used.
+              required:
+              - site_id
+    put:
+      operationId: putWpcomV2JurassicNinjaUpdateSiteFromZip
+      summary: PUT /wpcom/v2/jurassic-ninja/update-site-from-zip
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_id:
+                  type: integer
+                wordpress_version:
+                  type: string
+                  description: The WordPress version to be used.
+              required:
+              - site_id
+    patch:
+      operationId: patchWpcomV2JurassicNinjaUpdateSiteFromZip
+      summary: PATCH /wpcom/v2/jurassic-ninja/update-site-from-zip
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_id:
+                  type: integer
+                wordpress_version:
+                  type: string
+                  description: The WordPress version to be used.
+              required:
+              - site_id
+  /wpcom/v2/jurassic-ninja/usage:
+    get:
+      operationId: getWpcomV2JurassicNinjaUsage
+      summary: GET /wpcom/v2/jurassic-ninja/usage
+      tags:
+      - jurassic-ninja
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,299 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Wordads API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: wordads
+paths:
+  /wpcom/v2/sites/{wpcom_site}/wordads/site-info:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteWordadsSiteInfo
+      summary: GET /wpcom/v2/sites/{wpcom_site}/wordads/site-info
+      tags:
+      - wordads
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/wordads/redirect:
+    get:
+      operationId: getWpcomV2WordadsRedirect
+      summary: GET /wpcom/v2/wordads/redirect
+      tags:
+      - wordads
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: source
+        in: query
+        required: true
+        schema:
+          type: string
+        description: utm_source
+      - name: medium
+        in: query
+        required: true
+        schema:
+          type: string
+        description: utm_medium
+      - name: id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: utm_id
+      - name: campaign
+        in: query
+        required: true
+        schema:
+          type: string
+        description: utm_campaign
+      - name: content
+        in: query
+        required: true
+        schema:
+          type: string
+        description: utm_content
+      - name: redirect
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uri
+        description: Redirect URL
+      - name: signature
+        in: query
+        required: true
+        schema:
+          type: string
+        description: HMAC signature
+  /wpcom/v2/wordads/send-email:
+    post:
+      operationId: postWpcomV2WordadsSendEmail
+      summary: POST /wpcom/v2/wordads/send-email
+      tags:
+      - wordads
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                subject:
+                  type: string
+                content:
+                  type: string
+                product:
+                  type: string
+              required:
+              - email
+              - subject
+              - content
+  /wpcom/v2/wordads/send-guides-email:
+    post:
+      operationId: postWpcomV2WordadsSendGuidesEmail
+      summary: POST /wpcom/v2/wordads/send-guides-email
+      tags:
+      - wordads
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                wpcom_user_id:
+                  type: integer
+                wpcom_site_id:
+                  type: integer
+                credits_amount:
+                  type: string
+                expire_seconds:
+                  type: integer
+                expire_date:
+                  type: string
+              required:
+              - type
+              - wpcom_user_id
+              - wpcom_site_id
+              - credits_amount
+              - expire_seconds
+              - expire_date
+  /wpcom/v2/wordads/send-notification:
+    post:
+      operationId: postWpcomV2WordadsSendNotification
+      summary: POST /wpcom/v2/wordads/send-notification
+      tags:
+      - wordads
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: number
+                blog_id:
+                  type: number
+                post_id:
+                  type: number
+                campaign_id:
+                  type: number
+                title:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - approved
+                  - rejected
+                  - cancelled
+                  - performed
+                ad_type:
+                  type: string
+              required:
+              - user_id
+              - blog_id
+              - post_id
+              - campaign_id
+              - title
+              - ad_type
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

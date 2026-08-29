@@ -1,0 +1,638 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Memberships API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: memberships
+paths:
+  /wpcom/v2/sites/{wpcom_site}/memberships/comp/{comp_id}:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMembershipsCompbyCompId
+      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/comp/{comp_id}
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: comp_id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2SitesbyWpcomSiteMembershipsCompbyCompId
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/memberships/comp/{comp_id}
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: comp_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/memberships/comps:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMembershipsComps
+      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/comps
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/memberships/comps/{user_id}/{plan_id}:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteMembershipsCompsbyUserIdbyPlanId
+      summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/comps/{user_id}/{plan_id}
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: plan_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                no_expiration:
+                  type: boolean
+                  default: false
+                  description: Set to true for an indefinite comp. Otherwise end_date is inferred from the plan renewal interval.
+  /wpcom/v2/sites/{wpcom_site}/memberships/coupon/{coupon_id}:
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteMembershipsCouponbyCouponId
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/memberships/coupon/{coupon_id}
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: coupon_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                coupon_code:
+                  type: string
+                  description: Coupon code for the coupon.
+                can_be_combined:
+                  type: string
+                  description: If the coupon can be combined with other coupons.
+                first_time_purchase_only:
+                  type: string
+                  description: If the coupon can only be used if the user is not yet subscribed.
+                limit_per_user:
+                  type: string
+                  description: Limit of use of this coupon per user.
+                start_date:
+                  type: string
+                  description: Coupon campaign start date (format yyyy-mm-dd).
+                end_date:
+                  type: string
+                  description: Coupon campaign end date (format yyyy-mm-dd).
+                plan_ids_allow_list:
+                  type: array
+                  items: {}
+                  description: Array of plan ids the coupon can be applied to.
+                duration:
+                  type: string
+                  description: Duration of the coupon once applied. In months. It can be a human-readable string, but it will always return a number of months (example "12 months").
+                email_allow_list:
+                  type: array
+                  items: {}
+                  description: List of white listed emails with potential wildcards.
+                discount_type:
+                  type: string
+                  enum:
+                  - amount
+                  - percentage
+                  description: Type of discount applied.
+                discount_value:
+                  type: string
+                  description: Discount value (if discount_type set as "amount").
+                discount_percentage:
+                  type: string
+                  description: Discount percentage (if discount_type set as "percentage").
+              required:
+              - coupon_code
+              - can_be_combined
+              - first_time_purchase_only
+              - start_date
+              - plan_ids_allow_list
+              - email_allow_list
+              - discount_type
+    delete:
+      operationId: deleteWpcomV2SitesbyWpcomSiteMembershipsCouponbyCouponId
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/memberships/coupon/{coupon_id}
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: coupon_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: currency
+        in: query
+        required: false
+        schema:
+          default: false
+  /wpcom/v2/sites/{wpcom_site}/memberships/coupons:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteMembershipsCoupons
+      summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/coupons
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                coupon_code:
+                  type: string
+                  description: Coupon code for the coupon.
+                can_be_combined:
+                  type: string
+                  description: If the coupon can be combined with other coupons.
+                first_time_purchase_only:
+                  type: string
+                  description: If the coupon can only be used if the user is not yet subscribed.
+                limit_per_user:
+                  type: string
+                  description: Limit of use of this coupon per user.
+                start_date:
+                  type: string
+                  description: Coupon campaign start date (format yyyy-mm-dd).
+                end_date:
+                  type: string
+                  description: Coupon campaign end date (format yyyy-mm-dd).
+                plan_ids_allow_list:
+                  type: array
+                  items: {}
+                  description: Array of plan ids the coupon can be applied to.
+                duration:
+                  type: string
+                  description: Duration of the coupon once applied. In months. It can be a human-readable string, but it will always return a number of months (example "12 months").
+                email_allow_list:
+                  type: array
+                  items: {}
+                  description: List of white listed emails with potential wildcards.
+                discount_type:
+                  type: string
+                  enum:
+                  - amount
+                  - percentage
+                  description: Type of discount applied.
+                discount_value:
+                  type: string
+                  description: Discount value (if discount_type set as "amount").
+                discount_percentage:
+                  type: string
+                  description: Discount percentage (if discount_type set as "percentage").
+              required:
+              - coupon_code
+              - can_be_combined
+              - first_time_purchase_only
+              - start_date
+              - plan_ids_allow_list
+              - email_allow_list
+              - discount_type
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMembershipsCoupons
+      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/coupons
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/memberships/coupons/apply:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteMembershipsCouponsApply
+      summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/coupons/apply
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                coupon_codes:
+                  type: array
+                  items: {}
+                  description: List of coupon codes.
+                plan_id:
+                  type: string
+                  description: Plan id.
+                user_email:
+                  type: string
+                  description: User email.
+              required:
+              - coupon_codes
+              - plan_id
+              - user_email
+  /wpcom/v2/sites/{wpcom_site}/memberships/earnings:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMembershipsEarnings
+      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/earnings
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: currency
+        in: query
+        required: false
+        schema:
+          default: false
+  /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/get_subscriptions:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMembershipsSubscriberImporterGetSubscriptions
+      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/get_subscriptions
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/import:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteMembershipsSubscriberImporterImport
+      summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/import
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: string
+                  description: WPCOM Plan id.
+                subscription_id:
+                  type: string
+                  description: Stripe Subscription id.
+                customer_email:
+                  type: string
+                  description: User email.
+                stripe_restricted_key:
+                  type: string
+                  description: Stripe restricted key with subscription_write scope.
+              required:
+              - product_id
+              - subscription_id
+              - customer_email
+  /wpcom/v2/sites/{wpcom_site}/memberships/subscribers:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteMembershipsSubscribers
+      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/subscribers
+      tags:
+      - memberships
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        required: false
+        schema:
+          default: 0
+        description: Offset of the list.
+      - name: single
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Returns only one memberships.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Allow to search a user either by email, login or name.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,998 @@
+openapi: 3.2.0
+info:
+  title: Automattic Videos API
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged videos across 2 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-1-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: videos
+paths:
+  /videos/{guid}:
+    get:
+      operationId: getVideosByGuid
+      summary: Get the metadata for a specified VideoPress video.
+      description: Get the metadata for a specified VideoPress video.
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    description: Title of the video
+                  description:
+                    type: string
+                    description: Description of the video
+                  width:
+                    type: integer
+                    description: Width of the video
+                  height:
+                    type: integer
+                    description: Height of the video
+                  duration:
+                    type: integer
+                    description: The length of the video, in milliseconds
+                  display_embed:
+                    type: boolean
+                    description: Should the embed menu be shown?
+                  allow_download:
+                    type: boolean
+                    description: Whether to display and allow video downloads
+                  rating:
+                    type: string
+                    description: The rating of the video
+                  privacy_setting:
+                    type: integer
+                    description: The privacy level for the video
+                  poster:
+                    type: string
+                    description: The URL of the video image
+                  original:
+                    type: string
+                    description: The URL of the original video
+                  watermark:
+                    type: string
+                    description: URL of a watermark logo
+                  bg_color:
+                    type: string
+                    description: Custom background color
+                  files:
+                    type: array
+                    items: {}
+                    description: List of video formats and the associated filenames
+                  file_url_base:
+                    type: array
+                    items: {}
+                    description: List of protocols and the base needed for creating file URLs
+                  blog_id:
+                    type: integer
+                    description: Blog ID of the site where the video was uploaded
+                  post_id:
+                    type: integer
+                    description: Post ID of the video attachment post
+                  upload_date:
+                    type: string
+                    description: Date the video was uploaded in ISO 8601 format
+                  finished:
+                    type: boolean
+                    description: Is video transcoding finished?
+                  files_status:
+                    type: array
+                    items: {}
+                    description: Transcoding status for each video file format
+                  subtitles:
+                    type: array
+                    items: {}
+                    description: Available subtitle formats with information for each language that is available
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The guid of the video
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: birth_month
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The month the visitor was born
+      - name: birth_day
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The day of the month the visitor was born
+      - name: birth_year
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The year the visitor was born
+      - name: metadata_token
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Permissions token
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /videos/{guid}/chapters:
+    get:
+      operationId: getVideosByGuidChapters
+      summary: Get the chapters for a specified VideoPress video.
+      description: Get the chapters for a specified VideoPress video.
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  chapters:
+                    type: object
+                    description: Arrays of chapters, indexed by a language slug. Every chapter has integer "start" and "end" in milliseconds, and string "description".
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The guid of the video
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: metadata_token
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Auth token
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /videos/{guid}/playlist/{format}:
+    get:
+      operationId: getVideosByGuidPlaylistByFormat
+      summary: Get the poster for a specified VideoPress video.
+      description: Get the poster for a specified VideoPress video.
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  poster:
+                    type: string
+                    description: The m4u playlist for streaming the given videopress video
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The guid of the video
+      - name: format
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The playlist format, e.g. adaptive, hd-master, or subs-{language} for a subtitle track playlist
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: metadata_token
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional. Auth token
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /videos/{guid}/poster:
+    get:
+      operationId: getVideosByGuidPoster
+      summary: Get the poster for a specified VideoPress video.
+      description: Get the poster for a specified VideoPress video.
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  poster:
+                    type: string
+                    description: The url of the poster for the given videopress video
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The guid of the video
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postVideosByGuidPoster
+      summary: Upload and set a poster for a specified VideoPress video.
+      description: Upload and set a poster for a specified VideoPress video.
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  poster:
+                    type: string
+                    description: The url of the poster for the given videopress video
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The guid of the video
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                at_time:
+                  type: integer
+                  description: Optional.
+                is_millisec:
+                  type: boolean
+                  description: Optional.
+                poster:
+                  type: string
+                  description: 'An image to attach to the video. To upload media, the entire request should be multipart/form-data encoded. Accepts images (image/gif, image/jpeg, image/png) only at this time.Example:curl \--form ''poster=@/path/to/file.jpg'' \-H ''Authorization: BEARER your-token'' \''https://public-api.wordpress.com/rest/v1/videos/12345678/poster'''
+                poster_attachment_id:
+                  type: integer
+                  description: optional
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /videos/{guid}/tracks:
+    post:
+      operationId: postVideosByGuidTracks
+      summary: Upload a subtitle/caption track for a specified VideoPress video.
+      description: Upload a subtitle/caption track for a specified VideoPress video.
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    description: The url for the newly uploaded track
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The guid of the video
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                kind:
+                  type: string
+                  description: One of 'subtitles', 'captions', 'descriptions', 'chapters', or 'metadata'.
+                label:
+                  type: string
+                  description: The track label.
+                srclang:
+                  type: string
+                  description: The language of the track.
+                vtt:
+                  type: string
+                  description: A .vtt or .srt subtitle file. SRT files are automatically converted to VTT.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /videos/{guid}/tracks/delete:
+    post:
+      operationId: postVideosByGuidTracksDelete
+      summary: Delete an existing subtitle/caption track for a specified VideoPress video.
+      description: Delete an existing subtitle/caption track for a specified VideoPress video.
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+                    description: True if successfully deleted.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The guid of the video
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                kind:
+                  type: string
+                  description: One of 'subtitles', 'captions', 'descriptions', 'chapters', or 'metadata'.
+                srclang:
+                  type: string
+                  description: The language of the track.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /wpcom/v2/videos:
+    post:
+      operationId: postWpcomV2Videos
+      summary: POST /wpcom/v2/videos
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  description: The VideoPress video guid.
+                title:
+                  type: string
+                  description: The title of the video.
+                description:
+                  type: string
+                  description: The description of the video.
+                rating:
+                  type: string
+                  description: The video content rating. One of G, PG-13, or R-17
+                display_embed:
+                  type: boolean
+                  description: Display the share menu in the player.
+              required:
+              - guid
+    put:
+      operationId: putWpcomV2Videos
+      summary: PUT /wpcom/v2/videos
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  description: The VideoPress video guid.
+                title:
+                  type: string
+                  description: The title of the video.
+                description:
+                  type: string
+                  description: The description of the video.
+                rating:
+                  type: string
+                  description: The video content rating. One of G, PG-13, or R-17
+                display_embed:
+                  type: boolean
+                  description: Display the share menu in the player.
+              required:
+              - guid
+    patch:
+      operationId: patchWpcomV2Videos
+      summary: PATCH /wpcom/v2/videos
+      tags:
+      - videos
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  description: The VideoPress video guid.
+                title:
+                  type: string
+                  description: The title of the video.
+                description:
+                  type: string
+                  description: The description of the video.
+                rating:
+                  type: string
+                  description: The video content rating. One of G, PG-13, or R-17
+                display_embed:
+                  type: boolean
+                  description: Display the share menu in the player.
+              required:
+              - guid
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-1-openapi.yml
+- automattic-wordpress-com-wpcom-v2-openapi.yml

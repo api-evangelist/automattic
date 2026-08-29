@@ -1,0 +1,4543 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Agency API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: agency
+paths:
+  /wpcom/v2/agency:
+    get:
+      operationId: getWpcomV2Agency
+      summary: GET /wpcom/v2/agency
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2Agency
+      summary: POST /wpcom/v2/agency
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                agency_name:
+                  type: string
+                agency_url:
+                  type: string
+                initial_source:
+                  type: string
+                address_line1:
+                  type: string
+                  default: ''
+                address_line2:
+                  type: string
+                  default: ''
+                address_city:
+                  type: string
+                address_state:
+                  type: string
+                  default: ''
+                address_postal_code:
+                  type: string
+                  default: ''
+                address_country:
+                  type: string
+                agency_size:
+                  type: string
+                number_sites:
+                  type: string
+                services_offered:
+                  type: array
+                  items:
+                    type: string
+                products_offered:
+                  type: array
+                  items:
+                    type: string
+                products_to_offer:
+                  type: array
+                  items:
+                    type: string
+                expansion_planned:
+                  type: string
+                referral_url:
+                  type: string
+                referral_status:
+                  type: string
+                hubspotutk:
+                  type: string
+                bypass_duplicate_check:
+                  type: boolean
+                  default: false
+                skip_hubspot:
+                  type: boolean
+                  default: false
+              required:
+              - first_name
+              - last_name
+              - agency_name
+              - agency_url
+              - address_city
+              - address_country
+  /wpcom/v2/agency/blog/{blog_id}:
+    get:
+      operationId: getWpcomV2AgencyBlogbyBlogId
+      summary: GET /wpcom/v2/agency/blog/{blog_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/embeds/tipalti:
+    get:
+      operationId: getWpcomV2AgencyEmbedsTipalti
+      summary: GET /wpcom/v2/agency/embeds/tipalti
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: query
+        required: true
+        schema:
+          type: integer
+  /wpcom/v2/agency/exists/name:
+    get:
+      operationId: getWpcomV2AgencyExistsName
+      summary: GET /wpcom/v2/agency/exists/name
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: value
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/exists/url:
+    get:
+      operationId: getWpcomV2AgencyExistsUrl
+      summary: GET /wpcom/v2/agency/exists/url
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: value
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/help/pressable/support:
+    post:
+      operationId: postWpcomV2AgencyHelpPressableSupport
+      summary: POST /wpcom/v2/agency/help/pressable/support
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                site:
+                  type: string
+                contact_type:
+                  type: string
+                pressable_id:
+                  type: string
+                message:
+                  type: string
+              required:
+              - name
+              - email
+              - contact_type
+              - message
+  /wpcom/v2/agency/help/zendesk/create-ticket:
+    post:
+      operationId: postWpcomV2AgencyHelpZendeskCreateTicket
+      summary: POST /wpcom/v2/agency/help/zendesk/create-ticket
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                product:
+                  type: string
+                message:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - name
+              - email
+              - product
+              - message
+  /wpcom/v2/agency/hire-an-expert:
+    post:
+      operationId: postWpcomV2AgencyHireAnExpert
+      summary: POST /wpcom/v2/agency/hire-an-expert
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:
+                  type: string
+                email:
+                  type: string
+                company_name:
+                  type: string
+                url:
+                  type: string
+                business_description:
+                  type: string
+                project_goal:
+                  type: string
+                project_description:
+                  type: string
+                timeline:
+                  type: string
+                budget:
+                  type: string
+                business_unit:
+                  type: string
+              required:
+              - full_name
+              - email
+  /wpcom/v2/agency/hubspot/webhook:
+    post:
+      operationId: postWpcomV2AgencyHubspotWebhook
+      summary: POST /wpcom/v2/agency/hubspot/webhook
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/agency/lead-matching/client:
+    post:
+      operationId: postWpcomV2AgencyLeadMatchingClient
+      summary: POST /wpcom/v2/agency/lead-matching/client
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/agency/license:
+    delete:
+      operationId: deleteWpcomV2AgencyLicense
+      summary: DELETE /wpcom/v2/agency/license
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: args
+        in: query
+        required: false
+        schema: {}
+  /wpcom/v2/agency/license/dev-site:
+    get:
+      operationId: getWpcomV2AgencyLicenseDevSite
+      summary: GET /wpcom/v2/agency/license/dev-site
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: args
+        in: query
+        required: false
+        schema: {}
+  /wpcom/v2/agency/partner-directory:
+    get:
+      operationId: getWpcomV2AgencyPartnerDirectory
+      summary: GET /wpcom/v2/agency/partner-directory
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: partner_directory
+        in: query
+        required: false
+        schema:
+          type: string
+  /wpcom/v2/agency/partner-directory/form-submission:
+    post:
+      operationId: postWpcomV2AgencyPartnerDirectoryFormSubmission
+      summary: POST /wpcom/v2/agency/partner-directory/form-submission
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agency_id:
+                  type: string
+                agency_email:
+                  type: string
+                full_name:
+                  type: string
+                email:
+                  type: string
+                business_name:
+                  type: string
+                project_description:
+                  type: string
+                project_type:
+                  type: string
+                url:
+                  type: string
+                budget:
+                  type: string
+              required:
+              - agency_id
+              - agency_email
+              - full_name
+              - email
+              - business_name
+              - project_type
+              - budget
+  /wpcom/v2/agency/partner-directory/{agency_id}:
+    get:
+      operationId: getWpcomV2AgencyPartnerDirectorybyAgencyId
+      summary: GET /wpcom/v2/agency/partner-directory/{agency_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/pressable/new-account:
+    post:
+      operationId: postWpcomV2AgencyPressableNewAccount
+      summary: POST /wpcom/v2/agency/pressable/new-account
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                chargify_id:
+                  type: integer
+                pressable_id:
+                  type: integer
+              required:
+              - email
+              - chargify_id
+  /wpcom/v2/agency/pressable/premium-plan-referral:
+    post:
+      operationId: postWpcomV2AgencyPressablePremiumPlanReferral
+      summary: POST /wpcom/v2/agency/pressable/premium-plan-referral
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agency_id:
+                  type: integer
+                company_name:
+                  type: string
+                address:
+                  type: string
+                country_code:
+                  type: string
+                state:
+                  type: string
+                city:
+                  type: string
+                zip:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                title:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                website:
+                  type: string
+                opportunity_description:
+                  type: string
+              required:
+              - agency_id
+              - company_name
+              - address
+              - country_code
+              - city
+              - zip
+              - first_name
+              - last_name
+              - title
+              - email
+              - website
+              - opportunity_description
+  /wpcom/v2/agency/products:
+    get:
+      operationId: getWpcomV2AgencyProducts
+      summary: GET /wpcom/v2/agency/products
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/agency/resources:
+    get:
+      operationId: getWpcomV2AgencyResources
+      summary: GET /wpcom/v2/agency/resources
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/agency/resources/record-event:
+    post:
+      operationId: postWpcomV2AgencyResourcesRecordEvent
+      summary: POST /wpcom/v2/agency/resources/record-event
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agency_id:
+                  type: integer
+                  description: The agency ID.
+                resource_id:
+                  type: string
+                resource_name:
+                  type: string
+              required:
+              - agency_id
+              - resource_id
+              - resource_name
+  /wpcom/v2/agency/signup:
+    post:
+      operationId: postWpcomV2AgencySignup
+      summary: POST /wpcom/v2/agency/signup
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                agency_name:
+                  type: string
+                agency_url:
+                  type: string
+                initial_source:
+                  type: string
+                address_line1:
+                  type: string
+                  default: ''
+                address_line2:
+                  type: string
+                  default: ''
+                address_city:
+                  type: string
+                  default: ''
+                address_state:
+                  type: string
+                  default: ''
+                address_postal_code:
+                  type: string
+                  default: ''
+                address_country:
+                  type: string
+                agency_size:
+                  type: string
+                number_sites:
+                  type: string
+                services_offered:
+                  type: array
+                  items:
+                    type: string
+                products_offered:
+                  type: array
+                  items:
+                    type: string
+                products_to_offer:
+                  type: array
+                  items:
+                    type: string
+                expansion_planned:
+                  type: string
+                referral_url:
+                  type: string
+                referral_status:
+                  type: string
+                top_partnering_goal:
+                  type: string
+                top_yearly_goal:
+                  type: string
+                work_with_clients:
+                  type: string
+                work_with_clients_other:
+                  type: string
+                  default: ''
+                approach_and_challenges:
+                  type: string
+                  default: ''
+              required:
+              - first_name
+              - last_name
+              - email
+              - agency_name
+              - agency_url
+              - address_country
+  /wpcom/v2/agency/signup-context:
+    get:
+      operationId: getWpcomV2AgencySignupContext
+      summary: GET /wpcom/v2/agency/signup-context
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/agency/signup/contact-support:
+    post:
+      operationId: postWpcomV2AgencySignupContactSupport
+      summary: POST /wpcom/v2/agency/signup/contact-support
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                message:
+                  type: string
+                signup_agency_name:
+                  type: string
+                signup_agency_url:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - name
+              - email
+              - message
+  /wpcom/v2/agency/user-feedback:
+    post:
+      operationId: postWpcomV2AgencyUserFeedback
+      summary: POST /wpcom/v2/agency/user-feedback
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_url:
+                  type: string
+                rating:
+                  type: integer
+                feedback:
+                  type: string
+              required:
+              - source_url
+              - rating
+              - feedback
+  /wpcom/v2/agency/validate/{field}:
+    get:
+      operationId: getWpcomV2AgencyValidatebyField
+      summary: GET /wpcom/v2/agency/validate/{field}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: field
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: value
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/vip/partner-opportunity:
+    post:
+      operationId: postWpcomV2AgencyVipPartnerOpportunity
+      summary: POST /wpcom/v2/agency/vip/partner-opportunity
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agency_id:
+                  type: integer
+                company_name:
+                  type: string
+                address:
+                  type: string
+                country_code:
+                  type: string
+                state:
+                  type: string
+                city:
+                  type: string
+                zip:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                title:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                website:
+                  type: string
+                opportunity_description:
+                  type: string
+                lead_type:
+                  type: string
+                is_rfp:
+                  type: boolean
+              required:
+              - agency_id
+              - company_name
+              - address
+              - country_code
+              - city
+              - zip
+              - first_name
+              - last_name
+              - title
+              - email
+              - website
+              - opportunity_description
+              - lead_type
+              - is_rfp
+  /wpcom/v2/agency/{agency_id}:
+    put:
+      operationId: putWpcomV2AgencybyAgencyId
+      summary: PUT /wpcom/v2/agency/{agency_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agency_name:
+                  type: string
+                agency_url:
+                  type: string
+                address_line1:
+                  type: string
+                address_line2:
+                  type: string
+                address_city:
+                  type: string
+                address_state:
+                  type: string
+                address_postal_code:
+                  type: string
+                address_country:
+                  type: string
+  /wpcom/v2/agency/{agency_id}/a4a-mcp/settings:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4AMcpSettings
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a-mcp/settings
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdA4AMcpSettings
+      summary: POST /wpcom/v2/agency/{agency_id}/a4a-mcp/settings
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled:
+                  type: boolean
+                abilities:
+                  type: object
+  /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4ACollateralbyPostId
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/html:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4ACollateralbyPostIdHtml
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/html
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variant
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: sig
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: layout
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - document
+          - filmstrip
+      - name: pages
+        in: query
+        required: false
+        schema:
+          type: integer
+  /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/pdf:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4ACollateralbyPostIdPdf
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/pdf
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: variant
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: sig
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/social/{direction_id}/{size}/png:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdA4ACollateralbyPostIdSocialbyDirectionIdbySizePng
+      summary: POST /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/social/{direction_id}/{size}/png
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: direction_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: size
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                width:
+                  type: integer
+                height:
+                  type: integer
+              required:
+              - html
+              - width
+              - height
+  /wpcom/v2/agency/{agency_id}/a4a/collaterals/{collateral_id}/refine:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdA4ACollateralsbyCollateralIdRefine
+      summary: POST /wpcom/v2/agency/{agency_id}/a4a/collaterals/{collateral_id}/refine
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: collateral_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instruction:
+                  type: string
+              required:
+              - instruction
+  /wpcom/v2/agency/{agency_id}/a4a/outputs:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4AOutputs
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/outputs
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/a4a/projects:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4AProjects
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/projects
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdA4AProjects
+      summary: POST /wpcom/v2/agency/{agency_id}/a4a/projects
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                clientName:
+                  type: string
+                brief:
+                  type: string
+              required:
+              - name
+  /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4AProjectsbyProjectId
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdA4AProjectsbyProjectId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}/outputs:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4AProjectsbyProjectIdOutputs
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}/outputs
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/a4a/runs:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdA4ARuns
+      summary: POST /wpcom/v2/agency/{agency_id}/a4a/runs
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipe:
+                  type: string
+                input:
+                  type: object
+                  default: {}
+              required:
+              - recipe
+  /wpcom/v2/agency/{agency_id}/a4a/runs/{run_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdA4ARunsbyRunId
+      summary: GET /wpcom/v2/agency/{agency_id}/a4a/runs/{run_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdA4ARunsbyRunId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/a4a/runs/{run_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/amplify/reports:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdAmplifyReports
+      summary: POST /wpcom/v2/agency/{agency_id}/amplify/reports
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                mode:
+                  type: string
+              required:
+              - url
+              - mode
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdAmplifyReports
+      summary: GET /wpcom/v2/agency/{agency_id}/amplify/reports
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+  /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
+      summary: GET /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
+      summary: POST /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                archived:
+                  type: boolean
+              required:
+              - archived
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
+      summary: PUT /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                archived:
+                  type: boolean
+              required:
+              - archived
+    patch:
+      operationId: patchWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
+      summary: PATCH /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                archived:
+                  type: boolean
+              required:
+              - archived
+  /wpcom/v2/agency/{agency_id}/benchmarks:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdBenchmarks
+      summary: GET /wpcom/v2/agency/{agency_id}/benchmarks
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdBenchmarks
+      summary: POST /wpcom/v2/agency/{agency_id}/benchmarks
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quarter:
+                  type: integer
+                year:
+                  type: integer
+                gross_margin:
+                  type: number
+                billable_utilization:
+                  type: number
+                avg_project_size_usd:
+                  type: number
+                win_rate:
+                  type: number
+                retainer_mrr_usd:
+                  type: number
+                avg_time_to_close_days:
+                  type: integer
+                client_retention:
+                  type: number
+                ai_work_involvement:
+                  type: number
+                ai_revenue_percentage:
+                  type: number
+                ai_productivity_lift:
+                  type: number
+                team_ai_training_percentage:
+                  type: number
+                governance_maturity:
+                  type: string
+                  enum:
+                  - none
+                  - informal_guidelines
+                  - documented_policy
+                  - policy_client_contracts_updated
+                  - full_governance_program_with_audits
+                stakeholder_demand:
+                  type: string
+                  enum:
+                  - no_client_demand_yet
+                  - occasional_asks
+                  - frequent_asks
+                  - majority_of_new_work
+                  - all_new_work_is_ai_related
+                ai_tools_used:
+                  type: array
+                  default: []
+                  items:
+                    type: string
+                ai_use_cases:
+                  type: array
+                  default: []
+                  items:
+                    type: string
+              required:
+              - quarter
+              - year
+              - gross_margin
+              - billable_utilization
+              - avg_project_size_usd
+              - win_rate
+              - retainer_mrr_usd
+              - avg_time_to_close_days
+              - client_retention
+              - ai_work_involvement
+              - ai_revenue_percentage
+              - ai_productivity_lift
+              - team_ai_training_percentage
+              - governance_maturity
+              - stakeholder_demand
+  /wpcom/v2/agency/{agency_id}/benchmarks/aggregates:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdBenchmarksAggregates
+      summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/aggregates
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: quarter
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: year
+        in: query
+        required: false
+        schema:
+          type: integer
+  /wpcom/v2/agency/{agency_id}/benchmarks/config:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdBenchmarksConfig
+      summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/config
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/benchmarks/peers:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdBenchmarksPeers
+      summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/peers
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: quarter
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: year
+        in: query
+        required: true
+        schema:
+          type: integer
+  /wpcom/v2/agency/{agency_id}/benchmarks/{quarter}/{year}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdBenchmarksbyQuarterbyYear
+      summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/{quarter}/{year}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: quarter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/clients:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdClients
+      summary: GET /wpcom/v2/agency/{agency_id}/clients
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdClients
+      summary: POST /wpcom/v2/agency/{agency_id}/clients
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+              - email
+  /wpcom/v2/agency/{agency_id}/clients/{client_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdClientsbyClientId
+      summary: GET /wpcom/v2/agency/{agency_id}/clients/{client_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdClientsbyClientId
+      summary: PUT /wpcom/v2/agency/{agency_id}/clients/{client_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+              - email
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdClientsbyClientId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/clients/{client_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/lead-matching:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdLeadMatching
+      summary: GET /wpcom/v2/agency/{agency_id}/lead-matching
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdLeadMatching
+      summary: PUT /wpcom/v2/agency/{agency_id}/lead-matching
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/media:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdMedia
+      summary: POST /wpcom/v2/agency/{agency_id}/media
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                asset_type:
+                  type: string
+                  enum:
+                  - partner_directory_logo
+                  - agent_media
+              required:
+              - asset_type
+  /wpcom/v2/agency/{agency_id}/profile:
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdProfile
+      summary: PUT /wpcom/v2/agency/{agency_id}/profile
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profile_company_name:
+                  type: string
+                profile_company_email:
+                  type: string
+                  format: email
+                profile_company_website:
+                  type: string
+                  format: uri
+                profile_company_bio_description:
+                  type: string
+                profile_company_logo_url:
+                  type: string
+                  format: uri
+                profile_company_country:
+                  type: string
+                profile_company_landing_page_url:
+                  type: string
+                  format: uri
+                profile_listing_industries:
+                  type: array
+                  items: {}
+                profile_listing_is_available:
+                  type: string
+                profile_listing_is_global:
+                  type: string
+                profile_listing_services:
+                  type: array
+                  items: {}
+                profile_listing_products:
+                  type: array
+                  items: {}
+                profile_listing_languages_spoken:
+                  type: array
+                  items: {}
+                profile_budget_budget_lower_range: {}
+                profile_budget_budget_upper_range: {}
+  /wpcom/v2/agency/{agency_id}/profile/application:
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdProfileApplication
+      summary: PUT /wpcom/v2/agency/{agency_id}/profile/application
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                services:
+                  type: array
+                  items: {}
+                products:
+                  type: array
+                  items: {}
+                directories:
+                  type: array
+                  items: {}
+                feedback_url:
+                  type: string
+                is_published:
+                  type: boolean
+  /wpcom/v2/agency/{agency_id}/referral-email-preview:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdReferralEmailPreview
+      summary: POST /wpcom/v2/agency/{agency_id}/referral-email-preview
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_ids:
+                  type: array
+                  items:
+                    type: integer
+                greeting_line:
+                  type: string
+                logo_url:
+                  type: string
+                term_pricing:
+                  type: string
+                  enum:
+                  - monthly
+                  - yearly
+                  default: yearly
+              required:
+              - product_ids
+  /wpcom/v2/agency/{agency_id}/referrals:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdReferrals
+      summary: GET /wpcom/v2/agency/{agency_id}/referrals
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdReferrals
+      summary: POST /wpcom/v2/agency/{agency_id}/referrals
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_email:
+                  type: string
+                client_message:
+                  type: string
+                flow_type:
+                  type: string
+                  enum:
+                  - send
+                  - copy
+                logo:
+                  type: object
+                product_ids:
+                  type: array
+                  items:
+                    type: integer
+                licenses:
+                  type: array
+                  items:
+                    type: object
+              required:
+              - client_email
+              - product_ids
+  /wpcom/v2/agency/{agency_id}/referrals/commission-payout:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdReferralsCommissionPayout
+      summary: GET /wpcom/v2/agency/{agency_id}/referrals/commission-payout
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/referrals/invoices:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdReferralsInvoices
+      summary: GET /wpcom/v2/agency/{agency_id}/referrals/invoices
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/referrals/{referral_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdReferralsbyReferralId
+      summary: GET /wpcom/v2/agency/{agency_id}/referrals/{referral_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdReferralsbyReferralId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/referrals/{referral_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/archive:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdReferralsbyReferralIdArchive
+      summary: POST /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/archive
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdReferralsbyReferralIdArchive
+      summary: PUT /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/archive
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2AgencybyAgencyIdReferralsbyReferralIdArchive
+      summary: PATCH /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/archive
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/resend:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdReferralsbyReferralIdResend
+      summary: POST /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/resend
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdReferralsbyReferralIdResend
+      summary: PUT /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/resend
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2AgencybyAgencyIdReferralsbyReferralIdResend
+      summary: PATCH /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/resend
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: referral_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/reports:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdReports
+      summary: GET /wpcom/v2/agency/{agency_id}/reports
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdReports
+      summary: POST /wpcom/v2/agency/{agency_id}/reports
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                managed_site_id:
+                  type: integer
+                timeframe:
+                  type: string
+                  enum:
+                  - 7_days
+                  - 30_days
+                  - 24_hours
+                  - custom
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+                client_emails:
+                  type: array
+                  items:
+                    type: string
+                teammate_emails:
+                  type: array
+                  items:
+                    type: string
+                send_copy_to_team:
+                  type: boolean
+                  default: false
+                send_me_a_copy:
+                  type: boolean
+                  default: false
+                custom_intro_text:
+                  type: string
+                stats_items:
+                  type: object
+              required:
+              - managed_site_id
+              - timeframe
+  /wpcom/v2/agency/{agency_id}/reports/{report_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdReportsbyReportId
+      summary: GET /wpcom/v2/agency/{agency_id}/reports/{report_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report_id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdReportsbyReportId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/reports/{report_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/reports/{report_id}/send:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdReportsbyReportIdSend
+      summary: POST /wpcom/v2/agency/{agency_id}/reports/{report_id}/send
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: report_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                preview:
+                  type: boolean
+                  default: false
+  /wpcom/v2/agency/{agency_id}/schedule-call-link:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdScheduleCallLink
+      summary: GET /wpcom/v2/agency/{agency_id}/schedule-call-link
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/sites:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdSites
+      summary: GET /wpcom/v2/agency/{agency_id}/sites
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: object
+          default: []
+        description: Filters to apply to the sites list
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdSites
+      summary: POST /wpcom/v2/agency/{agency_id}/sites
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                blog_id:
+                  type: integer
+                url:
+                  type: string
+                title:
+                  type: string
+  /wpcom/v2/agency/{agency_id}/sites/pending:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdSitesPending
+      summary: GET /wpcom/v2/agency/{agency_id}/sites/pending
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/sites/provision-dev-site:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdSitesProvisionDevSite
+      summary: POST /wpcom/v2/agency/{agency_id}/sites/provision-dev-site
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_name:
+                  type: string
+                  description: The site name.
+                php_version:
+                  type: string
+                  description: The PHP version.
+                primary_data_center:
+                  type: string
+                  description: The primary data center.
+                is_fully_managed_agency_site:
+                  type: boolean
+                  description: Whether the site is fully managed by the agency.
+  /wpcom/v2/agency/{agency_id}/sites/tag-for-commission:
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdSitesTagForCommission
+      summary: PUT /wpcom/v2/agency/{agency_id}/sites/tag-for-commission
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_ids:
+                  type: array
+                  items:
+                    type: integer
+                tags:
+                  type: array
+                  items:
+                    type: string
+                migration_source_host:
+                  type: string
+              required:
+              - site_ids
+              - tags
+              - migration_source_host
+  /wpcom/v2/agency/{agency_id}/sites/tags:
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdSitesTags
+      summary: PUT /wpcom/v2/agency/{agency_id}/sites/tags
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_ids:
+                  type: array
+                  items:
+                    type: integer
+                tags:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - site_ids
+              - tags
+  /wpcom/v2/agency/{agency_id}/sites/{jetpack_site_id}/monitor:
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdSitesbyJetpackSiteIdMonitor
+      summary: PUT /wpcom/v2/agency/{agency_id}/sites/{jetpack_site_id}/monitor
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jetpack_site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                monitor_active:
+                  type: boolean
+              required:
+              - monitor_active
+  /wpcom/v2/agency/{agency_id}/sites/{site_id}:
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdSitesbySiteId
+      summary: PUT /wpcom/v2/agency/{agency_id}/sites/{site_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdSitesbySiteId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/sites/{site_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/sites/{site_id}/delete-dev-site:
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdSitesbySiteIdDeleteDevSite
+      summary: DELETE /wpcom/v2/agency/{agency_id}/sites/{site_id}/delete-dev-site
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdSitesbySiteIdNotes
+      summary: GET /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdSitesbySiteIdNotes
+      summary: POST /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+              required:
+              - content
+  /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes/{note_id}:
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdSitesbySiteIdNotesbyNoteId
+      summary: PUT /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes/{note_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: note_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+              required:
+              - content
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdSitesbySiteIdNotesbyNoteId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes/{note_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: note_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/sites/{site_id}/provision:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdSitesbySiteIdProvision
+      summary: POST /wpcom/v2/agency/{agency_id}/sites/{site_id}/provision
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_name:
+                  type: string
+                  description: The site name.
+                php_version:
+                  type: string
+                  description: The PHP version.
+                primary_data_center:
+                  type: string
+                  description: The primary data center.
+                is_fully_managed_agency_site:
+                  type: boolean
+                  description: Whether the site is fully managed by the agency.
+  /wpcom/v2/agency/{agency_id}/sites/{site_id}/request-migration-reverification:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdSitesbySiteIdRequestMigrationReverification
+      summary: POST /wpcom/v2/agency/{agency_id}/sites/{site_id}/request-migration-reverification
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: The reason for requesting re-verification and why the site should be re-evaluated for commission eligibility.
+              required:
+              - reason
+  /wpcom/v2/agency/{agency_id}/sites/{site_id}/tags:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdSitesbySiteIdTags
+      summary: GET /wpcom/v2/agency/{agency_id}/sites/{site_id}/tags
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdSitesbySiteIdTags
+      summary: PUT /wpcom/v2/agency/{agency_id}/sites/{site_id}/tags
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tags:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - tags
+  /wpcom/v2/agency/{agency_id}/tipalti:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdTipalti
+      summary: GET /wpcom/v2/agency/{agency_id}/tipalti
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/transfer-ownership:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdTransferOwnership
+      summary: POST /wpcom/v2/agency/{agency_id}/transfer-ownership
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_owner_id:
+                  type: integer
+              required:
+              - new_owner_id
+    put:
+      operationId: putWpcomV2AgencybyAgencyIdTransferOwnership
+      summary: PUT /wpcom/v2/agency/{agency_id}/transfer-ownership
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_owner_id:
+                  type: integer
+              required:
+              - new_owner_id
+    patch:
+      operationId: patchWpcomV2AgencybyAgencyIdTransferOwnership
+      summary: PATCH /wpcom/v2/agency/{agency_id}/transfer-ownership
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_owner_id:
+                  type: integer
+              required:
+              - new_owner_id
+  /wpcom/v2/agency/{agency_id}/user-invites:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdUserInvites
+      summary: GET /wpcom/v2/agency/{agency_id}/user-invites
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdUserInvites
+      summary: POST /wpcom/v2/agency/{agency_id}/user-invites
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                message:
+                  type: string
+              required:
+              - login
+  /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdUserInvitesbyInviteId
+      summary: GET /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: invite_id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdUserInvitesbyInviteId
+      summary: POST /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: invite_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secret:
+                  type: string
+              required:
+              - secret
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdUserInvitesbyInviteId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: invite_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}/resend:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdUserInvitesbyInviteIdResend
+      summary: POST /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}/resend
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: invite_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/users:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdUsers
+      summary: GET /wpcom/v2/agency/{agency_id}/users
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/users/{user_id}:
+    delete:
+      operationId: deleteWpcomV2AgencybyAgencyIdUsersbyUserId
+      summary: DELETE /wpcom/v2/agency/{agency_id}/users/{user_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/validate-site-address:
+    post:
+      operationId: postWpcomV2AgencybyAgencyIdValidateSiteAddress
+      summary: POST /wpcom/v2/agency/{agency_id}/validate-site-address
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                site_name:
+                  type: string
+                  description: The site name.
+              required:
+              - site_name
+  /wpcom/v2/agency/{agency_id}/woocommerce/woopayments:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdWoocommerceWoopayments
+      summary: GET /wpcom/v2/agency/{agency_id}/woocommerce/woopayments
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{agency_id}/woocommerce/woopayments/{blog_id}:
+    get:
+      operationId: getWpcomV2AgencybyAgencyIdWoocommerceWoopaymentsbyBlogId
+      summary: GET /wpcom/v2/agency/{agency_id}/woocommerce/woopayments/{blog_id}
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agency_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: blog_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - csv
+          default: json
+  /wpcom/v2/agency/{customer_uid}/pressable/event:
+    post:
+      operationId: postWpcomV2AgencybyCustomerUidPressableEvent
+      summary: POST /wpcom/v2/agency/{customer_uid}/pressable/event
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: customer_uid
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/agency/{customer_uid}/pressable/mrr:
+    get:
+      operationId: getWpcomV2AgencybyCustomerUidPressableMrr
+      summary: GET /wpcom/v2/agency/{customer_uid}/pressable/mrr
+      tags:
+      - agency
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: customer_uid
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

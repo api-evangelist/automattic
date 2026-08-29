@@ -1,0 +1,322 @@
+openapi: 3.2.0
+info:
+  title: Automattic Block Renderer API
+  version: v2
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  description: 'Operations tagged block-renderer across 2 of this provider''s published API definitions: automattic-wordpress-com-wp-v2-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: block-renderer
+paths:
+  /wp/v2/sites/{wpcom_site}/block-renderer/{name}:
+    get:
+      operationId: getWpV2SitesbyWpcomSiteBlockRendererbyName
+      summary: GET /wp/v2/sites/{wpcom_site}/block-renderer/{name}
+      tags:
+      - block-renderer
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: attributes
+        in: query
+        required: false
+        schema:
+          type: object
+          default: []
+        description: Attributes for the block.
+      - name: post_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: ID of the post context.
+    post:
+      operationId: postWpV2SitesbyWpcomSiteBlockRendererbyName
+      summary: POST /wp/v2/sites/{wpcom_site}/block-renderer/{name}
+      tags:
+      - block-renderer
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  type: string
+                  enum:
+                  - edit
+                  default: view
+                  description: Scope under which the request is made; determines fields present in response.
+                attributes:
+                  type: object
+                  default: []
+                  description: Attributes for the block.
+                post_id:
+                  type: integer
+                  description: ID of the post context.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/block-renderer/content/render:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteBlockRendererContentRender
+      summary: POST /wpcom/v2/sites/{wpcom_site}/block-renderer/content/render
+      tags:
+      - block-renderer
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stylesheet:
+                  type: string
+                  description: 'Theme stylesheet, e.g.: pub/zoologist'
+                variations:
+                  type: array
+                  items: {}
+                  description: Slugs of style variations to apply. Falls back to default variation if not found
+                site_title:
+                  type: string
+                  description: Title of the site being previewed.
+                site_tagline:
+                  type: string
+                  description: Tagline of the site being previewed.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/block-renderer/patterns/render:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteBlockRendererPatternsRender
+      summary: GET /wpcom/v2/sites/{wpcom_site}/block-renderer/patterns/render
+      tags:
+      - block-renderer
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: stylesheet
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Theme stylesheet, e.g.: pub/zoologist'
+      - name: pattern_ids
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+        description: 'Comma-separated list of post ids with the source site id encoded, e.g.: 123-174455321,456-174455321.'
+      - name: site_title
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Title of the site being previewed.
+      - name: site_tagline
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Tagline of the site being previewed.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/block-renderer/settings:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteBlockRendererSettings
+      summary: GET /wpcom/v2/sites/{wpcom_site}/block-renderer/settings
+      tags:
+      - block-renderer
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: stylesheet
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Theme stylesheet, e.g.: pub/zoologist'
+      - name: use_inline_styles
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Whether to transform external styles into inline styles
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+x-refined-from:
+- automattic-wordpress-com-wp-v2-openapi.yml
+- automattic-wordpress-com-wpcom-v2-openapi.yml

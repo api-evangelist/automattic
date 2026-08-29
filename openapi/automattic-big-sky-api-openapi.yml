@@ -1,0 +1,425 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Big Sky API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: big-sky
+paths:
+  /wpcom/v2/big-sky/blueprint-status/{spec_id}:
+    get:
+      operationId: getWpcomV2BigSkyBlueprintStatusbySpecId
+      summary: GET /wpcom/v2/big-sky/blueprint-status/{spec_id}
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/big-sky/build-from-brief:
+    post:
+      operationId: postWpcomV2BigSkyBuildFromBrief
+      summary: POST /wpcom/v2/big-sky/build-from-brief
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                brief:
+                  type: string
+                  description: The markdown brief describing the site to build. Requires YAML frontmatter with siteTitle, siteDescription, siteType, and topic. A "## Do NOT include" section is honored as a build constraint and never published. Sent verbatim — do NOT sanitize, which would strip the newlines and markdown the parser needs.
+                generate_images:
+                  type: boolean
+                  default: false
+                  description: Whether the build should generate images for the site.
+                user_confirmed:
+                  type: boolean
+                  default: false
+                  description: Approval gate. Set true ONLY after the user has approved building this site. Calling without it is rejected on purpose so a real site is never created without explicit approval.
+              required:
+              - brief
+  /wpcom/v2/big-sky/build-from-brief/status:
+    get:
+      operationId: getWpcomV2BigSkyBuildFromBriefStatus
+      summary: GET /wpcom/v2/big-sky/build-from-brief/status
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: builder_session_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The opaque session id returned by POST /wpcom/v2/big-sky/build-from-brief.
+  /wpcom/v2/big-sky/replace-content:
+    post:
+      operationId: postWpcomV2BigSkyReplaceContent
+      summary: POST /wpcom/v2/big-sky/replace-content
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                siteDescription:
+                  type: string
+                content:
+                  type: object
+                sections:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - siteDescription
+              - content
+  /wpcom/v2/big-sky/site-spec-avatar:
+    post:
+      operationId: postWpcomV2BigSkySiteSpecAvatar
+      summary: POST /wpcom/v2/big-sky/site-spec-avatar
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                avatar_url:
+                  type: string
+              required:
+              - session_id
+              - avatar_url
+  /wpcom/v2/big-sky/site-spec/{spec_id}:
+    get:
+      operationId: getWpcomV2BigSkySiteSpecbySpecId
+      summary: GET /wpcom/v2/big-sky/site-spec/{spec_id}
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/big-sky/site-spec/{spec_id}/blueprint:
+    post:
+      operationId: postWpcomV2BigSkySiteSpecbySpecIdBlueprint
+      summary: POST /wpcom/v2/big-sky/site-spec/{spec_id}/blueprint
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: spec_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                skip_images:
+                  type: boolean
+                  default: false
+  /wpcom/v2/sites/{wpcom_site}/big-sky/build-progress:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteBigSkyBuildProgress
+      summary: GET /wpcom/v2/sites/{wpcom_site}/big-sky/build-progress
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/big-sky/build-wow:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteBigSkyBuildWow
+      summary: POST /wpcom/v2/sites/{wpcom_site}/big-sky/build-wow
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                spec_id:
+                  type: string
+  /wpcom/v2/sites/{wpcom_site}/big-sky/build-wow/status:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteBigSkyBuildWowStatus
+      summary: GET /wpcom/v2/sites/{wpcom_site}/big-sky/build-wow/status
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/big-sky/trigger-backend-build:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteBigSkyTriggerBackendBuild
+      summary: POST /wpcom/v2/sites/{wpcom_site}/big-sky/trigger-backend-build
+      tags:
+      - big-sky
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                spec_id:
+                  type: string
+              required:
+              - spec_id
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

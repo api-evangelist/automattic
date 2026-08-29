@@ -1,0 +1,474 @@
+openapi: 3.2.0
+info:
+  title: Automattic Plugins API
+  version: v2
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  description: 'Operations tagged plugins across 2 of this provider''s published API definitions: automattic-wordpress-com-wp-v2-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: plugins
+paths:
+  /wp/v2/sites/{wpcom_site}/plugins:
+    get:
+      operationId: getWpV2SitesbyWpcomSitePlugins
+      summary: GET /wp/v2/sites/{wpcom_site}/plugins
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limits results to plugins with the given status.
+    post:
+      operationId: postWpV2SitesbyWpcomSitePlugins
+      summary: POST /wp/v2/sites/{wpcom_site}/plugins
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: WordPress.org plugin directory slug.
+                status:
+                  type: string
+                  enum:
+                  - inactive
+                  - active
+                  - network-active
+                  default: inactive
+                  description: The plugin activation status.
+              required:
+              - slug
+    servers:
+    - url: https://public-api.wordpress.com
+  /wp/v2/sites/{wpcom_site}/plugins/{plugin}:
+    get:
+      operationId: getWpV2SitesbyWpcomSitePluginsbyPlugin
+      summary: GET /wp/v2/sites/{wpcom_site}/plugins/{plugin}
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: plugin
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    post:
+      operationId: postWpV2SitesbyWpcomSitePluginsbyPlugin
+      summary: POST /wp/v2/sites/{wpcom_site}/plugins/{plugin}
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: plugin
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  type: string
+                  enum:
+                  - view
+                  - embed
+                  - edit
+                  default: view
+                  description: Scope under which the request is made; determines fields present in response.
+                status:
+                  type: string
+                  enum:
+                  - inactive
+                  - active
+                  - network-active
+                  description: The plugin activation status.
+    put:
+      operationId: putWpV2SitesbyWpcomSitePluginsbyPlugin
+      summary: PUT /wp/v2/sites/{wpcom_site}/plugins/{plugin}
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: plugin
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  type: string
+                  enum:
+                  - view
+                  - embed
+                  - edit
+                  default: view
+                  description: Scope under which the request is made; determines fields present in response.
+                status:
+                  type: string
+                  enum:
+                  - inactive
+                  - active
+                  - network-active
+                  description: The plugin activation status.
+    patch:
+      operationId: patchWpV2SitesbyWpcomSitePluginsbyPlugin
+      summary: PATCH /wp/v2/sites/{wpcom_site}/plugins/{plugin}
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: plugin
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  type: string
+                  enum:
+                  - view
+                  - embed
+                  - edit
+                  default: view
+                  description: Scope under which the request is made; determines fields present in response.
+                status:
+                  type: string
+                  enum:
+                  - inactive
+                  - active
+                  - network-active
+                  description: The plugin activation status.
+    delete:
+      operationId: deleteWpV2SitesbyWpcomSitePluginsbyPlugin
+      summary: DELETE /wp/v2/sites/{wpcom_site}/plugins/{plugin}
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: plugin
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/plugins/featured:
+    get:
+      operationId: getWpcomV2PluginsFeatured
+      summary: GET /wpcom/v2/plugins/featured
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    servers:
+    - url: https://public-api.wordpress.com
+  /wpcom/v2/sites/{wpcom_site}/plugins/recommended:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSitePluginsRecommended
+      summary: GET /wpcom/v2/sites/{wpcom_site}/plugins/recommended
+      tags:
+      - plugins
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: -1
+        description: Limit the number of recommended plugins returned. -1 for no limits.
+    servers:
+    - url: https://public-api.wordpress.com
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+x-refined-from:
+- automattic-wordpress-com-wp-v2-openapi.yml
+- automattic-wordpress-com-wpcom-v2-openapi.yml

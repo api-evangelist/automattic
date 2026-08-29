@@ -1,0 +1,386 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Emails API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: emails
+paths:
+  /wpcom/v2/emails/titan/{account_id}/control-panel-auto-login-url:
+    get:
+      operationId: getWpcomV2EmailsTitanbyAccountIdControlPanelAutoLoginUrl
+      summary: GET /wpcom/v2/emails/titan/{account_id}/control-panel-auto-login-url
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/emails/titan/{account_id}/control-panel-iframe-url:
+    get:
+      operationId: getWpcomV2EmailsTitanbyAccountIdControlPanelIframeUrl
+      summary: GET /wpcom/v2/emails/titan/{account_id}/control-panel-iframe-url
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/emails/titan/{domain}/check-mailbox-availability/{mailbox}:
+    get:
+      operationId: getWpcomV2EmailsTitanbyDomainCheckMailboxAvailabilitybyMailbox
+      summary: GET /wpcom/v2/emails/titan/{domain}/check-mailbox-availability/{mailbox}
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mailbox
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/emails/titan/{domain}/mailbox/create:
+    post:
+      operationId: postWpcomV2EmailsTitanbyDomainMailboxCreate
+      summary: POST /wpcom/v2/emails/titan/{domain}/mailbox/create
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the mailbox owner/user
+                mailbox:
+                  type: string
+                  description: The mailbox name i.e. the email address excluding the domain
+                password:
+                  type: string
+                  description: The password to authenticate users who want to access the mailbox
+                alternate_email_address:
+                  type: string
+                  description: The alternate email address for password resets and notifications
+                is_admin:
+                  type: boolean
+                  default: false
+                  description: Whether this user should have administrative permissions/privileges for the domain
+              required:
+              - name
+              - mailbox
+              - password
+              - alternate_email_address
+  /wpcom/v2/emails/titan/{domain}/mailbox/{mailbox}:
+    delete:
+      operationId: deleteWpcomV2EmailsTitanbyDomainMailboxbyMailbox
+      summary: DELETE /wpcom/v2/emails/titan/{domain}/mailbox/{mailbox}
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: mailbox
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/emails/titan/{domain}/order-provisioning-url:
+    get:
+      operationId: getWpcomV2EmailsTitanbyDomainOrderProvisioningUrl
+      summary: GET /wpcom/v2/emails/titan/{domain}/order-provisioning-url
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/emails/accounts/{domain}:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteEmailsAccountsbyDomain
+      summary: GET /wpcom/v2/sites/{wpcom_site}/emails/accounts/{domain}
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/emails/accounts/{domain}/mailboxes:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteEmailsAccountsbyDomainMailboxes
+      summary: GET /wpcom/v2/sites/{wpcom_site}/emails/accounts/{domain}/mailboxes
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: domain
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/emails/domains:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteEmailsDomains
+      summary: GET /wpcom/v2/sites/{wpcom_site}/emails/domains
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/emails/mailboxes:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteEmailsMailboxes
+      summary: GET /wpcom/v2/sites/{wpcom_site}/emails/mailboxes
+      tags:
+      - emails
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

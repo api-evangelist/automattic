@@ -1,0 +1,911 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Subscribers API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: subscribers
+paths:
+  /wpcom/v2/sites/{wpcom_site}/subscribers:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribers
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+          default: 1
+        description: The current page.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: string
+          default: 100
+        description: The amount of items to show per page.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Search for subscribers
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - date_subscribed
+          - email
+          - name
+          - plan
+          - subscription_status
+          default: date_subscribed
+        description: Sort subscribers by a specific field
+      - name: sort_order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+        description: Sort order
+      - name: filter
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - wpcom
+          - email
+          - paid
+          - comp
+          - free
+          - email_subscriber
+          - reader_subscriber
+          - unconfirmed_subscriber
+          - blocked_subscriber
+        description: Filter subscribers by a specific subscriber type
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Array of filters to apply (combined with AND logic). If provided, overrides the single filter parameter.
+      - name: use_new_helper
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Use the new helper to get subscribers
+      - name: no_cache
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Do not use the cache
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: string
+        description: An array of additional fields to include
+  /wpcom/v2/sites/{wpcom_site}/subscribers/add:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSubscribersAdd
+      summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/add
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                emails:
+                  type: array
+                  items:
+                    type: string
+              required:
+              - emails
+  /wpcom/v2/sites/{wpcom_site}/subscribers/comp:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSubscribersComp
+      summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/comp
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                plan_id:
+                  type: integer
+                no_expiration:
+                  type: boolean
+                  default: false
+              required:
+              - user_id
+              - plan_id
+  /wpcom/v2/sites/{wpcom_site}/subscribers/count:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersCount
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/count
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/subscribers/counts:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersCounts
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/counts
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subscription_status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - active
+          - inactive
+          - pending
+          default: active
+        description: Filter subscriptions based on status
+      - name: subscriber_status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - active
+          - blocked
+          default: all
+        description: Filter subscribers based on status
+  /wpcom/v2/sites/{wpcom_site}/subscribers/import:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersImport
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/import
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSubscribersImport
+      summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/import
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                emails:
+                  type: array
+                  items: {}
+                  description: A list of emails to add as subscribers to the current site.
+                categories:
+                  type: array
+                  items: {}
+                  description: A list of category IDs the emails should be subscribed to.
+                parse_only:
+                  type: boolean
+                  default: false
+                  description: If true, the import will only parse the file and return the number of subscribers that would be imported.
+  /wpcom/v2/sites/{wpcom_site}/subscribers/import/reset-state:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSubscribersImportResetState
+      summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/import/reset-state
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/subscribers/import/reset_state:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSubscribersImportResetState2
+      summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/import/reset_state
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/subscribers/import/{id}:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersImportbyId
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/import/{id}
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/subscribers/individual:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersIndividual
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/individual
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subscription_id
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+  /wpcom/v2/sites/{wpcom_site}/subscribers/individual-stats:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersIndividualStats
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/individual-stats
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subscription_id
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+  /wpcom/v2/sites/{wpcom_site}/subscribers/list:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersList
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/list
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - date_subscribed
+          - name
+          - plan
+          - subscription_status
+          default: date_subscribed
+      - name: sort_order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: array
+          default:
+          - all
+          items:
+            type: string
+      - name: use_new_helper
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+  /wpcom/v2/sites/{wpcom_site}/subscribers/products:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersProducts
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/products
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/subscribers/remove:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSubscribersRemove
+      summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/remove
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  default: 0
+                email_subscription_id:
+                  type: integer
+                  default: 0
+                paid_subscription_ids:
+                  type: array
+                  default: []
+                  items:
+                    type: string
+  /wpcom/v2/sites/{wpcom_site}/subscribers/remove-comp:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSubscribersRemoveComp
+      summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/remove-comp
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comp_id:
+                  type: integer
+              required:
+              - comp_id
+  /wpcom/v2/sites/{wpcom_site}/subscribers/stats:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersStats
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/stats
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subscription_id
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+  /wpcom/v2/sites/{wpcom_site}/subscribers/totals:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSubscribersTotals
+      summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/totals
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/subscribers/emails/resend/subscription-confirmation:
+    post:
+      operationId: postWpcomV2SubscribersEmailsResendSubscriptionConfirmation
+      summary: POST /wpcom/v2/subscribers/emails/resend/subscription-confirmation
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email_address:
+                  type: string
+                  format: email
+                  description: The email address used to subscribe to the blog
+                post_id:
+                  type: string
+                  description: The post ID. Only available if the subscription was made using a subscription block in a post
+                key:
+                  type: string
+                  description: The activation key of the original subscription confirmation email
+              required:
+              - email_address
+              - key
+  /wpcom/v2/subscribers/emails/resend/subscription-management:
+    post:
+      operationId: postWpcomV2SubscribersEmailsResendSubscriptionManagement
+      summary: POST /wpcom/v2/subscribers/emails/resend/subscription-management
+      tags:
+      - subscribers
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email_address:
+                  type: string
+                  format: email
+                  description: The email address used to request the manage link
+                token:
+                  type: string
+                  description: Expired token used to check the validity of the email parameter
+              required:
+              - email_address
+              - token
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

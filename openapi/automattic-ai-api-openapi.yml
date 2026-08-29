@@ -1,0 +1,912 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace AI API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: ai
+paths:
+  /wpcom/v2/ai/agent/{agent_id}:
+    post:
+      operationId: postWpcomV2AiAgentbyAgentId
+      summary: POST /wpcom/v2/ai/agent/{agent_id}
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agent_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/ai/agent/{agent_id}/sites:
+    get:
+      operationId: getWpcomV2AiAgentbyAgentIdSites
+      summary: GET /wpcom/v2/ai/agent/{agent_id}/sites
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: agent_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/ai/bots:
+    get:
+      operationId: getWpcomV2AiBots
+      summary: GET /wpcom/v2/ai/bots
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: product
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - akismet
+          - automattic
+          - beeper
+          - ciab
+          - cloudup
+          - crowdsignal
+          - dayone
+          - gravatar
+          - happytools
+          - intensedebate
+          - jetpack
+          - longreads
+          - mailpoet
+          - newspack
+          - parsely
+          - pocketcasts
+          - p2
+          - sensei
+          - simplenote
+          - template
+          - texts
+          - tumblr
+          - vip
+          - woo
+          - wordpressjobmanager
+          - wpcom
+        description: Return only bots belonging to this product.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Return only bots whose slug or description contains this substring (case-insensitive).
+      - name: include_archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Include archived versions, and bots whose only versions are archived.
+    post:
+      operationId: postWpcomV2AiBots
+      summary: POST /wpcom/v2/ai/bots
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                yaml:
+                  type: string
+                  description: The bot YAML configuration; its shape determines the bot type.
+                description:
+                  type: string
+                  description: Human-readable description of the bot.
+                product:
+                  type: string
+                  enum:
+                  - akismet
+                  - automattic
+                  - beeper
+                  - ciab
+                  - cloudup
+                  - crowdsignal
+                  - dayone
+                  - gravatar
+                  - happytools
+                  - intensedebate
+                  - jetpack
+                  - longreads
+                  - mailpoet
+                  - newspack
+                  - parsely
+                  - pocketcasts
+                  - p2
+                  - sensei
+                  - simplenote
+                  - template
+                  - texts
+                  - tumblr
+                  - vip
+                  - woo
+                  - wordpressjobmanager
+                  - wpcom
+                  description: Product the bot belongs to.
+                slug_suffix:
+                  type: string
+                  description: Trailing part of the slug; the full slug is composed as {product}-{type}-{suffix}.
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - active
+                  - abtest
+                  description: Status of the initial version.
+                team:
+                  type: string
+                  description: Owning team.
+                visibility:
+                  type: string
+                  enum:
+                  - all-users
+                  - logged-in-users
+                  - paid-users
+                  - internal-users
+                  description: Who may access the bot.
+                p2_link:
+                  type: string
+                  description: Optional link to a P2 discussing the bot.
+                reason:
+                  type: string
+                  description: Optional reason recorded in the audit trail.
+              required:
+              - yaml
+              - description
+              - product
+              - slug_suffix
+              - status
+              - team
+              - visibility
+  /wpcom/v2/ai/bots/{slug}:
+    get:
+      operationId: getWpcomV2AiBotsbySlug
+      summary: GET /wpcom/v2/ai/bots/{slug}
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Specific version to fetch. Omit for the bot's default version — the version the bot loads when run (on a live bot, its active version).
+  /wpcom/v2/ai/bots/{slug}/versions:
+    get:
+      operationId: getWpcomV2AiBotsbySlugVersions
+      summary: GET /wpcom/v2/ai/bots/{slug}/versions
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: include_archived
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Include archived versions in the response.
+    post:
+      operationId: postWpcomV2AiBotsbySlugVersions
+      summary: POST /wpcom/v2/ai/bots/{slug}/versions
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                yaml:
+                  type: string
+                  description: The new version's YAML configuration.
+                new_version:
+                  type: string
+                  description: New version number, e.g. 2.0 or 1.3.1.
+                description:
+                  type: string
+                  description: Human-readable description of this version.
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - active
+                  - abtest
+                  description: Status to create the version with.
+                team:
+                  type: string
+                  description: Owning team.
+                p2_link:
+                  type: string
+                  description: Optional link to a P2 discussing this version.
+                reason:
+                  type: string
+                  description: Optional reason recorded in the audit trail.
+              required:
+              - yaml
+              - new_version
+              - description
+              - status
+              - team
+  /wpcom/v2/ai/bots/{slug}/versions/{version}:
+    get:
+      operationId: getWpcomV2AiBotsbySlugVersionsbyVersion
+      summary: GET /wpcom/v2/ai/bots/{slug}/versions/{version}
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/ai/bots/{slug}/versions/{version}/status:
+    post:
+      operationId: postWpcomV2AiBotsbySlugVersionsbyVersionStatus
+      summary: POST /wpcom/v2/ai/bots/{slug}/versions/{version}/status
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                new_status:
+                  type: string
+                  enum:
+                  - draft
+                  - active
+                  - abtest
+                  - archived
+                  description: 'Target status: draft, active, abtest, or archived.'
+                reason:
+                  type: string
+                  description: Why the status is changing; recorded in the audit trail.
+                p2_link:
+                  type: string
+                  description: Optional link to a P2 discussing the change.
+              required:
+              - new_status
+              - reason
+  /wpcom/v2/ai/chat/{bot_id}/{chat_id}:
+    get:
+      operationId: getWpcomV2AiChatbyBotIdbyChatId
+      summary: GET /wpcom/v2/ai/chat/{bot_id}/{chat_id}
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: bot_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: chat_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: page_number
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: The number of the page to retrieve, limited to 100
+      - name: items_per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+        description: The number of items per page.
+      - name: include_feedback
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: If true, include the feedback rating value for each message in the response.
+  /wpcom/v2/ai/chats/{bot_ids}:
+    get:
+      operationId: getWpcomV2AiChatsbyBotIds
+      summary: GET /wpcom/v2/ai/chats/{bot_ids}
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: bot_ids
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: truncation_method
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - first_message
+          - last_message
+          default: last_message
+        description: The method to use for truncating the conversations. Either "first_message" or "last_message". Defaults to "last_message". Note that this parameter affects the response shape. If it is set to `last_message`, the response will include the last message from each chat, while `first_message` will include the first message.
+      - name: page_number
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: The 1-indexed page number to retrieve. Each page contains up to 10 conversations.
+  /wpcom/v2/ai/chats/{bot_id}:
+    get:
+      operationId: getWpcomV2AiChatsbyBotId
+      summary: GET /wpcom/v2/ai/chats/{bot_id}
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: bot_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: truncation_method
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - first_message
+          - last_message
+          default: last_message
+        description: The method to use for truncating the conversations. Either "first_message" or "last_message". Defaults to "last_message". Note that this parameter affects the response shape. If it is set to `last_message`, the response will include the last message from each chat, while `first_message` will include the first message.
+      - name: page_number
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+        description: The 1-indexed page number to retrieve. Each page contains up to 10 conversations.
+  /wpcom/v2/ai/dai/workspaces:
+    get:
+      operationId: getWpcomV2AiDaiWorkspaces
+      summary: GET /wpcom/v2/ai/dai/workspaces
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/ai/feedback/{session_uuid}/rate:
+    post:
+      operationId: postWpcomV2AiFeedbackbySessionUuidRate
+      summary: POST /wpcom/v2/ai/feedback/{session_uuid}/rate
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: session_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message_id:
+                  type: string
+                trace_id:
+                  type: string
+                rating:
+                  type: string
+                  enum:
+                  - up
+                  - down
+                message_text:
+                  type: string
+                metadata:
+                  type: object
+                  default: []
+              required:
+              - rating
+  /wpcom/v2/ai/feedback/{session_uuid}/text:
+    post:
+      operationId: postWpcomV2AiFeedbackbySessionUuidText
+      summary: POST /wpcom/v2/ai/feedback/{session_uuid}/text
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: session_uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message_id:
+                  type: string
+                trace_id:
+                  type: string
+                feedback:
+                  type: string
+                previous_messages:
+                  type: array
+                  default: []
+                  items:
+                    type: object
+                page_url:
+                  type: string
+              required:
+              - message_id
+              - feedback
+  /wpcom/v2/ai/jwt:
+    post:
+      operationId: postWpcomV2AiJwt
+      summary: POST /wpcom/v2/ai/jwt
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                blog_id:
+                  type: integer
+  /wpcom/v2/sites/{site_id}/ai/agent/{agent_id}:
+    post:
+      operationId: postWpcomV2SitesbySiteIdAiAgentbyAgentId
+      summary: POST /wpcom/v2/sites/{site_id}/ai/agent/{agent_id}
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: site_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: agent_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/ai/asset/{jwt}/download:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteAiAssetbyJwtDownload
+      summary: GET /wpcom/v2/sites/{wpcom_site}/ai/asset/{jwt}/download
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jwt
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/ai/transcription:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteAiTranscription
+      summary: POST /wpcom/v2/sites/{wpcom_site}/ai/transcription
+      tags:
+      - ai
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                intent:
+                  type: string
+                  description: 'Transcription intent: dictation, command, agent, or auto.'
+                selected_text:
+                  type: string
+                  description: Selected text to transform when intent is command.
+                app_context:
+                  type: string
+                  description: JSON encoded client context.
+                client:
+                  type: string
+                  description: Client identifier.
+                client_version:
+                  type: string
+                  description: Client version.
+                audio_file:
+                  type: string
+                  description: The audio file to transcribe.
+                save_artifact:
+                  type: boolean
+                  default: false
+                  description: When true, save the transcript as a private wp_guideline artifact post tagged Transcription.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

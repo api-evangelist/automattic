@@ -1,0 +1,3796 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Reader API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: reader
+paths:
+  /wpcom/v2/reader/atmosphere/connections:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnections
+      summary: GET /wpcom/v2/reader/atmosphere/connections
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2ReaderAtmosphereConnections
+      summary: POST /wpcom/v2/reader/atmosphere/connections
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                handle:
+                  type: string
+                app_password:
+                  type: string
+              required:
+              - handle
+              - app_password
+  /wpcom/v2/reader/atmosphere/connections/{id}:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyId
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    delete:
+      operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyId
+      summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/connections/{id}/blobs:
+    post:
+      operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdBlobs
+      summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/blobs
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/connections/{id}/follows:
+    post:
+      operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdFollows
+      summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/follows
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject_did:
+                  type: string
+              required:
+              - subject_did
+  /wpcom/v2/reader/atmosphere/connections/{id}/follows/{rkey}:
+    delete:
+      operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdFollowsbyRkey
+      summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/follows/{rkey}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: rkey
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/connections/{id}/likes:
+    post:
+      operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdLikes
+      summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/likes
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_uri:
+                  type: string
+                post_cid:
+                  type: string
+              required:
+              - post_uri
+              - post_cid
+  /wpcom/v2/reader/atmosphere/connections/{id}/likes/{rkey}:
+    delete:
+      operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdLikesbyRkey
+      summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/likes/{rkey}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: rkey
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/connections/{id}/notifications:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdNotifications
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/notifications
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+      - name: types
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+  /wpcom/v2/reader/atmosphere/connections/{id}/posts:
+    post:
+      operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdPosts
+      summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/posts
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                reply: {}
+                quote: {}
+                media: {}
+                interaction_settings: {}
+  /wpcom/v2/reader/atmosphere/connections/{id}/posts/{rkey}:
+    delete:
+      operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdPostsbyRkey
+      summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/posts/{rkey}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: rkey
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActor
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/feed:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActorFeed
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/feed
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+      - name: filter
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - posts_with_replies
+          - posts_no_replies
+          - posts_with_media
+          - posts_and_author_threads
+          default: posts_no_replies
+  /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/followers:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActorFollowers
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/followers
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 50
+  /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/follows:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActorFollows
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/follows
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 50
+  /wpcom/v2/reader/atmosphere/connections/{id}/reposts:
+    post:
+      operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdReposts
+      summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/reposts
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_uri:
+                  type: string
+                post_cid:
+                  type: string
+              required:
+              - post_uri
+              - post_cid
+  /wpcom/v2/reader/atmosphere/connections/{id}/reposts/{rkey}:
+    delete:
+      operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdRepostsbyRkey
+      summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/reposts/{rkey}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: rkey
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/connections/{id}/tag/{hashtag}/feed:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdTagbyHashtagFeed
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/tag/{hashtag}/feed
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hashtag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 25
+  /wpcom/v2/reader/atmosphere/connections/{id}/thread:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdThread
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/thread
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: uri
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: depth
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 6
+      - name: parentHeight
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 80
+  /wpcom/v2/reader/atmosphere/connections/{id}/timeline:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdTimeline
+      summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/timeline
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+      - name: algorithm
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+  /wpcom/v2/reader/atmosphere/profile/{actor}:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereProfilebyActor
+      summary: GET /wpcom/v2/reader/atmosphere/profile/{actor}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/atmosphere/profile/{actor}/feed:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereProfilebyActorFeed
+      summary: GET /wpcom/v2/reader/atmosphere/profile/{actor}/feed
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+      - name: filter
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - posts_with_replies
+          - posts_no_replies
+          - posts_with_media
+          - posts_and_author_threads
+          default: posts_no_replies
+  /wpcom/v2/reader/atmosphere/thread:
+    get:
+      operationId: getWpcomV2ReaderAtmosphereThread
+      summary: GET /wpcom/v2/reader/atmosphere/thread
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: uri
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: depth
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 6
+      - name: parentHeight
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 80
+  /wpcom/v2/reader/fediverse/connections:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnections
+      summary: GET /wpcom/v2/reader/fediverse/connections
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/fediverse/connections/{id}:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyId
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/fediverse/connections/{id}/follows:
+    post:
+      operationId: postWpcomV2ReaderFediverseConnectionsbyIdFollows
+      summary: POST /wpcom/v2/reader/fediverse/connections/{id}/follows
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                actor:
+                  type: string
+              required:
+              - actor
+  /wpcom/v2/reader/fediverse/connections/{id}/follows/{follow_id}:
+    delete:
+      operationId: deleteWpcomV2ReaderFediverseConnectionsbyIdFollowsbyFollowId
+      summary: DELETE /wpcom/v2/reader/fediverse/connections/{id}/follows/{follow_id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: follow_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/fediverse/connections/{id}/notifications:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyIdNotifications
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}/notifications
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+      - name: types
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+  /wpcom/v2/reader/fediverse/connections/{id}/posts:
+    post:
+      operationId: postWpcomV2ReaderFediverseConnectionsbyIdPosts
+      summary: POST /wpcom/v2/reader/fediverse/connections/{id}/posts
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                summary:
+                  type: string
+                  default: ''
+                sensitive:
+                  type: boolean
+                  default: false
+                visibility:
+                  type: string
+                  default: public
+                language:
+                  type: string
+                  default: ''
+                reply:
+                  type: string
+                  default: ''
+              required:
+              - content
+  /wpcom/v2/reader/fediverse/connections/{id}/profile:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfile
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActor
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/followers:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActorFollowers
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/followers
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 40
+  /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/following:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActorFollowing
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/following
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 40
+  /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/timeline:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActorTimeline
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/timeline
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+  /wpcom/v2/reader/fediverse/connections/{id}/timeline:
+    get:
+      operationId: getWpcomV2ReaderFediverseConnectionsbyIdTimeline
+      summary: GET /wpcom/v2/reader/fediverse/connections/{id}/timeline
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+  /wpcom/v2/reader/greader:
+    get:
+      operationId: getWpcomV2ReaderGreader
+      summary: GET /wpcom/v2/reader/greader
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/accounts/ClientLogin:
+    get:
+      operationId: getWpcomV2ReaderGreaderAccountsClientlogin
+      summary: GET /wpcom/v2/reader/greader/accounts/ClientLogin
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: Email
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Passwd
+        in: query
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2ReaderGreaderAccountsClientlogin
+      summary: POST /wpcom/v2/reader/greader/accounts/ClientLogin
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Email:
+                  type: string
+                Passwd:
+                  type: string
+              required:
+              - Email
+              - Passwd
+  /wpcom/v2/reader/greader/api/greader.php/accounts/ClientLogin:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpAccountsClientlogin
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/accounts/ClientLogin
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: Email
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Passwd
+        in: query
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpAccountsClientlogin
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/accounts/ClientLogin
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Email:
+                  type: string
+                Passwd:
+                  type: string
+              required:
+              - Email
+              - Passwd
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/disable-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0DisableTag
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/disable-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/edit-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0EditTag
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/edit-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/mark-all-as-read:
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0MarkAllAsRead
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/mark-all-as-read
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/rename-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0RenameTag
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/rename-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/contents/{stream}:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0StreamContentsbyStream
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/contents/{stream}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: stream
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/items/contents:
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0StreamItemsContents
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/items/contents
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/items/ids:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0StreamItemsIds
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/items/ids
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/edit:
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0SubscriptionEdit
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/edit
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/list:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0SubscriptionList
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/list
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/quickadd:
+    post:
+      operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0SubscriptionQuickadd
+      summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/quickadd
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/tag/list:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0TagList
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/tag/list
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/token:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0Token
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/token
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/unread-count:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0UnreadCount
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/unread-count
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/api/greader.php/reader/api/0/user-info:
+    get:
+      operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0UserInfo
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/user-info
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/accounts/ClientLogin:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpAccountsClientlogin
+      summary: GET /wpcom/v2/reader/greader/greader.php/accounts/ClientLogin
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: Email
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: Passwd
+        in: query
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpAccountsClientlogin
+      summary: POST /wpcom/v2/reader/greader/greader.php/accounts/ClientLogin
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Email:
+                  type: string
+                Passwd:
+                  type: string
+              required:
+              - Email
+              - Passwd
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/disable-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0DisableTag
+      summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/disable-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/edit-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0EditTag
+      summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/edit-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/mark-all-as-read:
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0MarkAllAsRead
+      summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/mark-all-as-read
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/rename-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0RenameTag
+      summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/rename-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/contents/{stream}:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0StreamContentsbyStream
+      summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/contents/{stream}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: stream
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/items/contents:
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0StreamItemsContents
+      summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/items/contents
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/items/ids:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0StreamItemsIds
+      summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/items/ids
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/edit:
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0SubscriptionEdit
+      summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/edit
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/list:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0SubscriptionList
+      summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/list
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/quickadd:
+    post:
+      operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0SubscriptionQuickadd
+      summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/quickadd
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/tag/list:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0TagList
+      summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/tag/list
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/token:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0Token
+      summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/token
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/unread-count:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0UnreadCount
+      summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/unread-count
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/greader.php/reader/api/0/user-info:
+    get:
+      operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0UserInfo
+      summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/user-info
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/disable-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderReaderApi0DisableTag
+      summary: POST /wpcom/v2/reader/greader/reader/api/0/disable-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/edit-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderReaderApi0EditTag
+      summary: POST /wpcom/v2/reader/greader/reader/api/0/edit-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/mark-all-as-read:
+    post:
+      operationId: postWpcomV2ReaderGreaderReaderApi0MarkAllAsRead
+      summary: POST /wpcom/v2/reader/greader/reader/api/0/mark-all-as-read
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/rename-tag:
+    post:
+      operationId: postWpcomV2ReaderGreaderReaderApi0RenameTag
+      summary: POST /wpcom/v2/reader/greader/reader/api/0/rename-tag
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/stream/contents/{stream}:
+    get:
+      operationId: getWpcomV2ReaderGreaderReaderApi0StreamContentsbyStream
+      summary: GET /wpcom/v2/reader/greader/reader/api/0/stream/contents/{stream}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: stream
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/greader/reader/api/0/stream/items/contents:
+    post:
+      operationId: postWpcomV2ReaderGreaderReaderApi0StreamItemsContents
+      summary: POST /wpcom/v2/reader/greader/reader/api/0/stream/items/contents
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/stream/items/ids:
+    get:
+      operationId: getWpcomV2ReaderGreaderReaderApi0StreamItemsIds
+      summary: GET /wpcom/v2/reader/greader/reader/api/0/stream/items/ids
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/subscription/edit:
+    post:
+      operationId: postWpcomV2ReaderGreaderReaderApi0SubscriptionEdit
+      summary: POST /wpcom/v2/reader/greader/reader/api/0/subscription/edit
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/subscription/list:
+    get:
+      operationId: getWpcomV2ReaderGreaderReaderApi0SubscriptionList
+      summary: GET /wpcom/v2/reader/greader/reader/api/0/subscription/list
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/subscription/quickadd:
+    post:
+      operationId: postWpcomV2ReaderGreaderReaderApi0SubscriptionQuickadd
+      summary: POST /wpcom/v2/reader/greader/reader/api/0/subscription/quickadd
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/tag/list:
+    get:
+      operationId: getWpcomV2ReaderGreaderReaderApi0TagList
+      summary: GET /wpcom/v2/reader/greader/reader/api/0/tag/list
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/token:
+    get:
+      operationId: getWpcomV2ReaderGreaderReaderApi0Token
+      summary: GET /wpcom/v2/reader/greader/reader/api/0/token
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/unread-count:
+    get:
+      operationId: getWpcomV2ReaderGreaderReaderApi0UnreadCount
+      summary: GET /wpcom/v2/reader/greader/reader/api/0/unread-count
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/greader/reader/api/0/user-info:
+    get:
+      operationId: getWpcomV2ReaderGreaderReaderApi0UserInfo
+      summary: GET /wpcom/v2/reader/greader/reader/api/0/user-info
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/reader/mastodon/connections:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnections
+      summary: GET /wpcom/v2/reader/mastodon/connections
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2ReaderMastodonConnections
+      summary: POST /wpcom/v2/reader/mastodon/connections
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                step:
+                  type: string
+                  enum:
+                  - authorize
+                  - complete
+                instance:
+                  type: string
+                state:
+                  type: string
+                code:
+                  type: string
+              required:
+              - step
+  /wpcom/v2/reader/mastodon/connections/{id}:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyId
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/auth-status:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdAuthStatus
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/auth-status
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/follows:
+    post:
+      operationId: postWpcomV2ReaderMastodonConnectionsbyIdFollows
+      summary: POST /wpcom/v2/reader/mastodon/connections/{id}/follows
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/follows/{account_id}:
+    delete:
+      operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdFollowsbyAccountId
+      summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/follows/{account_id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: account_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/likes:
+    post:
+      operationId: postWpcomV2ReaderMastodonConnectionsbyIdLikes
+      summary: POST /wpcom/v2/reader/mastodon/connections/{id}/likes
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status_id:
+                  type: string
+              required:
+              - status_id
+  /wpcom/v2/reader/mastodon/connections/{id}/likes/{status_id}:
+    delete:
+      operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdLikesbyStatusId
+      summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/likes/{status_id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/media:
+    post:
+      operationId: postWpcomV2ReaderMastodonConnectionsbyIdMedia
+      summary: POST /wpcom/v2/reader/mastodon/connections/{id}/media
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/notifications:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdNotifications
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/notifications
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 30
+      - name: types
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+  /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActor
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/feed:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActorFeed
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/feed
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: max_id
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+      - name: exclude_replies
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: only_media
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/followers:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActorFollowers
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/followers
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: max_id
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 40
+  /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/following:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActorFollowing
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/following
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: actor
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: max_id
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 40
+  /wpcom/v2/reader/mastodon/connections/{id}/reposts:
+    post:
+      operationId: postWpcomV2ReaderMastodonConnectionsbyIdReposts
+      summary: POST /wpcom/v2/reader/mastodon/connections/{id}/reposts
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status_id:
+                  type: string
+              required:
+              - status_id
+  /wpcom/v2/reader/mastodon/connections/{id}/reposts/{status_id}:
+    delete:
+      operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdRepostsbyStatusId
+      summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/reposts/{status_id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/statuses:
+    post:
+      operationId: postWpcomV2ReaderMastodonConnectionsbyIdStatuses
+      summary: POST /wpcom/v2/reader/mastodon/connections/{id}/statuses
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  default: ''
+                in_reply_to_id:
+                  type: string
+                  default: ''
+                quoted_status_id:
+                  type: string
+                  default: ''
+                media_ids:
+                  type: array
+                  default: []
+                  items:
+                    type: string
+                sensitive:
+                  type: boolean
+                  default: false
+                visibility:
+                  type: string
+                  default: ''
+                spoiler_text:
+                  type: string
+                  default: ''
+  /wpcom/v2/reader/mastodon/connections/{id}/statuses/{status_id}:
+    delete:
+      operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdStatusesbyStatusId
+      summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/statuses/{status_id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/tag/{hashtag}/feed:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdTagbyHashtagFeed
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/tag/{hashtag}/feed
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: hashtag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: max_id
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: min_id
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+      - name: only_media
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: local
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: remote
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+  /wpcom/v2/reader/mastodon/connections/{id}/thread:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdThread
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/thread
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status_id
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/mastodon/connections/{id}/timeline:
+    get:
+      operationId: getWpcomV2ReaderMastodonConnectionsbyIdTimeline
+      summary: GET /wpcom/v2/reader/mastodon/connections/{id}/timeline
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: max_id
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: min_id
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+  /wpcom/v2/reader/spaces:
+    get:
+      operationId: getWpcomV2ReaderSpaces
+      summary: GET /wpcom/v2/reader/spaces
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2ReaderSpaces
+      summary: POST /wpcom/v2/reader/spaces
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: The name of the space.
+                feeds:
+                  type: array
+                  default: []
+                  items: {}
+                  description: Followed feeds — each a feed_id or a feed_url.
+                tags:
+                  type: array
+                  default: []
+                  items:
+                    type: string
+                  description: Followed Reader tag slugs.
+                languages:
+                  type: array
+                  default: []
+                  items:
+                    type: string
+                  description: Retrieval languages (locale or base codes; normalized to base ES codes like en, pt). Filter the followed-tag slice of the posts feed and Discover; followed feeds are never language-filtered.
+                layout:
+                  type: object
+                  description: 'Presentation: { color, icon, view, iconColor, width } (optional strings). width is "regular" | "wide". Keys are camelCase (client passes layout through verbatim), unlike the snake_case follows array.'
+              required:
+              - title
+  /wpcom/v2/reader/spaces/membership:
+    get:
+      operationId: getWpcomV2ReaderSpacesMembership
+      summary: GET /wpcom/v2/reader/spaces/membership
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: feed
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A feed_id or feed_url to look up. Provide exactly one of feed or tag.
+      - name: tag
+        in: query
+        required: false
+        schema:
+          type: string
+        description: A Reader tag slug to look up. Provide exactly one of feed or tag.
+  /wpcom/v2/reader/spaces/slug/{slug}:
+    get:
+      operationId: getWpcomV2ReaderSpacesSlugbySlug
+      summary: GET /wpcom/v2/reader/spaces/slug/{slug}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/spaces/{id}:
+    get:
+      operationId: getWpcomV2ReaderSpacesbyId
+      summary: GET /wpcom/v2/reader/spaces/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2ReaderSpacesbyId
+      summary: POST /wpcom/v2/reader/spaces/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: New space title.
+                layout:
+                  type: object
+                  description: 'Presentation: { color, icon, view, iconColor, width } (optional strings). width is "regular" | "wide". Keys are camelCase (client passes layout through verbatim), unlike the snake_case follows array.'
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  description: Full tag set (slugs) to replace the space's tags. Pass [] to clear.
+                feeds:
+                  type: array
+                  items: {}
+                  description: Full feed set (feed_id or feed_url) to replace the space's feeds. Pass [] to clear.
+                languages:
+                  type: array
+                  items:
+                    type: string
+                  description: Full language set (locale or base codes; normalized to base ES codes) to replace the space's languages. Pass [] to clear.
+    put:
+      operationId: putWpcomV2ReaderSpacesbyId
+      summary: PUT /wpcom/v2/reader/spaces/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: New space title.
+                layout:
+                  type: object
+                  description: 'Presentation: { color, icon, view, iconColor, width } (optional strings). width is "regular" | "wide". Keys are camelCase (client passes layout through verbatim), unlike the snake_case follows array.'
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  description: Full tag set (slugs) to replace the space's tags. Pass [] to clear.
+                feeds:
+                  type: array
+                  items: {}
+                  description: Full feed set (feed_id or feed_url) to replace the space's feeds. Pass [] to clear.
+                languages:
+                  type: array
+                  items:
+                    type: string
+                  description: Full language set (locale or base codes; normalized to base ES codes) to replace the space's languages. Pass [] to clear.
+    patch:
+      operationId: patchWpcomV2ReaderSpacesbyId
+      summary: PATCH /wpcom/v2/reader/spaces/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: New space title.
+                layout:
+                  type: object
+                  description: 'Presentation: { color, icon, view, iconColor, width } (optional strings). width is "regular" | "wide". Keys are camelCase (client passes layout through verbatim), unlike the snake_case follows array.'
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  description: Full tag set (slugs) to replace the space's tags. Pass [] to clear.
+                feeds:
+                  type: array
+                  items: {}
+                  description: Full feed set (feed_id or feed_url) to replace the space's feeds. Pass [] to clear.
+                languages:
+                  type: array
+                  items:
+                    type: string
+                  description: Full language set (locale or base codes; normalized to base ES codes) to replace the space's languages. Pass [] to clear.
+    delete:
+      operationId: deleteWpcomV2ReaderSpacesbyId
+      summary: DELETE /wpcom/v2/reader/spaces/{id}
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/reader/spaces/{id}/discover:
+    get:
+      operationId: getWpcomV2ReaderSpacesbyIdDiscover
+      summary: GET /wpcom/v2/reader/spaces/{id}/discover
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: count
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 7
+        description: Number of posts per page (max 7 — an Elasticsearch query-size limit; paginate via page_handle for more).
+      - name: page_handle
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Opaque cursor from a previous response, to fetch the next page.
+      - name: _locale
+        in: query
+        required: false
+        schema:
+          type: string
+          default: en
+        description: Locale for the stream.
+  /wpcom/v2/reader/spaces/{id}/posts:
+    get:
+      operationId: getWpcomV2ReaderSpacesbyIdPosts
+      summary: GET /wpcom/v2/reader/spaces/{id}/posts
+      tags:
+      - reader
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: count
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 8
+        description: Number of posts per page (max 15; larger requests are clamped — paginate via page_handle for more).
+      - name: tag_limit
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Max posts per page from the space's followed tags (0 = feeds only). Clamped to count, effectively capped at 7 (an Elasticsearch query-size limit). When omitted, it defaults to 3 ONLY if the space has both feeds and tags (to keep feed posts visible); a tag-only or feed-only space has no cap.
+      - name: page_handle
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Opaque cursor from a previous response, to fetch the next page.
+      - name: _locale
+        in: query
+        required: false
+        schema:
+          type: string
+          default: en
+        description: Locale for the stream.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

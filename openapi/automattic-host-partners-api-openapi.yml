@@ -1,0 +1,1556 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Host Partners API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: host-partners
+paths:
+  /wpcom/v2/host-partners:
+    get:
+      operationId: getWpcomV2HostPartners
+      summary: GET /wpcom/v2/host-partners
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: atomic_client_id
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: When supplied by a proxied Automattician, scopes the response to the given client. Ignored for non-Automattician callers.
+  /wpcom/v2/host-partners/for/{client_id}/metrics/site/{site}:
+    post:
+      operationId: postWpcomV2HostPartnersForbyClientIdMetricsSitebySite
+      summary: POST /wpcom/v2/host-partners/for/{client_id}/metrics/site/{site}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/host-partners/for/{client_id}/site-meta/{site}/{key}:
+    get:
+      operationId: getWpcomV2HostPartnersForbyClientIdSiteMetabySitebyKey
+      summary: GET /wpcom/v2/host-partners/for/{client_id}/site-meta/{site}/{key}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: client_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/host-partners/jetpack/licenses:
+    get:
+      operationId: getWpcomV2HostPartnersJetpackLicenses
+      summary: GET /wpcom/v2/host-partners/jetpack/licenses
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 50
+      - name: order_by
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - issued_at
+          - attached_at
+          - revoked_at
+          - product_id
+          default: issued_at
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: filters
+        in: query
+        required: false
+        schema:
+          type: object
+  /wpcom/v2/host-partners/jetpack/{license_key}:
+    delete:
+      operationId: deleteWpcomV2HostPartnersJetpackbyLicenseKey
+      summary: DELETE /wpcom/v2/host-partners/jetpack/{license_key}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: license_key
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/host-partners/members:
+    get:
+      operationId: getWpcomV2HostPartnersMembers
+      summary: GET /wpcom/v2/host-partners/members
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          type: integer
+  /wpcom/v2/host-partners/members/invite:
+    post:
+      operationId: postWpcomV2HostPartnersMembersInvite
+      summary: POST /wpcom/v2/host-partners/members/invite
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                login:
+                  type: string
+                role:
+                  type: string
+                message:
+                  type: string
+              required:
+              - login
+              - role
+  /wpcom/v2/host-partners/members/invites/mine:
+    get:
+      operationId: getWpcomV2HostPartnersMembersInvitesMine
+      summary: GET /wpcom/v2/host-partners/members/invites/mine
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/members/invites/{invite_id}:
+    delete:
+      operationId: deleteWpcomV2HostPartnersMembersInvitesbyInviteId
+      summary: DELETE /wpcom/v2/host-partners/members/invites/{invite_id}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: invite_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          type: integer
+  /wpcom/v2/host-partners/members/invites/{invite_id}/accept:
+    post:
+      operationId: postWpcomV2HostPartnersMembersInvitesbyInviteIdAccept
+      summary: POST /wpcom/v2/host-partners/members/invites/{invite_id}/accept
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: invite_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                secret:
+                  type: string
+              required:
+              - client_id
+              - secret
+  /wpcom/v2/host-partners/members/invites/{invite_id}/claim:
+    post:
+      operationId: postWpcomV2HostPartnersMembersInvitesbyInviteIdClaim
+      summary: POST /wpcom/v2/host-partners/members/invites/{invite_id}/claim
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: invite_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+              required:
+              - client_id
+  /wpcom/v2/host-partners/members/{user_id}:
+    delete:
+      operationId: deleteWpcomV2HostPartnersMembersbyUserId
+      summary: DELETE /wpcom/v2/host-partners/members/{user_id}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          type: integer
+    post:
+      operationId: postWpcomV2HostPartnersMembersbyUserId
+      summary: POST /wpcom/v2/host-partners/members/{user_id}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                role:
+                  type: string
+              required:
+              - role
+    put:
+      operationId: putWpcomV2HostPartnersMembersbyUserId
+      summary: PUT /wpcom/v2/host-partners/members/{user_id}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                role:
+                  type: string
+              required:
+              - role
+    patch:
+      operationId: patchWpcomV2HostPartnersMembersbyUserId
+      summary: PATCH /wpcom/v2/host-partners/members/{user_id}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                role:
+                  type: string
+              required:
+              - role
+  /wpcom/v2/host-partners/metrics/site/{site}:
+    post:
+      operationId: postWpcomV2HostPartnersMetricsSitebySite
+      summary: POST /wpcom/v2/host-partners/metrics/site/{site}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/host-partners/payment-method:
+    delete:
+      operationId: deleteWpcomV2HostPartnersPaymentMethod
+      summary: DELETE /wpcom/v2/host-partners/payment-method
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: payment_method_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The Stripe PaymentMethodId that should be detached.
+    post:
+      operationId: postWpcomV2HostPartnersPaymentMethod
+      summary: POST /wpcom/v2/host-partners/payment-method
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payment_method_id:
+                  type: string
+                  description: The Stripe payment method ID that should be attached to the customer.
+                use_as_primary_payment_method:
+                  type: boolean
+                  default: false
+                  description: Set this payment method as default for the customer.
+                stripe_setup_intent_id:
+                  type: string
+                  default: ''
+                  description: The Stripe Setup Intent id for the payment method.
+              required:
+              - payment_method_id
+  /wpcom/v2/host-partners/payment-methods:
+    get:
+      operationId: getWpcomV2HostPartnersPaymentMethods
+      summary: GET /wpcom/v2/host-partners/payment-methods
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/site-meta/{site}/{key}:
+    get:
+      operationId: getWpcomV2HostPartnersSiteMetabySitebyKey
+      summary: GET /wpcom/v2/host-partners/site-meta/{site}/{key}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/host-partners/wpcloud:
+    post:
+      operationId: postWpcomV2HostPartnersWpcloud
+      summary: POST /wpcom/v2/host-partners/wpcloud
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: First name of the host partner.
+                last_name:
+                  type: string
+                  description: Last name of the host partner.
+                business_name:
+                  type: string
+                  description: Business name of the host partner.
+                business_type:
+                  type: string
+                  description: Business type of the host partner (e.g. host, agency...). Fixed Values.
+                business_description:
+                  type: string
+                  description: User-provided description of the business type.
+                hosting_method:
+                  type: string
+                  description: The method by which the host partner provides hosting (e.g., own infrastructure, 3rd party).
+                consider_migrating:
+                  type: string
+                  description: Will the host partner consider migrating sites to WP Cloud.
+                num_migrations:
+                  type: string
+                  description: How many sites will be migrated, if any. Not required.
+                which_web_panel:
+                  type: string
+                  description: Which web panel the prospective partner uses, if any. Not required.
+                which_web_panel_other:
+                  type: string
+                  description: Which other web panel the prospective partner uses, if any. Not required.
+                anything_else:
+                  type: string
+                  description: Anything goes. The user can add whatever text theyd like here.
+                lead_source:
+                  type: string
+                  description: Answer to How did you hear about us?
+                wp_sites_management_count:
+                  type: string
+                  description: The number of WordPress sites managed by the host partner.
+                interest_in_wpcloud:
+                  type: string
+                  description: The user-provided reason for the interest in WP Cloud.
+                url:
+                  type: string
+                  description: URL associated with the host partner.
+                email:
+                  type: string
+                  description: Email associated with the host partner.
+                team_email:
+                  type: string
+                  description: Email alias to reach the partner team.
+                ip_allowlist:
+                  type: string
+                  description: Plain text field listing one or more IP addresses or CIDR ranges.
+                accepted_tos:
+                  type: boolean
+                  description: True if the TOS was accepted.
+                accepted_pricing:
+                  type: boolean
+                  description: Date when pricing was last accepted.
+                accepted_removal_subjection:
+                  type: boolean
+                  description: Date when removal subjection was last accepted.
+                accepted_email_subscription:
+                  type: boolean
+                  description: The user consented to join the email newsletter.
+                signed_contract:
+                  type: boolean
+                  description: Date when the contract was last signed.
+  /wpcom/v2/host-partners/wpcloud/api-access:
+    post:
+      operationId: postWpcomV2HostPartnersWpcloudApiAccess
+      summary: POST /wpcom/v2/host-partners/wpcloud/api-access
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                ip_addresses:
+                  type: string
+              required:
+              - first_name
+              - last_name
+              - email
+              - ip_addresses
+  /wpcom/v2/host-partners/wpcloud/api-keys:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudApiKeys
+      summary: GET /wpcom/v2/host-partners/wpcloud/api-keys
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          type: integer
+  /wpcom/v2/host-partners/wpcloud/api-keys/action:
+    post:
+      operationId: postWpcomV2HostPartnersWpcloudApiKeysAction
+      summary: POST /wpcom/v2/host-partners/wpcloud/api-keys/action
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                action:
+                  type: string
+                key_name:
+                  type: string
+                endpoints:
+                  type: array
+                  items: {}
+                ip_ranges:
+                  type: array
+                  items: {}
+                add_endpoints:
+                  type: array
+                  items: {}
+                remove_endpoints:
+                  type: array
+                  items: {}
+                add_ip_ranges:
+                  type: array
+                  items: {}
+                remove_ip_ranges:
+                  type: array
+                  items: {}
+                verification_token:
+                  type: string
+              required:
+              - action
+              - verification_token
+  /wpcom/v2/host-partners/wpcloud/api-keys/mfa:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudApiKeysMfa
+      summary: GET /wpcom/v2/host-partners/wpcloud/api-keys/mfa
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          type: integer
+  /wpcom/v2/host-partners/wpcloud/api-keys/mfa/start:
+    post:
+      operationId: postWpcomV2HostPartnersWpcloudApiKeysMfaStart
+      summary: POST /wpcom/v2/host-partners/wpcloud/api-keys/mfa/start
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                return_url:
+                  type: string
+                intent:
+                  type: object
+              required:
+              - return_url
+  /wpcom/v2/host-partners/wpcloud/api-keys/mfa/validate:
+    post:
+      operationId: postWpcomV2HostPartnersWpcloudApiKeysMfaValidate
+      summary: POST /wpcom/v2/host-partners/wpcloud/api-keys/mfa/validate
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                code:
+                  type: string
+                verification_token:
+                  type: string
+  /wpcom/v2/host-partners/wpcloud/billing:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudBilling
+      summary: GET /wpcom/v2/host-partners/wpcloud/billing
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/wpcloud/billing/invoices:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudBillingInvoices
+      summary: GET /wpcom/v2/host-partners/wpcloud/billing/invoices
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+          default: '1'
+  /wpcom/v2/host-partners/wpcloud/billing/invoices/{invoice_id}/payment:
+    post:
+      operationId: postWpcomV2HostPartnersWpcloudBillingInvoicesbyInvoiceIdPayment
+      summary: POST /wpcom/v2/host-partners/wpcloud/billing/invoices/{invoice_id}/payment
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: invoice_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/host-partners/wpcloud/billing/invoices/{invoice_id}/usage-report:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudBillingInvoicesbyInvoiceIdUsageReport
+      summary: GET /wpcom/v2/host-partners/wpcloud/billing/invoices/{invoice_id}/usage-report
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: invoice_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/host-partners/wpcloud/clients:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudClients
+      summary: GET /wpcom/v2/host-partners/wpcloud/clients
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/wpcloud/inventory:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudInventory
+      summary: GET /wpcom/v2/host-partners/wpcloud/inventory
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - name: order_by
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - atomic_site_id
+          - domain_name
+          default: atomic_site_id
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+      - name: s
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Search term to filter results.
+  /wpcom/v2/host-partners/wpcloud/news:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudNews
+      summary: GET /wpcom/v2/host-partners/wpcloud/news
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/wpcloud/onboarding:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudOnboarding
+      summary: GET /wpcom/v2/host-partners/wpcloud/onboarding
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+    post:
+      operationId: postWpcomV2HostPartnersWpcloudOnboarding
+      summary: POST /wpcom/v2/host-partners/wpcloud/onboarding
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                key:
+                  type: string
+              required:
+              - key
+  /wpcom/v2/host-partners/wpcloud/pricing:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudPricing
+      summary: GET /wpcom/v2/host-partners/wpcloud/pricing
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: site
+        in: query
+        required: true
+        schema:
+          type: object
+      - name: count
+        in: query
+        required: true
+        schema:
+          type: integer
+  /wpcom/v2/host-partners/wpcloud/pricing/simple:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudPricingSimple
+      summary: GET /wpcom/v2/host-partners/wpcloud/pricing/simple
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/wpcloud/stripe/configuration:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudStripeConfiguration
+      summary: GET /wpcom/v2/host-partners/wpcloud/stripe/configuration
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/wpcloud/stripe/setup-intent:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudStripeSetupIntent
+      summary: GET /wpcom/v2/host-partners/wpcloud/stripe/setup-intent
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/host-partners/wpcloud/support:
+    post:
+      operationId: postWpcomV2HostPartnersWpcloudSupport
+      summary: POST /wpcom/v2/host-partners/wpcloud/support
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: string
+                subject:
+                  type: string
+                user_name:
+                  type: string
+                user_email:
+                  type: string
+                partner_name:
+                  type: string
+                attachment:
+                  type: string
+              required:
+              - body
+              - subject
+              - user_name
+              - user_email
+              - partner_name
+  /wpcom/v2/host-partners/wpcloud/usage:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudUsage
+      summary: GET /wpcom/v2/host-partners/wpcloud/usage
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: granularity
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - day
+          - month
+          default: month
+  /wpcom/v2/host-partners/wpcloud/warden/events:
+    get:
+      operationId: getWpcomV2HostPartnersWpcloudWardenEvents
+      summary: GET /wpcom/v2/host-partners/wpcloud/warden/events
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 25
+      - name: min_indicator
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - watch
+          - alert
+          - critical
+          default: watch
+  /wpcom/v2/host-partners/wpcloud/{wpcom_user_id}:
+    delete:
+      operationId: deleteWpcomV2HostPartnersWpcloudbyWpcomUserId
+      summary: DELETE /wpcom/v2/host-partners/wpcloud/{wpcom_user_id}
+      tags:
+      - host-partners
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_user_id
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,906 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Help API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: help
+paths:
+  /wpcom/v2/help/article:
+    get:
+      operationId: getWpcomV2HelpArticle
+      summary: GET /wpcom/v2/help/article
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: post_url
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/help/article/{blog_id}/{post_id}:
+    get:
+      operationId: getWpcomV2HelpArticlebyBlogIdbyPostId
+      summary: GET /wpcom/v2/help/article/{blog_id}/{post_id}
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: blog_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/help/articles:
+    get:
+      operationId: getWpcomV2HelpArticles
+      summary: GET /wpcom/v2/help/articles
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: blog_id
+        in: query
+        required: true
+        schema:
+          type: number
+      - name: post_ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+  /wpcom/v2/help/authenticate/chat:
+    post:
+      operationId: postWpcomV2HelpAuthenticateChat
+      summary: POST /wpcom/v2/help/authenticate/chat
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                test_mode:
+                  type: boolean
+              required:
+              - type
+  /wpcom/v2/help/courses:
+    get:
+      operationId: getWpcomV2HelpCourses
+      summary: GET /wpcom/v2/help/courses
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/help/csat:
+    post:
+      operationId: postWpcomV2HelpCsat
+      summary: POST /wpcom/v2/help/csat
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ticket_id:
+                  type: string
+                score:
+                  type: string
+                  enum:
+                  - good
+                  - bad
+                comment:
+                  type: string
+                reason_id:
+                  type: string
+                test_mode:
+                  type: boolean
+              required:
+              - ticket_id
+              - score
+  /wpcom/v2/help/cta:
+    get:
+      operationId: getWpcomV2HelpCta
+      summary: GET /wpcom/v2/help/cta
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/help/forum/new:
+    post:
+      operationId: postWpcomV2HelpForumNew
+      summary: POST /wpcom/v2/help/forum/new
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                message:
+                  type: string
+                blog_url:
+                  type: string
+                blog_id:
+                  type: integer
+                tags:
+                  type: array
+                  default: []
+                  items: {}
+                locale:
+                  type: string
+                hide_blog_info:
+                  type: boolean
+                  default: false
+                should_use_test_forums:
+                  type: boolean
+              required:
+              - subject
+              - message
+  /wpcom/v2/help/messaging/is-available:
+    get:
+      operationId: getWpcomV2HelpMessagingIsAvailable
+      summary: GET /wpcom/v2/help/messaging/is-available
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: group
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: environment
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/help/migration-ticket/new:
+    post:
+      operationId: postWpcomV2HelpMigrationTicketNew
+      summary: POST /wpcom/v2/help/migration-ticket/new
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  default: en
+                blog_url:
+                  type: string
+                from_url:
+                  type: string
+                context:
+                  type: string
+                  description: Additional context to add to the ticket.
+              required:
+              - blog_url
+              - from_url
+  /wpcom/v2/help/migration-ticket/site-info:
+    post:
+      operationId: postWpcomV2HelpMigrationTicketSiteInfo
+      summary: POST /wpcom/v2/help/migration-ticket/site-info
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_username:
+                  type: string
+                  description: The username to use for the credentials migration.
+                source_password:
+                  type: string
+                  description: The password to use for the credentials migration.
+                source_url:
+                  type: string
+                  description: The URL of the source blog or a backup to migrate from.
+              required:
+              - source_url
+  /wpcom/v2/help/migration-ticket/stickers:
+    post:
+      operationId: postWpcomV2HelpMigrationTicketStickers
+      summary: POST /wpcom/v2/help/migration-ticket/stickers
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stickers:
+                  type: array
+                  items:
+                    type: string
+                blog_id:
+                  type: integer
+              required:
+              - blog_id
+  /wpcom/v2/help/search:
+    get:
+      operationId: getWpcomV2HelpSearch
+      summary: GET /wpcom/v2/help/search
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search term
+      - name: locale
+        in: query
+        required: false
+        schema:
+          type: string
+          default: en
+        description: User language
+      - name: section
+        in: query
+        required: false
+        schema:
+          type: string
+        description: UI section
+      - name: source
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Source of the search
+  /wpcom/v2/help/search/forums:
+    get:
+      operationId: getWpcomV2HelpSearchForums
+      summary: GET /wpcom/v2/help/search/forums
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search term
+      - name: locale
+        in: query
+        required: false
+        schema:
+          type: string
+          default: en
+        description: User language
+  /wpcom/v2/help/search/wpcom:
+    get:
+      operationId: getWpcomV2HelpSearchWpcom
+      summary: GET /wpcom/v2/help/search/wpcom
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search term
+      - name: locale
+        in: query
+        required: false
+        schema:
+          type: string
+          default: en
+        description: User language
+      - name: section
+        in: query
+        required: false
+        schema:
+          type: string
+        description: UI section
+  /wpcom/v2/help/sibyl:
+    get:
+      operationId: getWpcomV2HelpSibyl
+      summary: GET /wpcom/v2/help/sibyl
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Search term
+      - name: source
+        in: query
+        required: false
+        schema:
+          type: string
+          default: wpcom
+        description: wpcom or jpop
+  /wpcom/v2/help/support-status:
+    get:
+      operationId: getWpcomV2HelpSupportStatus
+      summary: GET /wpcom/v2/help/support-status
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/help/support-status/messaging:
+    get:
+      operationId: getWpcomV2HelpSupportStatusMessaging
+      summary: GET /wpcom/v2/help/support-status/messaging
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: group
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - jp_presales
+          - wpcom_messaging
+          - wpcom_presales
+          - woo_messaging
+      - name: environment
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - production
+          - development
+  /wpcom/v2/help/ticket/new:
+    post:
+      operationId: postWpcomV2HelpTicketNew
+      summary: POST /wpcom/v2/help/ticket/new
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                message:
+                  type: string
+                locale:
+                  type: string
+                  default: en
+                is_chat_overflow:
+                  type: boolean
+                  default: false
+                source:
+                  type: string
+                blog_url:
+                  type: string
+                ai_chat_id:
+                  type: string
+                ai_message:
+                  type: string
+              required:
+              - subject
+              - message
+  /wpcom/v2/help/wpe-migration-ticket/new:
+    post:
+      operationId: postWpcomV2HelpWpeMigrationTicketNew
+      summary: POST /wpcom/v2/help/wpe-migration-ticket/new
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                locale:
+                  type: string
+                  default: en
+                site_url:
+                  type: string
+                email:
+                  type: string
+              required:
+              - site_url
+              - email
+  /wpcom/v2/help/zendesk/ai:
+    get:
+      operationId: getWpcomV2HelpZendeskAi
+      summary: GET /wpcom/v2/help/zendesk/ai
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: blog_id
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: email
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/help/zendesk/update-user-fields:
+    post:
+      operationId: postWpcomV2HelpZendeskUpdateUserFields
+      summary: POST /wpcom/v2/help/zendesk/update-user-fields
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: object
+              required:
+              - fields
+    put:
+      operationId: putWpcomV2HelpZendeskUpdateUserFields
+      summary: PUT /wpcom/v2/help/zendesk/update-user-fields
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: object
+              required:
+              - fields
+    patch:
+      operationId: patchWpcomV2HelpZendeskUpdateUserFields
+      summary: PATCH /wpcom/v2/help/zendesk/update-user-fields
+      tags:
+      - help
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields:
+                  type: object
+              required:
+              - fields
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

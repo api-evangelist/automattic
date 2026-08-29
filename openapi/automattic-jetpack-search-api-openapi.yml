@@ -1,0 +1,281 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Jetpack Search API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: jetpack-search
+paths:
+  /wpcom/v2/jetpack-search/pricing:
+    get:
+      operationId: getWpcomV2JetpackSearchPricing
+      summary: GET /wpcom/v2/jetpack-search/pricing
+      tags:
+      - jetpack-search
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: record_count
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+        description: Record count to estimate pricing
+      - name: search_request_count
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+        description: Search request count to estimate pricing
+      - name: locale
+        in: query
+        required: false
+        schema: {}
+        description: (string) Locale for translating strings in response data
+      - name: currency
+        in: query
+        required: false
+        schema: {}
+        description: (string) Manually request currency code of response.
+  /wpcom/v2/sites/{wpcom_site}/jetpack-search/ai/rank:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteJetpackSearchAiRank
+      summary: GET /wpcom/v2/sites/{wpcom_site}/jetpack-search/ai/rank
+      tags:
+      - jetpack-search
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cache_key
+        in: query
+        required: true
+        schema: {}
+        description: Cache key of your response
+      - name: comment
+        in: query
+        required: false
+        schema: {}
+        description: Optional feedback
+      - name: rank
+        in: query
+        required: false
+        schema: {}
+        description: How do you rank this response
+  /wpcom/v2/sites/{wpcom_site}/jetpack-search/ai/search:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteJetpackSearchAiSearch
+      summary: GET /wpcom/v2/sites/{wpcom_site}/jetpack-search/ai/search
+      tags:
+      - jetpack-search
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: query
+        in: query
+        required: true
+        schema: {}
+        description: Your question to the site
+      - name: stop_at
+        in: query
+        required: false
+        schema:
+          default: full
+        description: 'Which stage to return: urls (fast preview) or response (full answer).'
+      - name: session_id
+        in: query
+        required: false
+        schema: {}
+        description: Conversation session id to continue.
+  /wpcom/v2/sites/{wpcom_site}/jetpack-search/plan:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteJetpackSearchPlan
+      summary: GET /wpcom/v2/sites/{wpcom_site}/jetpack-search/plan
+      tags:
+      - jetpack-search
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/jetpack-search/queue-post-count:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteJetpackSearchQueuePostCount
+      summary: GET /wpcom/v2/sites/{wpcom_site}/jetpack-search/queue-post-count
+      tags:
+      - jetpack-search
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/jetpack-search/stats:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteJetpackSearchStats
+      summary: GET /wpcom/v2/sites/{wpcom_site}/jetpack-search/stats
+      tags:
+      - jetpack-search
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

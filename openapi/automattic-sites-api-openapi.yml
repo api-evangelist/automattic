@@ -1,0 +1,3496 @@
+openapi: 3.2.0
+info:
+  title: Automattic Sites API
+  contact:
+    name: WordPress.com Developer Resources
+    url: https://developer.wordpress.com/docs/api/
+  termsOfService: https://wordpress.com/tos/
+  x-derived-by: API Evangelist enrichment pipeline
+  x-refined-note:
+  - x-derived-from differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged sites across 3 of this provider''s published API definitions: automattic-wordpress-com-rest-v1-1-openapi.yml, automattic-wordpress-com-rest-v1-2-openapi.yml, automattic-wordpress-com-rest-v1-3-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+- url: https://public-api.wordpress.com/rest/v1.2
+- url: https://public-api.wordpress.com/rest/v1.3
+security:
+- bearerAuth: []
+tags:
+- name: sites
+paths:
+  /me/sites:
+    get:
+      operationId: getMeSites
+      summary: Get a list of the current user's sites.
+      description: Get a list of the current user's sites.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sites:
+                    type: array
+                    items: {}
+                    description: List of sites.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: site_visibility
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - visible
+          - hidden
+        description: 'all: (default) Return all sites user is a member of, both visible and hidden.; visible: Only return sites set to visible for the user.; hidden: Only return sites set to hidden for the user.'
+      - name: options
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified options only. Comma-separated list. Example: options=login_url,timezone'
+      - name: include_domain_only
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Optional. Whether to include domain-only sites
+      - name: include_redirect
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'Optional. Whether to include redirect sites. Default: true.'
+      - name: include_a8c_owned
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'Optional. Whether to include A8C owned sites. Default: true.'
+      - name: site_activity
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - all
+          - active
+          - inactive
+        description: 'all: (default) Return all sites both active or inactive.; active: Only return active sites.; inactive: Only return inactive sites.'
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/sites/compact:
+    get:
+      operationId: getMeSitesCompact
+      summary: Not in use
+      description: Not in use
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sites:
+                    type: array
+                    items: {}
+                    description: List of sites. Currently always empty.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: options
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified options only. Comma-separated list. Example: options=login_url,timezone'
+      - name: site_visibility
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'visible: (default) Only return sites set to visible for the user.'
+      - name: site_activity
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'active: (default) Only return active sites.'
+      - name: include_domain_only
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: include_redirect
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: include_a8c_owned
+        in: query
+        required: false
+        schema:
+          type: string
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/sites/features:
+    get:
+      operationId: getMeSitesFeatures
+      summary: Get a list of the current user's sites features
+      description: Get a list of the current user's sites features
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sites:
+                    type: array
+                    items: {}
+                    description: List of current user's sites features keyed by blog_id.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /me/sites/plugins:
+    get:
+      operationId: getMeSitesPlugins
+      summary: Get a list of the current user's sites plugins
+      description: Get a list of the current user's sites plugins
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sites:
+                    type: array
+                    items: {}
+                    description: List of current user's sites plugins keyed by blog_id.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}:
+    get:
+      operationId: getSitesBySite
+      summary: Get information about a site.
+      description: Get information about a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: Site ID
+                  slug:
+                    type: string
+                    description: Slug of site
+                  name:
+                    type: string
+                    description: Title of site
+                  description:
+                    type: string
+                    description: Tagline or description of site
+                  URL:
+                    type: string
+                    description: Full URL to the site
+                  user_can_manage:
+                    type: boolean
+                    description: The current user can manage this site
+                  capabilities:
+                    type: array
+                    items: {}
+                    description: Array of capabilities for the current user on this site.
+                  jetpack:
+                    type: boolean
+                    description: Whether the site is a Jetpack site or not
+                  jetpack_connection:
+                    type: boolean
+                    description: Whether the site is connected to WP.com via `jetpack-connection`
+                  is_multisite:
+                    type: boolean
+                    description: Whether the site is a Multisite site or not. Always true for WP.com sites.
+                  site_owner:
+                    type: integer
+                    description: User ID of the site owner
+                  post_count:
+                    type: integer
+                    description: The number of posts the site has
+                  subscribers_count:
+                    type: integer
+                    description: The number of subscribers the site has
+                  lang:
+                    type: string
+                    description: Primary language code of the site
+                  icon:
+                    type: array
+                    items: {}
+                    description: An array of icon formats for the site
+                  logo:
+                    type: array
+                    items: {}
+                    description: The site logo, set in the Customizer
+                  visible:
+                    type: boolean
+                    description: If this site is visible in the user's site list
+                  is_private:
+                    type: boolean
+                    description: If the site is a private site or not
+                  is_coming_soon:
+                    type: boolean
+                    description: If the site is marked as "coming soon" or not
+                  single_user_site:
+                    type: boolean
+                    description: Whether the site is single user. Only returned for WP.com sites and for Jetpack sites with version 3.4 or higher.
+                  is_vip:
+                    type: boolean
+                    description: If the site is a VIP site or not.
+                  is_following:
+                    type: boolean
+                    description: If the current user is subscribed to this site in the reader
+                  organization_id:
+                    type: integer
+                    description: P2 Organization identifier.
+                  options:
+                    type: array
+                    items: {}
+                    description: 'An array of options/settings for the blog. Only viewable by users with post editing rights to the site. Note: Post formats is deprecated, please see /sites/$id/post-formats/'
+                  p2_thumbnail_elements:
+                    type: array
+                    items: {}
+                    description: Details used to render a thumbnail of the site. P2020 themed sites only.
+                  plan:
+                    type: array
+                    items: {}
+                    description: Details of the current plan for this site.
+                  products:
+                    type: array
+                    items: {}
+                    description: Details of the current products for this site.
+                  zendesk_site_meta:
+                    type: array
+                    items: {}
+                    description: Site meta data for Zendesk.
+                  updates:
+                    type: array
+                    items: {}
+                    description: An array of available updates for plugins, themes, wordpress, and languages.
+                  jetpack_modules:
+                    type: array
+                    items: {}
+                    description: A list of active Jetpack modules.
+                  meta:
+                    type: object
+                    description: Meta data
+                  quota:
+                    type: array
+                    items: {}
+                    description: An array describing how much space a user has left for uploads
+                  launch_status:
+                    type: string
+                    description: A string describing the launch status of a site
+                  site_migration:
+                    type: array
+                    items: {}
+                    description: Data about any migration into the site.
+                  is_fse_active:
+                    type: boolean
+                    description: If the site has Full Site Editing active or not.
+                  is_fse_eligible:
+                    type: boolean
+                    description: If the site is capable of Full Site Editing or not
+                  is_core_site_editor_enabled:
+                    type: boolean
+                    description: If the site has the core site editor enabled.
+                  is_wpcom_atomic:
+                    type: boolean
+                    description: If the site is a WP.com Atomic one.
+                  is_wpcom_staging_site:
+                    type: boolean
+                    description: If the site is a WP.com staging site.
+                  user_interactions:
+                    type: array
+                    items: {}
+                    description: An array of user interactions with a site.
+                  was_ecommerce_trial:
+                    type: boolean
+                    description: If the site ever used an eCommerce trial.
+                  was_upgraded_from_trial:
+                    type: boolean
+                    description: If the site ever upgraded to a paid plan from a trial.
+                  was_migration_trial:
+                    type: boolean
+                    description: If the site ever used a migration trial.
+                  was_hosting_trial:
+                    type: boolean
+                    description: If the site ever used a hosting trial.
+                  wpcom_site_setup:
+                    type: string
+                    description: The WP.com site setup identifier.
+                  is_deleted:
+                    type: boolean
+                    description: If the site flagged as deleted.
+                  is_a4a_client:
+                    type: boolean
+                    description: If the site is an A4A client site.
+                  is_a4a_dev_site:
+                    type: boolean
+                    description: If the site is an A4A dev site.
+                  is_garden:
+                    type: boolean
+                    description: If the site is a Garden site.
+                  garden_name:
+                    type: string
+                    description: The name of the Garden site.
+                  garden_partner:
+                    type: string
+                    description: The partner of the Garden site.
+                  garden_is_provisioned:
+                    type: boolean
+                    description: If the Garden site is provisioned.
+                  is_wpcom_flex:
+                    type: boolean
+                    description: If the site is a Flex site
+                  big_sky_enabled:
+                    type: boolean
+                    description: Whether the Big Sky AI assistant is enabled for this site.
+                  hosting_provider_guess:
+                    type: string
+                    description: Guess of the hosting provider. WordPress.com platform only; only returned when explicitly requested via the fields parameter.
+                  environment_type:
+                    type: string
+                    description: The WP_ENVIRONMENT_TYPE of the site as synced by Jetpack. WordPress.com platform only; only returned when explicitly requested via the fields parameter.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: options
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified options only. Comma-separated list. Example: options=login_url,timezone'
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/automated-transfers/status:
+    get:
+      operationId: getSitesBySiteAutomatedTransfersStatus
+      summary: Returns the current status of Automated Transfer for a site.
+      description: Returns the current status of Automated Transfer for a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: The current status of the transfer.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/embeds:
+    get:
+      operationId: getSitesBySiteEmbeds
+      summary: 'Get a list of embeds available on a site. Note: The current user must have publishing access.'
+      description: 'Get a list of embeds available on a site. Note: The current user must have publishing access.'
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  embeds:
+                    type: array
+                    items: {}
+                    description: A list of supported embeds by their regex pattern.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/embeds/render:
+    get:
+      operationId: getSitesBySiteEmbedsRender
+      summary: 'Get a rendered embed for a site. Note: The current user must have publishing access.'
+      description: 'Get a rendered embed for a site. Note: The current user must have publishing access.'
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  embed_url:
+                    type: string
+                    description: The embed_url that was passed in for rendering.
+                  result:
+                    type: string
+                    description: The rendered HTML result of the embed.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: embed_url
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The query-string encoded embed URL to render. Required. Only accepts one at a time.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/headers/mine:
+    get:
+      operationId: getSitesBySiteHeadersMine
+      summary: Get the custom header options for a site.
+      description: Get the custom header options for a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  random_default:
+                    type: boolean
+                    description: True if the random_default setting is set.
+                  random_uploaded:
+                    type: boolean
+                    description: True if the random_uploaded setting is set.
+                  text_color:
+                    type: string
+                    description: The header text color.
+                  url:
+                    type: string
+                    description: The url of the current header image if one is set (does not include default).
+                  width:
+                    type: integer
+                    description: The width of the current header image if one is set.
+                  height:
+                    type: integer
+                    description: The height of the current header image if one is set.
+                  defaults:
+                    type: string
+                    description: 'url: (string) The url of the default header image if one exists.; text_color: (string) The default header text color.; header_text: (bool) True if the header_text default setting is set.; random_default: (bool) True if the random_default setting is the default.'
+                    enum:
+                    - url
+                    - text_color
+                    - header_text
+                    - random_default
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postSitesBySiteHeadersMine
+      summary: Set the custom header options for a site.
+      description: Set the custom header options for a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  random_default:
+                    type: boolean
+                    description: True if the random_default setting is set.
+                  random_uploaded:
+                    type: boolean
+                    description: True if the random_uploaded setting is set.
+                  text_color:
+                    type: string
+                    description: The header text color.
+                  url:
+                    type: string
+                    description: The url of the current header image if one is set (does not include default).
+                  width:
+                    type: integer
+                    description: The width of the current header image if one is set.
+                  height:
+                    type: integer
+                    description: The height of the current header image if one is set.
+                  defaults:
+                    type: string
+                    description: 'url: (string) The url of the default header image if one exists.; text_color: (string) The default header text color.; header_text: (bool) True if the header_text default setting is set.; random_default: (bool) True if the random_default setting is the default.'
+                    enum:
+                    - url
+                    - text_color
+                    - header_text
+                    - random_default
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remove:
+                  type: boolean
+                  description: Optional. True to remove the header image.
+                reset:
+                  type: boolean
+                  description: Optional. True to reset the header image to the default.
+                random_default:
+                  type: boolean
+                  description: Optional. True to set header to random default image.
+                random_uploaded:
+                  type: boolean
+                  description: Optional. True to set header to random uploaded image.
+                text_color:
+                  type: string
+                  description: Optional. The header text color.
+                reset_text_color:
+                  type: boolean
+                  description: Optional. True to reset the header text color to the default.
+                url:
+                  type: string
+                  description: Optional. A url of a custom header to set. Requires attachment_id, width, height.
+                attachment_id:
+                  type: string
+                  description: Optional. The attachment ID of the image. Requires url, width, height.
+                width:
+                  type: integer
+                  description: Optional. The width of the image. Requires url, attachment_id.
+                height:
+                  type: integer
+                  description: Optional. The height of the image. Requires url, attachment_id.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/headers/{theme_slug}:
+    get:
+      operationId: getSitesBySiteHeadersByThemeSlug
+      summary: Get the custom header options for a site with a particular theme.
+      description: Get the custom header options for a site with a particular theme.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  random_default:
+                    type: boolean
+                    description: True if the random_default setting is set.
+                  random_uploaded:
+                    type: boolean
+                    description: True if the random_uploaded setting is set.
+                  text_color:
+                    type: string
+                    description: The header text color.
+                  url:
+                    type: string
+                    description: The url of the current header image if one is set (does not include default).
+                  width:
+                    type: integer
+                    description: The width of the current header image if one is set.
+                  height:
+                    type: integer
+                    description: The height of the current header image if one is set.
+                  defaults:
+                    type: string
+                    description: 'url: (string) The url of the default header image if one exists.; text_color: (string) The default header text color.; header_text: (bool) True if the header_text default setting is set.; random_default: (bool) True if the random_default setting is the default.'
+                    enum:
+                    - url
+                    - text_color
+                    - header_text
+                    - random_default
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: theme_slug
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The slug of the theme.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/page-templates:
+    get:
+      operationId: getSitesBySitePageTemplates
+      summary: Get a list of page templates supported by a site.
+      description: Get a list of page templates supported by a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items: {}
+                    description: A list of supported page templates. Contains label and file.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/post-counts/{post_type}:
+    get:
+      operationId: getSitesBySitePostCountsByPostType
+      summary: Get number of posts in the post type groups by post status
+      description: Get number of posts in the post type groups by post status
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  counts:
+                    type: string
+                    description: 'all: (array) Number of posts by any author in the post type grouped by post status; mine: (array) Number of posts by the current user in the post type grouped by post status'
+                    enum:
+                    - all
+                    - mine
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: post_type
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Post Type
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: author
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: author ID
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/post-types:
+    get:
+      operationId: getSitesBySitePostTypes
+      summary: Get a list of post types available for a site.
+      description: Get a list of post types available for a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: integer
+                    description: The number of post types found
+                  post_types:
+                    type: array
+                    items: {}
+                    description: A list of available post types
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: api_queryable
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: If true, only queryable post types are returned
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/search:
+    post:
+      operationId: postSitesBySiteSearch
+      summary: Search within a site using an Elasticsearch Query API.
+      description: Search within a site using an Elasticsearch Query API.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hits:
+                    type: array
+                    items: {}
+                    description: The top level "hits" object from the Elasticsearch query response.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                size:
+                  type: integer
+                  description: Number of results to return. Max depends on whether requestor is VIP, Jetpack or others.
+                from:
+                  type: integer
+                  description: Item number to return. Max depends on whether requestor is VIP, Jetpack or others.
+                fields:
+                  type: array
+                  items: {}
+                  description: List of fields to return. Default is blog_id and post_id. See all fields.
+                query:
+                  type: array
+                  items: {}
+                  description: Allows (almost) full access to the ES query DSL. See Elasticsearch Query DSL. Some filters and queries are not allowed for performance reasons, as documented here.
+                aggregations:
+                  type: array
+                  items: {}
+                  description: Return aggregations from matches to the search. See details.
+                sort:
+                  type: array
+                  items: {}
+                  description: How to sort results. Default is _score. See the Elasticsearch sort docs
+                filter:
+                  type: array
+                  items: {}
+                  description: Filters applied to the search. Will be added as a part of a top level bool query
+                suggest:
+                  type: array
+                  items: {}
+                  description: Experimental - Run suggestors on this search See Elasticsearch suggesters
+                rescore:
+                  type: array
+                  items: {}
+                  description: Experimental - Do query rescores on the search. See Elasticsearch rescoring
+                facets:
+                  type: array
+                  items: {}
+                  description: Deprecated. Do not use. Will be removed soon.
+                additional_blog_ids:
+                  type: array
+                  items: {}
+                  description: List of additional blog_ids to run the search on.
+    get:
+      operationId: getSitesBySiteSearch
+      summary: Search within a site as you type
+      description: Search within a site as you type
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: The total number of results in the index.
+                  corrected_query:
+                    type: string
+                    description: If there were no results for the query and the query got auto corrected, then this string will be non-false and contain the query that was used to obtain results.
+                  page_handle:
+                    type: string
+                    description: Query string for passing to "page_handle" param to get the next set of results.
+                  results:
+                    type: array
+                    items: {}
+                    description: The Elasticsearch formatted search results
+                  aggregations:
+                    type: array
+                    items: {}
+                    description: The Elasticsearch formatted aggregation results
+                  suggestions:
+                    type: array
+                    items: {}
+                    description: A list of suggestions for this query.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: List of fields to return. TBD See all fields.
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Number of results to return. Max 20 Default: 10.'
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Item number to return. Max 200
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The user's search query
+      - name: langs
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: List of lang analyzers to use for searching. e.g. "en", "zh-cn"
+      - name: highlight_fields
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: List of fields to highlight.
+      - name: highlight_phrase_only
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: When true, only highlight spans that match the full query phrase (not individual terms).
+      - name: highlight_filter_stopwords
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: List of stopwords to remove highlighting from, e.g. "the", "an".
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'How to sort results. Default is score_default. Also supports: date_desc, date_asc, TBD'
+      - name: filter
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Filters applied to the search. Will be added as a part of a top level bool query
+      - name: aggregations
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Return aggregations from matches to the search. See details.
+      - name: page_handle
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Base64 encoded query string for scrolling results from one page to the next. Overrides "from" and can add fitlers
+      - name: algorithm
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Algorithm to use for search. Typically auto selected and supplied by page_handle.
+      - name: group_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Group id to search for, used as : to support multiple group types. A way to search across multiple sites.'
+      - name: additional_blog_ids
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: List of additional blog_ids to run the search on.
+      - name: custom_results
+        in: query
+        required: false
+        schema:
+          type: array
+          items: {}
+        description: Internal use only for now
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/shortcodes:
+    get:
+      operationId: getSitesBySiteShortcodes
+      summary: 'Get a list of shortcodes available on a site. Note: The current user must have publishing access.'
+      description: 'Get a list of shortcodes available on a site. Note: The current user must have publishing access.'
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shortcodes:
+                    type: array
+                    items: {}
+                    description: A list of supported shortcodes by their handle.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/shortcodes/render:
+    get:
+      operationId: getSitesBySiteShortcodesRender
+      summary: 'Get a rendered shortcode for a site. Note: The current user must have publishing access.'
+      description: 'Get a rendered shortcode for a site. Note: The current user must have publishing access.'
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shortcode:
+                    type: string
+                    description: The shortcode that was passed in for rendering.
+                  result:
+                    type: string
+                    description: The rendered HTML result of the shortcode.
+                  scripts:
+                    type: array
+                    items: {}
+                    description: 'An array of JavaScript files needed to render the shortcode. Returned in the format of { "script-slug" : { "src": "http://example.com/file.js", "extra" : "" } } where extra contains any neccessary extra JS for initializing the source file and src contains the script to load. Omitted if no scripts are neccessary.'
+                  styles:
+                    type: array
+                    items: {}
+                    description: 'An array of CSS files needed to render the shortcode. Returned in the format of { "style-slug" : { "src": "http://example.com/file.css", "media" : "all" } }. Omitted if no styles are neccessary.'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: shortcode
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The query-string encoded shortcode string to render. Required. Only accepts one at a time.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/widgets:
+    get:
+      operationId: getSitesBySiteWidgets
+      summary: Retrieve the active and inactive widgets for a site.
+      description: Retrieve the active and inactive widgets for a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  widgets:
+                    type: array
+                    items: {}
+                    description: An array of widget objects. Inactive widgets will be in the sidebar `wp_inactive_widgets`.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/widgets/new:
+    post:
+      operationId: postSitesBySiteWidgetsNew
+      summary: Activate a widget on a site.
+      description: Activate a widget on a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The actual ID of the widget.
+                  sidebar:
+                    type: string
+                    description: The ID of the sidebar where this widget will be active.
+                  position:
+                    type: integer
+                    description: The final position of the widget in the sidebar.
+                  settings:
+                    type: array
+                    items: {}
+                    description: The settings for the new widget.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_base:
+                  type: string
+                  description: The base ID of the widget.
+                sidebar:
+                  type: string
+                  description: Optional. The ID of the sidebar where this widget will be active. If empty, the widget will be added in the first sidebar available.
+                position:
+                  type: integer
+                  description: Optional. The position of the widget in the sidebar.
+                settings:
+                  type: object
+                  description: Optional. The settings for the new widget.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/widgets/widget:{id}:
+    get:
+      operationId: getSitesBySiteWidgetsWidgetId
+      summary: Retrieve a widget on a site by its ID.
+      description: Retrieve a widget on a site by its ID.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the widget.
+                  sidebar:
+                    type: string
+                    description: The ID of the sidebar where this widget will be active.
+                  position:
+                    type: integer
+                    description: The position of the widget in the sidebar.
+                  settings:
+                    type: array
+                    items: {}
+                    description: The settings for the new widget.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Widget ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postSitesBySiteWidgetsWidgetId
+      summary: Update a widget on a site by its ID.
+      description: Update a widget on a site by its ID.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the widget.
+                  sidebar:
+                    type: string
+                    description: The ID of the sidebar where this widget will be active.
+                  position:
+                    type: integer
+                    description: The position of the widget in the sidebar.
+                  settings:
+                    type: array
+                    items: {}
+                    description: The settings for the widget.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Widget ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sidebar:
+                  type: string
+                  description: Optional. The ID of the sidebar where this widget will be active.
+                position:
+                  type: integer
+                  description: Optional. The new position of the widget in the sidebar.
+                settings:
+                  type: object
+                  description: Optional. The settings to merge into the widget.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/widgets/widget:{id}/delete:
+    post:
+      operationId: postSitesBySiteWidgetsWidgetIdDelete
+      summary: Deactivate a widget on a site by its ID. Will delete if already deactivated.
+      description: Deactivate a widget on a site by its ID. Will delete if already deactivated.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The ID of the widget.
+                  sidebar:
+                    type: string
+                    description: The ID of the sidebar where this widget will be inactive.
+                  position:
+                    type: integer
+                    description: The position of the widget in the inactive sidebar.
+                  settings:
+                    type: array
+                    items: {}
+                    description: The settings for the new widget.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Widget ID
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/wordads/approve:
+    post:
+      operationId: postSitesBySiteWordadsApprove
+      summary: Request streamlined approval to join the WordAds program.
+      description: Request streamlined approval to join the WordAds program.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  approved:
+                    type: boolean
+                    description: Site successfully approved for WordAds
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/wordads/earnings:
+    get:
+      operationId: getSitesBySiteWordadsEarnings
+      summary: Get detailed WordAds earnings information about a site.
+      description: Get detailed WordAds earnings information about a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: Site ID
+                  name:
+                    type: string
+                    description: Title of site
+                  URL:
+                    type: string
+                    description: Full URL to the site
+                  earnings:
+                    type: array
+                    items: {}
+                    description: An array of options/settings for the blog. Only viewable by users with post editing rights to the site.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/wordads/settings:
+    get:
+      operationId: getSitesBySiteWordadsSettings
+      summary: Get detailed WordAds settings information about a site.
+      description: Get detailed WordAds settings information about a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: Site ID
+                  name:
+                    type: string
+                    description: Title of site
+                  URL:
+                    type: string
+                    description: Full URL to the site
+                  settings:
+                    type: array
+                    items: {}
+                    description: An array of options/settings for the blog. Only viewable by users with post editing rights to the site.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postSitesBySiteWordadsSettings
+      summary: Update WordAds settings for a site.
+      description: Update WordAds settings for a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updated:
+                    type: array
+                    items: {}
+                    description: List of the updated variables.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                paypal:
+                  type: string
+                  description: PayPal Address
+                show_to_logged_in:
+                  type: string
+                  description: Show ads to
+                tos:
+                  type: string
+                  description: Terms of Service checkbox
+                optimized_ads:
+                  type: boolean
+                  description: Show optimzed ads
+                display_options:
+                  type: array
+                  items: {}
+                  description: 'Array of booleans: enable_header_ad, second_belowpost, sidebar, display_(front_page|post|page|archive)'
+                ccpa_enabled:
+                  type: boolean
+                  description: Enable targeted advertising to California site visitors (CCPA)
+                ccpa_privacy_policy_url:
+                  type: string
+                  description: Displayed at the bottom of the CCPA notice popup
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/wordads/stats:
+    get:
+      operationId: getSitesBySiteWordadsStats
+      summary: Get WordAds stats for a site
+      description: Get WordAds stats for a site
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: Date
+                  unit:
+                    type: integer
+                    description: Stats unit
+                  fields:
+                    type: array
+                    items: {}
+                    description: Array of stats fields
+                  data:
+                    type: array
+                    items: {}
+                    description: Array of stats organized by date
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: unit
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'One of: day, week or month Default: ''day''.'
+      - name: quantity
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'number of units to return Default: 30.'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+        description: limit the chart data to visits earlier than requested date
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+  /sites/{site}/wordads/tos:
+    get:
+      operationId: getSitesBySiteWordadsTos
+      summary: Get WordAds TOS information about a site.
+      description: Get WordAds TOS information about a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: Site ID
+                  name:
+                    type: string
+                    description: Title of site
+                  URL:
+                    type: string
+                    description: Full URL to the site
+                  settings:
+                    type: array
+                    items: {}
+                    description: An array of options/settings for the blog. Only viewable by users with post editing rights to the site.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+    post:
+      operationId: postSitesBySiteWordadsTos
+      summary: Update WordAds TOS setting for a site.
+      description: Update WordAds TOS setting for a site.
+      tags:
+      - sites
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tos:
+                    type: string
+                    description: The updated TOS status.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: site
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Site ID or domain
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - display
+          - edit
+        description: 'display: (default) Formats the output as HTML for display.  Shortcodes are parsed, paragraph tags are added, etc..; edit: Formats the output for editing.  Shortcodes are left unparsed, significant whitespace is kept, etc..'
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tos:
+                  type: string
+                  description: Terms of Service checkbox
+    servers:
+    - url: https://public-api.wordpress.com/rest/v1.1
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'
+x-refined-from:
+- automattic-wordpress-com-rest-v1-1-openapi.yml
+- automattic-wordpress-com-rest-v1-2-openapi.yml
+- automattic-wordpress-com-rest-v1-3-openapi.yml

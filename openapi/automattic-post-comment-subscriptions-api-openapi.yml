@@ -1,0 +1,360 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Post Comment Subscriptions API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: post-comment-subscriptions
+paths:
+  /wpcom/v2/post-comment-subscriptions:
+    get:
+      operationId: getWpcomV2PostCommentSubscriptions
+      summary: GET /wpcom/v2/post-comment-subscriptions
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/post-comment-subscriptions/{subscription_id}/confirm:
+    post:
+      operationId: postWpcomV2PostCommentSubscriptionsbySubscriptionIdConfirm
+      summary: POST /wpcom/v2/post-comment-subscriptions/{subscription_id}/confirm
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2PostCommentSubscriptionsbySubscriptionIdConfirm
+      summary: PUT /wpcom/v2/post-comment-subscriptions/{subscription_id}/confirm
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2PostCommentSubscriptionsbySubscriptionIdConfirm
+      summary: PATCH /wpcom/v2/post-comment-subscriptions/{subscription_id}/confirm
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/post-comment-subscriptions/{subscription_id}/delete:
+    post:
+      operationId: postWpcomV2PostCommentSubscriptionsbySubscriptionIdDelete
+      summary: POST /wpcom/v2/post-comment-subscriptions/{subscription_id}/delete
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2PostCommentSubscriptionsbySubscriptionIdDelete
+      summary: PUT /wpcom/v2/post-comment-subscriptions/{subscription_id}/delete
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2PostCommentSubscriptionsbySubscriptionIdDelete
+      summary: PATCH /wpcom/v2/post-comment-subscriptions/{subscription_id}/delete
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/post-comment-subscriptions/{subscription_id}/update:
+    post:
+      operationId: postWpcomV2PostCommentSubscriptionsbySubscriptionIdUpdate
+      summary: POST /wpcom/v2/post-comment-subscriptions/{subscription_id}/update
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                send_comments:
+                  type: boolean
+                  description: Whether to send comments for this subscription
+              required:
+              - send_comments
+    put:
+      operationId: putWpcomV2PostCommentSubscriptionsbySubscriptionIdUpdate
+      summary: PUT /wpcom/v2/post-comment-subscriptions/{subscription_id}/update
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                send_comments:
+                  type: boolean
+                  description: Whether to send comments for this subscription
+              required:
+              - send_comments
+    patch:
+      operationId: patchWpcomV2PostCommentSubscriptionsbySubscriptionIdUpdate
+      summary: PATCH /wpcom/v2/post-comment-subscriptions/{subscription_id}/update
+      tags:
+      - post-comment-subscriptions
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: subscription_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                send_comments:
+                  type: boolean
+                  description: Whether to send comments for this subscription
+              required:
+              - send_comments
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

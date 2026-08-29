@@ -1,0 +1,312 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Ssh Migration API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: ssh-migration
+paths:
+  /wpcom/v2/sites/{wpcom_site}/ssh-migration:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSshMigration
+      summary: GET /wpcom/v2/sites/{wpcom_site}/ssh-migration
+      tags:
+      - ssh-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSshMigration
+      summary: POST /wpcom/v2/sites/{wpcom_site}/ssh-migration
+      tags:
+      - ssh-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                migration_source_site_domain:
+                  type: string
+                  description: Source site domain for the migration
+              required:
+              - migration_source_site_domain
+  /wpcom/v2/sites/{wpcom_site}/ssh-migration/configure:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSshMigrationConfigure
+      summary: POST /wpcom/v2/sites/{wpcom_site}/ssh-migration/configure
+      tags:
+      - ssh-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remote_host:
+                  type: string
+                  description: Remote host to connect to
+                remote_user:
+                  type: string
+                  description: SSH username for the source site
+                remote_domain:
+                  type: string
+                  description: Domain of the source site
+                remote_port:
+                  type: integer
+                  description: SSH port for the source site
+              required:
+              - remote_host
+              - remote_user
+              - remote_domain
+  /wpcom/v2/sites/{wpcom_site}/ssh-migration/start:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSshMigrationStart
+      summary: POST /wpcom/v2/sites/{wpcom_site}/ssh-migration/start
+      tags:
+      - ssh-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remote_host:
+                  type: string
+                  description: Remote host to connect to
+                remote_user:
+                  type: string
+                  description: SSH username for the source site
+                remote_domain:
+                  type: string
+                  description: Domain of the source site
+                remote_pass:
+                  type: string
+                  description: SSH password for the source site
+                remote_docroot:
+                  type: string
+                  description: Document root path on the source site
+                ssh_id:
+                  type: string
+                  description: SSH key identity data
+                ssh_id_pass:
+                  type: string
+                  description: Passphrase for the SSH key
+                remote_port:
+                  type: integer
+                  description: SSH port for the source site
+              required:
+              - remote_host
+              - remote_user
+              - remote_domain
+  /wpcom/v2/sites/{wpcom_site}/ssh-migration/status:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteSshMigrationStatus
+      summary: GET /wpcom/v2/sites/{wpcom_site}/ssh-migration/status
+      tags:
+      - ssh-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/ssh-migration/verify-host:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteSshMigrationVerifyHost
+      summary: POST /wpcom/v2/sites/{wpcom_site}/ssh-migration/verify-host
+      tags:
+      - ssh-migration
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  type: string
+                  description: The hostname or IP address to verify
+                port:
+                  type: integer
+                  default: 22
+                  description: 'The port number to verify (default: 22)'
+              required:
+              - host
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

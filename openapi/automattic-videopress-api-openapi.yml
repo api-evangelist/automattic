@@ -1,0 +1,1159 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Videopress API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: videopress
+paths:
+  /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteVideopressCaptionTracks
+      summary: GET /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: guid
+        in: query
+        required: true
+        schema:
+          type: string
+        description: VideoPress GUID.
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressCaptionTracks
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  description: VideoPress GUID.
+                title:
+                  type: string
+                  description: Caption track title.
+                content:
+                  type: string
+                  description: Serialized caption-cue block content.
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - publish
+                  description: Caption track status.
+                meta:
+                  type: object
+                  description: Caption track metadata.
+              required:
+              - meta
+  /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks/{id}:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressCaptionTracksbyId
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks/{id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  description: VideoPress GUID.
+                title:
+                  type: string
+                  description: Caption track title.
+                content:
+                  type: string
+                  description: Serialized caption-cue block content.
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - publish
+                  description: Caption track status.
+                meta:
+                  type: object
+                  description: Caption track metadata.
+              required:
+              - meta
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteVideopressCaptionTracksbyId
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks/{id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  description: VideoPress GUID.
+                title:
+                  type: string
+                  description: Caption track title.
+                content:
+                  type: string
+                  description: Serialized caption-cue block content.
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - publish
+                  description: Caption track status.
+                meta:
+                  type: object
+                  description: Caption track metadata.
+              required:
+              - meta
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteVideopressCaptionTracksbyId
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks/{id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                guid:
+                  type: string
+                  description: VideoPress GUID.
+                title:
+                  type: string
+                  description: Caption track title.
+                content:
+                  type: string
+                  description: Serialized caption-cue block content.
+                status:
+                  type: string
+                  enum:
+                  - draft
+                  - publish
+                  description: Caption track status.
+                meta:
+                  type: object
+                  description: Caption track metadata.
+              required:
+              - meta
+    delete:
+      operationId: deleteWpcomV2SitesbyWpcomSiteVideopressCaptionTracksbyId
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/videopress/caption-tracks/{id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/videopress/meta:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressMeta
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/meta
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The post id for the attachment.
+                title:
+                  type: string
+                  description: The title of the video.
+                description:
+                  type: string
+                  description: The description of the video.
+                caption:
+                  type: string
+                  description: The caption of the video.
+                rating:
+                  type: string
+                  description: The video content rating. One of G, PG-13 or R-17
+                display_embed:
+                  type: boolean
+                  description: Display the share menu in the player.
+                allow_download:
+                  type: boolean
+                  description: Display download option and allow viewers to download this video
+                privacy_setting:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                  description: How to determine if the video should be public or private
+              required:
+              - id
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteVideopressMeta
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/videopress/meta
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The post id for the attachment.
+                title:
+                  type: string
+                  description: The title of the video.
+                description:
+                  type: string
+                  description: The description of the video.
+                caption:
+                  type: string
+                  description: The caption of the video.
+                rating:
+                  type: string
+                  description: The video content rating. One of G, PG-13 or R-17
+                display_embed:
+                  type: boolean
+                  description: Display the share menu in the player.
+                allow_download:
+                  type: boolean
+                  description: Display download option and allow viewers to download this video
+                privacy_setting:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                  description: How to determine if the video should be public or private
+              required:
+              - id
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteVideopressMeta
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/videopress/meta
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: The post id for the attachment.
+                title:
+                  type: string
+                  description: The title of the video.
+                description:
+                  type: string
+                  description: The description of the video.
+                caption:
+                  type: string
+                  description: The caption of the video.
+                rating:
+                  type: string
+                  description: The video content rating. One of G, PG-13 or R-17
+                display_embed:
+                  type: boolean
+                  description: Display the share menu in the player.
+                allow_download:
+                  type: boolean
+                  description: Display download option and allow viewers to download this video
+                privacy_setting:
+                  type: integer
+                  enum:
+                  - 0
+                  - 1
+                  - 2
+                  description: How to determine if the video should be public or private
+              required:
+              - id
+  /wpcom/v2/sites/{wpcom_site}/videopress/playback-jwt/{video_guid}:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressPlaybackJwtbyVideoGuid
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/playback-jwt/{video_guid}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteVideopressPlaybackJwtbyVideoGuid
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/videopress/playback-jwt/{video_guid}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteVideopressPlaybackJwtbyVideoGuid
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/videopress/playback-jwt/{video_guid}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/videopress/promote/{attachment_id}:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressPromotebyAttachmentId
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/promote/{attachment_id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachment_id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteVideopressPromotebyAttachmentId
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/videopress/promote/{attachment_id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachment_id
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteVideopressPromotebyAttachmentId
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/videopress/promote/{attachment_id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attachment_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/videopress/settings:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteVideopressSettings
+      summary: GET /wpcom/v2/sites/{wpcom_site}/videopress/settings
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressSettings
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/settings
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                videopress_videos_private_for_site:
+                  type: boolean
+                  description: If the VideoPress videos should be private by default
+                videopress_auto_subtitles_disabled:
+                  type: boolean
+                  description: If auto-generated subtitles should be skipped for new videos
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteVideopressSettings
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/videopress/settings
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                videopress_videos_private_for_site:
+                  type: boolean
+                  description: If the VideoPress videos should be private by default
+                videopress_auto_subtitles_disabled:
+                  type: boolean
+                  description: If auto-generated subtitles should be skipped for new videos
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteVideopressSettings
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/videopress/settings
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                videopress_videos_private_for_site:
+                  type: boolean
+                  description: If the VideoPress videos should be private by default
+                videopress_auto_subtitles_disabled:
+                  type: boolean
+                  description: If auto-generated subtitles should be skipped for new videos
+  /wpcom/v2/sites/{wpcom_site}/videopress/upload-jwt:
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressUploadJwt
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/upload-jwt
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteVideopressUploadJwt
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/videopress/upload-jwt
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteVideopressUploadJwt
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/videopress/upload-jwt
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/check-ownership/{post_id}:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteVideopressbyVideoGuidCheckOwnershipbyPostId
+      summary: GET /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/check-ownership/{post_id}
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: post_id
+        in: path
+        required: true
+        schema:
+          type: string
+  /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/poster:
+    get:
+      operationId: getWpcomV2SitesbyWpcomSiteVideopressbyVideoGuidPoster
+      summary: GET /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/poster
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      operationId: postWpcomV2SitesbyWpcomSiteVideopressbyVideoGuidPoster
+      summary: POST /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/poster
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                at_time:
+                  type: integer
+                  description: The time in the video to use as the poster frame.
+                is_millisec:
+                  type: boolean
+                  description: Whether the time is in milliseconds or seconds.
+                poster_attachment_id:
+                  type: integer
+                  description: The attachment id of the poster image.
+    put:
+      operationId: putWpcomV2SitesbyWpcomSiteVideopressbyVideoGuidPoster
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/poster
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                at_time:
+                  type: integer
+                  description: The time in the video to use as the poster frame.
+                is_millisec:
+                  type: boolean
+                  description: Whether the time is in milliseconds or seconds.
+                poster_attachment_id:
+                  type: integer
+                  description: The attachment id of the poster image.
+    patch:
+      operationId: patchWpcomV2SitesbyWpcomSiteVideopressbyVideoGuidPoster
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/poster
+      tags:
+      - videopress
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: wpcom_site
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: video_guid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                at_time:
+                  type: integer
+                  description: The time in the video to use as the poster frame.
+                is_millisec:
+                  type: boolean
+                  description: Whether the time is in milliseconds or seconds.
+                poster_attachment_id:
+                  type: integer
+                  description: The attachment id of the poster image.
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,334 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API v1.1 Freshly Pressed API
+  version: v1.1
+  description: 'The WordPress.com REST API, operated by Automattic. Derived by API Evangelist from Automattic''s own self-describing help document at https://public-api.wordpress.com/rest/v1.1/help (Accept: application/json), which publishes every endpoint''s method, path, description, path/query/body parameters and response fields. Security schemes come from https://public-api.wordpress.com/.well-known/openid-configuration. The error envelope was observed live.'
+  termsOfService: https://wordpress.com/tos/
+  contact:
+    name: WordPress.com Developer Resources
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/rest/v1.1/help
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com/rest/v1.1
+security:
+- bearerAuth: []
+tags:
+- name: freshly-pressed
+paths:
+  /freshly-pressed/:
+    get:
+      operationId: getFreshlyPressed
+      summary: Get a list of Freshly Pressed posts.
+      description: Get a list of Freshly Pressed posts.
+      tags:
+      - freshly-pressed
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ID:
+                    type: integer
+                    description: The post ID.
+                  site_ID:
+                    type: integer
+                    description: The site ID.
+                  author:
+                    type: object
+                    description: The author of the post.
+                  date:
+                    type: string
+                    format: date-time
+                    description: The post's creation time.
+                  modified:
+                    type: string
+                    format: date-time
+                    description: The post's most recent update time.
+                  title:
+                    type: string
+                    description: context dependent.
+                  URL:
+                    type: string
+                    format: uri
+                    description: The full permalink URL to the post.
+                  short_URL:
+                    type: string
+                    format: uri
+                    description: The wp.me short URL.
+                  content:
+                    type: string
+                    description: context dependent.
+                  excerpt:
+                    type: string
+                    description: context dependent.
+                  slug:
+                    type: string
+                    description: The name (slug) for the post, used in URLs.
+                  guid:
+                    type: string
+                    description: The GUID for the post.
+                  status:
+                    type: string
+                    description: 'publish: The post is published.; draft: The post is saved as a draft.; pending: The post is pending editorial approval.; private: The post is published privately; future: The post is scheduled for future publishing.; trash: The post is in the trash.; auto-draft: The post is a placeholder for a new post.'
+                    enum:
+                    - publish
+                    - draft
+                    - pending
+                    - private
+                    - future
+                    - trash
+                    - auto-draft
+                  sticky:
+                    type: boolean
+                    description: Is the post sticky?
+                  password:
+                    type: string
+                    description: The plaintext password protecting the post, or, more likely, the empty string if the post is not password protected.
+                  parent:
+                    type: string
+                    description: A reference to the post's parent, if it has one.
+                  type:
+                    type: string
+                    description: The post's post_type. Post types besides post, page and revision need to be whitelisted using the rest_api_allowed_post_types filter.
+                  comments_open:
+                    type: boolean
+                    description: Is the post open for comments?
+                  pings_open:
+                    type: boolean
+                    description: Is the post open for pingbacks, trackbacks?
+                  likes_enabled:
+                    type: boolean
+                    description: Is the post open to likes?
+                  sharing_enabled:
+                    type: boolean
+                    description: Should sharing buttons show on this post?
+                  comment_count:
+                    type: integer
+                    description: The number of comments for this post.
+                  like_count:
+                    type: integer
+                    description: The number of likes for this post.
+                  i_like:
+                    type: boolean
+                    description: Does the current user like this post?
+                  is_reblogged:
+                    type: boolean
+                    description: Did the current user reblog this post?
+                  is_following:
+                    type: boolean
+                    description: Is the current user following this blog?
+                  global_ID:
+                    type: string
+                    description: A unique WordPress.com-wide representation of a post.
+                  featured_image:
+                    type: string
+                    format: uri
+                    description: The URL to the featured image for this post if it has one.
+                  post_thumbnail:
+                    type: object
+                    description: The attachment object for the featured image if it has one.
+                  format:
+                    type: string
+                    description: 'standard: Standard; aside: Aside; chat: Chat; gallery: Gallery; link: Link; image: Image; quote: Quote; status: Status; video: Video; audio: Audio'
+                    enum:
+                    - standard
+                    - aside
+                    - chat
+                    - gallery
+                    - link
+                    - image
+                    - quote
+                    - status
+                    - video
+                    - audio
+                  geo:
+                    type: string
+                  menu_order:
+                    type: integer
+                    description: (Pages Only) The order pages should appear in.
+                  publicize_URLs:
+                    type: array
+                    items: {}
+                    description: Array of Facebook URLs published by this post.
+                  tags:
+                    type: object
+                    description: Hash of tags (keyed by tag name) applied to the post.
+                  categories:
+                    type: object
+                    description: Hash of categories (keyed by category name) applied to the post.
+                  attachments:
+                    type: object
+                    description: Hash of post attachments (keyed by attachment ID).
+                  metadata:
+                    type: array
+                    items: {}
+                    description: Array of post metadata keys and values. All unprotected meta keys are available by default for read requests. Both unprotected and protected meta keys are available for authenticated requests with access. Protected meta keys can be made available with the rest_api_allowed_public_metadata filter.
+                  meta:
+                    type: object
+                    description: API result meta data
+                  current_user_can:
+                    type: object
+                    description: List of permissions. Note, deprecated in favor of `capabilities`
+                  capabilities:
+                    type: object
+                    description: List of post-specific permissions for the user; publish_post, edit_post, delete_post
+                  date_range:
+                    type: object
+                    description: date range covered by current results.
+                  number:
+                    type: integer
+                    description: The number of posts brought back by current query.
+                  posts:
+                    type: array
+                    items: {}
+                    description: An array of post objects, with added Freshly Pressed info, in the editorial property for each post.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Authorization required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: http_envelope
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Some environments (like in-browser JavaScript or Flash) block or divert responses with a non-200 HTTP status code.  Setting this parameter will force the HTTP status code to always be 200.  The JSON response is wrapped in an "envelope" containing the "real" HTTP status code and headers.'
+      - name: pretty
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: 'false: (default); true: Output pretty JSON'
+      - name: meta
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Loads data from the endpoints found in the ''meta'' part of the response. Comma-separated list. Example: meta=site,likes'
+      - name: fields
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Optional. Returns specified fields only. Comma-separated list. Example: fields=ID,title'
+      - name: callback
+        in: query
+        required: false
+        schema:
+          type: string
+        description: An optional JSONP callback function.
+      - name: number
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'The number of posts to return. Default: 10. Limit: 40. Default: 10.'
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return posts picked on or after the specified datetime.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Return posts picked on or before the specified datetime.
+      - name: content_width
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'When in context=display, images/embeds in post content will be set to the desired maximum width. Default: 480.'
+      - name: thumb_width
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Desired width of thumbnail images, in pixels. Default: 252.'
+      - name: thumb_height
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: 'Desired height of thumbnail images, in pixels. Default: 160.'
+      - name: format
+        in: query
+        required: false
+        schema:
+          type: string
+        description: 'Output format. Accepts "json" or "rss". Default: json. Default: ''json''.'
+components:
+  schemas:
+    Error:
+      type: object
+      description: WordPress.com REST API error envelope (observed live).
+      properties:
+        error:
+          type: string
+          examples:
+          - not_found
+        message:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1 (see /.well-known/openid-configuration).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Authorization: Bearer <access_token>'

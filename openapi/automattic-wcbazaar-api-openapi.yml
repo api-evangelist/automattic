@@ -1,0 +1,479 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Wcbazaar API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: wcbazaar
+paths:
+  /wpcom/v2/wcbazaar/categories-config:
+    get:
+      operationId: getWpcomV2WcbazaarCategoriesConfig
+      summary: GET /wpcom/v2/wcbazaar/categories-config
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+  /wpcom/v2/wcbazaar/category:
+    get:
+      operationId: getWpcomV2WcbazaarCategory
+      summary: GET /wpcom/v2/wcbazaar/category
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: category
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: subcategory
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: currencies
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: on_sale
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: require_photo
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - price_asc
+          - price_desc
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+  /wpcom/v2/wcbazaar/doc:
+    get:
+      operationId: getWpcomV2WcbazaarDoc
+      summary: GET /wpcom/v2/wcbazaar/doc
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: blog_id
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: post_id
+        in: query
+        required: true
+        schema:
+          type: integer
+  /wpcom/v2/wcbazaar/docs:
+    get:
+      operationId: getWpcomV2WcbazaarDocs
+      summary: GET /wpcom/v2/wcbazaar/docs
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: ids
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+  /wpcom/v2/wcbazaar/recommended-for-you:
+    get:
+      operationId: getWpcomV2WcbazaarRecommendedForYou
+      summary: GET /wpcom/v2/wcbazaar/recommended-for-you
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+  /wpcom/v2/wcbazaar/search:
+    get:
+      operationId: getWpcomV2WcbazaarSearch
+      summary: GET /wpcom/v2/wcbazaar/search
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
+      - name: blog_id
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: post_id
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: currencies
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: categories
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: on_sale
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: in_stock
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: require_photo
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: price_min
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: price_max
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 24
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - relevance
+          - price_asc
+          - price_desc
+          - modified_desc
+          - popularity
+          default: relevance
+      - name: facets
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: string
+      - name: lang
+        in: query
+        required: false
+        schema:
+          type: string
+          default: en
+  /wpcom/v2/wcbazaar/showcase:
+    get:
+      operationId: getWpcomV2WcbazaarShowcase
+      summary: GET /wpcom/v2/wcbazaar/showcase
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: category
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 6
+      - name: products_per_store
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 3
+  /wpcom/v2/wcbazaar/stores:
+    get:
+      operationId: getWpcomV2WcbazaarStores
+      summary: GET /wpcom/v2/wcbazaar/stores
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 200
+  /wpcom/v2/wcbazaar/todays-deals:
+    get:
+      operationId: getWpcomV2WcbazaarTodaysDeals
+      summary: GET /wpcom/v2/wcbazaar/todays-deals
+      tags:
+      - wcbazaar
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      parameters:
+      - name: currency
+        in: query
+        required: false
+        schema:
+          type: string
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer

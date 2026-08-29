@@ -1,0 +1,205 @@
+openapi: 3.2.0
+info:
+  title: WordPress.com REST API — wpcom/v2 namespace Portfolio Dashboard Agent API
+  version: v2
+  description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
+  contact:
+    name: Automattic
+    url: https://developer.wordpress.com/docs/api/
+  x-derived-from: https://public-api.wordpress.com/wpcom/v2/
+  x-derived-by: API Evangelist enrichment pipeline
+servers:
+- url: https://public-api.wordpress.com
+security:
+- bearerAuth: []
+tags:
+- name: portfolio-dashboard-agent
+paths:
+  /wpcom/v2/portfolio-dashboard-agent/run:
+    post:
+      operationId: postWpcomV2PortfolioDashboardAgentRun
+      summary: POST /wpcom/v2/portfolio-dashboard-agent/run
+      tags:
+      - portfolio-dashboard-agent
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  description: The user prompt to send to the agent.
+                prior_messages:
+                  type: array
+                  default: []
+                  items: {}
+                  description: 'Optional conversation history. Array of { role: "user"|"assistant", content: string }.'
+                emphasized_tools:
+                  type: array
+                  default: []
+                  items: {}
+                  description: Optional tool or leaf names the client wants the model to prioritize (Mission Control roadmapping v1).
+                seed_p2_urls:
+                  type: array
+                  default: []
+                  items: {}
+                  description: Optional P2 URLs merged into the prompt when relevant (agent has P2 fetch tools).
+                model:
+                  type: string
+                  enum:
+                  - claude-sonnet-4-6
+                  - claude-sonnet-4-5-20250929
+                  - claude-opus-4-6
+                  - claude-haiku-4-5-20251001
+                  description: Optional Anthropic model id for this run. Omitted = Portfolio_Dashboard_Agent default (claude-sonnet-4-6).
+                month_key:
+                  type: string
+                  description: Optional Portfolio Dashboard month (YYYY-MM) the user is viewing. Injected into the prompt so compute-health-score / scan-portfolio use the same month.
+                skill:
+                  type: string
+                  enum:
+                  - dashboard
+                  - strategy
+                  description: Which skill prompt the agent should load. "dashboard" (default) loads the tactical PD assistant; "strategy" loads the senior-PM synthesis skill used by the Mission Control roadmapping page.
+                include_matt_priorities:
+                  type: boolean
+                  default: false
+                  description: When true and skill="strategy", load Matt's distilled priorities markdown into the agent's system prompt before the run. Ignored for other skills. See ceo-voice-v2-outline.md Phase 2.
+              required:
+              - prompt
+  /wpcom/v2/portfolio-dashboard-agent/run-stream:
+    post:
+      operationId: postWpcomV2PortfolioDashboardAgentRunStream
+      summary: POST /wpcom/v2/portfolio-dashboard-agent/run-stream
+      tags:
+      - portfolio-dashboard-agent
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Authentication required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WPRestError'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prompt:
+                  type: string
+                  description: The user prompt to send to the agent.
+                prior_messages:
+                  type: array
+                  default: []
+                  items: {}
+                  description: 'Optional conversation history. Array of { role: "user"|"assistant", content: string }.'
+                emphasized_tools:
+                  type: array
+                  default: []
+                  items: {}
+                  description: Optional tool or leaf names the client wants the model to prioritize (Mission Control roadmapping v1).
+                seed_p2_urls:
+                  type: array
+                  default: []
+                  items: {}
+                  description: Optional P2 URLs merged into the prompt when relevant (agent has P2 fetch tools).
+                model:
+                  type: string
+                  enum:
+                  - claude-sonnet-4-6
+                  - claude-sonnet-4-5-20250929
+                  - claude-opus-4-6
+                  - claude-haiku-4-5-20251001
+                  description: Optional Anthropic model id for this run. Omitted = Portfolio_Dashboard_Agent default (claude-sonnet-4-6).
+                month_key:
+                  type: string
+                  description: Optional Portfolio Dashboard month (YYYY-MM) the user is viewing. Injected into the prompt so compute-health-score / scan-portfolio use the same month.
+                skill:
+                  type: string
+                  enum:
+                  - dashboard
+                  - strategy
+                  description: Which skill prompt the agent should load. "dashboard" (default) loads the tactical PD assistant; "strategy" loads the senior-PM synthesis skill used by the Mission Control roadmapping page.
+                include_matt_priorities:
+                  type: boolean
+                  default: false
+                  description: When true and skill="strategy", load Matt's distilled priorities markdown into the agent's system prompt before the run. Ignored for other skills. See ceo-voice-v2-outline.md Phase 2.
+              required:
+              - prompt
+components:
+  schemas:
+    WPRestError:
+      type: object
+      description: WordPress REST API error envelope (observed on public-api.wordpress.com).
+      properties:
+        code:
+          type: string
+          example: rest_unauthorized
+        message:
+          type: string
+          example: Authentication required.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              example: 401
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: WordPress.com OAuth 2.1, per https://public-api.wordpress.com/.well-known/openid-configuration
+      flows:
+        authorizationCode:
+          authorizationUrl: https://public-api.wordpress.com/oauth2-1/authorize
+          tokenUrl: https://public-api.wordpress.com/oauth2-1/token
+          refreshUrl: https://public-api.wordpress.com/oauth2-1/token
+          scopes:
+            global: ''
+            auth: ''
+            openid: ''
+            profile: ''
+            email: ''
+            users: ''
+            sites: ''
+            posts: ''
+            comments: ''
+            taxonomy: ''
+            follow: ''
+            sharing: ''
+            freshly-pressed: ''
+            notifications: ''
+            insights: ''
+            read: ''
+            stats: ''
+            media: ''
+            menus: ''
+            batch: ''
+            videos: ''
+    bearerAuth:
+      type: http
+      scheme: bearer
