@@ -167,6 +167,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Abilities
+  tags_raw:
   - abilities
   properties:
   - type: OpenAPI
@@ -191,6 +193,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Activity
+  tags_raw:
   - activity
   properties:
   - type: OpenAPI
@@ -239,6 +243,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - ActivityPub
+  tags_raw:
   - activitypub
   properties:
   - type: OpenAPI
@@ -359,6 +365,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Agency
+  tags_raw:
   - agency
   properties:
   - type: OpenAPI
@@ -455,6 +463,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Artificial Intelligence
+  tags_raw:
   - ai
   properties:
   - type: OpenAPI
@@ -551,6 +561,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Alerts
+  tags_raw:
   - alerts
   properties:
   - type: OpenAPI
@@ -599,6 +611,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Analytics
+  tags_raw:
   - analytics
   properties:
   - type: OpenAPI
@@ -671,6 +685,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Articles
+  tags_raw:
   - articles
   properties:
   - type: OpenAPI
@@ -744,6 +760,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Authentication
+  tags_raw:
   - auth
   properties:
   - type: OpenAPI
@@ -792,6 +810,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Backup
+  tags_raw:
   - backup
   properties:
   - type: OpenAPI
@@ -816,6 +836,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Batch
+  tags_raw:
   - batch
   properties:
   - type: OpenAPI
@@ -912,6 +934,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Block Editor
+  tags_raw:
   - block-editor
   properties:
   - type: OpenAPI
@@ -1080,6 +1104,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Blocks
+  tags_raw:
   - blocks
   properties:
   - type: OpenAPI
@@ -1225,6 +1251,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Business Hours
+  tags_raw:
   - business-hours
   properties:
   - type: OpenAPI
@@ -1274,6 +1302,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Categories
+  tags_raw:
   - categories
   properties:
   - type: OpenAPI
@@ -1322,7 +1352,8 @@ apis:
     The checkGoogleDocVisibility API from Automattic — 1 operation(s) for checkgoogledocvisibility.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - checkGoogleDocVisibility
   properties:
   - type: OpenAPI
@@ -1371,6 +1402,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - CMP
+  tags_raw:
   - cmp
   properties:
   - type: OpenAPI
@@ -1395,6 +1428,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Colors
+  tags_raw:
   - colors
   properties:
   - type: OpenAPI
@@ -1419,6 +1454,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Coming Soon
+  tags_raw:
   - coming-soon
   properties:
   - type: OpenAPI
@@ -1443,6 +1480,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Comments
+  tags_raw:
   - comments
   properties:
   - type: OpenAPI
@@ -1565,6 +1604,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Concierge
+  tags_raw:
   - concierge
   properties:
   - type: OpenAPI
@@ -1637,6 +1678,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Country Codes
+  tags_raw:
   - country-codes
   properties:
   - type: OpenAPI
@@ -1661,6 +1704,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Courses
+  tags_raw:
   - courses
   properties:
   - type: OpenAPI
@@ -1709,6 +1754,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Dashboard
+  tags_raw:
   - dashboard
   properties:
   - type: OpenAPI
@@ -1733,6 +1780,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Dashboards
+  tags_raw:
   - dashboards
   properties:
   - type: OpenAPI
@@ -1806,6 +1855,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Discount
+  tags_raw:
   - discount
   properties:
   - type: OpenAPI
@@ -1878,6 +1929,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Domains
+  tags_raw:
   - domains
   properties:
   - type: OpenAPI
@@ -1902,6 +1955,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Editor
+  tags_raw:
   - editor
   properties:
   - type: OpenAPI
@@ -1998,6 +2053,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Emails
+  tags_raw:
   - emails
   properties:
   - type: OpenAPI
@@ -2046,6 +2103,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Experiments
+  tags_raw:
   - experiments
   properties:
   - type: OpenAPI
@@ -2143,6 +2202,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Feedback
+  tags_raw:
   - feedback
   properties:
   - type: OpenAPI
@@ -2167,6 +2228,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Follow
+  tags_raw:
   - follow
   properties:
   - type: OpenAPI
@@ -2191,6 +2254,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Following
+  tags_raw:
   - following
   properties:
   - type: OpenAPI
@@ -2310,7 +2375,8 @@ apis:
   description: The general API from Automattic — 5 operation(s) for general.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - general
   properties:
   - type: OpenAPI
@@ -2335,6 +2401,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - GitHub
+  tags_raw:
   - github
   properties:
   - type: OpenAPI
@@ -2408,6 +2476,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Glossary
+  tags_raw:
   - glossary
   properties:
   - type: OpenAPI
@@ -2480,6 +2550,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Grafana
+  tags_raw:
   - grafana
   properties:
   - type: OpenAPI
@@ -2552,6 +2624,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Guidelines
+  tags_raw:
   - guidelines
   properties:
   - type: OpenAPI
@@ -2576,6 +2650,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Gutenberg
+  tags_raw:
   - gutenberg
   properties:
   - type: OpenAPI
@@ -2624,6 +2700,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Hello
+  tags_raw:
   - hello
   properties:
   - type: OpenAPI
@@ -2648,6 +2726,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Help
+  tags_raw:
   - help
   properties:
   - type: OpenAPI
@@ -2672,6 +2752,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Homes
+  tags_raw:
   - home
   properties:
   - type: OpenAPI
@@ -2720,6 +2802,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Hosting
+  tags_raw:
   - hosting
   properties:
   - type: OpenAPI
@@ -2816,6 +2900,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Icons
+  tags_raw:
   - icons
   properties:
   - type: OpenAPI
@@ -2840,6 +2926,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Import
+  tags_raw:
   - import
   properties:
   - type: OpenAPI
@@ -2864,6 +2952,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Imports
+  tags_raw:
   - imports
   properties:
   - type: OpenAPI
@@ -2913,6 +3003,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Insights
+  tags_raw:
   - insights
   properties:
   - type: OpenAPI
@@ -2937,6 +3029,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Instagram
+  tags_raw:
   - instagram
   properties:
   - type: OpenAPI
@@ -3009,6 +3103,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Invites
+  tags_raw:
   - invites
   properties:
   - type: OpenAPI
@@ -3227,6 +3323,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Jetpack
+  tags_raw:
   - jetpack
   properties:
   - type: OpenAPI
@@ -4230,7 +4328,8 @@ apis:
   description: The jp_pay_order API from Automattic — 4 operation(s) for jp_pay_order.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - jp_pay_order
   properties:
   - type: OpenAPI
@@ -4254,7 +4353,8 @@ apis:
   description: The jp_pay_product API from Automattic — 4 operation(s) for jp_pay_product.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - jp_pay_product
   properties:
   - type: OpenAPI
@@ -4351,6 +4451,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Knowledge
+  tags_raw:
   - knowledge
   properties:
   - type: OpenAPI
@@ -4399,6 +4501,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Launch
+  tags_raw:
   - launch
   properties:
   - type: OpenAPI
@@ -4447,6 +4551,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Launchpad
+  tags_raw:
   - launchpad
   properties:
   - type: OpenAPI
@@ -4471,6 +4577,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Legal
+  tags_raw:
   - legal
   properties:
   - type: OpenAPI
@@ -4687,6 +4795,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Marketing
+  tags_raw:
   - marketing
   properties:
   - type: OpenAPI
@@ -4711,6 +4821,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Marketplace
+  tags_raw:
   - marketplace
   properties:
   - type: OpenAPI
@@ -4759,6 +4871,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Me
+  tags_raw:
   - me
   properties:
   - type: OpenAPI
@@ -4783,6 +4897,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Media
+  tags_raw:
   - media
   properties:
   - type: OpenAPI
@@ -4807,6 +4923,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Memberships
+  tags_raw:
   - memberships
   properties:
   - type: OpenAPI
@@ -4831,6 +4949,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Menu Items
+  tags_raw:
   - menu-items
   properties:
   - type: OpenAPI
@@ -4879,6 +4999,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Menus
+  tags_raw:
   - menus
   properties:
   - type: OpenAPI
@@ -4903,6 +5025,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Meta
+  tags_raw:
   - meta
   properties:
   - type: OpenAPI
@@ -5097,6 +5221,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Migrations
+  tags_raw:
   - migrations
   properties:
   - type: OpenAPI
@@ -5121,6 +5247,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Mobile
+  tags_raw:
   - mobile
   properties:
   - type: OpenAPI
@@ -5169,6 +5297,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Navigation
+  tags_raw:
   - navigation
   properties:
   - type: OpenAPI
@@ -5341,6 +5471,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Notification
+  tags_raw:
   - notifications
   properties:
   - type: OpenAPI
@@ -5389,6 +5521,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Authentication
+  tags_raw:
   - oauth2
   properties:
   - type: OpenAPI
@@ -5485,6 +5619,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Onboarding
+  tags_raw:
   - onboarding
   properties:
   - type: OpenAPI
@@ -5558,6 +5694,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Pages
+  tags_raw:
   - pages
   properties:
   - type: OpenAPI
@@ -5582,6 +5720,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Page Speed
+  tags_raw:
   - pagespeed
   properties:
   - type: OpenAPI
@@ -5606,6 +5746,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Partners
+  tags_raw:
   - partners
   properties:
   - type: OpenAPI
@@ -5703,6 +5845,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - People
+  tags_raw:
   - people
   properties:
   - type: OpenAPI
@@ -5775,6 +5919,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Plans
+  tags_raw:
   - plans
   properties:
   - type: OpenAPI
@@ -5799,6 +5945,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Playground
+  tags_raw:
   - playground
   properties:
   - type: OpenAPI
@@ -5823,6 +5971,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Plugins
+  tags_raw:
   - plugins
   properties:
   - type: OpenAPI
@@ -5847,6 +5997,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Podcast
+  tags_raw:
   - podcast
   properties:
   - type: OpenAPI
@@ -5871,6 +6023,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Podcast Distribution
+  tags_raw:
   - podcast-distribution
   properties:
   - type: OpenAPI
@@ -6017,6 +6171,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Post Types
+  tags_raw:
   - post-types
   properties:
   - type: OpenAPI
@@ -6041,6 +6197,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Posts
+  tags_raw:
   - posts
   properties:
   - type: OpenAPI
@@ -6089,6 +6247,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Presales
+  tags_raw:
   - presales
   properties:
   - type: OpenAPI
@@ -6161,6 +6321,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Privacy Policy
+  tags_raw:
   - privacy-policy
   properties:
   - type: OpenAPI
@@ -6185,6 +6347,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Private
+  tags_raw:
   - private
   properties:
   - type: OpenAPI
@@ -6233,6 +6397,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Product
+  tags_raw:
   - products
   properties:
   - type: OpenAPI
@@ -6257,6 +6423,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Profile
+  tags_raw:
   - profile
   properties:
   - type: OpenAPI
@@ -6281,6 +6449,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Protect
+  tags_raw:
   - protect
   properties:
   - type: OpenAPI
@@ -6329,6 +6499,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Push Notifications
+  tags_raw:
   - push-notifications
   properties:
   - type: OpenAPI
@@ -6352,7 +6524,8 @@ apis:
   description: The read API from Automattic — 52 operation(s) for read.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - read
   properties:
   - type: OpenAPI
@@ -6377,6 +6550,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Reader
+  tags_raw:
   - reader
   properties:
   - type: OpenAPI
@@ -6617,6 +6792,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Scans
+  tags_raw:
   - scan
   properties:
   - type: OpenAPI
@@ -6641,6 +6818,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Scheduled Updates
+  tags_raw:
   - scheduled-updates
   properties:
   - type: OpenAPI
@@ -6665,6 +6844,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -6713,6 +6894,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Search Suggestions
+  tags_raw:
   - search-suggestions
   properties:
   - type: OpenAPI
@@ -6785,6 +6968,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Segments
+  tags_raw:
   - segments
   properties:
   - type: OpenAPI
@@ -6808,7 +6993,8 @@ apis:
   description: The seller_footer API from Automattic — 1 operation(s) for seller_footer.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - seller_footer
   properties:
   - type: OpenAPI
@@ -6833,6 +7019,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Send
+  tags_raw:
   - send
   properties:
   - type: OpenAPI
@@ -6930,6 +7118,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Settings
+  tags_raw:
   - settings
   properties:
   - type: OpenAPI
@@ -6978,6 +7168,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Sharing
+  tags_raw:
   - sharing
   properties:
   - type: OpenAPI
@@ -7002,6 +7194,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - ShipStation
+  tags_raw:
   - shipstation
   properties:
   - type: OpenAPI
@@ -7074,6 +7268,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Site
+  tags_raw:
   - site
   properties:
   - type: OpenAPI
@@ -7292,6 +7488,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - SiteType
+  tags_raw:
   - site-type
   properties:
   - type: OpenAPI
@@ -7340,6 +7538,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Sites
+  tags_raw:
   - sites
   properties:
   - type: OpenAPI
@@ -7364,6 +7564,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Slack
+  tags_raw:
   - slack
   properties:
   - type: OpenAPI
@@ -7388,6 +7590,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Spam
+  tags_raw:
   - spam
   properties:
   - type: OpenAPI
@@ -7484,6 +7688,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Stats
+  tags_raw:
   - stats
   properties:
   - type: OpenAPI
@@ -7508,6 +7714,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Status
+  tags_raw:
   - statuses
   properties:
   - type: OpenAPI
@@ -7556,6 +7764,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Subscribers
+  tags_raw:
   - subscribers
   properties:
   - type: OpenAPI
@@ -7580,7 +7790,8 @@ apis:
     The subscribers_by_user_type API from Automattic — 1 operation(s) for subscribers_by_user_type.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - subscribers_by_user_type
   properties:
   - type: OpenAPI
@@ -7653,6 +7864,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Sync
+  tags_raw:
   - sync
   properties:
   - type: OpenAPI
@@ -7677,6 +7890,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -7725,6 +7940,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Taxonomy
+  tags_raw:
   - taxonomy
   properties:
   - type: OpenAPI
@@ -7749,6 +7966,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Telegram Bot
+  tags_raw:
   - telegram-bot
   properties:
   - type: OpenAPI
@@ -7821,6 +8040,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Templates
+  tags_raw:
   - templates
   properties:
   - type: OpenAPI
@@ -7844,7 +8065,8 @@ apis:
   description: The test API from Automattic — 1 operation(s) for test.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - test
   properties:
   - type: OpenAPI
@@ -7869,6 +8091,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Tests
+  tags_raw:
   - tests
   properties:
   - type: OpenAPI
@@ -7893,6 +8117,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Text Completion
+  tags_raw:
   - text-completion
   properties:
   - type: OpenAPI
@@ -7989,6 +8215,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Themes
+  tags_raw:
   - themes
   properties:
   - type: OpenAPI
@@ -8013,6 +8241,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Timezones
+  tags_raw:
   - timezones
   properties:
   - type: OpenAPI
@@ -8134,6 +8364,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Transfer
+  tags_raw:
   - transfer
   properties:
   - type: OpenAPI
@@ -8181,7 +8413,8 @@ apis:
   description: The trelloCallback API from Automattic — 1 operation(s) for trellocallback.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - trelloCallback
   properties:
   - type: OpenAPI
@@ -8278,6 +8511,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Twitter
+  tags_raw:
   - twitter
   properties:
   - type: OpenAPI
@@ -8326,6 +8561,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Types
+  tags_raw:
   - types
   properties:
   - type: OpenAPI
@@ -8350,6 +8587,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - UCP
+  tags_raw:
   - ucp
   properties:
   - type: OpenAPI
@@ -8422,6 +8661,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Upgrades
+  tags_raw:
   - upgrades
   properties:
   - type: OpenAPI
@@ -8446,6 +8687,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - User Type
+  tags_raw:
   - user-type
   properties:
   - type: OpenAPI
@@ -8470,6 +8713,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -8494,6 +8739,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Verticals
+  tags_raw:
   - verticals
   properties:
   - type: OpenAPI
@@ -8566,6 +8813,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Videos
+  tags_raw:
   - videos
   properties:
   - type: OpenAPI
@@ -8614,6 +8863,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - VIP
+  tags_raw:
   - vip
   properties:
   - type: OpenAPI
@@ -8638,6 +8889,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Vouchers
+  tags_raw:
   - vouchers
   properties:
   - type: OpenAPI
@@ -8662,6 +8915,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - WAF Rules
+  tags_raw:
   - waf-rules
   properties:
   - type: OpenAPI
@@ -8807,6 +9062,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - WhatsNew
+  tags_raw:
   - whats-new
   properties:
   - type: OpenAPI
@@ -8879,6 +9136,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Widgets
+  tags_raw:
   - widgets
   properties:
   - type: OpenAPI
@@ -8951,6 +9210,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - WooCommerce
+  tags_raw:
   - woocommerce
   properties:
   - type: OpenAPI
@@ -9094,7 +9355,8 @@ apis:
   description: The wp_guideline_type API from Automattic — 2 operation(s) for wp_guideline_type.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - wp_guideline_type
   properties:
   - type: OpenAPI
@@ -9118,7 +9380,8 @@ apis:
   description: The wp_knowledge_type API from Automattic — 2 operation(s) for wp_knowledge_type.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - wp_knowledge_type
   properties:
   - type: OpenAPI
@@ -9142,7 +9405,8 @@ apis:
   description: The wp_pattern_category API from Automattic — 2 operation(s) for wp_pattern_category.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - wp_pattern_category
   properties:
   - type: OpenAPI
@@ -9167,6 +9431,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - wp/v2
+  tags_raw:
   - wp-v2
   properties:
   - type: OpenAPI
@@ -9287,6 +9553,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Zendesk
+  tags_raw:
   - zendesk
   properties:
   - type: OpenAPI
