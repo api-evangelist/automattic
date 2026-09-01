@@ -2153,7 +2153,8 @@ apis:
   description: The external-media API from Automattic — 7 operation(s) for external-media.
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
+  tags: []
+  tags_raw:
   - external-media
   properties:
   - type: OpenAPI
@@ -4949,7 +4950,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Menu Items
+  - menu-items
   tags_raw:
   - menu-items
   properties:
@@ -6449,7 +6450,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Protect
+  - protect
   tags_raw:
   - protect
   properties:
@@ -8511,7 +8512,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Twitter
+  - twitter
   tags_raw:
   - twitter
   properties:
