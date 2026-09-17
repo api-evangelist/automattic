@@ -5531,32 +5531,6 @@ apis:
     url: https://github.com/Automattic/akismet-api
   - type: PluginManifest
     url: well-known/automattic-ai-plugin.json
-- aid: automattic:automattic-oauth2-api
-  name: Automattic Oauth2 API
-  description: The oauth2 API from Automattic — 1 operation(s) for oauth2.
-  humanURL: https://developer.wordpress.com/docs/api/
-  baseURL: https://public-api.wordpress.com/rest/v1.1
-  tags:
-  - Authentication
-  tags_raw:
-  - oauth2
-  properties:
-  - type: OpenAPI
-    url: openapi/automattic-oauth2-api-openapi.yml
-  - type: Documentation
-    url: https://developer.wordpress.com/docs/api/
-  - type: APIReference
-    url: https://developer.wordpress.com/docs/api/rest-api-reference/
-  - type: GettingStarted
-    url: https://developer.wordpress.com/docs/api/getting-started/
-  - type: Console
-    url: https://developer.wordpress.com/docs/api/console/
-  - type: Documentation
-    url: https://akismet.com/development/api/
-  - type: SourceCode
-    url: https://github.com/Automattic/akismet-api
-  - type: PluginManifest
-    url: well-known/automattic-ai-plugin.json
 - aid: automattic:automattic-odie-api
   name: Automattic Odie API
   description: The odie API from Automattic — 5 operation(s) for odie.
@@ -9624,6 +9598,30 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/automattic-zendesk-notification-staging-api-openapi.yml
+  - type: Documentation
+    url: https://developer.wordpress.com/docs/api/
+  - type: APIReference
+    url: https://developer.wordpress.com/docs/api/rest-api-reference/
+  - type: GettingStarted
+    url: https://developer.wordpress.com/docs/api/getting-started/
+  - type: Console
+    url: https://developer.wordpress.com/docs/api/console/
+  - type: Documentation
+    url: https://akismet.com/development/api/
+  - type: SourceCode
+    url: https://github.com/Automattic/akismet-api
+  - type: PluginManifest
+    url: well-known/automattic-ai-plugin.json
+- aid: automattic:automattic-oauth2-api
+  name: Automattic Oauth2 API
+  description: The oauth2 API from Automattic — 1 operation(s) for oauth2.
+  humanURL: https://developer.wordpress.com/docs/mcp/
+  baseURL: https://public-api.wordpress.com/wpcom/v2/mcp/v1
+  tags:
+  - oauth2
+  properties:
+  - type: OpenAPI
+    url: openapi/automattic-oauth2-api-openapi.yml
   - type: Documentation
     url: https://developer.wordpress.com/docs/api/
   - type: APIReference
