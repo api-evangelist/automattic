@@ -1769,7 +1769,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Dashboard
+  - Dashboards
   tags_raw:
   - dashboard
   properties:
@@ -1870,7 +1870,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Discount
+  - Discounts
   tags_raw:
   - discount
   properties:
@@ -2068,7 +2068,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Emails
+  - Email
   tags_raw:
   - emails
   properties:
@@ -2892,6 +2892,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - Icon Collections
+  tags_raw:
   - icon-collections
   properties:
   - type: OpenAPI
@@ -2968,7 +2970,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Imports
+  - Import
   tags_raw:
   - imports
   properties:
@@ -4517,7 +4519,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Launch
+  - Launches
   tags_raw:
   - launch
   properties:
@@ -4939,7 +4941,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Memberships
+  - Membership
   tags_raw:
   - memberships
   properties:
@@ -5987,7 +5989,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Podcast
+  - Podcasts
   tags_raw:
   - podcast
   properties:
@@ -6413,7 +6415,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Profile
+  - Profiles
   tags_raw:
   - profile
   properties:
@@ -8231,7 +8233,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Timezones
+  - Timezone
   tags_raw:
   - timezones
   properties:
@@ -8577,7 +8579,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - UCP
+  - Universal Commerce Protocol
   tags_raw:
   - ucp
   properties:
@@ -8803,7 +8805,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - Videos
+  - Video
   tags_raw:
   - videos
   properties:
@@ -8829,6 +8831,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
+  - View Config
+  tags_raw:
   - view-config
   properties:
   - type: OpenAPI
@@ -9618,6 +9622,8 @@ apis:
   humanURL: https://developer.wordpress.com/docs/mcp/
   baseURL: https://public-api.wordpress.com/wpcom/v2/mcp/v1
   tags:
+  - Authentication
+  tags_raw:
   - oauth2
   properties:
   - type: OpenAPI
