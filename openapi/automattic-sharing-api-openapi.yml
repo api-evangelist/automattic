@@ -14,15 +14,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: sharing
+- name: Sharing
 paths:
   /me/keyring-connections/:
     get:
       operationId: getMeKeyringConnections
-      summary: Get a list of all the keyring connections associated with the current user.
+      summary: Get a list of all the keyring connections associated with the current user
       description: Get a list of all the keyring connections associated with the current user.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -120,10 +120,10 @@ paths:
   /me/keyring-connections/{keyring_connection_ID}:
     get:
       operationId: getMeKeyringConnectionsByKeyringConnectionId
-      summary: Get a single Keyring connection that the current user has setup.
+      summary: Get a single Keyring connection that the current user has setup
       description: Get a single Keyring connection that the current user has setup.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -258,10 +258,10 @@ paths:
   /me/keyring-connections/{keyring_connection_ID}/delete:
     post:
       operationId: postMeKeyringConnectionsByKeyringConnectionIdDelete
-      summary: Delete the Keyring connection (and associated token) with the provided ID. Also deletes all associated publicize connect
+      summary: Delete the Keyring connection (and associated token) with the provided ID.
       description: Delete the Keyring connection (and associated token) with the provided ID. Also deletes all associated publicize connections.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -349,10 +349,10 @@ paths:
   /me/publicize-connections/:
     get:
       operationId: getMePublicizeConnections
-      summary: Get a list of publicize connections that the current user has set up.
+      summary: Get a list of publicize connections that the current user has set up
       description: Get a list of publicize connections that the current user has set up.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -450,10 +450,10 @@ paths:
   /me/publicize-connections/{publicize_connection_ID}:
     get:
       operationId: getMePublicizeConnectionsByPublicizeConnectionId
-      summary: Get a single publicize connection that the current user has set up.
+      summary: Get a single publicize connection that the current user has set up
       description: Get a single publicize connection that the current user has set up.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -597,10 +597,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postMePublicizeConnectionsByPublicizeConnectionId
-      summary: Update a single publicize connection belonging to the current user.
+      summary: Update a single publicize connection belonging to the current user
       description: Update a single publicize connection belonging to the current user.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -758,10 +758,10 @@ paths:
   /me/publicize-connections/{publicize_connection_ID}/delete:
     post:
       operationId: postMePublicizeConnectionsByPublicizeConnectionIdDelete
-      summary: Delete the specified publicize connection.
+      summary: Delete the specified publicize connection
       description: Delete the specified publicize connection.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -849,10 +849,10 @@ paths:
   /meta/external-services/:
     get:
       operationId: getMetaExternalServices
-      summary: Get a list of third-party services that WordPress.com or Jetpack sites can integrate with via keyring.
+      summary: Get a list of third-party services that WordPress.com or Jetpack sites can…
       description: Get a list of third-party services that WordPress.com or Jetpack sites can integrate with via keyring.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -938,10 +938,10 @@ paths:
   /meta/external-services/{service}:
     get:
       operationId: getMetaExternalServicesByService
-      summary: Get information about a single external service that WordPress.com or Jetpack sites can integrate with via keyring.
+      summary: Get information about a single external service that WordPress.com or Jetpack…
       description: Get information about a single external service that WordPress.com or Jetpack sites can integrate with via keyring.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1057,10 +1057,10 @@ paths:
   /meta/sharing-buttons:
     get:
       operationId: getMetaSharingButtons
-      summary: Get a list of external services for which sharing buttons are supported.
+      summary: Get a list of external services for which sharing buttons are supported
       description: Get a list of external services for which sharing buttons are supported.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1143,10 +1143,10 @@ paths:
   /sites/{site}/publicize-connections/:
     get:
       operationId: getSitesBySitePublicizeConnections
-      summary: Get a list of publicize connections that are associated with the specified site.
+      summary: Get a list of publicize connections that are associated with the specified site
       description: Get a list of publicize connections that are associated with the specified site.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1250,10 +1250,10 @@ paths:
   /sites/{site}/publicize-connections/new:
     post:
       operationId: postSitesBySitePublicizeConnectionsNew
-      summary: Create a new publicize connection that is associated with the specified site.
+      summary: Create a new publicize connection that is associated with the specified site
       description: Create a new publicize connection that is associated with the specified site.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1414,10 +1414,10 @@ paths:
   /sites/{site}/publicize-connections/{publicize_connection_ID}:
     get:
       operationId: getSitesBySitePublicizeConnectionsByPublicizeConnectionId
-      summary: Get a single publicize connection that is associated with the specified site.
+      summary: Get a single publicize connection that is associated with the specified site
       description: Get a single publicize connection that is associated with the specified site.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1567,10 +1567,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySitePublicizeConnectionsByPublicizeConnectionId
-      summary: Update a single publicize connection belonging to the specified site.
+      summary: Update a single publicize connection belonging to the specified site
       description: Update a single publicize connection belonging to the specified site.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1734,10 +1734,10 @@ paths:
   /sites/{site}/publicize-connections/{publicize_connection_ID}/delete:
     post:
       operationId: postSitesBySitePublicizeConnectionsByPublicizeConnectionIdDelete
-      summary: Delete the specified publicize connection.
+      summary: Delete the specified publicize connection
       description: Delete the specified publicize connection.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1831,10 +1831,10 @@ paths:
   /sites/{site}/sharing-buttons:
     post:
       operationId: postSitesBySiteSharingButtons
-      summary: Edit all sharing buttons for a site.
+      summary: Edit all sharing buttons for a site
       description: Edit all sharing buttons for a site.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK
@@ -1934,10 +1934,10 @@ paths:
   /sites/{site}/sharing-buttons/:
     get:
       operationId: getSitesBySiteSharingButtons
-      summary: Get a list of a site's sharing buttons.
+      summary: Get a list of a site's sharing buttons
       description: Get a list of a site's sharing buttons.
       tags:
-      - sharing
+      - Sharing
       responses:
         '200':
           description: OK

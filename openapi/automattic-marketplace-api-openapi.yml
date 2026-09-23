@@ -12,15 +12,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: marketplace
+- name: Marketplace
 paths:
   /marketplace/search:
     get:
       operationId: getMarketplaceSearch
       summary: Search the Wordpress.com Marketplace
-      description: Search the Wordpress.com Marketplace
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -190,9 +189,8 @@ paths:
     get:
       operationId: getMarketplaceByProductSlugRelated
       summary: Get related marketplace products
-      description: Get related marketplace products
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -294,7 +292,7 @@ paths:
       operationId: postWpcomV2MarketplaceJetpackScan
       summary: POST /wpcom/v2/marketplace/jetpack-scan
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -332,7 +330,7 @@ paths:
       operationId: getWpcomV2MarketplaceProducts
       summary: GET /wpcom/v2/marketplace/products
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -355,7 +353,7 @@ paths:
       operationId: getWpcomV2MarketplaceProductsbyId
       summary: GET /wpcom/v2/marketplace/products/{id}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -384,7 +382,7 @@ paths:
       operationId: getWpcomV2MarketplaceProductsbySlug
       summary: GET /wpcom/v2/marketplace/products/{slug}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -410,7 +408,7 @@ paths:
       operationId: postWpcomV2MarketplaceProductsbySlug
       summary: POST /wpcom/v2/marketplace/products/{slug}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -448,7 +446,7 @@ paths:
       operationId: putWpcomV2MarketplaceProductsbySlug
       summary: PUT /wpcom/v2/marketplace/products/{slug}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -486,7 +484,7 @@ paths:
       operationId: patchWpcomV2MarketplaceProductsbySlug
       summary: PATCH /wpcom/v2/marketplace/products/{slug}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -527,7 +525,7 @@ paths:
       operationId: postWpcomV2MarketplaceVendorBillingIntent
       summary: POST /wpcom/v2/marketplace/vendor/billing-intent
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -588,7 +586,7 @@ paths:
       operationId: postWpcomV2MarketplaceVendorBillingIntentSiteless
       summary: POST /wpcom/v2/marketplace/vendor/billing-intent-siteless
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -644,7 +642,7 @@ paths:
       operationId: getWpcomV2MarketplaceVendorBillingIntentbyIntentId
       summary: GET /wpcom/v2/marketplace/vendor/billing-intent/{intent_id}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -673,7 +671,7 @@ paths:
       operationId: getWpcomV2MarketplaceVendorSchema
       summary: GET /wpcom/v2/marketplace/vendor/schema
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -696,7 +694,7 @@ paths:
       operationId: getWpcomV2MarketplaceVendorSubscriptions
       summary: GET /wpcom/v2/marketplace/vendor/subscriptions
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -740,7 +738,7 @@ paths:
       operationId: getWpcomV2MarketplaceVendorSubscriptionsbyOwnershipId
       summary: GET /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -769,7 +767,7 @@ paths:
       operationId: postWpcomV2MarketplaceVendorSubscriptionsbyOwnershipIdAddon
       summary: POST /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}/addon
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -817,7 +815,7 @@ paths:
       operationId: postWpcomV2MarketplaceVendorSubscriptionsbyOwnershipIdCancel
       summary: POST /wpcom/v2/marketplace/vendor/subscriptions/{ownership_id}/cancel
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -846,7 +844,7 @@ paths:
       operationId: getWpcomV2MarketplaceVendorSubscriptionsbyWpcomSitebyProductSlug
       summary: GET /wpcom/v2/marketplace/vendor/subscriptions/{wpcom_site}/{product_slug}
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -880,7 +878,7 @@ paths:
       operationId: postWpcomV2MarketplaceVendorWebhooks
       summary: POST /wpcom/v2/marketplace/vendor/webhooks
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -944,7 +942,7 @@ paths:
       operationId: getWpcomV2MarketplacebyTypeUpdates
       summary: GET /wpcom/v2/marketplace/{type}/updates
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -973,7 +971,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteMarketplaceProductsReinstall
       summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/products/reinstall
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -1000,9 +998,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/stats:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteMarketplaceReviewsbyProductTypebyProductSlugStats
-      summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/stats
+      summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slu…
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK
@@ -1039,9 +1037,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/validate:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteMarketplaceReviewsbyProductTypebyProductSlugValidate
-      summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slug}/validate
+      summary: GET /wpcom/v2/sites/{wpcom_site}/marketplace/reviews/{product_type}/{product_slu…
       tags:
-      - marketplace
+      - Marketplace
       responses:
         '200':
           description: OK

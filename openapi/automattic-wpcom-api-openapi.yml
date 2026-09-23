@@ -115,34 +115,6 @@ paths:
       - Wpcom
 components:
   schemas:
-    RequestPost:
-      type: object
-      description: A post
-      properties:
-        title:
-          type: string
-        content:
-          type: string
-    getPostsResponse:
-      type: object
-      properties:
-        posts:
-          type: array
-          items:
-            $ref: '#/components/schemas/ResponsePost'
-        total_pages:
-          type: integer
-          description: The total number of pages worth of posts
-    getSitesResponse:
-      type: object
-      properties:
-        sites:
-          type: array
-          items:
-            $ref: '#/components/schemas/Site'
-        total_pages:
-          type: integer
-          description: The total number of pages worth of sites
     Site:
       type: object
       description: A site
@@ -156,6 +128,34 @@ components:
         is_default:
           type: boolean
           description: Whether this is the default site. Use this site for all requests that don't specify a site ID.
+    getPostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResponsePost'
+        total_pages:
+          type: integer
+          description: The total number of pages worth of posts
+    RequestPost:
+      type: object
+      description: A post
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+    getSitesResponse:
+      type: object
+      properties:
+        sites:
+          type: array
+          items:
+            $ref: '#/components/schemas/Site'
+        total_pages:
+          type: integer
+          description: The total number of pages worth of sites
     ResponsePost:
       type: object
       description: A post

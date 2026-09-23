@@ -15,10 +15,8 @@ paths:
   /1.2/key-sites:
     get:
       operationId: getKeySites
-      summary: Keep track of the sites that are using your Akismet API key.
-      description: 'Lists sites using your API key along with stats on their API usage.
-
-        '
+      summary: Keep track of the sites that are using your Akismet API key
+      description: Lists sites using your API key along with stats on their API usage.
       parameters:
       - name: api_key
         in: query
@@ -136,10 +134,8 @@ paths:
   /1.2/usage-limit:
     get:
       operationId: getUsageLimit
-      summary: Keep track of your Akismet API usage.
-      description: 'Returns your API usage limit and your usage for the current month.
-
-        '
+      summary: Keep track of your Akismet API usage
+      description: Returns your API usage limit and your usage for the current month.
       parameters:
       - name: api_key
         in: query

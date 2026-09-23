@@ -14,14 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: block-renderer
+- name: block renderer
 paths:
   /wp/v2/sites/{wpcom_site}/block-renderer/{name}:
     get:
       operationId: getWpV2SitesbyWpcomSiteBlockRendererbyName
       summary: GET /wp/v2/sites/{wpcom_site}/block-renderer/{name}
       tags:
-      - block-renderer
+      - block renderer
       responses:
         '200':
           description: OK
@@ -74,7 +74,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteBlockRendererbyName
       summary: POST /wp/v2/sites/{wpcom_site}/block-renderer/{name}
       tags:
-      - block-renderer
+      - block renderer
       responses:
         '200':
           description: OK
@@ -127,7 +127,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteBlockRendererContentRender
       summary: POST /wpcom/v2/sites/{wpcom_site}/block-renderer/content/render
       tags:
-      - block-renderer
+      - block renderer
       responses:
         '200':
           description: OK
@@ -175,7 +175,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteBlockRendererPatternsRender
       summary: GET /wpcom/v2/sites/{wpcom_site}/block-renderer/patterns/render
       tags:
-      - block-renderer
+      - block renderer
       responses:
         '200':
           description: OK
@@ -229,7 +229,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteBlockRendererSettings
       summary: GET /wpcom/v2/sites/{wpcom_site}/block-renderer/settings
       tags:
-      - block-renderer
+      - block renderer
       responses:
         '200':
           description: OK

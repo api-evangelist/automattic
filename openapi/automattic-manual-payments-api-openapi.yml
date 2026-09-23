@@ -20,7 +20,6 @@ paths:
     post:
       operationId: postManualPayment
       summary: Pay a manual payment
-      description: Pay a manual payment
       tags:
       - manual-payments
       responses:
@@ -103,7 +102,7 @@ paths:
   /manual_payment/%s:
     get:
       operationId: getManualPaymentS
-      summary: Return a payment object containing a collection of items that need to be paid for together.
+      summary: Return a payment object containing a collection of items that need to be paid…
       description: Return a payment object containing a collection of items that need to be paid for together.
       tags:
       - manual-payments

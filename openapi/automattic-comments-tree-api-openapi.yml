@@ -21,7 +21,7 @@ paths:
   /sites/{site}/comments-tree:
     get:
       operationId: getSitesBySiteCommentsTree
-      summary: Get a comments tree for site.
+      summary: Get a comments tree for site
       description: Get a comments tree for site.
       tags:
       - comments-tree

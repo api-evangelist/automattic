@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: vouchers
+- name: Vouchers
 paths:
   /wpcom/v2/sites/{wpcom_site}/vouchers:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteVouchers
       summary: GET /wpcom/v2/sites/{wpcom_site}/vouchers
       tags:
-      - vouchers
+      - Vouchers
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteVouchersbyType
       summary: GET /wpcom/v2/sites/{wpcom_site}/vouchers/{type}
       tags:
-      - vouchers
+      - Vouchers
       responses:
         '200':
           description: OK
@@ -79,7 +79,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteVouchersbyTypeAssign
       summary: POST /wpcom/v2/sites/{wpcom_site}/vouchers/{type}/assign
       tags:
-      - vouchers
+      - Vouchers
       responses:
         '200':
           description: OK
@@ -110,7 +110,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteVouchersbyTypeAssign
       summary: PUT /wpcom/v2/sites/{wpcom_site}/vouchers/{type}/assign
       tags:
-      - vouchers
+      - Vouchers
       responses:
         '200':
           description: OK
@@ -141,7 +141,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteVouchersbyTypeAssign
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/vouchers/{type}/assign
       tags:
-      - vouchers
+      - Vouchers
       responses:
         '200':
           description: OK

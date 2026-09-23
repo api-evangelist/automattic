@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: alerts
+- name: Alerts
 paths:
   /wpcom/v2/sites/{wpcom_site}/alerts:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteAlerts
       summary: GET /wpcom/v2/sites/{wpcom_site}/alerts
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -46,7 +46,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteAlerts
       summary: POST /wpcom/v2/sites/{wpcom_site}/alerts
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -86,7 +86,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteAlerts
       summary: PUT /wpcom/v2/sites/{wpcom_site}/alerts
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -126,7 +126,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteAlerts
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/alerts
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -167,7 +167,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAlertsFix
       summary: GET /wpcom/v2/sites/{wpcom_site}/alerts/fix
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -200,7 +200,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteAlertsFix
       summary: POST /wpcom/v2/sites/{wpcom_site}/alerts/fix
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -238,7 +238,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteAlertsFix
       summary: PUT /wpcom/v2/sites/{wpcom_site}/alerts/fix
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -276,7 +276,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteAlertsFix
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/alerts/fix
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -315,7 +315,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAlertsbyId
       summary: GET /wpcom/v2/sites/{wpcom_site}/alerts/{id}
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -346,7 +346,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteAlertsbyId
       summary: POST /wpcom/v2/sites/{wpcom_site}/alerts/{id}
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -392,7 +392,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteAlertsbyId
       summary: PUT /wpcom/v2/sites/{wpcom_site}/alerts/{id}
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK
@@ -438,7 +438,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteAlertsbyId
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/alerts/{id}
       tags:
-      - alerts
+      - Alerts
       responses:
         '200':
           description: OK

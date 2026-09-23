@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: abilities
+- name: Abilities
 paths:
   /wp/v2/abilities/{name}/run:
     get:
       operationId: getWpV2AbilitiesbyNameRun
       summary: GET /wp/v2/abilities/{name}/run
       tags:
-      - abilities
+      - Abilities
       responses:
         '200':
           description: OK
@@ -52,7 +52,7 @@ paths:
       operationId: postWpV2AbilitiesbyNameRun
       summary: POST /wp/v2/abilities/{name}/run
       tags:
-      - abilities
+      - Abilities
       responses:
         '200':
           description: OK
@@ -87,7 +87,7 @@ paths:
       operationId: putWpV2AbilitiesbyNameRun
       summary: PUT /wp/v2/abilities/{name}/run
       tags:
-      - abilities
+      - Abilities
       responses:
         '200':
           description: OK
@@ -122,7 +122,7 @@ paths:
       operationId: patchWpV2AbilitiesbyNameRun
       summary: PATCH /wp/v2/abilities/{name}/run
       tags:
-      - abilities
+      - Abilities
       responses:
         '200':
           description: OK
@@ -157,7 +157,7 @@ paths:
       operationId: deleteWpV2AbilitiesbyNameRun
       summary: DELETE /wp/v2/abilities/{name}/run
       tags:
-      - abilities
+      - Abilities
       responses:
         '200':
           description: OK

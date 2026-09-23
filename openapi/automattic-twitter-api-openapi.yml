@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: twitter
+- name: Twitter
 paths:
   /wpcom/v2/twitter:
     get:
       operationId: getWpcomV2Twitter
       summary: GET /wpcom/v2/twitter
       tags:
-      - twitter
+      - Twitter
       responses:
         '200':
           description: OK

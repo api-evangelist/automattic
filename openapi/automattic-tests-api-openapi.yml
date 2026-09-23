@@ -17,15 +17,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: tests
+- name: Tests
 paths:
   /test/version/{ID}/old:
     get:
       operationId: getTestVersionByIdOld
-      summary: Test GET requests.
+      summary: Test GET requests
       description: Test GET requests.
       tags:
-      - tests
+      - Tests
       responses:
         '200':
           description: OK
@@ -175,10 +175,10 @@ paths:
   /test/{ID}:
     get:
       operationId: getTestById
-      summary: Test GET requests.
+      summary: Test GET requests
       description: Test GET requests.
       tags:
-      - tests
+      - Tests
       responses:
         '200':
           description: OK
@@ -325,10 +325,10 @@ paths:
           format: date-time
     post:
       operationId: postTestById
-      summary: Test POST requests.
+      summary: Test POST requests
       description: Test POST requests.
       tags:
-      - tests
+      - Tests
       responses:
         '200':
           description: OK
@@ -425,10 +425,10 @@ paths:
   /test/version/{ID}:
     get:
       operationId: getTestVersionById
-      summary: Test GET requests.
+      summary: Test GET requests
       description: Test GET requests.
       tags:
-      - tests
+      - Tests
       responses:
         '200':
           description: OK

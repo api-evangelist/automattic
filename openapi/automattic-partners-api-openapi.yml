@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: partners
+- name: Partners
 paths:
   /wpcom/v2/sites/{wpcom_site}/partners/{partner}/notifications:
     post:
       operationId: postWpcomV2SitesbyWpcomSitePartnersbyPartnerNotifications
       summary: POST /wpcom/v2/sites/{wpcom_site}/partners/{partner}/notifications
       tags:
-      - partners
+      - Partners
       responses:
         '200':
           description: OK
@@ -51,7 +51,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSitePartnersbyPartnerNotifications
       summary: PUT /wpcom/v2/sites/{wpcom_site}/partners/{partner}/notifications
       tags:
-      - partners
+      - Partners
       responses:
         '200':
           description: OK
@@ -82,7 +82,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSitePartnersbyPartnerNotifications
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/partners/{partner}/notifications
       tags:
-      - partners
+      - Partners
       responses:
         '200':
           description: OK

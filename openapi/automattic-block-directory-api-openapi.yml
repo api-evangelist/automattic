@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: block-directory
+- name: block directory
 paths:
   /wp/v2/sites/{wpcom_site}/block-directory/search:
     get:
       operationId: getWpV2SitesbyWpcomSiteBlockDirectorySearch
       summary: GET /wp/v2/sites/{wpcom_site}/block-directory/search
       tags:
-      - block-directory
+      - block directory
       responses:
         '200':
           description: OK

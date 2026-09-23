@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: imports
+- name: Imports
 paths:
   /wpcom/v2/imports/url-analyzer/images:
     get:
       operationId: getWpcomV2ImportsUrlAnalyzerImages
       summary: GET /wpcom/v2/imports/url-analyzer/images
       tags:
-      - imports
+      - Imports
       responses:
         '200':
           description: OK
@@ -55,7 +55,7 @@ paths:
       operationId: getWpcomV2ImportsUrlAnalyzerMultiple
       summary: GET /wpcom/v2/imports/url-analyzer/multiple
       tags:
-      - imports
+      - Imports
       responses:
         '200':
           description: OK

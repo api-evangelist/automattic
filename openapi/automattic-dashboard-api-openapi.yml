@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: dashboard
+- name: Dashboard
 paths:
   /wpcom/v2/dashboard/admin-bar:
     get:
       operationId: getWpcomV2DashboardAdminBar
       summary: GET /wpcom/v2/dashboard/admin-bar
       tags:
-      - dashboard
+      - Dashboard
       responses:
         '200':
           description: OK
@@ -41,7 +41,7 @@ paths:
       operationId: getWpcomV2DashboardSiteFilters
       summary: GET /wpcom/v2/dashboard/site-filters
       tags:
-      - dashboard
+      - Dashboard
       responses:
         '200':
           description: OK
@@ -78,7 +78,7 @@ paths:
       operationId: getWpcomV2DashboardSiteIssues
       summary: GET /wpcom/v2/dashboard/site-issues
       tags:
-      - dashboard
+      - Dashboard
       responses:
         '200':
           description: OK
@@ -99,7 +99,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteDashboardCards
       summary: GET /wpcom/v2/sites/{wpcom_site}/dashboard/cards
       tags:
-      - dashboard
+      - Dashboard
       responses:
         '200':
           description: OK
@@ -126,7 +126,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteDashboardCardsData
       summary: GET /wpcom/v2/sites/{wpcom_site}/dashboard/cards-data
       tags:
-      - dashboard
+      - Dashboard
       responses:
         '200':
           description: OK

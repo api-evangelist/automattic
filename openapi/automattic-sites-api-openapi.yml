@@ -17,15 +17,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: sites
+- name: Sites
 paths:
   /me/sites:
     get:
       operationId: getMeSites
-      summary: Get a list of the current user's sites.
+      summary: Get a list of the current user's sites
       description: Get a list of the current user's sites.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -152,9 +152,8 @@ paths:
     get:
       operationId: getMeSitesCompact
       summary: Not in use
-      description: Not in use
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -270,9 +269,8 @@ paths:
     get:
       operationId: getMeSitesFeatures
       summary: Get a list of the current user's sites features
-      description: Get a list of the current user's sites features
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -355,9 +353,8 @@ paths:
     get:
       operationId: getMeSitesPlugins
       summary: Get a list of the current user's sites plugins
-      description: Get a list of the current user's sites plugins
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -439,10 +436,10 @@ paths:
   /sites/{site}:
     get:
       operationId: getSitesBySite
-      summary: Get information about a site.
+      summary: Get information about a site
       description: Get information about a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -704,10 +701,10 @@ paths:
   /sites/{site}/automated-transfers/status:
     get:
       operationId: getSitesBySiteAutomatedTransfersStatus
-      summary: Returns the current status of Automated Transfer for a site.
+      summary: Returns the current status of Automated Transfer for a site
       description: Returns the current status of Automated Transfer for a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -794,10 +791,10 @@ paths:
   /sites/{site}/embeds:
     get:
       operationId: getSitesBySiteEmbeds
-      summary: 'Get a list of embeds available on a site. Note: The current user must have publishing access.'
+      summary: Get a list of embeds available on a site.
       description: 'Get a list of embeds available on a site. Note: The current user must have publishing access.'
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -885,10 +882,10 @@ paths:
   /sites/{site}/embeds/render:
     get:
       operationId: getSitesBySiteEmbedsRender
-      summary: 'Get a rendered embed for a site. Note: The current user must have publishing access.'
+      summary: Get a rendered embed for a site.
       description: 'Get a rendered embed for a site. Note: The current user must have publishing access.'
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -984,10 +981,10 @@ paths:
   /sites/{site}/headers/mine:
     get:
       operationId: getSitesBySiteHeadersMine
-      summary: Get the custom header options for a site.
+      summary: Get the custom header options for a site
       description: Get the custom header options for a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1094,10 +1091,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteHeadersMine
-      summary: Set the custom header options for a site.
+      summary: Set the custom header options for a site
       description: Set the custom header options for a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1244,10 +1241,10 @@ paths:
   /sites/{site}/headers/{theme_slug}:
     get:
       operationId: getSitesBySiteHeadersByThemeSlug
-      summary: Get the custom header options for a site with a particular theme.
+      summary: Get the custom header options for a site with a particular theme
       description: Get the custom header options for a site with a particular theme.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1363,10 +1360,10 @@ paths:
   /sites/{site}/page-templates:
     get:
       operationId: getSitesBySitePageTemplates
-      summary: Get a list of page templates supported by a site.
+      summary: Get a list of page templates supported by a site
       description: Get a list of page templates supported by a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1446,9 +1443,8 @@ paths:
     get:
       operationId: getSitesBySitePostCountsByPostType
       summary: Get number of posts in the post type groups by post status
-      description: Get number of posts in the post type groups by post status
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1541,10 +1537,10 @@ paths:
   /sites/{site}/post-types:
     get:
       operationId: getSitesBySitePostTypes
-      summary: Get a list of post types available for a site.
+      summary: Get a list of post types available for a site
       description: Get a list of post types available for a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1641,10 +1637,10 @@ paths:
   /sites/{site}/search:
     post:
       operationId: postSitesBySiteSearch
-      summary: Search within a site using an Elasticsearch Query API.
+      summary: Search within a site using an Elasticsearch Query API
       description: Search within a site using an Elasticsearch Query API.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1779,9 +1775,8 @@ paths:
     get:
       operationId: getSitesBySiteSearch
       summary: Search within a site as you type
-      description: Search within a site as you type
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -1984,10 +1979,10 @@ paths:
   /sites/{site}/shortcodes:
     get:
       operationId: getSitesBySiteShortcodes
-      summary: 'Get a list of shortcodes available on a site. Note: The current user must have publishing access.'
+      summary: Get a list of shortcodes available on a site.
       description: 'Get a list of shortcodes available on a site. Note: The current user must have publishing access.'
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2075,10 +2070,10 @@ paths:
   /sites/{site}/shortcodes/render:
     get:
       operationId: getSitesBySiteShortcodesRender
-      summary: 'Get a rendered shortcode for a site. Note: The current user must have publishing access.'
+      summary: Get a rendered shortcode for a site.
       description: 'Get a rendered shortcode for a site. Note: The current user must have publishing access.'
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2182,10 +2177,10 @@ paths:
   /sites/{site}/widgets:
     get:
       operationId: getSitesBySiteWidgets
-      summary: Retrieve the active and inactive widgets for a site.
+      summary: Retrieve the active and inactive widgets for a site
       description: Retrieve the active and inactive widgets for a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2273,10 +2268,10 @@ paths:
   /sites/{site}/widgets/new:
     post:
       operationId: postSitesBySiteWidgetsNew
-      summary: Activate a widget on a site.
+      summary: Activate a widget on a site
       description: Activate a widget on a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2392,10 +2387,10 @@ paths:
   /sites/{site}/widgets/widget:{id}:
     get:
       operationId: getSitesBySiteWidgetsWidgetId
-      summary: Retrieve a widget on a site by its ID.
+      summary: Retrieve a widget on a site by its ID
       description: Retrieve a widget on a site by its ID.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2495,10 +2490,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteWidgetsWidgetId
-      summary: Update a widget on a site by its ID.
+      summary: Update a widget on a site by its ID
       description: Update a widget on a site by its ID.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2617,10 +2612,10 @@ paths:
   /sites/{site}/widgets/widget:{id}/delete:
     post:
       operationId: postSitesBySiteWidgetsWidgetIdDelete
-      summary: Deactivate a widget on a site by its ID. Will delete if already deactivated.
+      summary: Deactivate a widget on a site by its ID. Will delete if already deactivated
       description: Deactivate a widget on a site by its ID. Will delete if already deactivated.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2723,10 +2718,10 @@ paths:
   /sites/{site}/wordads/approve:
     post:
       operationId: postSitesBySiteWordadsApprove
-      summary: Request streamlined approval to join the WordAds program.
+      summary: Request streamlined approval to join the WordAds program
       description: Request streamlined approval to join the WordAds program.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2813,10 +2808,10 @@ paths:
   /sites/{site}/wordads/earnings:
     get:
       operationId: getSitesBySiteWordadsEarnings
-      summary: Get detailed WordAds earnings information about a site.
+      summary: Get detailed WordAds earnings information about a site
       description: Get detailed WordAds earnings information about a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -2913,10 +2908,10 @@ paths:
   /sites/{site}/wordads/settings:
     get:
       operationId: getSitesBySiteWordadsSettings
-      summary: Get detailed WordAds settings information about a site.
+      summary: Get detailed WordAds settings information about a site
       description: Get detailed WordAds settings information about a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -3010,10 +3005,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteWordadsSettings
-      summary: Update WordAds settings for a site.
+      summary: Update WordAds settings for a site
       description: Update WordAds settings for a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -3131,9 +3126,8 @@ paths:
     get:
       operationId: getSitesBySiteWordadsStats
       summary: Get WordAds stats for a site
-      description: Get WordAds stats for a site
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -3249,10 +3243,10 @@ paths:
   /sites/{site}/wordads/tos:
     get:
       operationId: getSitesBySiteWordadsTos
-      summary: Get WordAds TOS information about a site.
+      summary: Get WordAds TOS information about a site
       description: Get WordAds TOS information about a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK
@@ -3346,10 +3340,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteWordadsTos
-      summary: Update WordAds TOS setting for a site.
+      summary: Update WordAds TOS setting for a site
       description: Update WordAds TOS setting for a site.
       tags:
-      - sites
+      - Sites
       responses:
         '200':
           description: OK

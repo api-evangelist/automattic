@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: playground
+- name: Playground
 paths:
   /wpcom/v2/playground/ai/blueprint:
     post:
       operationId: postWpcomV2PlaygroundAiBlueprint
       summary: POST /wpcom/v2/playground/ai/blueprint
       tags:
-      - playground
+      - Playground
       responses:
         '200':
           description: OK
@@ -54,7 +54,7 @@ paths:
       operationId: postWpcomV2PlaygroundDeclarativeAiBlueprint
       summary: POST /wpcom/v2/playground/declarative/ai/blueprint
       tags:
-      - playground
+      - Playground
       responses:
         '200':
           description: OK

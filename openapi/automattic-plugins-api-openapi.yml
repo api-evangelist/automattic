@@ -14,14 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: plugins
+- name: Plugins
 paths:
   /wp/v2/sites/{wpcom_site}/plugins:
     get:
       operationId: getWpV2SitesbyWpcomSitePlugins
       summary: GET /wp/v2/sites/{wpcom_site}/plugins
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -72,7 +72,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePlugins
       summary: POST /wp/v2/sites/{wpcom_site}/plugins
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -120,7 +120,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePluginsbyPlugin
       summary: GET /wp/v2/sites/{wpcom_site}/plugins/{plugin}
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -162,7 +162,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePluginsbyPlugin
       summary: POST /wp/v2/sites/{wpcom_site}/plugins/{plugin}
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -214,7 +214,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSitePluginsbyPlugin
       summary: PUT /wp/v2/sites/{wpcom_site}/plugins/{plugin}
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -266,7 +266,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSitePluginsbyPlugin
       summary: PATCH /wp/v2/sites/{wpcom_site}/plugins/{plugin}
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -318,7 +318,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSitePluginsbyPlugin
       summary: DELETE /wp/v2/sites/{wpcom_site}/plugins/{plugin}
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -363,7 +363,7 @@ paths:
       operationId: getWpcomV2PluginsFeatured
       summary: GET /wpcom/v2/plugins/featured
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK
@@ -386,7 +386,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSitePluginsRecommended
       summary: GET /wpcom/v2/sites/{wpcom_site}/plugins/recommended
       tags:
-      - plugins
+      - Plugins
       responses:
         '200':
           description: OK

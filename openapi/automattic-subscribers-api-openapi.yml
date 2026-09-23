@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: subscribers
+- name: Subscribers
 paths:
   /wpcom/v2/sites/{wpcom_site}/subscribers:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribers
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -137,7 +137,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteSubscribersAdd
       summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/add
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -176,7 +176,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteSubscribersComp
       summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/comp
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -219,7 +219,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersCount
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/count
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -246,7 +246,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersCounts
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/counts
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -296,7 +296,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersImport
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/import
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -322,7 +322,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteSubscribersImport
       summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/import
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -367,7 +367,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteSubscribersImportResetState
       summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/import/reset-state
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -394,7 +394,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteSubscribersImportResetState2
       summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/import/reset_state
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -421,7 +421,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersImportbyId
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/import/{id}
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -453,7 +453,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersIndividual
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/individual
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -492,7 +492,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersIndividualStats
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/individual-stats
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -531,7 +531,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersList
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/list
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -611,7 +611,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersProducts
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/products
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -638,7 +638,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteSubscribersRemove
       summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/remove
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -682,7 +682,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteSubscribersRemoveComp
       summary: POST /wpcom/v2/sites/{wpcom_site}/subscribers/remove-comp
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -719,7 +719,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersStats
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/stats
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -758,7 +758,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteSubscribersTotals
       summary: GET /wpcom/v2/sites/{wpcom_site}/subscribers/totals
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -785,7 +785,7 @@ paths:
       operationId: postWpcomV2SubscribersEmailsResendSubscriptionConfirmation
       summary: POST /wpcom/v2/subscribers/emails/resend/subscription-confirmation
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK
@@ -825,7 +825,7 @@ paths:
       operationId: postWpcomV2SubscribersEmailsResendSubscriptionManagement
       summary: POST /wpcom/v2/subscribers/emails/resend/subscription-management
       tags:
-      - subscribers
+      - Subscribers
       responses:
         '200':
           description: OK

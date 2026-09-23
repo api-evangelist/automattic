@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: blocks
+- name: Blocks
 paths:
   /wp/v2/sites/{wpcom_site}/blocks:
     get:
       operationId: getWpV2SitesbyWpcomSiteBlocks
       summary: GET /wp/v2/sites/{wpcom_site}/blocks
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -212,7 +212,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteBlocks
       summary: POST /wp/v2/sites/{wpcom_site}/blocks
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -289,7 +289,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlocksbyId
       summary: GET /wp/v2/sites/{wpcom_site}/blocks/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -343,7 +343,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteBlocksbyId
       summary: POST /wp/v2/sites/{wpcom_site}/blocks/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -424,7 +424,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteBlocksbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/blocks/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -505,7 +505,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteBlocksbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/blocks/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -586,7 +586,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteBlocksbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/blocks/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -625,7 +625,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlocksbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/blocks/{id}/autosaves
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -673,7 +673,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteBlocksbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/blocks/{id}/autosaves
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -758,7 +758,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlocksbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/blocks/{parent}/autosaves/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -806,7 +806,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlocksbyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/blocks/{parent}/revisions
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -917,7 +917,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlocksbyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/blocks/{parent}/revisions/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK
@@ -964,7 +964,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteBlocksbyParentRevisionsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/blocks/{parent}/revisions/{id}
       tags:
-      - blocks
+      - Blocks
       responses:
         '200':
           description: OK

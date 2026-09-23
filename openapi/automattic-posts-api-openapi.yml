@@ -13,15 +13,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: posts
+- name: Posts
 paths:
   /me/posts:
     get:
       operationId: getMePosts
-      summary: Get a list of posts across all the user's sites.
+      summary: Get a list of posts across all the user's sites
       description: Get a list of posts across all the user's sites.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -380,10 +380,10 @@ paths:
   /sites/{site}/dropdown-pages/:
     get:
       operationId: getSitesBySiteDropdownPages
-      summary: Get a list of pages to be displayed as options in a select-a-page-dropdown.
+      summary: Get a list of pages to be displayed as options in a select-a-page-dropdown
       description: Get a list of pages to be displayed as options in a select-a-page-dropdown.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -474,10 +474,10 @@ paths:
   /sites/{site}/posts/:
     get:
       operationId: getSitesBySitePosts
-      summary: Get a list of matching posts.
+      summary: Get a list of matching posts
       description: Get a list of matching posts.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -732,10 +732,10 @@ paths:
   /sites/{site}/posts/delete:
     post:
       operationId: postSitesBySitePostsDelete
-      summary: 'Delete multiple posts. Note: If the trash is enabled, this request will send non-trashed posts to the trash. Trashed pos'
+      summary: Delete multiple posts.
       description: 'Delete multiple posts. Note: If the trash is enabled, this request will send non-trashed posts to the trash. Trashed posts will be permanently deleted.'
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -988,10 +988,10 @@ paths:
   /sites/{site}/posts/new:
     post:
       operationId: postSitesBySitePostsNew
-      summary: Create a post.
+      summary: Create a post
       description: Create a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -1341,10 +1341,10 @@ paths:
   /sites/{site}/posts/restore:
     post:
       operationId: postSitesBySitePostsRestore
-      summary: Restore multiple posts.
+      summary: Restore multiple posts
       description: Restore multiple posts.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -1596,10 +1596,10 @@ paths:
   /sites/{site}/posts/slug:{post_slug}:
     get:
       operationId: getSitesBySitePostsSlugPostSlug
-      summary: Get a single post (by slug).
+      summary: Get a single post (by slug)
       description: Get a single post (by slug).
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -1844,10 +1844,10 @@ paths:
   /sites/{site}/posts/{post_ID}:
     get:
       operationId: getSitesBySitePostsByPostId
-      summary: Get a single post (by ID).
+      summary: Get a single post (by ID)
       description: Get a single post (by ID).
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -2089,10 +2089,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySitePostsByPostId
-      summary: Edit a post.
+      summary: Edit a post
       description: Edit a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -2441,10 +2441,10 @@ paths:
   /sites/{site}/posts/{post_ID}/delete:
     post:
       operationId: postSitesBySitePostsByPostIdDelete
-      summary: 'Delete a post. Note: If the trash is enabled, this request will send the post to the trash. A second request will perman'
+      summary: Delete a post.
       description: 'Delete a post. Note: If the trash is enabled, this request will send the post to the trash. A second request will permanently delete the post.'
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -2690,10 +2690,10 @@ paths:
   /sites/{site}/posts/{post_ID}/likes/:
     get:
       operationId: getSitesBySitePostsByPostIdLikes
-      summary: Get a list of the likes for a post.
+      summary: Get a list of the likes for a post
       description: Get a list of the likes for a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -2799,10 +2799,10 @@ paths:
   /sites/{site}/posts/{post_ID}/likes/mine/:
     get:
       operationId: getSitesBySitePostsByPostIdLikesMine
-      summary: Get the current user's like status for a post.
+      summary: Get the current user's like status for a post
       description: Get the current user's like status for a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -2901,10 +2901,10 @@ paths:
   /sites/{site}/posts/{post_ID}/likes/mine/delete:
     post:
       operationId: postSitesBySitePostsByPostIdLikesMineDelete
-      summary: Unlike a post.
+      summary: Unlike a post
       description: Unlike a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3006,10 +3006,10 @@ paths:
   /sites/{site}/posts/{post_ID}/likes/new:
     post:
       operationId: postSitesBySitePostsByPostIdLikesNew
-      summary: Like a post.
+      summary: Like a post
       description: Like a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3111,10 +3111,10 @@ paths:
   /sites/{site}/posts/{post_ID}/reblogs/mine:
     get:
       operationId: getSitesBySitePostsByPostIdReblogsMine
-      summary: Get reblog status for a post.
+      summary: Get reblog status for a post
       description: Get reblog status for a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3204,10 +3204,10 @@ paths:
   /sites/{site}/posts/{post_ID}/reblogs/new:
     post:
       operationId: postSitesBySitePostsByPostIdReblogsNew
-      summary: Reblog a post.
+      summary: Reblog a post
       description: Reblog a post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3313,10 +3313,10 @@ paths:
   /sites/{site}/posts/{post_ID}/restore:
     post:
       operationId: postSitesBySitePostsByPostIdRestore
-      summary: Restore a post or page from the trash to its previous status.
+      summary: Restore a post or page from the trash to its previous status
       description: Restore a post or page from the trash to its previous status.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3561,10 +3561,10 @@ paths:
   /sites/{site}/posts/{post}/related:
     post:
       operationId: postSitesBySitePostsByPostRelated
-      summary: Search within a site for related posts.
+      summary: Search within a site for related posts
       description: Search within a site for related posts.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3659,10 +3659,10 @@ paths:
   /sites/{site}/posts/{post}/subscribers/:
     get:
       operationId: getSitesBySitePostsByPostSubscribers
-      summary: Get a list of the specified post's subscribers.
+      summary: Get a list of the specified post's subscribers
       description: Get a list of the specified post's subscribers.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3742,10 +3742,10 @@ paths:
   /sites/{site}/posts/{post}/subscribers/mine:
     get:
       operationId: getSitesBySitePostsByPostSubscribersMine
-      summary: Get subscription status of the specified post for the current user.
+      summary: Get subscription status of the specified post for the current user
       description: Get subscription status of the specified post for the current user.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3825,10 +3825,10 @@ paths:
   /sites/{site}/posts/{post}/subscribers/mine/delete:
     post:
       operationId: postSitesBySitePostsByPostSubscribersMineDelete
-      summary: Unsubscribe the current user from the specified post.
+      summary: Unsubscribe the current user from the specified post
       description: Unsubscribe the current user from the specified post.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -3908,10 +3908,10 @@ paths:
   /sites/{site}/posts/{post}/subscribers/mine/update:
     post:
       operationId: postSitesBySitePostsByPostSubscribersMineUpdate
-      summary: Subscribe current user to be notified of the specified post's comments.
+      summary: Subscribe current user to be notified of the specified post's comments
       description: Subscribe current user to be notified of the specified post's comments.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -4010,10 +4010,10 @@ paths:
   /sites/{site}/posts/{post}/subscribers/new:
     post:
       operationId: postSitesBySitePostsByPostSubscribersNew
-      summary: Subscribe current user to be notified of the specified post's comments.
+      summary: Subscribe current user to be notified of the specified post's comments
       description: Subscribe current user to be notified of the specified post's comments.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -4103,10 +4103,10 @@ paths:
   /users/{user_id}/posts:
     get:
       operationId: getUsersByUserIdPosts
-      summary: Get a list of published posts authored by a specified user across their public sites, ordered by date in descending orde
+      summary: Get a list of published posts authored by a specified user across their public…
       description: Get a list of published posts authored by a specified user across their public sites, ordered by date in descending order.
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -4366,7 +4366,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePosts
       summary: GET /wp/v2/sites/{wpcom_site}/posts
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -4609,7 +4609,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePosts
       summary: POST /wp/v2/sites/{wpcom_site}/posts
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -4740,7 +4740,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePostsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/posts/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -4794,7 +4794,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePostsbyId
       summary: POST /wp/v2/sites/{wpcom_site}/posts/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -4926,7 +4926,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSitePostsbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/posts/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5058,7 +5058,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSitePostsbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/posts/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5190,7 +5190,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSitePostsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/posts/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5231,7 +5231,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePostsbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/posts/{id}/autosaves
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5279,7 +5279,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePostsbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/posts/{id}/autosaves
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5417,7 +5417,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePostsbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/posts/{parent}/autosaves/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5467,7 +5467,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePostsbyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/posts/{parent}/revisions
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5580,7 +5580,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePostsbyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/posts/{parent}/revisions/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5627,7 +5627,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSitePostsbyParentRevisionsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/posts/{parent}/revisions/{id}
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5673,7 +5673,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSitePostsAutoDraft
       summary: POST /wpcom/v2/sites/{wpcom_site}/posts/auto-draft
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5702,7 +5702,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSitePostsMapUrl
       summary: GET /wpcom/v2/sites/{wpcom_site}/posts/map-url
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5741,7 +5741,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSitePostsbyPostidMapUrl
       summary: GET /wpcom/v2/sites/{wpcom_site}/posts/{postId}/map-url
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5785,7 +5785,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSitePostsbyPostidPublicize
       summary: POST /wpcom/v2/sites/{wpcom_site}/posts/{postId}/publicize
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK
@@ -5838,7 +5838,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSitePostsbyPostidPublicizePublishedActions
       summary: GET /wpcom/v2/sites/{wpcom_site}/posts/{postId}/publicize/published-actions
       tags:
-      - posts
+      - Posts
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: slack
+- name: Slack
 paths:
   /wpcom/v2/slack/webhook/issue-creator:
     post:
       operationId: postWpcomV2SlackWebhookIssueCreator
       summary: POST /wpcom/v2/slack/webhook/issue-creator
       tags:
-      - slack
+      - Slack
       responses:
         '200':
           description: OK
@@ -40,7 +40,7 @@ paths:
       operationId: putWpcomV2SlackWebhookIssueCreator
       summary: PUT /wpcom/v2/slack/webhook/issue-creator
       tags:
-      - slack
+      - Slack
       responses:
         '200':
           description: OK
@@ -60,7 +60,7 @@ paths:
       operationId: patchWpcomV2SlackWebhookIssueCreator
       summary: PATCH /wpcom/v2/slack/webhook/issue-creator
       tags:
-      - slack
+      - Slack
       responses:
         '200':
           description: OK

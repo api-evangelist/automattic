@@ -14,15 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: general
+- name: General
 paths:
   /sites/{site}/sync/now:
     post:
       operationId: postSitesBySiteSyncNow
       summary: Force immediate sync of top items on a queue
-      description: Force immediate sync of top items on a queue
       tags:
-      - general
+      - General
       responses:
         '200':
           description: OK
@@ -119,9 +118,8 @@ paths:
     get:
       operationId: getSitesBySiteSyncStatus
       summary: Status of the current full sync or the previous full sync
-      description: Status of the current full sync or the previous full sync
       tags:
-      - general
+      - General
       responses:
         '200':
           description: OK
@@ -276,9 +274,8 @@ paths:
     get:
       operationId: getSitesBySiteTranslations
       summary: Gets info about a Jetpack blog's core installation
-      description: Gets info about a Jetpack blog's core installation
       tags:
-      - general
+      - General
       responses:
         '200':
           description: OK
@@ -371,9 +368,8 @@ paths:
     post:
       operationId: postSitesBySiteTranslations
       summary: Toggle automatic core updates for a Jetpack blog
-      description: Toggle automatic core updates for a Jetpack blog
       tags:
-      - general
+      - General
       responses:
         '200':
           description: OK
@@ -473,9 +469,8 @@ paths:
     post:
       operationId: postSitesBySiteTranslationsUpdate
       summary: Update All Translations installation on a Jetpack blog
-      description: Update All Translations installation on a Jetpack blog
       tags:
-      - general
+      - General
       responses:
         '200':
           description: OK
@@ -565,9 +560,8 @@ paths:
     get:
       operationId: getSitesBySiteUpdates
       summary: Get counts for available updates
-      description: Get counts for available updates
       tags:
-      - general
+      - General
       responses:
         '200':
           description: OK

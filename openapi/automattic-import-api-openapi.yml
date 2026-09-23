@@ -14,15 +14,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: import
+- name: Import
 paths:
   /sites/{site}/imports/:
     get:
       operationId: getSitesBySiteImports
-      summary: Get information about any current imports for this site.
+      summary: Get information about any current imports for this site
       description: Get information about any current imports for this site.
       tags:
-      - import
+      - Import
       responses:
         '200':
           description: OK
@@ -103,10 +103,10 @@ paths:
   /sites/{site}/imports/library/new:
     post:
       operationId: postSitesBySiteImportsLibraryNew
-      summary: Prepare an import for this site. Note that only one import can be in progress at any time.
+      summary: Prepare an import for this site.
       description: Prepare an import for this site. Note that only one import can be in progress at any time.
       tags:
-      - import
+      - Import
       responses:
         '200':
           description: OK
@@ -204,10 +204,10 @@ paths:
   /sites/{site}/imports/new:
     post:
       operationId: postSitesBySiteImportsNew
-      summary: Prepare an import for this site. Note that only one import can be in progress at any time.
+      summary: Prepare an import for this site.
       description: Prepare an import for this site. Note that only one import can be in progress at any time.
       tags:
-      - import
+      - Import
       responses:
         '200':
           description: OK
@@ -315,10 +315,10 @@ paths:
   /sites/{site}/imports/{import_id}:
     get:
       operationId: getSitesBySiteImportsByImportId
-      summary: Get information about the state of an import.
+      summary: Get information about the state of an import
       description: Get information about the state of an import.
       tags:
-      - import
+      - Import
       responses:
         '200':
           description: OK
@@ -414,10 +414,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteImportsByImportId
-      summary: Update the import for a site.
+      summary: Update the import for a site
       description: Update the import for a site.
       tags:
-      - import
+      - Import
       responses:
         '200':
           description: OK

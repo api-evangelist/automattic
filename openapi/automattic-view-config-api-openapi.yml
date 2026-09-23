@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: view-config
+- name: View Config
 paths:
   /wp/v2/sites/{wpcom_site}/view-config:
     get:
       operationId: getWpV2SitesbyWpcomSiteViewConfig
       summary: GET /wp/v2/sites/{wpcom_site}/view-config
       tags:
-      - view-config
+      - View Config
       responses:
         '200':
           description: OK

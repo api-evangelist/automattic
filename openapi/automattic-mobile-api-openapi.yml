@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: mobile
+- name: Mobile
 paths:
   /wpcom/v2/mobile/feature-announcements:
     get:
       operationId: getWpcomV2MobileFeatureAnnouncements
       summary: GET /wpcom/v2/mobile/feature-announcements
       tags:
-      - mobile
+      - Mobile
       responses:
         '200':
           description: OK
@@ -54,7 +54,7 @@ paths:
       operationId: getWpcomV2MobileFeatureFlags
       summary: GET /wpcom/v2/mobile/feature-flags
       tags:
-      - mobile
+      - Mobile
       responses:
         '200':
           description: OK
@@ -106,7 +106,7 @@ paths:
       operationId: postWpcomV2MobileMigration
       summary: POST /wpcom/v2/mobile/migration
       tags:
-      - mobile
+      - Mobile
       responses:
         '200':
           description: OK
@@ -127,7 +127,7 @@ paths:
       operationId: getWpcomV2MobileRemoteConfig
       summary: GET /wpcom/v2/mobile/remote-config
       tags:
-      - mobile
+      - Mobile
       responses:
         '200':
           description: OK
@@ -148,7 +148,7 @@ paths:
       operationId: getWpcomV2MobileResolveReaderUrl
       summary: GET /wpcom/v2/mobile/resolve-reader-url
       tags:
-      - mobile
+      - Mobile
       responses:
         '200':
           description: OK
@@ -176,7 +176,7 @@ paths:
       operationId: getWpcomV2MobileShareAppLink
       summary: GET /wpcom/v2/mobile/share-app-link
       tags:
-      - mobile
+      - Mobile
       responses:
         '200':
           description: OK

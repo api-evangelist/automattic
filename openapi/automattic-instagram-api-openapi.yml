@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: instagram
+- name: Instagram
 paths:
   /wpcom/v2/sites/{wpcom_site}/instagram/{token_id}:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteInstagrambyTokenId
       summary: GET /wpcom/v2/sites/{wpcom_site}/instagram/{token_id}
       tags:
-      - instagram
+      - Instagram
       responses:
         '200':
           description: OK
@@ -56,7 +56,7 @@ paths:
       operationId: deleteWpcomV2SitesbyWpcomSiteInstagrambyTokenId
       summary: DELETE /wpcom/v2/sites/{wpcom_site}/instagram/{token_id}
       tags:
-      - instagram
+      - Instagram
       responses:
         '200':
           description: OK
@@ -88,7 +88,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteInstagrambyTokenIdCheckLegacy
       summary: GET /wpcom/v2/sites/{wpcom_site}/instagram/{token_id}/check-legacy
       tags:
-      - instagram
+      - Instagram
       responses:
         '200':
           description: OK
@@ -120,7 +120,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteInstagrambyTokenIdCheckToken
       summary: GET /wpcom/v2/sites/{wpcom_site}/instagram/{token_id}/check-token
       tags:
-      - instagram
+      - Instagram
       responses:
         '200':
           description: OK

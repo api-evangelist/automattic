@@ -14,14 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: global-styles
+- name: global styles
 paths:
   /wp/v2/sites/{wpcom_site}/global-styles/themes/{stylesheet}:
     get:
       operationId: getWpV2SitesbyWpcomSiteGlobalStylesThemesbyStylesheet
       summary: GET /wp/v2/sites/{wpcom_site}/global-styles/themes/{stylesheet}
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -55,7 +55,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGlobalStylesThemesbyStylesheetVariations
       summary: GET /wp/v2/sites/{wpcom_site}/global-styles/themes/{stylesheet}/variations
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -89,7 +89,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGlobalStylesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/global-styles/{id}
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -120,7 +120,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteGlobalStylesbyId
       summary: POST /wp/v2/sites/{wpcom_site}/global-styles/{id}
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -166,7 +166,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteGlobalStylesbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/global-styles/{id}
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -212,7 +212,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteGlobalStylesbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/global-styles/{id}
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -261,7 +261,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGlobalStylesbyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/global-styles/{parent}/revisions
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -325,7 +325,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGlobalStylesbyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/global-styles/{parent}/revisions/{id}
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK
@@ -375,7 +375,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteGlobalStylesStatus
       summary: GET /wpcom/v2/sites/{wpcom_site}/global-styles/status
       tags:
-      - global-styles
+      - global styles
       responses:
         '200':
           description: OK

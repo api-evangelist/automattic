@@ -21,7 +21,7 @@ paths:
   /support/alternates/{site}/posts/{post_ID}:
     get:
       operationId: getSupportAlternatesBySitePostsByPostId
-      summary: Get alternates for support article (by ID).
+      summary: Get alternates for support article (by ID)
       description: Get alternates for support article (by ID).
       tags:
       - alternates

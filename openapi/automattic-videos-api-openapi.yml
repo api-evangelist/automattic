@@ -12,15 +12,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: videos
+- name: Videos
 paths:
   /videos/{guid}:
     get:
       operationId: getVideosByGuid
-      summary: Get the metadata for a specified VideoPress video.
+      summary: Get the metadata for a specified VideoPress video
       description: Get the metadata for a specified VideoPress video.
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -195,10 +195,10 @@ paths:
   /videos/{guid}/chapters:
     get:
       operationId: getVideosByGuidChapters
-      summary: Get the chapters for a specified VideoPress video.
+      summary: Get the chapters for a specified VideoPress video
       description: Get the chapters for a specified VideoPress video.
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -291,10 +291,10 @@ paths:
   /videos/{guid}/playlist/{format}:
     get:
       operationId: getVideosByGuidPlaylistByFormat
-      summary: Get the poster for a specified VideoPress video.
+      summary: Get the poster for a specified VideoPress video
       description: Get the poster for a specified VideoPress video.
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -393,10 +393,10 @@ paths:
   /videos/{guid}/poster:
     get:
       operationId: getVideosByGuidPoster
-      summary: Get the poster for a specified VideoPress video.
+      summary: Get the poster for a specified VideoPress video
       description: Get the poster for a specified VideoPress video.
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -480,10 +480,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postVideosByGuidPoster
-      summary: Upload and set a poster for a specified VideoPress video.
+      summary: Upload and set a poster for a specified VideoPress video
       description: Upload and set a poster for a specified VideoPress video.
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -589,10 +589,10 @@ paths:
   /videos/{guid}/tracks:
     post:
       operationId: postVideosByGuidTracks
-      summary: Upload a subtitle/caption track for a specified VideoPress video.
+      summary: Upload a subtitle/caption track for a specified VideoPress video
       description: Upload a subtitle/caption track for a specified VideoPress video.
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -698,10 +698,10 @@ paths:
   /videos/{guid}/tracks/delete:
     post:
       operationId: postVideosByGuidTracksDelete
-      summary: Delete an existing subtitle/caption track for a specified VideoPress video.
+      summary: Delete an existing subtitle/caption track for a specified VideoPress video
       description: Delete an existing subtitle/caption track for a specified VideoPress video.
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -803,7 +803,7 @@ paths:
       operationId: postWpcomV2Videos
       summary: POST /wpcom/v2/videos
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -846,7 +846,7 @@ paths:
       operationId: putWpcomV2Videos
       summary: PUT /wpcom/v2/videos
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK
@@ -889,7 +889,7 @@ paths:
       operationId: patchWpcomV2Videos
       summary: PATCH /wpcom/v2/videos
       tags:
-      - videos
+      - Videos
       responses:
         '200':
           description: OK

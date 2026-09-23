@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: sidebars
+- name: Sidebars
 paths:
   /wp/v2/sites/{wpcom_site}/sidebars:
     get:
       operationId: getWpV2SitesbyWpcomSiteSidebars
       summary: GET /wp/v2/sites/{wpcom_site}/sidebars
       tags:
-      - sidebars
+      - Sidebars
       responses:
         '200':
           description: OK
@@ -58,7 +58,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteSidebarsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/sidebars/{id}
       tags:
-      - sidebars
+      - Sidebars
       responses:
         '200':
           description: OK
@@ -100,7 +100,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteSidebarsbyId
       summary: POST /wp/v2/sites/{wpcom_site}/sidebars/{id}
       tags:
-      - sidebars
+      - Sidebars
       responses:
         '200':
           description: OK
@@ -141,7 +141,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteSidebarsbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/sidebars/{id}
       tags:
-      - sidebars
+      - Sidebars
       responses:
         '200':
           description: OK
@@ -182,7 +182,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteSidebarsbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/sidebars/{id}
       tags:
-      - sidebars
+      - Sidebars
       responses:
         '200':
           description: OK

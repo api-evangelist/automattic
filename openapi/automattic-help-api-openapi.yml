@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: help
+- name: Help
 paths:
   /wpcom/v2/help/article:
     get:
       operationId: getWpcomV2HelpArticle
       summary: GET /wpcom/v2/help/article
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: getWpcomV2HelpArticlebyBlogIdbyPostId
       summary: GET /wpcom/v2/help/article/{blog_id}/{post_id}
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -79,7 +79,7 @@ paths:
       operationId: getWpcomV2HelpArticles
       summary: GET /wpcom/v2/help/articles
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -113,7 +113,7 @@ paths:
       operationId: postWpcomV2HelpAuthenticateChat
       summary: POST /wpcom/v2/help/authenticate/chat
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -146,7 +146,7 @@ paths:
       operationId: getWpcomV2HelpCourses
       summary: GET /wpcom/v2/help/courses
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -167,7 +167,7 @@ paths:
       operationId: postWpcomV2HelpCsat
       summary: POST /wpcom/v2/help/csat
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -210,7 +210,7 @@ paths:
       operationId: getWpcomV2HelpCta
       summary: GET /wpcom/v2/help/cta
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -231,7 +231,7 @@ paths:
       operationId: postWpcomV2HelpForumNew
       summary: POST /wpcom/v2/help/forum/new
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -280,7 +280,7 @@ paths:
       operationId: getWpcomV2HelpMessagingIsAvailable
       summary: GET /wpcom/v2/help/messaging/is-available
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -312,7 +312,7 @@ paths:
       operationId: postWpcomV2HelpMigrationTicketNew
       summary: POST /wpcom/v2/help/migration-ticket/new
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -352,7 +352,7 @@ paths:
       operationId: postWpcomV2HelpMigrationTicketSiteInfo
       summary: POST /wpcom/v2/help/migration-ticket/site-info
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -390,7 +390,7 @@ paths:
       operationId: postWpcomV2HelpMigrationTicketStickers
       summary: POST /wpcom/v2/help/migration-ticket/stickers
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -425,7 +425,7 @@ paths:
       operationId: getWpcomV2HelpSearch
       summary: GET /wpcom/v2/help/search
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -472,7 +472,7 @@ paths:
       operationId: getWpcomV2HelpSearchForums
       summary: GET /wpcom/v2/help/search/forums
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -507,7 +507,7 @@ paths:
       operationId: getWpcomV2HelpSearchWpcom
       summary: GET /wpcom/v2/help/search/wpcom
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -548,7 +548,7 @@ paths:
       operationId: getWpcomV2HelpSibyl
       summary: GET /wpcom/v2/help/sibyl
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -583,7 +583,7 @@ paths:
       operationId: getWpcomV2HelpSupportStatus
       summary: GET /wpcom/v2/help/support-status
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -604,7 +604,7 @@ paths:
       operationId: getWpcomV2HelpSupportStatusMessaging
       summary: GET /wpcom/v2/help/support-status/messaging
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -644,7 +644,7 @@ paths:
       operationId: postWpcomV2HelpTicketNew
       summary: POST /wpcom/v2/help/ticket/new
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -692,7 +692,7 @@ paths:
       operationId: postWpcomV2HelpWpeMigrationTicketNew
       summary: POST /wpcom/v2/help/wpe-migration-ticket/new
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -729,7 +729,7 @@ paths:
       operationId: getWpcomV2HelpZendeskAi
       summary: GET /wpcom/v2/help/zendesk/ai
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -766,7 +766,7 @@ paths:
       operationId: postWpcomV2HelpZendeskUpdateUserFields
       summary: POST /wpcom/v2/help/zendesk/update-user-fields
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -796,7 +796,7 @@ paths:
       operationId: putWpcomV2HelpZendeskUpdateUserFields
       summary: PUT /wpcom/v2/help/zendesk/update-user-fields
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK
@@ -826,7 +826,7 @@ paths:
       operationId: patchWpcomV2HelpZendeskUpdateUserFields
       summary: PATCH /wpcom/v2/help/zendesk/update-user-fields
       tags:
-      - help
+      - Help
       responses:
         '200':
           description: OK

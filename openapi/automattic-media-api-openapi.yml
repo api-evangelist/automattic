@@ -13,15 +13,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: media
+- name: Media
 paths:
   /sites/{site}/media/:
     get:
       operationId: getSitesBySiteMedia
-      summary: Get a list of items in the media library.
+      summary: Get a list of items in the media library
       description: Get a list of items in the media library.
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -190,10 +190,10 @@ paths:
   /sites/{site}/media/new:
     post:
       operationId: postSitesBySiteMediaNew
-      summary: Upload a new piece of media.
+      summary: Upload a new piece of media
       description: Upload a new piece of media.
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -303,10 +303,10 @@ paths:
   /sites/{site}/media/{media_ID}:
     get:
       operationId: getSitesBySiteMediaByMediaId
-      summary: Get a single media item (by ID).
+      summary: Get a single media item (by ID)
       description: Get a single media item (by ID).
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -464,10 +464,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteMediaByMediaId
-      summary: Edit basic information about a media item.
+      summary: Edit basic information about a media item
       description: Edit basic information about a media item.
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -671,10 +671,10 @@ paths:
   /sites/{site}/media/{media_ID}/delete:
     post:
       operationId: postSitesBySiteMediaByMediaIdDelete
-      summary: 'Delete a piece of media. Note: Media is deleted and not trashed.'
+      summary: 'Delete a piece of media. Note: Media is deleted and not trashed'
       description: 'Delete a piece of media. Note: Media is deleted and not trashed.'
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -829,10 +829,10 @@ paths:
   /sites/{site}/media/{media_ID}/edit:
     post:
       operationId: postSitesBySiteMediaByMediaIdEdit
-      summary: Edit a media item.
+      summary: Edit a media item
       description: Edit a media item.
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1026,7 +1026,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteMedia
       summary: GET /wp/v2/sites/{wpcom_site}/media
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1249,7 +1249,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMedia
       summary: POST /wp/v2/sites/{wpcom_site}/media
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1368,7 +1368,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteMediabyId
       summary: GET /wp/v2/sites/{wpcom_site}/media/{id}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1410,7 +1410,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMediabyId
       summary: POST /wp/v2/sites/{wpcom_site}/media/{id}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1519,7 +1519,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteMediabyId
       summary: PUT /wp/v2/sites/{wpcom_site}/media/{id}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1628,7 +1628,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteMediabyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/media/{id}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1737,7 +1737,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteMediabyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/media/{id}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1778,7 +1778,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMediabyIdEdit
       summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/edit
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1859,7 +1859,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMediabyIdFinalize
       summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/finalize
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1905,7 +1905,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMediabyIdPostProcess
       summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/post-process
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -1951,7 +1951,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMediabyIdSideload
       summary: POST /wp/v2/sites/{wpcom_site}/media/{id}/sideload
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2002,7 +2002,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteMediaVideopressPlaybackJwtbyGuid
       summary: POST /wpcom/v2/sites/{wpcom_site}/media/videopress-playback-jwt/{guid}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2033,7 +2033,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteMediaVideopressPlaybackJwtbyGuid
       summary: PUT /wpcom/v2/sites/{wpcom_site}/media/videopress-playback-jwt/{guid}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2064,7 +2064,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteMediaVideopressPlaybackJwtbyGuid
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/media/videopress-playback-jwt/{guid}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2098,7 +2098,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteMediaVideopressPrivacyDetailsbyGuid
       summary: POST /wpcom/v2/sites/{wpcom_site}/media/videopress-privacy-details/{guid}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2129,7 +2129,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteMediaVideopressPrivacyDetailsbyGuid
       summary: PUT /wpcom/v2/sites/{wpcom_site}/media/videopress-privacy-details/{guid}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2160,7 +2160,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteMediaVideopressPrivacyDetailsbyGuid
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/media/videopress-privacy-details/{guid}
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2194,7 +2194,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteMediaVideopressUploadJwt
       summary: POST /wpcom/v2/sites/{wpcom_site}/media/videopress-upload-jwt
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2220,7 +2220,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteMediaVideopressUploadJwt
       summary: PUT /wpcom/v2/sites/{wpcom_site}/media/videopress-upload-jwt
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK
@@ -2246,7 +2246,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteMediaVideopressUploadJwt
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/media/videopress-upload-jwt
       tags:
-      - media
+      - Media
       responses:
         '200':
           description: OK

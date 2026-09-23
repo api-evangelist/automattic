@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: podcast
+- name: Podcast
 paths:
   /wpcom/v2/sites/{wpcom_site}/podcast/settings:
     get:
       operationId: getWpcomV2SitesbyWpcomSitePodcastSettings
       summary: GET /wpcom/v2/sites/{wpcom_site}/podcast/settings
       tags:
-      - podcast
+      - Podcast
       responses:
         '200':
           description: OK
@@ -46,7 +46,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSitePodcastSettings
       summary: POST /wpcom/v2/sites/{wpcom_site}/podcast/settings
       tags:
-      - podcast
+      - Podcast
       responses:
         '200':
           description: OK
@@ -106,7 +106,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSitePodcastSettings
       summary: PUT /wpcom/v2/sites/{wpcom_site}/podcast/settings
       tags:
-      - podcast
+      - Podcast
       responses:
         '200':
           description: OK
@@ -166,7 +166,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSitePodcastSettings
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/podcast/settings
       tags:
-      - podcast
+      - Podcast
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: editor
+- name: Editor
 paths:
   /wpcom/v2/sites/{wpcom_site}/editor/redirect:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteEditorRedirect
       summary: GET /wpcom/v2/sites/{wpcom_site}/editor/redirect
       tags:
-      - editor
+      - Editor
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: emails
+- name: Emails
 paths:
   /wpcom/v2/emails/titan/{account_id}/control-panel-auto-login-url:
     get:
       operationId: getWpcomV2EmailsTitanbyAccountIdControlPanelAutoLoginUrl
       summary: GET /wpcom/v2/emails/titan/{account_id}/control-panel-auto-login-url
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: getWpcomV2EmailsTitanbyAccountIdControlPanelIframeUrl
       summary: GET /wpcom/v2/emails/titan/{account_id}/control-panel-iframe-url
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -74,7 +74,7 @@ paths:
       operationId: getWpcomV2EmailsTitanbyDomainCheckMailboxAvailabilitybyMailbox
       summary: GET /wpcom/v2/emails/titan/{domain}/check-mailbox-availability/{mailbox}
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -106,7 +106,7 @@ paths:
       operationId: postWpcomV2EmailsTitanbyDomainMailboxCreate
       summary: POST /wpcom/v2/emails/titan/{domain}/mailbox/create
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -160,7 +160,7 @@ paths:
       operationId: deleteWpcomV2EmailsTitanbyDomainMailboxbyMailbox
       summary: DELETE /wpcom/v2/emails/titan/{domain}/mailbox/{mailbox}
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -192,7 +192,7 @@ paths:
       operationId: getWpcomV2EmailsTitanbyDomainOrderProvisioningUrl
       summary: GET /wpcom/v2/emails/titan/{domain}/order-provisioning-url
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -219,7 +219,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteEmailsAccountsbyDomain
       summary: GET /wpcom/v2/sites/{wpcom_site}/emails/accounts/{domain}
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -251,7 +251,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteEmailsAccountsbyDomainMailboxes
       summary: GET /wpcom/v2/sites/{wpcom_site}/emails/accounts/{domain}/mailboxes
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -283,7 +283,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteEmailsDomains
       summary: GET /wpcom/v2/sites/{wpcom_site}/emails/domains
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK
@@ -310,7 +310,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteEmailsMailboxes
       summary: GET /wpcom/v2/sites/{wpcom_site}/emails/mailboxes
       tags:
-      - emails
+      - Emails
       responses:
         '200':
           description: OK

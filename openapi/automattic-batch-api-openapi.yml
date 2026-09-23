@@ -17,15 +17,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: batch
+- name: Batch
 paths:
   /batch/:
     get:
       operationId: getBatch
-      summary: Run several GET endpoints and return them as an array.
+      summary: Run several GET endpoints and return them as an array
       description: Run several GET endpoints and return them as an array.
       tags:
-      - batch
+      - Batch
       responses:
         '200':
           description: OK

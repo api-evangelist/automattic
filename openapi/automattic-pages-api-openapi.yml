@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: pages
+- name: Pages
 paths:
   /wp/v2/sites/{wpcom_site}/pages:
     get:
       operationId: getWpV2SitesbyWpcomSitePages
       summary: GET /wp/v2/sites/{wpcom_site}/pages
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -241,7 +241,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePages
       summary: POST /wp/v2/sites/{wpcom_site}/pages
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -344,7 +344,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePagesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -398,7 +398,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePagesbyId
       summary: POST /wp/v2/sites/{wpcom_site}/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -505,7 +505,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSitePagesbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -612,7 +612,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSitePagesbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -719,7 +719,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSitePagesbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/pages/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -758,7 +758,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePagesbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/pages/{id}/autosaves
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -806,7 +806,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSitePagesbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/pages/{id}/autosaves
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -914,7 +914,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePagesbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/pages/{parent}/autosaves/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -962,7 +962,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePagesbyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/pages/{parent}/revisions
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -1073,7 +1073,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSitePagesbyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/pages/{parent}/revisions/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK
@@ -1120,7 +1120,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSitePagesbyParentRevisionsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/pages/{parent}/revisions/{id}
       tags:
-      - pages
+      - Pages
       responses:
         '200':
           description: OK

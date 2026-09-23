@@ -14,15 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: people
+- name: People
 paths:
   /sites/{site}/followers:
     get:
       operationId: getSitesBySiteFollowers
       summary: View a site's followers
-      description: View a site's followers
       tags:
-      - people
+      - People
       responses:
         '200':
           description: OK
@@ -148,9 +147,8 @@ paths:
     get:
       operationId: getSitesBySiteFollowersBySubscriberId
       summary: View a site's follower or subscriber
-      description: View a site's follower or subscriber
       tags:
-      - people
+      - People
       responses:
         '200':
           description: OK

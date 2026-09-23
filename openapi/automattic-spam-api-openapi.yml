@@ -16,9 +16,7 @@ paths:
     post:
       operationId: postCommentCheck
       summary: Check comment for spam
-      description: 'Checks a comment against the Akismet spam database to determine if it is spam or not.
-
-        '
+      description: Checks a comment against the Akismet spam database to determine if it is spam or not.
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -59,9 +57,7 @@ paths:
     post:
       operationId: postSubmitSpam
       summary: Submit spam
-      description: 'Submits a comment as spam to Akismet for retraining.
-
-        '
+      description: Submits a comment as spam to Akismet for retraining.
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -76,9 +72,7 @@ paths:
     post:
       operationId: postSubmitHam
       summary: Submit ham (false positives)
-      description: 'Submits a false positive (legitimate comment marked as spam) to Akismet for training purposes.
-
-        '
+      description: Submits a false positive (legitimate comment marked as spam) to Akismet for training purposes.
       requestBody:
         content:
           application/x-www-form-urlencoded:
@@ -159,6 +153,11 @@ components:
       - api_key
       - blog
       - user_ip
+  headers:
+    DebugHelpHeader:
+      description: Extra context for any error that has occurred.
+      schema:
+        type: string
   responses:
     ThanksResponse:
       description: Successful submission
@@ -169,11 +168,6 @@ components:
           examples:
             thanks:
               value: Thanks for making the web a better place.
-  headers:
-    DebugHelpHeader:
-      description: Extra context for any error that has occurred.
-      schema:
-        type: string
 externalDocs:
   description: Akismet Developers Documentation
   url: https://akismet.com/developers

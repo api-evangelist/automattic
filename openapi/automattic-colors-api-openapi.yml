@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: colors
+- name: Colors
 paths:
   /wpcom/v2/colors/palettes:
     get:
       operationId: getWpcomV2ColorsPalettes
       summary: GET /wpcom/v2/colors/palettes
       tags:
-      - colors
+      - Colors
       responses:
         '200':
           description: OK
@@ -62,7 +62,7 @@ paths:
       operationId: getWpcomV2ColorsPalettesbyId
       summary: GET /wpcom/v2/colors/palettes/{id}
       tags:
-      - colors
+      - Colors
       responses:
         '200':
           description: OK
@@ -89,7 +89,7 @@ paths:
       operationId: getWpcomV2ColorsPatterns
       summary: GET /wpcom/v2/colors/patterns
       tags:
-      - colors
+      - Colors
       responses:
         '200':
           description: OK
@@ -126,7 +126,7 @@ paths:
       operationId: getWpcomV2ColorsPatternsbyId
       summary: GET /wpcom/v2/colors/patterns/{id}
       tags:
-      - colors
+      - Colors
       responses:
         '200':
           description: OK

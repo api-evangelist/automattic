@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: settings
+- name: Settings
 paths:
   /wp/v2/sites/{wpcom_site}/settings:
     get:
       operationId: getWpV2SitesbyWpcomSiteSettings
       summary: GET /wp/v2/sites/{wpcom_site}/settings
       tags:
-      - settings
+      - Settings
       responses:
         '200':
           description: OK
@@ -46,7 +46,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteSettings
       summary: POST /wp/v2/sites/{wpcom_site}/settings
       tags:
-      - settings
+      - Settings
       responses:
         '200':
           description: OK
@@ -164,7 +164,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteSettings
       summary: PUT /wp/v2/sites/{wpcom_site}/settings
       tags:
-      - settings
+      - Settings
       responses:
         '200':
           description: OK
@@ -282,7 +282,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteSettings
       summary: PATCH /wp/v2/sites/{wpcom_site}/settings
       tags:
-      - settings
+      - Settings
       responses:
         '200':
           description: OK

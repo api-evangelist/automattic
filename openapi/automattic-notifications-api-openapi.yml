@@ -12,15 +12,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: notifications
+- name: Notifications
 paths:
   /notifications/read:
     post:
       operationId: postNotificationsRead
-      summary: Mark a set of notifications as read.
+      summary: Mark a set of notifications as read
       description: Mark a set of notifications as read.
       tags:
-      - notifications
+      - Notifications
       responses:
         '200':
           description: OK
@@ -116,10 +116,10 @@ paths:
   /notifications/seen:
     post:
       operationId: postNotificationsSeen
-      summary: Set the timestamp of the most recently seen notification.
+      summary: Set the timestamp of the most recently seen notification
       description: Set the timestamp of the most recently seen notification.
       tags:
-      - notifications
+      - Notifications
       responses:
         '200':
           description: OK
@@ -215,7 +215,7 @@ paths:
       operationId: postWpcomV2Notifications
       summary: POST /wpcom/v2/notifications
       tags:
-      - notifications
+      - Notifications
       responses:
         '200':
           description: OK

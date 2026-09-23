@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: segments
+- name: Segments
 paths:
   /wpcom/v2/segments:
     get:
       operationId: getWpcomV2Segments
       summary: GET /wpcom/v2/segments
       tags:
-      - segments
+      - Segments
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: wp-v2
+- name: wp/v2
 paths:
   /wp/v2:
     get:
       operationId: getWpV2
       summary: GET /wp/v2
       tags:
-      - wp-v2
+      - wp/v2
       responses:
         '200':
           description: OK
@@ -52,7 +52,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSite
       summary: GET /wp/v2/sites/{wpcom_site}
       tags:
-      - wp-v2
+      - wp/v2
       responses:
         '200':
           description: OK

@@ -283,7 +283,7 @@ paths:
   /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/cancel:
     post:
       operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdCancel
-      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/cancel
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/c…
       tags:
       - concierge
       responses:
@@ -324,7 +324,7 @@ paths:
   /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/detail:
     get:
       operationId: getWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdDetail
-      summary: GET /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/detail
+      summary: GET /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/de…
       tags:
       - concierge
       responses:
@@ -356,7 +356,7 @@ paths:
   /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reassign:
     post:
       operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdReassign
-      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reassign
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/r…
       tags:
       - concierge
       responses:
@@ -400,7 +400,7 @@ paths:
   /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reschedule:
     post:
       operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdReschedule
-      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/reschedule
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/r…
       tags:
       - concierge
       responses:
@@ -444,7 +444,7 @@ paths:
   /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/update-conference-link:
     post:
       operationId: postWpcomV2ConciergeSchedulesbyScheduleIdAppointmentsbyAppointmentIdUpdateConferenceLink
-      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/update-conference-link
+      summary: POST /wpcom/v2/concierge/schedules/{schedule_id}/appointments/{appointment_id}/u…
       tags:
       - concierge
       responses:

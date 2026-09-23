@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: hello
+- name: Hello
 paths:
   /wpcom/v2/sites/{wpcom_site}/hello:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteHello
       summary: GET /wpcom/v2/sites/{wpcom_site}/hello
       tags:
-      - hello
+      - Hello
       responses:
         '200':
           description: OK

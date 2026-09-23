@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: ai
+- name: AI
 paths:
   /wpcom/v2/ai/agent/{agent_id}:
     post:
       operationId: postWpcomV2AiAgentbyAgentId
       summary: POST /wpcom/v2/ai/agent/{agent_id}
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: getWpcomV2AiAgentbyAgentIdSites
       summary: GET /wpcom/v2/ai/agent/{agent_id}/sites
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -74,7 +74,7 @@ paths:
       operationId: getWpcomV2AiBots
       summary: GET /wpcom/v2/ai/bots
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -141,7 +141,7 @@ paths:
       operationId: postWpcomV2AiBots
       summary: POST /wpcom/v2/ai/bots
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -239,7 +239,7 @@ paths:
       operationId: getWpcomV2AiBotsbySlug
       summary: GET /wpcom/v2/ai/bots/{slug}
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -272,7 +272,7 @@ paths:
       operationId: getWpcomV2AiBotsbySlugVersions
       summary: GET /wpcom/v2/ai/bots/{slug}/versions
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -305,7 +305,7 @@ paths:
       operationId: postWpcomV2AiBotsbySlugVersions
       summary: POST /wpcom/v2/ai/bots/{slug}/versions
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -369,7 +369,7 @@ paths:
       operationId: getWpcomV2AiBotsbySlugVersionsbyVersion
       summary: GET /wpcom/v2/ai/bots/{slug}/versions/{version}
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -401,7 +401,7 @@ paths:
       operationId: postWpcomV2AiBotsbySlugVersionsbyVersionStatus
       summary: POST /wpcom/v2/ai/bots/{slug}/versions/{version}/status
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -456,7 +456,7 @@ paths:
       operationId: getWpcomV2AiChatbyBotIdbyChatId
       summary: GET /wpcom/v2/ai/chat/{bot_id}/{chat_id}
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -508,7 +508,7 @@ paths:
       operationId: getWpcomV2AiChatsbyBotIds
       summary: GET /wpcom/v2/ai/chats/{bot_ids}
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -552,7 +552,7 @@ paths:
       operationId: getWpcomV2AiChatsbyBotId
       summary: GET /wpcom/v2/ai/chats/{bot_id}
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -596,7 +596,7 @@ paths:
       operationId: getWpcomV2AiDaiWorkspaces
       summary: GET /wpcom/v2/ai/dai/workspaces
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -617,7 +617,7 @@ paths:
       operationId: postWpcomV2AiFeedbackbySessionUuidRate
       summary: POST /wpcom/v2/ai/feedback/{session_uuid}/rate
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -666,7 +666,7 @@ paths:
       operationId: postWpcomV2AiFeedbackbySessionUuidText
       summary: POST /wpcom/v2/ai/feedback/{session_uuid}/text
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -715,7 +715,7 @@ paths:
       operationId: postWpcomV2AiJwt
       summary: POST /wpcom/v2/ai/jwt
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -744,7 +744,7 @@ paths:
       operationId: postWpcomV2SitesbySiteIdAiAgentbyAgentId
       summary: POST /wpcom/v2/sites/{site_id}/ai/agent/{agent_id}
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -776,7 +776,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAiAssetbyJwtDownload
       summary: GET /wpcom/v2/sites/{wpcom_site}/ai/asset/{jwt}/download
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK
@@ -808,7 +808,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteAiTranscription
       summary: POST /wpcom/v2/sites/{wpcom_site}/ai/transcription
       tags:
-      - ai
+      - AI
       responses:
         '200':
           description: OK

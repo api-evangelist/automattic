@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: widget-types
+- name: widget types
 paths:
   /wp/v2/sites/{wpcom_site}/widget-types:
     get:
       operationId: getWpV2SitesbyWpcomSiteWidgetTypes
       summary: GET /wp/v2/sites/{wpcom_site}/widget-types
       tags:
-      - widget-types
+      - widget types
       responses:
         '200':
           description: OK
@@ -58,7 +58,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteWidgetTypesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/widget-types/{id}
       tags:
-      - widget-types
+      - widget types
       responses:
         '200':
           description: OK
@@ -101,7 +101,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteWidgetTypesbyIdEncode
       summary: POST /wp/v2/sites/{wpcom_site}/widget-types/{id}/encode
       tags:
-      - widget-types
+      - widget types
       responses:
         '200':
           description: OK
@@ -145,7 +145,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteWidgetTypesbyIdRender
       summary: POST /wp/v2/sites/{wpcom_site}/widget-types/{id}/render
       tags:
-      - widget-types
+      - widget types
       responses:
         '200':
           description: OK

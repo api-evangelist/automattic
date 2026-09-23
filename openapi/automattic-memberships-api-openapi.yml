@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: memberships
+- name: Memberships
 paths:
   /wpcom/v2/sites/{wpcom_site}/memberships/comp/{comp_id}:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteMembershipsCompbyCompId
       summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/comp/{comp_id}
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -51,7 +51,7 @@ paths:
       operationId: deleteWpcomV2SitesbyWpcomSiteMembershipsCompbyCompId
       summary: DELETE /wpcom/v2/sites/{wpcom_site}/memberships/comp/{comp_id}
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -83,7 +83,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteMembershipsComps
       summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/comps
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -110,7 +110,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteMembershipsCompsbyUserIdbyPlanId
       summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/comps/{user_id}/{plan_id}
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -157,7 +157,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteMembershipsCouponbyCouponId
       summary: PUT /wpcom/v2/sites/{wpcom_site}/memberships/coupon/{coupon_id}
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -243,7 +243,7 @@ paths:
       operationId: deleteWpcomV2SitesbyWpcomSiteMembershipsCouponbyCouponId
       summary: DELETE /wpcom/v2/sites/{wpcom_site}/memberships/coupon/{coupon_id}
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -280,7 +280,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteMembershipsCoupons
       summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/coupons
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -361,7 +361,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteMembershipsCoupons
       summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/coupons
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -388,7 +388,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteMembershipsCouponsApply
       summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/coupons/apply
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -435,7 +435,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteMembershipsEarnings
       summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/earnings
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -465,9 +465,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/get_subscriptions:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteMembershipsSubscriberImporterGetSubscriptions
-      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/get_subscriptions
+      summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/get_subscriptio…
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -494,7 +494,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteMembershipsSubscriberImporterImport
       summary: POST /wpcom/v2/sites/{wpcom_site}/memberships/subscriber-importer/import
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK
@@ -543,7 +543,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteMembershipsSubscribers
       summary: GET /wpcom/v2/sites/{wpcom_site}/memberships/subscribers
       tags:
-      - memberships
+      - Memberships
       responses:
         '200':
           description: OK

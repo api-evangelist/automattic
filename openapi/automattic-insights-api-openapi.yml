@@ -14,15 +14,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: insights
+- name: Insights
 paths:
   /insights:
     get:
       operationId: getInsights
-      summary: Get a list of stats/metrics/insights that the current user has access to.
+      summary: Get a list of stats/metrics/insights that the current user has access to
       description: Get a list of stats/metrics/insights that the current user has access to.
       tags:
-      - insights
+      - Insights
       responses:
         '200':
           description: OK
@@ -115,10 +115,10 @@ paths:
   /insights/{slug}:
     get:
       operationId: getInsightsBySlug
-      summary: Get raw data for a particular graph.
+      summary: Get raw data for a particular graph
       description: Get raw data for a particular graph.
       tags:
-      - insights
+      - Insights
       responses:
         '200':
           description: OK

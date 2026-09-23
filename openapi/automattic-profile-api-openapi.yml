@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: profile
+- name: Profile
 paths:
   /wpcom/v2/sites/{wpcom_site}/profile:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteProfile
       summary: GET /wpcom/v2/sites/{wpcom_site}/profile
       tags:
-      - profile
+      - Profile
       responses:
         '200':
           description: OK

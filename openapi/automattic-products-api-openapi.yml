@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: products
+- name: Products
 paths:
   /wpcom/v2/products:
     get:
       operationId: getWpcomV2Products
       summary: GET /wpcom/v2/products
       tags:
-      - products
+      - Products
       responses:
         '200':
           description: OK

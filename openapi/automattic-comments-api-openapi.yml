@@ -13,15 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: comments
+- name: Comments
 paths:
   /sites/{site}/comment-counts:
     get:
       operationId: getSitesBySiteCommentCounts
       summary: Get comment counts for each available status
-      description: Get comment counts for each available status
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -133,9 +132,8 @@ paths:
     get:
       operationId: getSitesBySiteCommentHistoryByCommentId
       summary: Get the audit history for given comment
-      description: Get the audit history for given comment
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -229,10 +227,10 @@ paths:
   /sites/{site}/comments/:
     get:
       operationId: getSitesBySiteComments
-      summary: Get a list of recent comments.
+      summary: Get a list of recent comments
       description: Get a list of recent comments.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -403,10 +401,10 @@ paths:
   /sites/{site}/comments/{comment_ID}:
     get:
       operationId: getSitesBySiteCommentsByCommentId
-      summary: Get a single comment.
+      summary: Get a single comment
       description: Get a single comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -554,10 +552,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteCommentsByCommentId
-      summary: Edit a comment.
+      summary: Edit a comment
       description: Edit a comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -741,10 +739,10 @@ paths:
   /sites/{site}/comments/{comment_ID}/delete:
     post:
       operationId: postSitesBySiteCommentsByCommentIdDelete
-      summary: Delete a comment.
+      summary: Delete a comment
       description: Delete a comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -896,10 +894,10 @@ paths:
   /sites/{site}/comments/{comment_ID}/likes/:
     get:
       operationId: getSitesBySiteCommentsByCommentIdLikes
-      summary: Get the likes for a comment.
+      summary: Get the likes for a comment
       description: Get the likes for a comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -993,10 +991,10 @@ paths:
   /sites/{site}/comments/{comment_ID}/likes/mine/:
     get:
       operationId: getSitesBySiteCommentsByCommentIdLikesMine
-      summary: Get your like status for a comment.
+      summary: Get your like status for a comment
       description: Get your like status for a comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -1086,10 +1084,10 @@ paths:
   /sites/{site}/comments/{comment_ID}/likes/mine/delete:
     post:
       operationId: postSitesBySiteCommentsByCommentIdLikesMineDelete
-      summary: Remove your like from a comment.
+      summary: Remove your like from a comment
       description: Remove your like from a comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -1182,10 +1180,10 @@ paths:
   /sites/{site}/comments/{comment_ID}/likes/new:
     post:
       operationId: postSitesBySiteCommentsByCommentIdLikesNew
-      summary: Like a comment.
+      summary: Like a comment
       description: Like a comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -1278,10 +1276,10 @@ paths:
   /sites/{site}/comments/{comment_ID}/replies/new:
     post:
       operationId: postSitesBySiteCommentsByCommentIdRepliesNew
-      summary: Create a comment as a reply to another comment.
+      summary: Create a comment as a reply to another comment
       description: Create a comment as a reply to another comment.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -1442,10 +1440,10 @@ paths:
   /sites/{site}/posts/{post_ID}/replies/:
     get:
       operationId: getSitesBySitePostsByPostIdReplies
-      summary: Get a list of recent comments on a post.
+      summary: Get a list of recent comments on a post
       description: Get a list of recent comments on a post.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -1622,10 +1620,10 @@ paths:
   /sites/{site}/posts/{post_ID}/replies/new:
     post:
       operationId: postSitesBySitePostsByPostIdRepliesNew
-      summary: Create a comment on a post.
+      summary: Create a comment on a post
       description: Create a comment on a post.
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -1788,7 +1786,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteComments
       summary: GET /wp/v2/sites/{wpcom_site}/comments
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -1978,7 +1976,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteComments
       summary: POST /wp/v2/sites/{wpcom_site}/comments
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -2059,7 +2057,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteCommentsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/comments/{id}
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -2107,7 +2105,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteCommentsbyId
       summary: POST /wp/v2/sites/{wpcom_site}/comments/{id}
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -2188,7 +2186,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteCommentsbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/comments/{id}
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -2269,7 +2267,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteCommentsbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/comments/{id}
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK
@@ -2350,7 +2348,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteCommentsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/comments/{id}
       tags:
-      - comments
+      - Comments
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: templates
+- name: Templates
 paths:
   /wp/v2/sites/{wpcom_site}/templates:
     get:
       operationId: getWpV2SitesbyWpcomSiteTemplates
       summary: GET /wp/v2/sites/{wpcom_site}/templates
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -75,7 +75,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteTemplates
       summary: POST /wp/v2/sites/{wpcom_site}/templates
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -145,7 +145,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatesLookup
       summary: GET /wp/v2/sites/{wpcom_site}/templates/lookup
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -190,7 +190,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/templates/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -232,7 +232,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteTemplatesbyId
       summary: POST /wp/v2/sites/{wpcom_site}/templates/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -300,7 +300,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteTemplatesbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/templates/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -368,7 +368,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteTemplatesbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/templates/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -436,7 +436,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteTemplatesbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/templates/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -475,7 +475,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatesbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/templates/{id}/autosaves
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -517,7 +517,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteTemplatesbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/templates/{id}/autosaves
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -586,7 +586,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatesbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/templates/{parent}/autosaves/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -634,7 +634,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatesbyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/templates/{parent}/revisions
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -745,7 +745,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatesbyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/templates/{parent}/revisions/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK
@@ -792,7 +792,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteTemplatesbyParentRevisionsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/templates/{parent}/revisions/{id}
       tags:
-      - templates
+      - Templates
       responses:
         '200':
           description: OK

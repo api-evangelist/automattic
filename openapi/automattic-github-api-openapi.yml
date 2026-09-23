@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: github
+- name: Github
 paths:
   /wpcom/v2/github:
     post:
       operationId: postWpcomV2Github
       summary: POST /wpcom/v2/github
       tags:
-      - github
+      - Github
       responses:
         '200':
           description: OK
@@ -41,7 +41,7 @@ paths:
       operationId: postWpcomV2GithubCommitEmailValidator
       summary: POST /wpcom/v2/github/commit-email-validator
       tags:
-      - github
+      - Github
       responses:
         '200':
           description: OK

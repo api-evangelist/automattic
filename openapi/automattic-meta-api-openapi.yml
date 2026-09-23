@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: meta
+- name: Meta
 paths:
   /wpcom/v2/meta/external-media/connection/{service}:
     get:
       operationId: getWpcomV2MetaExternalMediaConnectionbyService
       summary: GET /wpcom/v2/meta/external-media/connection/{service}
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK
@@ -46,7 +46,7 @@ paths:
       operationId: deleteWpcomV2MetaExternalMediaConnectionbyService
       summary: DELETE /wpcom/v2/meta/external-media/connection/{service}
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK
@@ -73,7 +73,7 @@ paths:
       operationId: getWpcomV2MetaExternalMediaConnectionbyServicePickerStatus
       summary: GET /wpcom/v2/meta/external-media/connection/{service}/picker_status
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK
@@ -100,7 +100,7 @@ paths:
       operationId: postWpcomV2MetaExternalMediaProxybyService
       summary: POST /wpcom/v2/meta/external-media/proxy/{service}
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK
@@ -137,7 +137,7 @@ paths:
       operationId: postWpcomV2MetaExternalMediaSessionbyService
       summary: POST /wpcom/v2/meta/external-media/session/{service}
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK
@@ -164,7 +164,7 @@ paths:
       operationId: getWpcomV2MetaExternalMediaSessionbyServicebySessionId
       summary: GET /wpcom/v2/meta/external-media/session/{service}/{session_id}
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK
@@ -195,7 +195,7 @@ paths:
       operationId: deleteWpcomV2MetaExternalMediaSessionbyServicebySessionId
       summary: DELETE /wpcom/v2/meta/external-media/session/{service}/{session_id}
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK
@@ -227,7 +227,7 @@ paths:
       operationId: getWpcomV2MetaExternalMediabyService
       summary: GET /wpcom/v2/meta/external-media/{service}
       tags:
-      - meta
+      - Meta
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: statuses
+- name: Statuses
 paths:
   /wp/v2/sites/{wpcom_site}/statuses:
     get:
       operationId: getWpV2SitesbyWpcomSiteStatuses
       summary: GET /wp/v2/sites/{wpcom_site}/statuses
       tags:
-      - statuses
+      - Statuses
       responses:
         '200':
           description: OK
@@ -58,7 +58,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteStatusesbyStatus
       summary: GET /wp/v2/sites/{wpcom_site}/statuses/{status}
       tags:
-      - statuses
+      - Statuses
       responses:
         '200':
           description: OK

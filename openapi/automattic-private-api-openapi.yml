@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: private
+- name: Private
 paths:
   /wpcom/v2/sites/{wpcom_site}/private/media/{jwt}/download:
     get:
       operationId: getWpcomV2SitesbyWpcomSitePrivateMediabyJwtDownload
       summary: GET /wpcom/v2/sites/{wpcom_site}/private/media/{jwt}/download
       tags:
-      - private
+      - Private
       responses:
         '200':
           description: OK

@@ -14,15 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: read
+- name: Read
 paths:
   /read/email-settings/:
     get:
       operationId: getReadEmailSettings
       summary: Returns the email settings
-      description: Returns the email settings
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -102,9 +101,8 @@ paths:
     post:
       operationId: postReadEmailSettings
       summary: Returns the email settings
-      description: Returns the email settings
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -208,10 +206,10 @@ paths:
   /read/feed/:
     get:
       operationId: getReadFeed
-      summary: Get the ID and subscribe URL of one or more matching feeds by domain or URL.
+      summary: Get the ID and subscribe URL of one or more matching feeds by domain or URL
       description: Get the ID and subscribe URL of one or more matching feeds by domain or URL.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -341,10 +339,10 @@ paths:
   /read/feed/{feed_url_or_id}:
     get:
       operationId: getReadFeedByFeedUrlOrId
-      summary: Get details about a feed.
+      summary: Get details about a feed
       description: Get details about a feed.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -461,10 +459,10 @@ paths:
   /read/following/:
     get:
       operationId: getReadFollowing
-      summary: Get a list of posts from the blogs a user follows.
+      summary: Get a list of posts from the blogs a user follows
       description: Get a list of posts from the blogs a user follows.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -729,10 +727,10 @@ paths:
   /read/following/mine:
     get:
       operationId: getReadFollowingMine
-      summary: Get a list of the feeds the user is following.
+      summary: Get a list of the feeds the user is following
       description: Get a list of the feeds the user is following.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -814,10 +812,10 @@ paths:
   /read/following/mine/delete:
     post:
       operationId: postReadFollowingMineDelete
-      summary: Unfollow the specified blog.
+      summary: Unfollow the specified blog
       description: Unfollow the specified blog.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -929,10 +927,10 @@ paths:
   /read/following/mine/new:
     post:
       operationId: postReadFollowingMineNew
-      summary: Follow the specified blog.
+      summary: Follow the specified blog
       description: Follow the specified blog.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -1038,10 +1036,10 @@ paths:
   /read/liked/:
     get:
       operationId: getReadLiked
-      summary: Get a list of posts from the blogs a user likes.
+      summary: Get a list of posts from the blogs a user likes
       description: Get a list of posts from the blogs a user likes.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -1300,10 +1298,10 @@ paths:
   /read/lists/{user_slug}:
     get:
       operationId: getReadListsByUserSlug
-      summary: Get an array of Reader lists by user slug.
+      summary: Get an array of Reader lists by user slug
       description: Get an array of Reader lists by user slug.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -1549,10 +1547,10 @@ paths:
   /read/menu/:
     get:
       operationId: getReadMenu
-      summary: Get default reader menu.
+      summary: Get default reader menu
       description: Get default reader menu.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -1642,10 +1640,10 @@ paths:
   /read/recommendations/mine/:
     get:
       operationId: getReadRecommendationsMine
-      summary: Get a list of blog recommendations for the current user.
+      summary: Get a list of blog recommendations for the current user
       description: Get a list of blog recommendations for the current user.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -1751,10 +1749,10 @@ paths:
   /read/sites/{site}/posts/{post_ID}:
     get:
       operationId: getReadSitesBySitePostsByPostId
-      summary: Get a single post (by ID).
+      summary: Get a single post (by ID)
       description: Get a single post (by ID).
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -1999,10 +1997,10 @@ paths:
   /read/subscriptions-count/:
     get:
       operationId: getReadSubscriptionsCount
-      summary: Returns the number of blog, comment and pending subscriptions.
+      summary: Returns the number of blog, comment and pending subscriptions
       description: Returns the number of blog, comment and pending subscriptions.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2089,10 +2087,10 @@ paths:
   /read/tags:
     get:
       operationId: getReadTags
-      summary: Get a list of tags subscribed to by the user.
+      summary: Get a list of tags subscribed to by the user
       description: Get a list of tags subscribed to by the user.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2174,10 +2172,10 @@ paths:
   /read/tags/alphabetic:
     get:
       operationId: getReadTagsAlphabetic
-      summary: Get a filtered list of top tags, grouped by letter.
+      summary: Get a filtered list of top tags, grouped by letter
       description: Get a filtered list of top tags, grouped by letter.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2260,10 +2258,10 @@ paths:
   /read/tags/{tag}:
     get:
       operationId: getReadTagsByTag
-      summary: Get details about a specified tag.
+      summary: Get details about a specified tag
       description: Get details about a specified tag.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2350,10 +2348,10 @@ paths:
   /read/tags/{tag}/mine:
     get:
       operationId: getReadTagsByTagMine
-      summary: Get the subscribed status of the user to a given tag.
+      summary: Get the subscribed status of the user to a given tag
       description: Get the subscribed status of the user to a given tag.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2440,10 +2438,10 @@ paths:
   /read/tags/{tag}/mine/delete:
     post:
       operationId: postReadTagsByTagMineDelete
-      summary: Unsubscribe from a tag.
+      summary: Unsubscribe from a tag
       description: Unsubscribe from a tag.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2537,10 +2535,10 @@ paths:
   /read/tags/{tag}/mine/new:
     post:
       operationId: postReadTagsByTagMineNew
-      summary: Subscribe to a new tag.
+      summary: Subscribe to a new tag
       description: Subscribe to a new tag.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2634,10 +2632,10 @@ paths:
   /read/tags/{tag}/posts:
     get:
       operationId: getReadTagsByTagPosts
-      summary: Get a list of posts from a tag.
+      summary: Get a list of posts from a tag
       description: Get a list of posts from a tag.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -2908,10 +2906,10 @@ paths:
   /read/trending/tags:
     get:
       operationId: getReadTrendingTags
-      summary: Get a list of trending tags.
+      summary: Get a list of trending tags
       description: Get a list of trending tags.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -3005,10 +3003,10 @@ paths:
   /read/feed/{feed_url_or_id}/posts/{feed_item_id}:
     get:
       operationId: getReadFeedByFeedUrlOrIdPostsByFeedItemId
-      summary: Get a single post from a feed (by ID).
+      summary: Get a single post from a feed (by ID)
       description: Get a single post from a feed (by ID).
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -3257,10 +3255,10 @@ paths:
   /read/following/mine/export:
     get:
       operationId: getReadFollowingMineExport
-      summary: Export the current user's Reader subscriptions in OPML format.
+      summary: Export the current user's Reader subscriptions in OPML format
       description: Export the current user's Reader subscriptions in OPML format.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -3499,10 +3497,10 @@ paths:
   /read/following/mine/import:
     post:
       operationId: postReadFollowingMineImport
-      summary: Import an OPML file to the current user's Reader subscriptions.
+      summary: Import an OPML file to the current user's Reader subscriptions
       description: Import an OPML file to the current user's Reader subscriptions.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -3751,10 +3749,10 @@ paths:
   /read/lists:
     get:
       operationId: getReadLists
-      summary: Get an array of Reader lists the current user is following.
+      summary: Get an array of Reader lists the current user is following
       description: Get an array of Reader lists the current user is following.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -4000,10 +3998,10 @@ paths:
   /read/lists/{username}/{list}:
     get:
       operationId: getReadListsByUsernameByList
-      summary: Get a description of a Reader list.
+      summary: Get a description of a Reader list
       description: Get a description of a Reader list.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -4251,10 +4249,10 @@ paths:
   /read/lists/{username}/{list}/follow:
     post:
       operationId: postReadListsByUsernameByListFollow
-      summary: Follow a specific Reader List.
+      summary: Follow a specific Reader List
       description: Follow a specific Reader List.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -4506,10 +4504,10 @@ paths:
   /read/lists/{username}/{list}/unfollow:
     post:
       operationId: postReadListsByUsernameByListUnfollow
-      summary: Unfollow a specific Reader List.
+      summary: Unfollow a specific Reader List
       description: Unfollow a specific Reader List.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -4761,10 +4759,10 @@ paths:
   /read/lists/{username}/{list}/update:
     post:
       operationId: postReadListsByUsernameByListUpdate
-      summary: Update an existing Reader list for the current user.
+      summary: Update an existing Reader list for the current user
       description: Update an existing Reader list for the current user.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -5031,10 +5029,10 @@ paths:
   /read/onboarding/welcome-digest/flush:
     post:
       operationId: postReadOnboardingWelcomeDigestFlush
-      summary: Flush the pending Reader onboarding welcome digest for the current user.
+      summary: Flush the pending Reader onboarding welcome digest for the current user
       description: Flush the pending Reader onboarding welcome digest for the current user.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -5124,10 +5122,10 @@ paths:
   /read/site/{site}/comment_email_subscriptions/delete:
     post:
       operationId: postReadSiteBySiteCommentEmailSubscriptionsDelete
-      summary: Remove an existing email subscription to a site's comments.
+      summary: Remove an existing email subscription to a site's comments
       description: Remove an existing email subscription to a site's comments.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -5381,10 +5379,10 @@ paths:
   /read/site/{site}/comment_email_subscriptions/new:
     post:
       operationId: postReadSiteBySiteCommentEmailSubscriptionsNew
-      summary: Create a new email subscription to a site's comments.
+      summary: Create a new email subscription to a site's comments
       description: Create a new email subscription to a site's comments.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -5638,10 +5636,10 @@ paths:
   /read/site/{site}/post_email_subscriptions/delete:
     post:
       operationId: postReadSiteBySitePostEmailSubscriptionsDelete
-      summary: Remove an existing email subscription to a site's posts.
+      summary: Remove an existing email subscription to a site's posts
       description: Remove an existing email subscription to a site's posts.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -5899,10 +5897,10 @@ paths:
   /read/site/{site}/post_email_subscriptions/new:
     post:
       operationId: postReadSiteBySitePostEmailSubscriptionsNew
-      summary: Create a new email subscription to a site's posts.
+      summary: Create a new email subscription to a site's posts
       description: Create a new email subscription to a site's posts.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6163,10 +6161,10 @@ paths:
   /read/site/{site}/post_email_subscriptions/update:
     post:
       operationId: postReadSiteBySitePostEmailSubscriptionsUpdate
-      summary: Update the delivery frequency for an existing email subscription.
+      summary: Update the delivery frequency for an existing email subscription
       description: Update the delivery frequency for an existing email subscription.
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6429,7 +6427,7 @@ paths:
       operationId: getWpcomV2ReadInterests
       summary: GET /wpcom/v2/read/interests
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6452,7 +6450,7 @@ paths:
       operationId: getWpcomV2ReadListsbyListIdExport
       summary: GET /wpcom/v2/read/lists/{list_id}/export
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6481,7 +6479,7 @@ paths:
       operationId: postWpcomV2ReadSitesbyBlogIdNotificationSubscriptionsDelete
       summary: POST /wpcom/v2/read/sites/{blog_id}/notification-subscriptions/delete
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6510,7 +6508,7 @@ paths:
       operationId: postWpcomV2ReadSitesbyBlogIdNotificationSubscriptionsNew
       summary: POST /wpcom/v2/read/sites/{blog_id}/notification-subscriptions/new
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6539,7 +6537,7 @@ paths:
       operationId: postWpcomV2ReadSitesbyBlogIdPostsbyPostIdFollow
       summary: POST /wpcom/v2/read/sites/{blog_id}/posts/{post_id}/follow
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6573,7 +6571,7 @@ paths:
       operationId: postWpcomV2ReadSitesbyBlogIdPostsbyPostIdForget
       summary: POST /wpcom/v2/read/sites/{blog_id}/posts/{post_id}/forget
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6607,7 +6605,7 @@ paths:
       operationId: postWpcomV2ReadSitesbyBlogIdPostsbyPostIdMute
       summary: POST /wpcom/v2/read/sites/{blog_id}/posts/{post_id}/mute
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6641,7 +6639,7 @@ paths:
       operationId: postWpcomV2ReadSitesbyBlogIdPostsbyPostIdRemember
       summary: POST /wpcom/v2/read/sites/{blog_id}/posts/{post_id}/remember
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6675,7 +6673,7 @@ paths:
       operationId: postWpcomV2ReadSitesbyBlogIdPostsbyPostIdTagsAdd
       summary: POST /wpcom/v2/read/sites/{blog_id}/posts/{post_id}/tags/add
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6721,7 +6719,7 @@ paths:
       operationId: getWpcomV2ReadSitesbyBlogIdSubscriptionDetails
       summary: GET /wpcom/v2/read/sites/{blog_id}/subscription-details
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6750,7 +6748,7 @@ paths:
       operationId: getWpcomV2ReadSmartFeedUserModel
       summary: GET /wpcom/v2/read/smart-feed/user-model
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6770,7 +6768,7 @@ paths:
       operationId: postWpcomV2ReadSmartFeedUserModel
       summary: POST /wpcom/v2/read/smart-feed/user-model
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6805,7 +6803,7 @@ paths:
       operationId: deleteWpcomV2ReadSmartFeedUserModel
       summary: DELETE /wpcom/v2/read/smart-feed/user-model
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6828,7 +6826,7 @@ paths:
       operationId: getWpcomV2ReadStreamsOnThisDay
       summary: GET /wpcom/v2/read/streams/on-this-day
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6868,7 +6866,7 @@ paths:
       operationId: getWpcomV2ReadSubscriptionsbySubscriptionId
       summary: GET /wpcom/v2/read/subscriptions/{subscription_id}
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6897,7 +6895,7 @@ paths:
       operationId: getWpcomV2ReadTagsCards
       summary: GET /wpcom/v2/read/tags/cards
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -6987,7 +6985,7 @@ paths:
       operationId: getWpcomV2ReadTagsPosts
       summary: GET /wpcom/v2/read/tags/posts
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -7066,7 +7064,7 @@ paths:
       operationId: getWpcomV2ReadTagsbyTagCards
       summary: GET /wpcom/v2/read/tags/{tag}/cards
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK
@@ -7160,7 +7158,7 @@ paths:
       operationId: getWpcomV2ReadTagsbyTagPosts
       summary: GET /wpcom/v2/read/tags/{tag}/posts
       tags:
-      - read
+      - Read
       responses:
         '200':
           description: OK

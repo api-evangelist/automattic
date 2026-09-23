@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: plans
+- name: Plans
 paths:
   /wpcom/v2/plans:
     get:
       operationId: getWpcomV2Plans
       summary: GET /wpcom/v2/plans
       tags:
-      - plans
+      - Plans
       responses:
         '200':
           description: OK
@@ -50,7 +50,7 @@ paths:
       operationId: getWpcomV2PlansDetails
       summary: GET /wpcom/v2/plans/details
       tags:
-      - plans
+      - Plans
       responses:
         '200':
           description: OK
@@ -77,7 +77,7 @@ paths:
       operationId: getWpcomV2PlansFeatures
       summary: GET /wpcom/v2/plans/features
       tags:
-      - plans
+      - Plans
       responses:
         '200':
           description: OK
@@ -104,7 +104,7 @@ paths:
       operationId: getWpcomV2PlansMobile
       summary: GET /wpcom/v2/plans/mobile
       tags:
-      - plans
+      - Plans
       responses:
         '200':
           description: OK

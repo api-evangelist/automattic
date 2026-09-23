@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: WordPress.com REST API — wpcom/v2 namespace External Media API
+  title: WordPress.com REST API — wpcom/v2 namespace External Media…
   version: v2
   description: Derived by API Evangelist from the WordPress.com REST API route index published at https://public-api.wordpress.com/wpcom/v2/. Paths, HTTP methods, and parameter names/types/descriptions/defaults are taken verbatim from that index. Response schemas are not published in the route index, so successful responses are described but not schematised; the error envelope was observed live on public-api.wordpress.com.
   contact:
@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: external-media
+- name: external Media
 paths:
   /wpcom/v2/sites/{wpcom_site}/external-media/connection/{service}:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteExternalMediaConnectionbyService
       summary: GET /wpcom/v2/sites/{wpcom_site}/external-media/connection/{service}
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -51,7 +51,7 @@ paths:
       operationId: deleteWpcomV2SitesbyWpcomSiteExternalMediaConnectionbyService
       summary: DELETE /wpcom/v2/sites/{wpcom_site}/external-media/connection/{service}
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -81,9 +81,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/external-media/connection/{service}/picker_status:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteExternalMediaConnectionbyServicePickerStatus
-      summary: GET /wpcom/v2/sites/{wpcom_site}/external-media/connection/{service}/picker_status
+      summary: GET /wpcom/v2/sites/{wpcom_site}/external-media/connection/{service}/picker_stat…
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -115,7 +115,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteExternalMediaCopybyService
       summary: POST /wpcom/v2/sites/{wpcom_site}/external-media/copy/{service}
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -167,7 +167,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteExternalMediaListbyService
       summary: GET /wpcom/v2/sites/{wpcom_site}/external-media/list/{service}
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -228,7 +228,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteExternalMediaProxybyService
       summary: POST /wpcom/v2/sites/{wpcom_site}/external-media/proxy/{service}
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -270,7 +270,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteExternalMediaSessionbyService
       summary: POST /wpcom/v2/sites/{wpcom_site}/external-media/session/{service}
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -302,7 +302,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteExternalMediaSessionbyServicebySessionId
       summary: GET /wpcom/v2/sites/{wpcom_site}/external-media/session/{service}/{session_id}
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK
@@ -336,9 +336,9 @@ paths:
           type: string
     delete:
       operationId: deleteWpcomV2SitesbyWpcomSiteExternalMediaSessionbyServicebySessionId
-      summary: DELETE /wpcom/v2/sites/{wpcom_site}/external-media/session/{service}/{session_id}
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/external-media/session/{service}/{session_id…
       tags:
-      - external-media
+      - external Media
       responses:
         '200':
           description: OK

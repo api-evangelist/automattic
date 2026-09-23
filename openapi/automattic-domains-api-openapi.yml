@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: domains
+- name: Domains
 paths:
   /wpcom/v2/domains/auction/expired-domain-stats:
     get:
       operationId: getWpcomV2DomainsAuctionExpiredDomainStats
       summary: GET /wpcom/v2/domains/auction/expired-domain-stats
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -41,7 +41,7 @@ paths:
       operationId: getWpcomV2DomainsAuctionExpiredListCsv
       summary: GET /wpcom/v2/domains/auction/expired-list-csv
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -62,7 +62,7 @@ paths:
       operationId: postWpcomV2DomainsAuctionRenew
       summary: POST /wpcom/v2/domains/auction/renew
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -83,7 +83,7 @@ paths:
       operationId: postWpcomV2DomainsAuctionTransferQueryString
       summary: POST /wpcom/v2/domains/auction/transfer{query_string}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -110,7 +110,7 @@ paths:
       operationId: getWpcomV2DomainsBulkActions
       summary: GET /wpcom/v2/domains/bulk-actions
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -130,7 +130,7 @@ paths:
       operationId: deleteWpcomV2DomainsBulkActions
       summary: DELETE /wpcom/v2/domains/bulk-actions
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -151,7 +151,7 @@ paths:
       operationId: postWpcomV2DomainsBulkActionsSetAutoRenew
       summary: POST /wpcom/v2/domains/bulk-actions/set-auto-renew
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -172,7 +172,7 @@ paths:
       operationId: postWpcomV2DomainsBulkActionsUpdateContactInfo
       summary: POST /wpcom/v2/domains/bulk-actions/update-contact-info
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -193,7 +193,7 @@ paths:
       operationId: getWpcomV2DomainsBulkAvailabilityCheckbyDomainNames
       summary: GET /wpcom/v2/domains/bulk-availability-check/{domain_names}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -220,7 +220,7 @@ paths:
       operationId: getWpcomV2DomainsBundle
       summary: GET /wpcom/v2/domains/bundle
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -249,7 +249,7 @@ paths:
       operationId: getWpcomV2DomainsDiagnosticsbyDomain
       summary: GET /wpcom/v2/domains/diagnostics/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -276,7 +276,7 @@ paths:
       operationId: postWpcomV2DomainsDnsEmailSetDefaultRecords
       summary: POST /wpcom/v2/domains/dns/email/set-default-records
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -307,7 +307,7 @@ paths:
       operationId: postWpcomV2DomainsDnsImportBindbyDomain
       summary: POST /wpcom/v2/domains/dns/import/bind/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -334,7 +334,7 @@ paths:
       operationId: postWpcomV2DomainsDnssecbyDomain
       summary: POST /wpcom/v2/domains/dnssec/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -360,7 +360,7 @@ paths:
       operationId: putWpcomV2DomainsDnssecbyDomain
       summary: PUT /wpcom/v2/domains/dnssec/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -396,7 +396,7 @@ paths:
       operationId: deleteWpcomV2DomainsDnssecbyDomain
       summary: DELETE /wpcom/v2/domains/dnssec/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -423,7 +423,7 @@ paths:
       operationId: getWpcomV2DomainsDnssecbyDomainNameserver
       summary: GET /wpcom/v2/domains/dnssec/{domain}/nameserver
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -450,7 +450,7 @@ paths:
       operationId: getWpcomV2DomainsDnssecbyDomainRegistry
       summary: GET /wpcom/v2/domains/dnssec/{domain}/registry
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -477,7 +477,7 @@ paths:
       operationId: postWpcomV2DomainsGlueRecords
       summary: POST /wpcom/v2/domains/glue-records
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -511,7 +511,7 @@ paths:
       operationId: putWpcomV2DomainsGlueRecords
       summary: PUT /wpcom/v2/domains/glue-records
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -545,7 +545,7 @@ paths:
       operationId: patchWpcomV2DomainsGlueRecords
       summary: PATCH /wpcom/v2/domains/glue-records
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -580,7 +580,7 @@ paths:
       operationId: getWpcomV2DomainsGlueRecordsbyDomain
       summary: GET /wpcom/v2/domains/glue-records/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -607,7 +607,7 @@ paths:
       operationId: deleteWpcomV2DomainsGlueRecordsbyNameServer
       summary: DELETE /wpcom/v2/domains/glue-records/{name_server}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -634,7 +634,7 @@ paths:
       operationId: getWpcomV2DomainsListMine
       summary: GET /wpcom/v2/domains/list/mine
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -655,7 +655,7 @@ paths:
       operationId: postWpcomV2DomainsNamePulseAvailabilityCheck
       summary: POST /wpcom/v2/domains/name-pulse/availability-check
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -693,7 +693,7 @@ paths:
       operationId: getWpcomV2DomainsNamePulseSuggestions
       summary: GET /wpcom/v2/domains/name-pulse/suggestions
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -784,7 +784,7 @@ paths:
       operationId: postWpcomV2DomainsPointToWpcom
       summary: POST /wpcom/v2/domains/point-to-wpcom
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -815,7 +815,7 @@ paths:
       operationId: getWpcomV2DomainsPropagationStatusbyDomain
       summary: GET /wpcom/v2/domains/propagation-status/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -842,7 +842,7 @@ paths:
       operationId: getWpcomV2DomainsSecureYourBrandbyDomain
       summary: GET /wpcom/v2/domains/secure-your-brand/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -869,7 +869,7 @@ paths:
       operationId: getWpcomV2DomainsSslbyDomain
       summary: GET /wpcom/v2/domains/ssl/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK
@@ -895,7 +895,7 @@ paths:
       operationId: postWpcomV2DomainsSslbyDomain
       summary: POST /wpcom/v2/domains/ssl/{domain}
       tags:
-      - domains
+      - Domains
       responses:
         '200':
           description: OK

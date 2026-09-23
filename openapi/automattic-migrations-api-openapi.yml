@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: migrations
+- name: Migrations
 paths:
   /wpcom/v2/migrations/from-source/{source_blog_id}:
     post:
       operationId: postWpcomV2MigrationsFromSourcebySourceBlogId
       summary: POST /wpcom/v2/migrations/from-source/{source_blog_id}
       tags:
-      - migrations
+      - Migrations
       responses:
         '200':
           description: OK
@@ -57,7 +57,7 @@ paths:
       operationId: getWpcomV2MigrationsFromSourcebySourceBlog
       summary: GET /wpcom/v2/migrations/from-source/{source_blog}
       tags:
-      - migrations
+      - Migrations
       responses:
         '200':
           description: OK

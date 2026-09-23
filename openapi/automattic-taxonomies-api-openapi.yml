@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: taxonomies
+- name: Taxonomies
 paths:
   /wp/v2/sites/{wpcom_site}/taxonomies:
     get:
       operationId: getWpV2SitesbyWpcomSiteTaxonomies
       summary: GET /wp/v2/sites/{wpcom_site}/taxonomies
       tags:
-      - taxonomies
+      - Taxonomies
       responses:
         '200':
           description: OK
@@ -64,7 +64,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTaxonomiesbyTaxonomy
       summary: GET /wp/v2/sites/{wpcom_site}/taxonomies/{taxonomy}
       tags:
-      - taxonomies
+      - Taxonomies
       responses:
         '200':
           description: OK

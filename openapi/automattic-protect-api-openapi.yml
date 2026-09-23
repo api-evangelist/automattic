@@ -14,15 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: protect
+- name: Protect
 paths:
   /sites/{site}/protect/recovery/confirm:
     post:
       operationId: postSitesBySiteProtectRecoveryConfirm
       summary: A site confirms that a user can bypass jetpack to try to login and login
-      description: A site confirms that a user can bypass jetpack to try to login and login
       tags:
-      - protect
+      - Protect
       responses:
         '200':
           description: OK
@@ -119,10 +118,10 @@ paths:
   /sites/{site}/protect/recovery/request:
     post:
       operationId: postSitesBySiteProtectRecoveryRequest
-      summary: A user request an email containing a recovery url that they can use to bypass a Protect blockage
+      summary: A user request an email containing a recovery url that they can use to bypass a…
       description: A user request an email containing a recovery url that they can use to bypass a Protect blockage
       tags:
-      - protect
+      - Protect
       responses:
         '200':
           description: OK
@@ -216,10 +215,10 @@ paths:
   /sites/{site}/protect/recovery/validate/{user_id}:
     get:
       operationId: getSitesBySiteProtectRecoveryValidateByUserId
-      summary: Validates a url emailed to a user containing a recovery toke that they can use to bypass a Protect blockage
+      summary: Validates a url emailed to a user containing a recovery toke that they can use…
       description: Validates a url emailed to a user containing a recovery toke that they can use to bypass a Protect blockage
       tags:
-      - protect
+      - Protect
       responses:
         '200':
           description: OK

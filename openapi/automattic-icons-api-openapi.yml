@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: icons
+- name: Icons
 paths:
   /wp/v2/sites/{wpcom_site}/icons:
     get:
       operationId: getWpV2SitesbyWpcomSiteIcons
       summary: GET /wp/v2/sites/{wpcom_site}/icons
       tags:
-      - icons
+      - Icons
       responses:
         '200':
           description: OK
@@ -84,7 +84,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteIconsbyCollection
       summary: GET /wp/v2/sites/{wpcom_site}/icons/{collection}
       tags:
-      - icons
+      - Icons
       responses:
         '200':
           description: OK
@@ -147,7 +147,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteIconsbyName
       summary: GET /wp/v2/sites/{wpcom_site}/icons/{name}
       tags:
-      - icons
+      - Icons
       responses:
         '200':
           description: OK

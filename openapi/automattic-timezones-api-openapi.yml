@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: timezones
+- name: Timezones
 paths:
   /wpcom/v2/timezones:
     get:
       operationId: getWpcomV2Timezones
       summary: GET /wpcom/v2/timezones
       tags:
-      - timezones
+      - Timezones
       responses:
         '200':
           description: OK

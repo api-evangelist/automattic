@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: launch
+- name: Launch
 paths:
   /wpcom/v2/sites/{wpcom_site}/launch:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteLaunch
       summary: POST /wpcom/v2/sites/{wpcom_site}/launch
       tags:
-      - launch
+      - Launch
       responses:
         '200':
           description: OK

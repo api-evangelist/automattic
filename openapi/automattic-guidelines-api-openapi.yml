@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: guidelines
+- name: Guidelines
 paths:
   /wp/v2/sites/{wpcom_site}/guidelines:
     get:
       operationId: getWpV2SitesbyWpcomSiteGuidelines
       summary: GET /wp/v2/sites/{wpcom_site}/guidelines
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -230,7 +230,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteGuidelines
       summary: POST /wp/v2/sites/{wpcom_site}/guidelines
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -307,7 +307,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGuidelinesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/guidelines/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -361,7 +361,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteGuidelinesbyId
       summary: POST /wp/v2/sites/{wpcom_site}/guidelines/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -442,7 +442,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteGuidelinesbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/guidelines/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -523,7 +523,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteGuidelinesbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/guidelines/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -604,7 +604,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteGuidelinesbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/guidelines/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -643,7 +643,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGuidelinesbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/guidelines/{id}/autosaves
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -691,7 +691,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteGuidelinesbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/guidelines/{id}/autosaves
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -776,7 +776,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGuidelinesbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/guidelines/{parent}/autosaves/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -824,7 +824,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGuidelinesbyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/guidelines/{parent}/revisions
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -935,7 +935,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteGuidelinesbyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/guidelines/{parent}/revisions/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK
@@ -982,7 +982,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteGuidelinesbyParentRevisionsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/guidelines/{parent}/revisions/{id}
       tags:
-      - guidelines
+      - Guidelines
       responses:
         '200':
           description: OK

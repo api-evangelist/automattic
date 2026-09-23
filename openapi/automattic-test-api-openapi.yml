@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: test
+- name: Test
 paths:
   /wpcom/v2/test:
     get:
       operationId: getWpcomV2Test
       summary: GET /wpcom/v2/test
       tags:
-      - test
+      - Test
       responses:
         '200':
           description: OK

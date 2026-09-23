@@ -16,9 +16,7 @@ paths:
     post:
       operationId: postVerifyKey
       summary: Verify Akismet API key
-      description: 'Verifies the provided Akismet API key to check its validity and ensure it can be used for API requests.
-
-        '
+      description: Verifies the provided Akismet API key to check its validity and ensure it can be used for API requests.
       requestBody:
         required: true
         content:

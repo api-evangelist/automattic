@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: feedback
+- name: Feedback
 paths:
   /wp/v2/sites/{wpcom_site}/feedback:
     get:
       operationId: getWpV2SitesbyWpcomSiteFeedback
       summary: GET /wp/v2/sites/{wpcom_site}/feedback
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -246,7 +246,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFeedback
       summary: POST /wp/v2/sites/{wpcom_site}/feedback
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -312,7 +312,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFeedbackBulkActions
       summary: POST /wp/v2/sites/{wpcom_site}/feedback/bulk_actions
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -357,7 +357,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackConfig
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/config
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -384,7 +384,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackCounts
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/counts
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -455,7 +455,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFeedbackDismissClassicFormsNotice
       summary: POST /wp/v2/sites/{wpcom_site}/feedback/dismiss-classic-forms-notice
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -482,7 +482,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackFilters
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/filters
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -509,7 +509,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackIntegrations
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/integrations
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -542,7 +542,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackIntegrationsMetadata
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/integrations-metadata
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -569,7 +569,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackIntegrationsbySlug
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/integrations/{slug}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -600,7 +600,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteFeedbackIntegrationsbySlug
       summary: DELETE /wp/v2/sites/{wpcom_site}/feedback/integrations/{slug}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -632,7 +632,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteFeedbackTrash
       summary: DELETE /wp/v2/sites/{wpcom_site}/feedback/trash
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -668,7 +668,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackbyId
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/{id}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -710,7 +710,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFeedbackbyId
       summary: POST /wp/v2/sites/{wpcom_site}/feedback/{id}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -780,7 +780,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteFeedbackbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/feedback/{id}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -850,7 +850,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteFeedbackbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/feedback/{id}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -920,7 +920,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteFeedbackbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/feedback/{id}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -959,7 +959,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/{id}/autosaves
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -1007,7 +1007,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFeedbackbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/feedback/{id}/autosaves
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -1081,7 +1081,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFeedbackbyIdRead
       summary: POST /wp/v2/sites/{wpcom_site}/feedback/{id}/read
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK
@@ -1123,7 +1123,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFeedbackbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/feedback/{parent}/autosaves/{id}
       tags:
-      - feedback
+      - Feedback
       responses:
         '200':
           description: OK

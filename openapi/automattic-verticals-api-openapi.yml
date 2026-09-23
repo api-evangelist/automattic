@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: verticals
+- name: Verticals
 paths:
   /wpcom/v2/verticals:
     get:
       operationId: getWpcomV2Verticals
       summary: GET /wpcom/v2/verticals
       tags:
-      - verticals
+      - Verticals
       responses:
         '200':
           description: OK
@@ -76,7 +76,7 @@ paths:
       operationId: getWpcomV2VerticalsPrompt
       summary: GET /wpcom/v2/verticals/prompt
       tags:
-      - verticals
+      - Verticals
       responses:
         '200':
           description: OK
@@ -104,7 +104,7 @@ paths:
       operationId: getWpcomV2VerticalsbyVerticalIdImages
       summary: GET /wpcom/v2/verticals/{vertical_id}/images
       tags:
-      - verticals
+      - Verticals
       responses:
         '200':
           description: OK
@@ -141,7 +141,7 @@ paths:
       operationId: getWpcomV2VerticalsbyVerticalIdTemplates
       summary: GET /wpcom/v2/verticals/{vertical_id}/templates
       tags:
-      - verticals
+      - Verticals
       responses:
         '200':
           description: OK
@@ -168,7 +168,7 @@ paths:
       operationId: getWpcomV2VerticalsbyVerticalIdTemplatesbyTemplateSlug
       summary: GET /wpcom/v2/verticals/{vertical_id}/templates/{template_slug}
       tags:
-      - verticals
+      - Verticals
       responses:
         '200':
           description: OK

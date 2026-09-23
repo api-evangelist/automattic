@@ -12,15 +12,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: me
+- name: Me
 paths:
   /me/mailboxes:
     get:
       operationId: getMeMailboxes
-      summary: List all email mailboxes the current user has access to across all manageable sites.
+      summary: List all email mailboxes the current user has access to across all manageable…
       description: List all email mailboxes the current user has access to across all manageable sites.
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -110,7 +110,7 @@ paths:
       operationId: getWpcomV2MeBlocksSites
       summary: GET /wpcom/v2/me/blocks/sites
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -146,7 +146,7 @@ paths:
       operationId: getWpcomV2MeConnections
       summary: GET /wpcom/v2/me/connections
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -182,7 +182,7 @@ paths:
       operationId: getWpcomV2MeConnectionsbyTokenId
       summary: GET /wpcom/v2/me/connections/{token_id}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -220,7 +220,7 @@ paths:
       operationId: deleteWpcomV2MeConnectionsbyTokenId
       summary: DELETE /wpcom/v2/me/connections/{token_id}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -261,7 +261,7 @@ paths:
       operationId: postWpcomV2MeEducationStudentValidation
       summary: POST /wpcom/v2/me/education-student-validation
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -295,7 +295,7 @@ paths:
       operationId: getWpcomV2MeFollowing
       summary: GET /wpcom/v2/me/following
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -325,7 +325,7 @@ paths:
       operationId: getWpcomV2MeFollowingRecommendations
       summary: GET /wpcom/v2/me/following/recommendations
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -355,7 +355,7 @@ paths:
       operationId: postWpcomV2MeGetAppsSendDownloadSms
       summary: POST /wpcom/v2/me/get-apps/send-download-sms
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -378,7 +378,7 @@ paths:
       operationId: getWpcomV2MeGutenberg
       summary: GET /wpcom/v2/me/gutenberg
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -398,7 +398,7 @@ paths:
       operationId: postWpcomV2MeGutenberg
       summary: POST /wpcom/v2/me/gutenberg
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -431,7 +431,7 @@ paths:
       operationId: putWpcomV2MeGutenberg
       summary: PUT /wpcom/v2/me/gutenberg
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -464,7 +464,7 @@ paths:
       operationId: patchWpcomV2MeGutenberg
       summary: PATCH /wpcom/v2/me/gutenberg
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -500,7 +500,7 @@ paths:
       operationId: getWpcomV2MeLegacyContacts
       summary: GET /wpcom/v2/me/legacy-contacts
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -520,7 +520,7 @@ paths:
       operationId: postWpcomV2MeLegacyContacts
       summary: POST /wpcom/v2/me/legacy-contacts
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -557,7 +557,7 @@ paths:
       operationId: getWpcomV2MeLegacyContactsbyLegacyContactId
       summary: GET /wpcom/v2/me/legacy-contacts/{legacy_contact_id}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -583,7 +583,7 @@ paths:
       operationId: deleteWpcomV2MeLegacyContactsbyLegacyContactId
       summary: DELETE /wpcom/v2/me/legacy-contacts/{legacy_contact_id}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -612,7 +612,7 @@ paths:
       operationId: getWpcomV2MeLocale
       summary: GET /wpcom/v2/me/locale
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -632,7 +632,7 @@ paths:
       operationId: postWpcomV2MeLocale
       summary: POST /wpcom/v2/me/locale
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -663,7 +663,7 @@ paths:
       operationId: putWpcomV2MeLocale
       summary: PUT /wpcom/v2/me/locale
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -694,7 +694,7 @@ paths:
       operationId: patchWpcomV2MeLocale
       summary: PATCH /wpcom/v2/me/locale
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -728,7 +728,7 @@ paths:
       operationId: getWpcomV2MePreferences
       summary: GET /wpcom/v2/me/preferences
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -755,7 +755,7 @@ paths:
       operationId: postWpcomV2MePreferences
       summary: POST /wpcom/v2/me/preferences
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -786,7 +786,7 @@ paths:
       operationId: putWpcomV2MePreferences
       summary: PUT /wpcom/v2/me/preferences
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -817,7 +817,7 @@ paths:
       operationId: patchWpcomV2MePreferences
       summary: PATCH /wpcom/v2/me/preferences
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -851,7 +851,7 @@ paths:
       operationId: getWpcomV2MeProfile
       summary: GET /wpcom/v2/me/profile
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -874,7 +874,7 @@ paths:
       operationId: getWpcomV2MeSitesStatsSummary
       summary: GET /wpcom/v2/me/sites/stats/summary
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -938,7 +938,7 @@ paths:
       operationId: getWpcomV2MeSshKeys
       summary: GET /wpcom/v2/me/ssh-keys
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -958,7 +958,7 @@ paths:
       operationId: postWpcomV2MeSshKeys
       summary: POST /wpcom/v2/me/ssh-keys
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -991,7 +991,7 @@ paths:
       operationId: postWpcomV2MeSshKeysbyName
       summary: POST /wpcom/v2/me/ssh-keys/{name}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -1027,7 +1027,7 @@ paths:
       operationId: putWpcomV2MeSshKeysbyName
       summary: PUT /wpcom/v2/me/ssh-keys/{name}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -1063,7 +1063,7 @@ paths:
       operationId: patchWpcomV2MeSshKeysbyName
       summary: PATCH /wpcom/v2/me/ssh-keys/{name}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK
@@ -1099,7 +1099,7 @@ paths:
       operationId: deleteWpcomV2MeSshKeysbyName
       summary: DELETE /wpcom/v2/me/ssh-keys/{name}
       tags:
-      - me
+      - Me
       responses:
         '200':
           description: OK

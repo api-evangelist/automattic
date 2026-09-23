@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: glossary
+- name: Glossary
 paths:
   /wpcom/v2/glossary:
     get:
       operationId: getWpcomV2Glossary
       summary: GET /wpcom/v2/glossary
       tags:
-      - glossary
+      - Glossary
       responses:
         '200':
           description: OK
@@ -40,7 +40,7 @@ paths:
       operationId: postWpcomV2Glossary
       summary: POST /wpcom/v2/glossary
       tags:
-      - glossary
+      - Glossary
       responses:
         '200':
           description: OK
@@ -76,7 +76,7 @@ paths:
       operationId: getWpcomV2GlossarybyItemId
       summary: GET /wpcom/v2/glossary/{item_id}
       tags:
-      - glossary
+      - Glossary
       responses:
         '200':
           description: OK
@@ -102,7 +102,7 @@ paths:
       operationId: postWpcomV2GlossarybyItemId
       summary: POST /wpcom/v2/glossary/{item_id}
       tags:
-      - glossary
+      - Glossary
       responses:
         '200':
           description: OK
@@ -140,7 +140,7 @@ paths:
       operationId: putWpcomV2GlossarybyItemId
       summary: PUT /wpcom/v2/glossary/{item_id}
       tags:
-      - glossary
+      - Glossary
       responses:
         '200':
           description: OK
@@ -178,7 +178,7 @@ paths:
       operationId: patchWpcomV2GlossarybyItemId
       summary: PATCH /wpcom/v2/glossary/{item_id}
       tags:
-      - glossary
+      - Glossary
       responses:
         '200':
           description: OK
@@ -216,7 +216,7 @@ paths:
       operationId: deleteWpcomV2GlossarybyItemId
       summary: DELETE /wpcom/v2/glossary/{item_id}
       tags:
-      - glossary
+      - Glossary
       responses:
         '200':
           description: OK

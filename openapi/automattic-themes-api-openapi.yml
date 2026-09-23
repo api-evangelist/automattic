@@ -12,15 +12,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: themes
+- name: Themes
 paths:
   /sites/{site}/themes:
     get:
       operationId: getSitesBySiteThemes
-      summary: Get information about a theme on WordPress.com.
+      summary: Get information about a theme on WordPress.com
       description: Get information about a theme on WordPress.com.
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -129,10 +129,10 @@ paths:
   /sites/{site}/themes/mine:
     get:
       operationId: getSitesBySiteThemesMine
-      summary: Get the active theme of a site.
+      summary: Get the active theme of a site
       description: Get the active theme of a site.
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -235,10 +235,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteThemesMine
-      summary: Change the active theme of a site.
+      summary: Change the active theme of a site
       description: Change the active theme of a site.
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -342,10 +342,10 @@ paths:
   /themes:
     get:
       operationId: getThemes
-      summary: Get a list of all available themes on WordPress.com.
+      summary: Get a list of all available themes on WordPress.com
       description: Get a list of all available themes on WordPress.com.
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -454,10 +454,10 @@ paths:
   /themes/{theme_slug}:
     get:
       operationId: getThemesByThemeSlug
-      summary: Get a theme on WordPress.com.
+      summary: Get a theme on WordPress.com
       description: Get a theme on WordPress.com.
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -646,7 +646,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteThemes
       summary: GET /wp/v2/sites/{wpcom_site}/themes
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -683,7 +683,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteThemesbyStylesheet
       summary: GET /wp/v2/sites/{wpcom_site}/themes/{stylesheet}
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -717,7 +717,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteThemesActivationHistory
       summary: GET /wpcom/v2/sites/{wpcom_site}/themes/activation-history
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -746,7 +746,7 @@ paths:
       operationId: getWpcomV2Themes
       summary: GET /wpcom/v2/themes
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -780,7 +780,7 @@ paths:
       operationId: getWpcomV2ThemesReadymadeTemplates
       summary: GET /wpcom/v2/themes/readymade-templates
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -803,7 +803,7 @@ paths:
       operationId: getWpcomV2ThemesReadymadeTemplatesbyTemplateId
       summary: GET /wpcom/v2/themes/readymade-templates/{template_id}
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK
@@ -832,7 +832,7 @@ paths:
       operationId: getWpcomV2ThemesbyThemePremiumDetails
       summary: GET /wpcom/v2/themes/{theme}/premium-details
       tags:
-      - themes
+      - Themes
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: auth
+- name: Auth
 paths:
   /wpcom/v2/auth/qr-code-app/approve:
     post:
       operationId: postWpcomV2AuthQrCodeAppApprove
       summary: POST /wpcom/v2/auth/qr-code-app/approve
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK
@@ -41,7 +41,7 @@ paths:
       operationId: postWpcomV2AuthQrCodeAppExchange
       summary: POST /wpcom/v2/auth/qr-code-app/exchange
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK
@@ -62,7 +62,7 @@ paths:
       operationId: postWpcomV2AuthQrCodeAppScan
       summary: POST /wpcom/v2/auth/qr-code-app/scan
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK
@@ -83,7 +83,7 @@ paths:
       operationId: getWpcomV2AuthQrCodeAppSessionStatus
       summary: GET /wpcom/v2/auth/qr-code-app/session-status
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK
@@ -104,7 +104,7 @@ paths:
       operationId: getWpcomV2AuthQrCodeAppStatus
       summary: GET /wpcom/v2/auth/qr-code-app/status
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK
@@ -125,7 +125,7 @@ paths:
       operationId: postWpcomV2AuthQrCodeAppToken
       summary: POST /wpcom/v2/auth/qr-code-app/token
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK
@@ -146,7 +146,7 @@ paths:
       operationId: postWpcomV2AuthQrCodeAuthenticate
       summary: POST /wpcom/v2/auth/qr-code/authenticate
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK
@@ -179,7 +179,7 @@ paths:
       operationId: postWpcomV2AuthQrCodeValidate
       summary: POST /wpcom/v2/auth/qr-code/validate
       tags:
-      - auth
+      - Auth
       responses:
         '200':
           description: OK

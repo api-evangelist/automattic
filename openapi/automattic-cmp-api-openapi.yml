@@ -88,7 +88,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/cmp/v{gvl_specification_version}/vendors/{language}:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteCmpVGvlSpecificationVersionVendorsbyLanguage
-      summary: GET /wpcom/v2/sites/{wpcom_site}/cmp/v{gvl_specification_version}/vendors/{language}
+      summary: GET /wpcom/v2/sites/{wpcom_site}/cmp/v{gvl_specification_version}/vendors/{langu…
       tags:
       - cmp
       responses:

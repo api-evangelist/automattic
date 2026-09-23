@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: menu-items
+- name: Menu Items
 paths:
   /wp/v2/sites/{wpcom_site}/menu-items:
     get:
       operationId: getWpV2SitesbyWpcomSiteMenuItems
       summary: GET /wp/v2/sites/{wpcom_site}/menu-items
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -219,7 +219,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMenuItems
       summary: POST /wp/v2/sites/{wpcom_site}/menu-items
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -322,7 +322,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteMenuItemsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/menu-items/{id}
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -364,7 +364,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMenuItemsbyId
       summary: POST /wp/v2/sites/{wpcom_site}/menu-items/{id}
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -466,7 +466,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteMenuItemsbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/menu-items/{id}
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -568,7 +568,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteMenuItemsbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/menu-items/{id}
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -670,7 +670,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteMenuItemsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/menu-items/{id}
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -709,7 +709,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteMenuItemsbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/menu-items/{id}/autosaves
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -757,7 +757,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteMenuItemsbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/menu-items/{id}/autosaves
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK
@@ -860,7 +860,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteMenuItemsbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/menu-items/{parent}/autosaves/{id}
       tags:
-      - menu-items
+      - Menu Items
       responses:
         '200':
           description: OK

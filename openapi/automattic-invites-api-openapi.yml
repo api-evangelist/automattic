@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: invites
+- name: Invites
 paths:
   /wpcom/v2/sites/{wpcom_site}/invites/are-users-invited:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteInvitesAreUsersInvited
       summary: POST /wpcom/v2/sites/{wpcom_site}/invites/are-users-invited
       tags:
-      - invites
+      - Invites
       responses:
         '200':
           description: OK
@@ -59,7 +59,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteInvitesDelete
       summary: POST /wpcom/v2/sites/{wpcom_site}/invites/delete
       tags:
-      - invites
+      - Invites
       responses:
         '200':
           description: OK
@@ -98,7 +98,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteInvitesIsInvited
       summary: GET /wpcom/v2/sites/{wpcom_site}/invites/is-invited
       tags:
-      - invites
+      - Invites
       responses:
         '200':
           description: OK
@@ -130,7 +130,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteInvitesLinksDisable
       summary: POST /wpcom/v2/sites/{wpcom_site}/invites/links/disable
       tags:
-      - invites
+      - Invites
       responses:
         '200':
           description: OK
@@ -165,7 +165,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteInvitesLinksGenerate
       summary: POST /wpcom/v2/sites/{wpcom_site}/invites/links/generate
       tags:
-      - invites
+      - Invites
       responses:
         '200':
           description: OK
@@ -202,7 +202,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteInvitesNew
       summary: POST /wpcom/v2/sites/{wpcom_site}/invites/new
       tags:
-      - invites
+      - Invites
       responses:
         '200':
           description: OK
@@ -241,7 +241,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteInvitesResend
       summary: POST /wpcom/v2/sites/{wpcom_site}/invites/resend
       tags:
-      - invites
+      - Invites
       responses:
         '200':
           description: OK

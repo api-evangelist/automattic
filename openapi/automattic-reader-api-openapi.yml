@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: reader
+- name: Reader
 paths:
   /wpcom/v2/reader/atmosphere/connections:
     get:
       operationId: getWpcomV2ReaderAtmosphereConnections
       summary: GET /wpcom/v2/reader/atmosphere/connections
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -40,7 +40,7 @@ paths:
       operationId: postWpcomV2ReaderAtmosphereConnections
       summary: POST /wpcom/v2/reader/atmosphere/connections
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -74,7 +74,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyId
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -100,7 +100,7 @@ paths:
       operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyId
       summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -127,7 +127,7 @@ paths:
       operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdBlobs
       summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/blobs
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -154,7 +154,7 @@ paths:
       operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdFollows
       summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/follows
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -191,7 +191,7 @@ paths:
       operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdFollowsbyRkey
       summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/follows/{rkey}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -223,7 +223,7 @@ paths:
       operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdLikes
       summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/likes
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -263,7 +263,7 @@ paths:
       operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdLikesbyRkey
       summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/likes/{rkey}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -295,7 +295,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdNotifications
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/notifications
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -340,7 +340,7 @@ paths:
       operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdPosts
       summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/posts
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -379,7 +379,7 @@ paths:
       operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdPostsbyRkey
       summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/posts/{rkey}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -411,7 +411,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActor
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -443,7 +443,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActorFeed
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/feed
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -498,7 +498,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActorFollowers
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/followers
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -542,7 +542,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdProfilebyActorFollows
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/profile/{actor}/follows
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -586,7 +586,7 @@ paths:
       operationId: postWpcomV2ReaderAtmosphereConnectionsbyIdReposts
       summary: POST /wpcom/v2/reader/atmosphere/connections/{id}/reposts
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -626,7 +626,7 @@ paths:
       operationId: deleteWpcomV2ReaderAtmosphereConnectionsbyIdRepostsbyRkey
       summary: DELETE /wpcom/v2/reader/atmosphere/connections/{id}/reposts/{rkey}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -658,7 +658,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdTagbyHashtagFeed
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/tag/{hashtag}/feed
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -702,7 +702,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdThread
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/thread
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -746,7 +746,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereConnectionsbyIdTimeline
       summary: GET /wpcom/v2/reader/atmosphere/connections/{id}/timeline
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -791,7 +791,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereProfilebyActor
       summary: GET /wpcom/v2/reader/atmosphere/profile/{actor}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -818,7 +818,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereProfilebyActorFeed
       summary: GET /wpcom/v2/reader/atmosphere/profile/{actor}/feed
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -868,7 +868,7 @@ paths:
       operationId: getWpcomV2ReaderAtmosphereThread
       summary: GET /wpcom/v2/reader/atmosphere/thread
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -907,7 +907,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnections
       summary: GET /wpcom/v2/reader/fediverse/connections
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -928,7 +928,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyId
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -955,7 +955,7 @@ paths:
       operationId: postWpcomV2ReaderFediverseConnectionsbyIdFollows
       summary: POST /wpcom/v2/reader/fediverse/connections/{id}/follows
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -992,7 +992,7 @@ paths:
       operationId: deleteWpcomV2ReaderFediverseConnectionsbyIdFollowsbyFollowId
       summary: DELETE /wpcom/v2/reader/fediverse/connections/{id}/follows/{follow_id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1024,7 +1024,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyIdNotifications
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}/notifications
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1069,7 +1069,7 @@ paths:
       operationId: postWpcomV2ReaderFediverseConnectionsbyIdPosts
       summary: POST /wpcom/v2/reader/fediverse/connections/{id}/posts
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1121,7 +1121,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfile
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1148,7 +1148,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActor
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1180,7 +1180,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActorFollowers
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/followers
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1224,7 +1224,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActorFollowing
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/following
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1268,7 +1268,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyIdProfilebyActorTimeline
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}/profile/{actor}/timeline
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1312,7 +1312,7 @@ paths:
       operationId: getWpcomV2ReaderFediverseConnectionsbyIdTimeline
       summary: GET /wpcom/v2/reader/fediverse/connections/{id}/timeline
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1351,7 +1351,7 @@ paths:
       operationId: getWpcomV2ReaderGreader
       summary: GET /wpcom/v2/reader/greader
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1372,7 +1372,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderAccountsClientlogin
       summary: GET /wpcom/v2/reader/greader/accounts/ClientLogin
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1403,7 +1403,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderAccountsClientlogin
       summary: POST /wpcom/v2/reader/greader/accounts/ClientLogin
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1437,7 +1437,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpAccountsClientlogin
       summary: GET /wpcom/v2/reader/greader/api/greader.php/accounts/ClientLogin
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1468,7 +1468,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpAccountsClientlogin
       summary: POST /wpcom/v2/reader/greader/api/greader.php/accounts/ClientLogin
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1502,7 +1502,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0DisableTag
       summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/disable-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1523,7 +1523,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0EditTag
       summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/edit-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1544,7 +1544,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0MarkAllAsRead
       summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/mark-all-as-read
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1565,7 +1565,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0RenameTag
       summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/rename-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1584,9 +1584,9 @@ paths:
   /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/contents/{stream}:
     get:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0StreamContentsbyStream
-      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/contents/{stream}
+      summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/contents/{strea…
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1613,7 +1613,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0StreamItemsContents
       summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/items/contents
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1634,7 +1634,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0StreamItemsIds
       summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/stream/items/ids
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1655,7 +1655,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0SubscriptionEdit
       summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/edit
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1676,7 +1676,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0SubscriptionList
       summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/list
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1697,7 +1697,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderApiGreaderPhpReaderApi0SubscriptionQuickadd
       summary: POST /wpcom/v2/reader/greader/api/greader.php/reader/api/0/subscription/quickadd
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1718,7 +1718,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0TagList
       summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/tag/list
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1739,7 +1739,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0Token
       summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/token
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1760,7 +1760,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0UnreadCount
       summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/unread-count
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1781,7 +1781,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderApiGreaderPhpReaderApi0UserInfo
       summary: GET /wpcom/v2/reader/greader/api/greader.php/reader/api/0/user-info
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1802,7 +1802,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpAccountsClientlogin
       summary: GET /wpcom/v2/reader/greader/greader.php/accounts/ClientLogin
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1833,7 +1833,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpAccountsClientlogin
       summary: POST /wpcom/v2/reader/greader/greader.php/accounts/ClientLogin
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1867,7 +1867,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0DisableTag
       summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/disable-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1888,7 +1888,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0EditTag
       summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/edit-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1909,7 +1909,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0MarkAllAsRead
       summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/mark-all-as-read
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1930,7 +1930,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0RenameTag
       summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/rename-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1951,7 +1951,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0StreamContentsbyStream
       summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/contents/{stream}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1978,7 +1978,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0StreamItemsContents
       summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/items/contents
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -1999,7 +1999,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0StreamItemsIds
       summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/stream/items/ids
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2020,7 +2020,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0SubscriptionEdit
       summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/edit
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2041,7 +2041,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0SubscriptionList
       summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/list
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2062,7 +2062,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderGreaderPhpReaderApi0SubscriptionQuickadd
       summary: POST /wpcom/v2/reader/greader/greader.php/reader/api/0/subscription/quickadd
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2083,7 +2083,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0TagList
       summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/tag/list
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2104,7 +2104,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0Token
       summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/token
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2125,7 +2125,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0UnreadCount
       summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/unread-count
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2146,7 +2146,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderGreaderPhpReaderApi0UserInfo
       summary: GET /wpcom/v2/reader/greader/greader.php/reader/api/0/user-info
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2167,7 +2167,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderReaderApi0DisableTag
       summary: POST /wpcom/v2/reader/greader/reader/api/0/disable-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2188,7 +2188,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderReaderApi0EditTag
       summary: POST /wpcom/v2/reader/greader/reader/api/0/edit-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2209,7 +2209,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderReaderApi0MarkAllAsRead
       summary: POST /wpcom/v2/reader/greader/reader/api/0/mark-all-as-read
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2230,7 +2230,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderReaderApi0RenameTag
       summary: POST /wpcom/v2/reader/greader/reader/api/0/rename-tag
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2251,7 +2251,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderReaderApi0StreamContentsbyStream
       summary: GET /wpcom/v2/reader/greader/reader/api/0/stream/contents/{stream}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2278,7 +2278,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderReaderApi0StreamItemsContents
       summary: POST /wpcom/v2/reader/greader/reader/api/0/stream/items/contents
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2299,7 +2299,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderReaderApi0StreamItemsIds
       summary: GET /wpcom/v2/reader/greader/reader/api/0/stream/items/ids
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2320,7 +2320,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderReaderApi0SubscriptionEdit
       summary: POST /wpcom/v2/reader/greader/reader/api/0/subscription/edit
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2341,7 +2341,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderReaderApi0SubscriptionList
       summary: GET /wpcom/v2/reader/greader/reader/api/0/subscription/list
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2362,7 +2362,7 @@ paths:
       operationId: postWpcomV2ReaderGreaderReaderApi0SubscriptionQuickadd
       summary: POST /wpcom/v2/reader/greader/reader/api/0/subscription/quickadd
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2383,7 +2383,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderReaderApi0TagList
       summary: GET /wpcom/v2/reader/greader/reader/api/0/tag/list
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2404,7 +2404,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderReaderApi0Token
       summary: GET /wpcom/v2/reader/greader/reader/api/0/token
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2425,7 +2425,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderReaderApi0UnreadCount
       summary: GET /wpcom/v2/reader/greader/reader/api/0/unread-count
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2446,7 +2446,7 @@ paths:
       operationId: getWpcomV2ReaderGreaderReaderApi0UserInfo
       summary: GET /wpcom/v2/reader/greader/reader/api/0/user-info
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2467,7 +2467,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnections
       summary: GET /wpcom/v2/reader/mastodon/connections
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2487,7 +2487,7 @@ paths:
       operationId: postWpcomV2ReaderMastodonConnections
       summary: POST /wpcom/v2/reader/mastodon/connections
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2527,7 +2527,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyId
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2554,7 +2554,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdAuthStatus
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/auth-status
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2581,7 +2581,7 @@ paths:
       operationId: postWpcomV2ReaderMastodonConnectionsbyIdFollows
       summary: POST /wpcom/v2/reader/mastodon/connections/{id}/follows
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2616,7 +2616,7 @@ paths:
       operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdFollowsbyAccountId
       summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/follows/{account_id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2648,7 +2648,7 @@ paths:
       operationId: postWpcomV2ReaderMastodonConnectionsbyIdLikes
       summary: POST /wpcom/v2/reader/mastodon/connections/{id}/likes
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2685,7 +2685,7 @@ paths:
       operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdLikesbyStatusId
       summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/likes/{status_id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2717,7 +2717,7 @@ paths:
       operationId: postWpcomV2ReaderMastodonConnectionsbyIdMedia
       summary: POST /wpcom/v2/reader/mastodon/connections/{id}/media
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2752,7 +2752,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdNotifications
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/notifications
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2797,7 +2797,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActor
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2829,7 +2829,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActorFeed
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/feed
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2891,7 +2891,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActorFollowers
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/followers
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2941,7 +2941,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdProfilebyActorFollowing
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/profile/{actor}/following
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -2991,7 +2991,7 @@ paths:
       operationId: postWpcomV2ReaderMastodonConnectionsbyIdReposts
       summary: POST /wpcom/v2/reader/mastodon/connections/{id}/reposts
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3028,7 +3028,7 @@ paths:
       operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdRepostsbyStatusId
       summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/reposts/{status_id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3060,7 +3060,7 @@ paths:
       operationId: postWpcomV2ReaderMastodonConnectionsbyIdStatuses
       summary: POST /wpcom/v2/reader/mastodon/connections/{id}/statuses
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3116,7 +3116,7 @@ paths:
       operationId: deleteWpcomV2ReaderMastodonConnectionsbyIdStatusesbyStatusId
       summary: DELETE /wpcom/v2/reader/mastodon/connections/{id}/statuses/{status_id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3148,7 +3148,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdTagbyHashtagFeed
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/tag/{hashtag}/feed
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3222,7 +3222,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdThread
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/thread
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3254,7 +3254,7 @@ paths:
       operationId: getWpcomV2ReaderMastodonConnectionsbyIdTimeline
       summary: GET /wpcom/v2/reader/mastodon/connections/{id}/timeline
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3305,7 +3305,7 @@ paths:
       operationId: getWpcomV2ReaderSpaces
       summary: GET /wpcom/v2/reader/spaces
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3325,7 +3325,7 @@ paths:
       operationId: postWpcomV2ReaderSpaces
       summary: POST /wpcom/v2/reader/spaces
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3377,7 +3377,7 @@ paths:
       operationId: getWpcomV2ReaderSpacesMembership
       summary: GET /wpcom/v2/reader/spaces/membership
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3411,7 +3411,7 @@ paths:
       operationId: getWpcomV2ReaderSpacesSlugbySlug
       summary: GET /wpcom/v2/reader/spaces/slug/{slug}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3438,7 +3438,7 @@ paths:
       operationId: getWpcomV2ReaderSpacesbyId
       summary: GET /wpcom/v2/reader/spaces/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3464,7 +3464,7 @@ paths:
       operationId: postWpcomV2ReaderSpacesbyId
       summary: POST /wpcom/v2/reader/spaces/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3516,7 +3516,7 @@ paths:
       operationId: putWpcomV2ReaderSpacesbyId
       summary: PUT /wpcom/v2/reader/spaces/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3568,7 +3568,7 @@ paths:
       operationId: patchWpcomV2ReaderSpacesbyId
       summary: PATCH /wpcom/v2/reader/spaces/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3620,7 +3620,7 @@ paths:
       operationId: deleteWpcomV2ReaderSpacesbyId
       summary: DELETE /wpcom/v2/reader/spaces/{id}
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3647,7 +3647,7 @@ paths:
       operationId: getWpcomV2ReaderSpacesbyIdDiscover
       summary: GET /wpcom/v2/reader/spaces/{id}/discover
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK
@@ -3694,7 +3694,7 @@ paths:
       operationId: getWpcomV2ReaderSpacesbyIdPosts
       summary: GET /wpcom/v2/reader/spaces/{id}/posts
       tags:
-      - reader
+      - Reader
       responses:
         '200':
           description: OK

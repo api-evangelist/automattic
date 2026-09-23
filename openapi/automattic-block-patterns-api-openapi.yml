@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: block-patterns
+- name: block patterns
 paths:
   /wp/v2/sites/{wpcom_site}/block-patterns/categories:
     get:
       operationId: getWpV2SitesbyWpcomSiteBlockPatternsCategories
       summary: GET /wp/v2/sites/{wpcom_site}/block-patterns/categories
       tags:
-      - block-patterns
+      - block patterns
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlockPatternsPatterns
       summary: GET /wp/v2/sites/{wpcom_site}/block-patterns/patterns
       tags:
-      - block-patterns
+      - block patterns
       responses:
         '200':
           description: OK

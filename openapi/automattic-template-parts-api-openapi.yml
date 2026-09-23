@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: template-parts
+- name: template parts
 paths:
   /wp/v2/sites/{wpcom_site}/template-parts:
     get:
       operationId: getWpV2SitesbyWpcomSiteTemplateParts
       summary: GET /wp/v2/sites/{wpcom_site}/template-parts
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -75,7 +75,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteTemplateParts
       summary: POST /wp/v2/sites/{wpcom_site}/template-parts
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -148,7 +148,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatePartsLookup
       summary: GET /wp/v2/sites/{wpcom_site}/template-parts/lookup
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -193,7 +193,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -235,7 +235,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteTemplatePartsbyId
       summary: POST /wp/v2/sites/{wpcom_site}/template-parts/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -306,7 +306,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteTemplatePartsbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/template-parts/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -377,7 +377,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteTemplatePartsbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/template-parts/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -448,7 +448,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteTemplatePartsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/template-parts/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -487,7 +487,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{id}/autosaves
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -529,7 +529,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteTemplatePartsbyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/template-parts/{id}/autosaves
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -601,7 +601,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{parent}/autosaves/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -649,7 +649,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -760,7 +760,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteTemplatePartsbyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK
@@ -807,7 +807,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteTemplatePartsbyParentRevisionsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/template-parts/{parent}/revisions/{id}
       tags:
-      - template-parts
+      - template parts
       responses:
         '200':
           description: OK

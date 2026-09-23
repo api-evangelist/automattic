@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: scan
+- name: Scan
 paths:
   /wpcom/v2/sites/{wpcom_site}/scan:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteScan
       summary: GET /wpcom/v2/sites/{wpcom_site}/scan
       tags:
-      - scan
+      - Scan
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteScanCounts
       summary: GET /wpcom/v2/sites/{wpcom_site}/scan/counts
       tags:
-      - scan
+      - Scan
       responses:
         '200':
           description: OK
@@ -74,7 +74,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteScanEnqueue
       summary: POST /wpcom/v2/sites/{wpcom_site}/scan/enqueue
       tags:
-      - scan
+      - Scan
       responses:
         '200':
           description: OK
@@ -101,7 +101,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteScanHistory
       summary: GET /wpcom/v2/sites/{wpcom_site}/scan/history
       tags:
-      - scan
+      - Scan
       responses:
         '200':
           description: OK
@@ -136,7 +136,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteScanThreatbyThreatid
       summary: GET /wpcom/v2/sites/{wpcom_site}/scan/threat/{threatId}
       tags:
-      - scan
+      - Scan
       responses:
         '200':
           description: OK

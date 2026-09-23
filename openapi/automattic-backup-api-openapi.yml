@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: backup
+- name: Backup
 paths:
   /wpcom/v2/sites/{wpcom_site}/backup/retention/update:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteBackupRetentionUpdate
       summary: POST /wpcom/v2/sites/{wpcom_site}/backup/retention/update
       tags:
-      - backup
+      - Backup
       responses:
         '200':
           description: OK

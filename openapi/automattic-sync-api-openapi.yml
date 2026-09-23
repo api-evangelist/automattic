@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: sync
+- name: Sync
 paths:
   /wpcom/v2/sites/{wpcom_site}/sync/updates:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteSyncUpdates
       summary: POST /wpcom/v2/sites/{wpcom_site}/sync/updates
       tags:
-      - sync
+      - Sync
       responses:
         '200':
           description: OK

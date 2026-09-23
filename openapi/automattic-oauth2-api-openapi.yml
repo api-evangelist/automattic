@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: oauth2
+- name: OAuth2
 paths:
   /wpcom/v2/oauth2/client-data/{client_id}:
     get:
       operationId: getWpcomV2Oauth2ClientDatabyClientId
       summary: GET /wpcom/v2/oauth2/client-data/{client_id}
       tags:
-      - oauth2
+      - OAuth2
       responses:
         '200':
           description: OK

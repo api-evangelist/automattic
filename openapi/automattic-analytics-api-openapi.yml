@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: analytics
+- name: Analytics
 paths:
   /wpcom/v2/sites/{wpcom_site}/analytics/options/campaigns:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsCampaigns
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/campaigns
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -94,7 +94,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsChannels
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/channels
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -168,7 +168,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsChannelsSources
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/channels-sources
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -242,7 +242,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsOptionsSources
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/options/sources
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -316,7 +316,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsBookingsByDate
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/bookings/by-date
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -396,7 +396,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCoupons
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/coupons
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -485,7 +485,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCouponsByDate
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/coupons/by-date
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -565,7 +565,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCustomersByDate
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/customers/by-date
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -645,7 +645,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsCustomersNewReturning
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/customers/new-returning
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -712,7 +712,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteAnalyticsReportsForecastWithNarrative
       summary: POST /wpcom/v2/sites/{wpcom_site}/analytics/reports/forecast-with-narrative
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -772,7 +772,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteAnalyticsReportsLogDiagnostics
       summary: POST /wpcom/v2/sites/{wpcom_site}/analytics/reports/log-diagnostics
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -815,9 +815,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution-by-product/{view}/summary:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionByProductbyViewSummary
-      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution-by-product/{view}/summary
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution-by-product/…
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -899,9 +899,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/compare:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionbyViewCompare
-      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/compare
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/comp…
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -984,9 +984,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/items:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionbyViewItems
-      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/items
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/item…
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1118,9 +1118,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/summary:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrderAttributionbyViewSummary
-      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/summary
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/order-attribution/{view}/summ…
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1216,9 +1216,9 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders-by-product-type/by-date:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrdersByProductTypeByDate
-      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders-by-product-type/by-date
+      summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders-by-product-type/by-dat…
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1298,7 +1298,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsOrdersByDate
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/orders/by-date
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1378,7 +1378,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsProducts
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/products
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1477,7 +1477,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteAnalyticsReportsSegmentNarrative
       summary: POST /wpcom/v2/sites/{wpcom_site}/analytics/reports/segment-narrative
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1520,7 +1520,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByConversionRate
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-conversion-rate
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1590,7 +1590,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByDate
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-date
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1660,7 +1660,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByDevice
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-device
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1709,7 +1709,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsSessionsByLocation
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/sessions/by-location
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1781,7 +1781,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsTaxesBreakdown
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/taxes/breakdown
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK
@@ -1871,7 +1871,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteAnalyticsReportsTaxesByDate
       summary: GET /wpcom/v2/sites/{wpcom_site}/analytics/reports/taxes/by-date
       tags:
-      - analytics
+      - Analytics
       responses:
         '200':
           description: OK

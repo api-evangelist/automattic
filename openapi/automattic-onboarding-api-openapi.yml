@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: onboarding
+- name: Onboarding
 paths:
   /wpcom/v2/onboarding/domains/categories:
     get:
       operationId: getWpcomV2OnboardingDomainsCategories
       summary: GET /wpcom/v2/onboarding/domains/categories
       tags:
-      - onboarding
+      - Onboarding
       responses:
         '200':
           description: OK

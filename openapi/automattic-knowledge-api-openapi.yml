@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: knowledge
+- name: Knowledge
 paths:
   /wp/v2/sites/{wpcom_site}/knowledge:
     get:
       operationId: getWpV2SitesbyWpcomSiteKnowledge
       summary: GET /wp/v2/sites/{wpcom_site}/knowledge
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -230,7 +230,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteKnowledge
       summary: POST /wp/v2/sites/{wpcom_site}/knowledge
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -307,7 +307,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteKnowledgeGuidelineScopes
       summary: GET /wp/v2/sites/{wpcom_site}/knowledge/guideline-scopes
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -334,7 +334,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteKnowledgebyId
       summary: GET /wp/v2/sites/{wpcom_site}/knowledge/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -388,7 +388,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteKnowledgebyId
       summary: POST /wp/v2/sites/{wpcom_site}/knowledge/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -469,7 +469,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteKnowledgebyId
       summary: PUT /wp/v2/sites/{wpcom_site}/knowledge/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -550,7 +550,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteKnowledgebyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/knowledge/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -631,7 +631,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteKnowledgebyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/knowledge/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -670,7 +670,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteKnowledgebyIdAutosaves
       summary: GET /wp/v2/sites/{wpcom_site}/knowledge/{id}/autosaves
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -718,7 +718,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteKnowledgebyIdAutosaves
       summary: POST /wp/v2/sites/{wpcom_site}/knowledge/{id}/autosaves
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -803,7 +803,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteKnowledgebyParentAutosavesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/knowledge/{parent}/autosaves/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -851,7 +851,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteKnowledgebyParentRevisions
       summary: GET /wp/v2/sites/{wpcom_site}/knowledge/{parent}/revisions
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -962,7 +962,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteKnowledgebyParentRevisionsbyId
       summary: GET /wp/v2/sites/{wpcom_site}/knowledge/{parent}/revisions/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK
@@ -1009,7 +1009,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteKnowledgebyParentRevisionsbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/knowledge/{parent}/revisions/{id}
       tags:
-      - knowledge
+      - Knowledge
       responses:
         '200':
           description: OK

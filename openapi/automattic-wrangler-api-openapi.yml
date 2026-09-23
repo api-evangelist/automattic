@@ -19,7 +19,7 @@ paths:
   /wrangler/data:
     get:
       operationId: getWranglerData
-      summary: Get a simple data wrangler test.
+      summary: Get a simple data wrangler test
       description: Get a simple data wrangler test.
       tags:
       - wrangler
@@ -104,7 +104,7 @@ paths:
   /wrangler/data/answer:
     post:
       operationId: postWranglerDataAnswer
-      summary: Submit answer to a data wrangler test.
+      summary: Submit answer to a data wrangler test
       description: Submit answer to a data wrangler test.
       tags:
       - wrangler

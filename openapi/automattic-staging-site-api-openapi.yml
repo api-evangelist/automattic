@@ -98,7 +98,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/staging-site/pull-from-staging/{staging_site_id}:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteStagingSitePullFromStagingbyStagingSiteId
-      summary: POST /wpcom/v2/sites/{wpcom_site}/staging-site/pull-from-staging/{staging_site_id}
+      summary: POST /wpcom/v2/sites/{wpcom_site}/staging-site/pull-from-staging/{staging_site_i…
       tags:
       - staging-site
       responses:

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: experiments
+- name: Experiments
 paths:
   /wpcom/v2/experiments/0.1.0/analyses/{experiment_id}:
     get:
       operationId: getWpcomV2Experiments010AnalysesbyExperimentId
       summary: GET /wpcom/v2/experiments/0.1.0/analyses/{experiment_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -52,7 +52,7 @@ paths:
       operationId: getWpcomV2Experiments010AnalysesbyExperimentIdLatest
       summary: GET /wpcom/v2/experiments/0.1.0/analyses/{experiment_id}/latest
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -84,7 +84,7 @@ paths:
       operationId: patchWpcomV2Experiments010Assignments
       summary: PATCH /wpcom/v2/experiments/0.1.0/assignments
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -119,7 +119,7 @@ paths:
       operationId: postWpcomV2Experiments010AssignmentsLog
       summary: POST /wpcom/v2/experiments/0.1.0/assignments/log
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -167,7 +167,7 @@ paths:
       operationId: getWpcomV2Experiments010AssignmentsbyPlatform
       summary: GET /wpcom/v2/experiments/0.1.0/assignments/{platform}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -204,7 +204,7 @@ paths:
       operationId: getWpcomV2Experiments010AutocompleteEvents
       summary: GET /wpcom/v2/experiments/0.1.0/autocomplete/events
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -225,7 +225,7 @@ paths:
       operationId: getWpcomV2Experiments010AutocompleteEventsbyName
       summary: GET /wpcom/v2/experiments/0.1.0/autocomplete/events/{name}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -252,7 +252,7 @@ paths:
       operationId: getWpcomV2Experiments010AutocompleteProducts
       summary: GET /wpcom/v2/experiments/0.1.0/autocomplete/products
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -273,7 +273,7 @@ paths:
       operationId: getWpcomV2Experiments010AutocompleteTransactionTypes
       summary: GET /wpcom/v2/experiments/0.1.0/autocomplete/transaction-types
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -294,7 +294,7 @@ paths:
       operationId: getWpcomV2Experiments010AutocompleteUsers
       summary: GET /wpcom/v2/experiments/0.1.0/autocomplete/users
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -315,7 +315,7 @@ paths:
       operationId: getWpcomV2Experiments010Experiments
       summary: GET /wpcom/v2/experiments/0.1.0/experiments
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -341,7 +341,7 @@ paths:
       operationId: postWpcomV2Experiments010Experiments
       summary: POST /wpcom/v2/experiments/0.1.0/experiments
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -441,7 +441,7 @@ paths:
       operationId: getWpcomV2Experiments010ExperimentsGuardrailsbyPlatform
       summary: GET /wpcom/v2/experiments/0.1.0/experiments/guardrails/{platform}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -468,7 +468,7 @@ paths:
       operationId: postWpcomV2Experiments010ExperimentsPreset
       summary: POST /wpcom/v2/experiments/0.1.0/experiments/preset
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -521,7 +521,7 @@ paths:
       operationId: getWpcomV2Experiments010ExperimentsbyExperimentId
       summary: GET /wpcom/v2/experiments/0.1.0/experiments/{experiment_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -552,7 +552,7 @@ paths:
       operationId: putWpcomV2Experiments010ExperimentsbyExperimentId
       summary: PUT /wpcom/v2/experiments/0.1.0/experiments/{experiment_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -657,7 +657,7 @@ paths:
       operationId: patchWpcomV2Experiments010ExperimentsbyExperimentId
       summary: PATCH /wpcom/v2/experiments/0.1.0/experiments/{experiment_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -715,7 +715,7 @@ paths:
       operationId: postWpcomV2Experiments010ExperimentsbyExperimentIdApplyGuardrails
       summary: POST /wpcom/v2/experiments/0.1.0/experiments/{experiment_id}/apply-guardrails
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -742,7 +742,7 @@ paths:
       operationId: getWpcomV2Experiments010ExperimentsbyExperimentIdEarlyParticipants
       summary: GET /wpcom/v2/experiments/0.1.0/experiments/{experiment_id}/early-participants
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -775,7 +775,7 @@ paths:
       operationId: putWpcomV2Experiments010ExperimentsbyExperimentIdStatus
       summary: PUT /wpcom/v2/experiments/0.1.0/experiments/{experiment_id}/status
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -817,7 +817,7 @@ paths:
       operationId: postWpcomV2Experiments010Flags
       summary: POST /wpcom/v2/experiments/0.1.0/flags
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -867,7 +867,7 @@ paths:
       operationId: getWpcomV2Experiments010Flags
       summary: GET /wpcom/v2/experiments/0.1.0/flags
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -915,7 +915,7 @@ paths:
       operationId: postWpcomV2Experiments010FlagsPreset
       summary: POST /wpcom/v2/experiments/0.1.0/flags/preset
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -948,7 +948,7 @@ paths:
       operationId: patchWpcomV2Experiments010FlagsbyExperimentFlagKey
       summary: PATCH /wpcom/v2/experiments/0.1.0/flags/{experiment_flag_key}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1001,7 +1001,7 @@ paths:
       operationId: deleteWpcomV2Experiments010FlagsbyExperimentFlagKey
       summary: DELETE /wpcom/v2/experiments/0.1.0/flags/{experiment_flag_key}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1028,7 +1028,7 @@ paths:
       operationId: getWpcomV2Experiments010FlagsbyExperimentFlagKeyDetails
       summary: GET /wpcom/v2/experiments/0.1.0/flags/{experiment_flag_key}/details
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1055,7 +1055,7 @@ paths:
       operationId: postWpcomV2Experiments010FlagsbyExperimentFlagKeyExperiments
       summary: POST /wpcom/v2/experiments/0.1.0/flags/{experiment_flag_key}/experiments
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1101,7 +1101,7 @@ paths:
       operationId: getWpcomV2Experiments010FlagsbyPlatform
       summary: GET /wpcom/v2/experiments/0.1.0/flags/{platform}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1137,7 +1137,7 @@ paths:
       operationId: getWpcomV2Experiments010Metrics
       summary: GET /wpcom/v2/experiments/0.1.0/metrics
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1157,7 +1157,7 @@ paths:
       operationId: postWpcomV2Experiments010Metrics
       summary: POST /wpcom/v2/experiments/0.1.0/metrics
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1206,7 +1206,7 @@ paths:
       operationId: getWpcomV2Experiments010MetricsbyMetricId
       summary: GET /wpcom/v2/experiments/0.1.0/metrics/{metric_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1232,7 +1232,7 @@ paths:
       operationId: putWpcomV2Experiments010MetricsbyMetricId
       summary: PUT /wpcom/v2/experiments/0.1.0/metrics/{metric_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1286,7 +1286,7 @@ paths:
       operationId: deleteWpcomV2Experiments010MetricsbyMetricId
       summary: DELETE /wpcom/v2/experiments/0.1.0/metrics/{metric_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1313,7 +1313,7 @@ paths:
       operationId: getWpcomV2Experiments010Segments
       summary: GET /wpcom/v2/experiments/0.1.0/segments
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1333,7 +1333,7 @@ paths:
       operationId: postWpcomV2Experiments010Segments
       summary: POST /wpcom/v2/experiments/0.1.0/segments
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1370,7 +1370,7 @@ paths:
       operationId: getWpcomV2Experiments010SegmentsbySegmentId
       summary: GET /wpcom/v2/experiments/0.1.0/segments/{segment_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1396,7 +1396,7 @@ paths:
       operationId: deleteWpcomV2Experiments010SegmentsbySegmentId
       summary: DELETE /wpcom/v2/experiments/0.1.0/segments/{segment_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1423,7 +1423,7 @@ paths:
       operationId: getWpcomV2Experiments010Tags
       summary: GET /wpcom/v2/experiments/0.1.0/tags
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1443,7 +1443,7 @@ paths:
       operationId: postWpcomV2Experiments010Tags
       summary: POST /wpcom/v2/experiments/0.1.0/tags
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1480,7 +1480,7 @@ paths:
       operationId: getWpcomV2Experiments010TagsbyTagId
       summary: GET /wpcom/v2/experiments/0.1.0/tags/{tag_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1506,7 +1506,7 @@ paths:
       operationId: putWpcomV2Experiments010TagsbyTagId
       summary: PUT /wpcom/v2/experiments/0.1.0/tags/{tag_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK
@@ -1548,7 +1548,7 @@ paths:
       operationId: deleteWpcomV2Experiments010TagsbyTagId
       summary: DELETE /wpcom/v2/experiments/0.1.0/tags/{tag_id}
       tags:
-      - experiments
+      - Experiments
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: transfer
+- name: Transfer
 paths:
   /wpcom/v2/sites/{wpcom_site}/transfer:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteTransfer
       summary: GET /wpcom/v2/sites/{wpcom_site}/transfer
       tags:
-      - transfer
+      - Transfer
       responses:
         '200':
           description: OK
@@ -46,7 +46,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteTransfer
       summary: POST /wpcom/v2/sites/{wpcom_site}/transfer
       tags:
-      - transfer
+      - Transfer
       responses:
         '200':
           description: OK
@@ -72,7 +72,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteTransfer
       summary: PUT /wpcom/v2/sites/{wpcom_site}/transfer
       tags:
-      - transfer
+      - Transfer
       responses:
         '200':
           description: OK
@@ -98,7 +98,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteTransfer
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/transfer
       tags:
-      - transfer
+      - Transfer
       responses:
         '200':
           description: OK

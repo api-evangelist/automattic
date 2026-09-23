@@ -14,15 +14,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: site
+- name: Site
 paths:
   /jetpack-blogs/:
     get:
       operationId: getJetpackBlogs
-      summary: Get a list of your Jetpack-enabled blogs.
+      summary: Get a list of your Jetpack-enabled blogs
       description: Get a list of your Jetpack-enabled blogs.
       tags:
-      - site
+      - Site
       responses:
         '200':
           description: OK
@@ -105,10 +105,10 @@ paths:
   /jetpack-blogs/{blog_id}/:
     get:
       operationId: getJetpackBlogsByBlogId
-      summary: Get Jetpack settings.
+      summary: Get Jetpack settings
       description: Get Jetpack settings.
       tags:
-      - site
+      - Site
       responses:
         '200':
           description: OK
@@ -196,10 +196,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postJetpackBlogsByBlogId
-      summary: Update Jetpack settings.
+      summary: Update Jetpack settings
       description: Update Jetpack settings.
       tags:
-      - site
+      - Site
       responses:
         '200':
           description: OK
@@ -303,10 +303,10 @@ paths:
   /jetpack-blogs/{blog_id}/mine/delete:
     post:
       operationId: postJetpackBlogsByBlogIdMineDelete
-      summary: Disconnect a Jetpack-enabled blog from a WordPress.com user.
+      summary: Disconnect a Jetpack-enabled blog from a WordPress.com user
       description: Disconnect a Jetpack-enabled blog from a WordPress.com user.
       tags:
-      - site
+      - Site
       responses:
         '200':
           description: OK
@@ -394,10 +394,10 @@ paths:
   /jetpack-blogs/{blog_id}/test-connection:
     get:
       operationId: getJetpackBlogsByBlogIdTestConnection
-      summary: Test connection of a Jetpack blog.
+      summary: Test connection of a Jetpack blog
       description: Test connection of a Jetpack blog.
       tags:
-      - site
+      - Site
       responses:
         '200':
           description: OK
@@ -497,10 +497,10 @@ paths:
   /jetpack-blogs/{dest_blog_id}/source/{source_blog_id}/migrate/:
     post:
       operationId: postJetpackBlogsByDestBlogIdSourceBySourceBlogIdMigrate
-      summary: Migrate followers from a WordPress.com blog to a Jetpack-enabled blog.
+      summary: Migrate followers from a WordPress.com blog to a Jetpack-enabled blog
       description: Migrate followers from a WordPress.com blog to a Jetpack-enabled blog.
       tags:
-      - site
+      - Site
       responses:
         '200':
           description: OK

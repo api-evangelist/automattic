@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: waf-rules
+- name: WAF Rules
 paths:
   /wpcom/v2/sites/{wpcom_site}/waf-rules:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteWafRules
       summary: GET /wpcom/v2/sites/{wpcom_site}/waf-rules
       tags:
-      - waf-rules
+      - WAF Rules
       responses:
         '200':
           description: OK

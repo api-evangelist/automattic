@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: agency
+- name: Agency
 paths:
   /wpcom/v2/agency:
     get:
       operationId: getWpcomV2Agency
       summary: GET /wpcom/v2/agency
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -40,7 +40,7 @@ paths:
       operationId: postWpcomV2Agency
       summary: POST /wpcom/v2/agency
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -130,7 +130,7 @@ paths:
       operationId: getWpcomV2AgencyBlogbyBlogId
       summary: GET /wpcom/v2/agency/blog/{blog_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -157,7 +157,7 @@ paths:
       operationId: getWpcomV2AgencyEmbedsTipalti
       summary: GET /wpcom/v2/agency/embeds/tipalti
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -184,7 +184,7 @@ paths:
       operationId: getWpcomV2AgencyExistsName
       summary: GET /wpcom/v2/agency/exists/name
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -211,7 +211,7 @@ paths:
       operationId: getWpcomV2AgencyExistsUrl
       summary: GET /wpcom/v2/agency/exists/url
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -238,7 +238,7 @@ paths:
       operationId: postWpcomV2AgencyHelpPressableSupport
       summary: POST /wpcom/v2/agency/help/pressable/support
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -282,7 +282,7 @@ paths:
       operationId: postWpcomV2AgencyHelpZendeskCreateTicket
       summary: POST /wpcom/v2/agency/help/zendesk/create-ticket
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -326,7 +326,7 @@ paths:
       operationId: postWpcomV2AgencyHireAnExpert
       summary: POST /wpcom/v2/agency/hire-an-expert
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -376,7 +376,7 @@ paths:
       operationId: postWpcomV2AgencyHubspotWebhook
       summary: POST /wpcom/v2/agency/hubspot/webhook
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -397,7 +397,7 @@ paths:
       operationId: postWpcomV2AgencyLeadMatchingClient
       summary: POST /wpcom/v2/agency/lead-matching/client
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -418,7 +418,7 @@ paths:
       operationId: deleteWpcomV2AgencyLicense
       summary: DELETE /wpcom/v2/agency/license
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -444,7 +444,7 @@ paths:
       operationId: getWpcomV2AgencyLicenseDevSite
       summary: GET /wpcom/v2/agency/license/dev-site
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -470,7 +470,7 @@ paths:
       operationId: getWpcomV2AgencyPartnerDirectory
       summary: GET /wpcom/v2/agency/partner-directory
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -497,7 +497,7 @@ paths:
       operationId: postWpcomV2AgencyPartnerDirectoryFormSubmission
       summary: POST /wpcom/v2/agency/partner-directory/form-submission
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -550,7 +550,7 @@ paths:
       operationId: getWpcomV2AgencyPartnerDirectorybyAgencyId
       summary: GET /wpcom/v2/agency/partner-directory/{agency_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -577,7 +577,7 @@ paths:
       operationId: postWpcomV2AgencyPressableNewAccount
       summary: POST /wpcom/v2/agency/pressable/new-account
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -613,7 +613,7 @@ paths:
       operationId: postWpcomV2AgencyPressablePremiumPlanReferral
       summary: POST /wpcom/v2/agency/pressable/premium-plan-referral
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -681,7 +681,7 @@ paths:
       operationId: getWpcomV2AgencyProducts
       summary: GET /wpcom/v2/agency/products
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -702,7 +702,7 @@ paths:
       operationId: getWpcomV2AgencyResources
       summary: GET /wpcom/v2/agency/resources
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -723,7 +723,7 @@ paths:
       operationId: postWpcomV2AgencyResourcesRecordEvent
       summary: POST /wpcom/v2/agency/resources/record-event
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -761,7 +761,7 @@ paths:
       operationId: postWpcomV2AgencySignup
       summary: POST /wpcom/v2/agency/signup
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -858,7 +858,7 @@ paths:
       operationId: getWpcomV2AgencySignupContext
       summary: GET /wpcom/v2/agency/signup-context
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -879,7 +879,7 @@ paths:
       operationId: postWpcomV2AgencySignupContactSupport
       summary: POST /wpcom/v2/agency/signup/contact-support
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -924,7 +924,7 @@ paths:
       operationId: postWpcomV2AgencyUserFeedback
       summary: POST /wpcom/v2/agency/user-feedback
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -961,7 +961,7 @@ paths:
       operationId: getWpcomV2AgencyValidatebyField
       summary: GET /wpcom/v2/agency/validate/{field}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -993,7 +993,7 @@ paths:
       operationId: postWpcomV2AgencyVipPartnerOpportunity
       summary: POST /wpcom/v2/agency/vip/partner-opportunity
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1067,7 +1067,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyId
       summary: PUT /wpcom/v2/agency/{agency_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1116,7 +1116,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4AMcpSettings
       summary: GET /wpcom/v2/agency/{agency_id}/a4a-mcp/settings
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1142,7 +1142,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdA4AMcpSettings
       summary: POST /wpcom/v2/agency/{agency_id}/a4a-mcp/settings
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1179,7 +1179,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4ACollateralbyPostId
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1211,7 +1211,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4ACollateralbyPostIdHtml
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/html
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1266,7 +1266,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4ACollateralbyPostIdPdf
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/pdf
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1306,9 +1306,9 @@ paths:
   /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/social/{direction_id}/{size}/png:
     post:
       operationId: postWpcomV2AgencybyAgencyIdA4ACollateralbyPostIdSocialbyDirectionIdbySizePng
-      summary: POST /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/social/{direction_id}/{size}/png
+      summary: POST /wpcom/v2/agency/{agency_id}/a4a/collateral/{post_id}/social/{direction_id}…
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1366,7 +1366,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdA4ACollateralsbyCollateralIdRefine
       summary: POST /wpcom/v2/agency/{agency_id}/a4a/collaterals/{collateral_id}/refine
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1408,7 +1408,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4AOutputs
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/outputs
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1435,7 +1435,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4AProjects
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/projects
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1461,7 +1461,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdA4AProjects
       summary: POST /wpcom/v2/agency/{agency_id}/a4a/projects
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1502,7 +1502,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4AProjectsbyProjectId
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1533,7 +1533,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdA4AProjectsbyProjectId
       summary: DELETE /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1565,7 +1565,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4AProjectsbyProjectIdOutputs
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/projects/{project_id}/outputs
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1597,7 +1597,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdA4ARuns
       summary: POST /wpcom/v2/agency/{agency_id}/a4a/runs
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1637,7 +1637,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdA4ARunsbyRunId
       summary: GET /wpcom/v2/agency/{agency_id}/a4a/runs/{run_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1668,7 +1668,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdA4ARunsbyRunId
       summary: DELETE /wpcom/v2/agency/{agency_id}/a4a/runs/{run_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1700,7 +1700,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdAmplifyReports
       summary: POST /wpcom/v2/agency/{agency_id}/amplify/reports
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1739,7 +1739,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdAmplifyReports
       summary: GET /wpcom/v2/agency/{agency_id}/amplify/reports
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1778,7 +1778,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
       summary: GET /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1809,7 +1809,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
       summary: POST /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1850,7 +1850,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
       summary: PUT /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1891,7 +1891,7 @@ paths:
       operationId: patchWpcomV2AgencybyAgencyIdAmplifyReportsbyReportId
       summary: PATCH /wpcom/v2/agency/{agency_id}/amplify/reports/{report_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1933,7 +1933,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdBenchmarks
       summary: GET /wpcom/v2/agency/{agency_id}/benchmarks
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -1959,7 +1959,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdBenchmarks
       summary: POST /wpcom/v2/agency/{agency_id}/benchmarks
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2060,7 +2060,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdBenchmarksAggregates
       summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/aggregates
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2097,7 +2097,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdBenchmarksConfig
       summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/config
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2124,7 +2124,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdBenchmarksPeers
       summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/peers
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2161,7 +2161,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdBenchmarksbyQuarterbyYear
       summary: GET /wpcom/v2/agency/{agency_id}/benchmarks/{quarter}/{year}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2198,7 +2198,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdClients
       summary: GET /wpcom/v2/agency/{agency_id}/clients
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2224,7 +2224,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdClients
       summary: POST /wpcom/v2/agency/{agency_id}/clients
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2261,7 +2261,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdClientsbyClientId
       summary: GET /wpcom/v2/agency/{agency_id}/clients/{client_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2292,7 +2292,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdClientsbyClientId
       summary: PUT /wpcom/v2/agency/{agency_id}/clients/{client_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2333,7 +2333,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdClientsbyClientId
       summary: DELETE /wpcom/v2/agency/{agency_id}/clients/{client_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2365,7 +2365,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdLeadMatching
       summary: GET /wpcom/v2/agency/{agency_id}/lead-matching
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2391,7 +2391,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdLeadMatching
       summary: PUT /wpcom/v2/agency/{agency_id}/lead-matching
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2418,7 +2418,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdMedia
       summary: POST /wpcom/v2/agency/{agency_id}/media
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2458,7 +2458,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdProfile
       summary: PUT /wpcom/v2/agency/{agency_id}/profile
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2527,7 +2527,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdProfileApplication
       summary: PUT /wpcom/v2/agency/{agency_id}/profile/application
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2573,7 +2573,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdReferralEmailPreview
       summary: POST /wpcom/v2/agency/{agency_id}/referral-email-preview
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2622,7 +2622,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdReferrals
       summary: GET /wpcom/v2/agency/{agency_id}/referrals
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2648,7 +2648,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdReferrals
       summary: POST /wpcom/v2/agency/{agency_id}/referrals
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2703,7 +2703,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdReferralsCommissionPayout
       summary: GET /wpcom/v2/agency/{agency_id}/referrals/commission-payout
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2730,7 +2730,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdReferralsInvoices
       summary: GET /wpcom/v2/agency/{agency_id}/referrals/invoices
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2757,7 +2757,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdReferralsbyReferralId
       summary: GET /wpcom/v2/agency/{agency_id}/referrals/{referral_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2788,7 +2788,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdReferralsbyReferralId
       summary: DELETE /wpcom/v2/agency/{agency_id}/referrals/{referral_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2820,7 +2820,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdReferralsbyReferralIdArchive
       summary: POST /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/archive
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2851,7 +2851,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdReferralsbyReferralIdArchive
       summary: PUT /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/archive
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2882,7 +2882,7 @@ paths:
       operationId: patchWpcomV2AgencybyAgencyIdReferralsbyReferralIdArchive
       summary: PATCH /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/archive
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2914,7 +2914,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdReferralsbyReferralIdResend
       summary: POST /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/resend
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2945,7 +2945,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdReferralsbyReferralIdResend
       summary: PUT /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/resend
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -2976,7 +2976,7 @@ paths:
       operationId: patchWpcomV2AgencybyAgencyIdReferralsbyReferralIdResend
       summary: PATCH /wpcom/v2/agency/{agency_id}/referrals/{referral_id}/resend
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3008,7 +3008,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdReports
       summary: GET /wpcom/v2/agency/{agency_id}/reports
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3034,7 +3034,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdReports
       summary: POST /wpcom/v2/agency/{agency_id}/reports
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3103,7 +3103,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdReportsbyReportId
       summary: GET /wpcom/v2/agency/{agency_id}/reports/{report_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3134,7 +3134,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdReportsbyReportId
       summary: DELETE /wpcom/v2/agency/{agency_id}/reports/{report_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3166,7 +3166,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdReportsbyReportIdSend
       summary: POST /wpcom/v2/agency/{agency_id}/reports/{report_id}/send
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3207,7 +3207,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdScheduleCallLink
       summary: GET /wpcom/v2/agency/{agency_id}/schedule-call-link
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3234,7 +3234,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdSites
       summary: GET /wpcom/v2/agency/{agency_id}/sites
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3267,7 +3267,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdSites
       summary: POST /wpcom/v2/agency/{agency_id}/sites
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3306,7 +3306,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdSitesPending
       summary: GET /wpcom/v2/agency/{agency_id}/sites/pending
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3333,7 +3333,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdSitesProvisionDevSite
       summary: POST /wpcom/v2/agency/{agency_id}/sites/provision-dev-site
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3378,7 +3378,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdSitesTagForCommission
       summary: PUT /wpcom/v2/agency/{agency_id}/sites/tag-for-commission
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3425,7 +3425,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdSitesTags
       summary: PUT /wpcom/v2/agency/{agency_id}/sites/tags
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3469,7 +3469,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdSitesbyJetpackSiteIdMonitor
       summary: PUT /wpcom/v2/agency/{agency_id}/sites/{jetpack_site_id}/monitor
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3511,7 +3511,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdSitesbySiteId
       summary: PUT /wpcom/v2/agency/{agency_id}/sites/{site_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3550,7 +3550,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdSitesbySiteId
       summary: DELETE /wpcom/v2/agency/{agency_id}/sites/{site_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3582,7 +3582,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdSitesbySiteIdDeleteDevSite
       summary: DELETE /wpcom/v2/agency/{agency_id}/sites/{site_id}/delete-dev-site
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3614,7 +3614,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdSitesbySiteIdNotes
       summary: GET /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3645,7 +3645,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdSitesbySiteIdNotes
       summary: POST /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3687,7 +3687,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdSitesbySiteIdNotesbyNoteId
       summary: PUT /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes/{note_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3733,7 +3733,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdSitesbySiteIdNotesbyNoteId
       summary: DELETE /wpcom/v2/agency/{agency_id}/sites/{site_id}/notes/{note_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3770,7 +3770,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdSitesbySiteIdProvision
       summary: POST /wpcom/v2/agency/{agency_id}/sites/{site_id}/provision
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3818,9 +3818,9 @@ paths:
   /wpcom/v2/agency/{agency_id}/sites/{site_id}/request-migration-reverification:
     post:
       operationId: postWpcomV2AgencybyAgencyIdSitesbySiteIdRequestMigrationReverification
-      summary: POST /wpcom/v2/agency/{agency_id}/sites/{site_id}/request-migration-reverification
+      summary: POST /wpcom/v2/agency/{agency_id}/sites/{site_id}/request-migration-reverificati…
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3863,7 +3863,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdSitesbySiteIdTags
       summary: GET /wpcom/v2/agency/{agency_id}/sites/{site_id}/tags
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3894,7 +3894,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdSitesbySiteIdTags
       summary: PUT /wpcom/v2/agency/{agency_id}/sites/{site_id}/tags
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3938,7 +3938,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdTipalti
       summary: GET /wpcom/v2/agency/{agency_id}/tipalti
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -3965,7 +3965,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdTransferOwnership
       summary: POST /wpcom/v2/agency/{agency_id}/transfer-ownership
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4001,7 +4001,7 @@ paths:
       operationId: putWpcomV2AgencybyAgencyIdTransferOwnership
       summary: PUT /wpcom/v2/agency/{agency_id}/transfer-ownership
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4037,7 +4037,7 @@ paths:
       operationId: patchWpcomV2AgencybyAgencyIdTransferOwnership
       summary: PATCH /wpcom/v2/agency/{agency_id}/transfer-ownership
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4074,7 +4074,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdUserInvites
       summary: GET /wpcom/v2/agency/{agency_id}/user-invites
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4100,7 +4100,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdUserInvites
       summary: POST /wpcom/v2/agency/{agency_id}/user-invites
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4139,7 +4139,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdUserInvitesbyInviteId
       summary: GET /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4170,7 +4170,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdUserInvitesbyInviteId
       summary: POST /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4211,7 +4211,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdUserInvitesbyInviteId
       summary: DELETE /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4243,7 +4243,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdUserInvitesbyInviteIdResend
       summary: POST /wpcom/v2/agency/{agency_id}/user-invites/{invite_id}/resend
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4275,7 +4275,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdUsers
       summary: GET /wpcom/v2/agency/{agency_id}/users
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4302,7 +4302,7 @@ paths:
       operationId: deleteWpcomV2AgencybyAgencyIdUsersbyUserId
       summary: DELETE /wpcom/v2/agency/{agency_id}/users/{user_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4334,7 +4334,7 @@ paths:
       operationId: postWpcomV2AgencybyAgencyIdValidateSiteAddress
       summary: POST /wpcom/v2/agency/{agency_id}/validate-site-address
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4372,7 +4372,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdWoocommerceWoopayments
       summary: GET /wpcom/v2/agency/{agency_id}/woocommerce/woopayments
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4399,7 +4399,7 @@ paths:
       operationId: getWpcomV2AgencybyAgencyIdWoocommerceWoopaymentsbyBlogId
       summary: GET /wpcom/v2/agency/{agency_id}/woocommerce/woopayments/{blog_id}
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4440,7 +4440,7 @@ paths:
       operationId: postWpcomV2AgencybyCustomerUidPressableEvent
       summary: POST /wpcom/v2/agency/{customer_uid}/pressable/event
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK
@@ -4467,7 +4467,7 @@ paths:
       operationId: getWpcomV2AgencybyCustomerUidPressableMrr
       summary: GET /wpcom/v2/agency/{customer_uid}/pressable/mrr
       tags:
-      - agency
+      - Agency
       responses:
         '200':
           description: OK

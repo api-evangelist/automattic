@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: zendesk
+- name: Zendesk
 paths:
   /wpcom/v2/zendesk/triage/{handler}:
     post:
       operationId: postWpcomV2ZendeskTriagebyHandler
       summary: POST /wpcom/v2/zendesk/triage/{handler}
       tags:
-      - zendesk
+      - Zendesk
       responses:
         '200':
           description: OK

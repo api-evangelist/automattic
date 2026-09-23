@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: menu-locations
+- name: menu locations
 paths:
   /wp/v2/sites/{wpcom_site}/menu-locations:
     get:
       operationId: getWpV2SitesbyWpcomSiteMenuLocations
       summary: GET /wp/v2/sites/{wpcom_site}/menu-locations
       tags:
-      - menu-locations
+      - menu locations
       responses:
         '200':
           description: OK
@@ -58,7 +58,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteMenuLocationsbyLocation
       summary: GET /wp/v2/sites/{wpcom_site}/menu-locations/{location}
       tags:
-      - menu-locations
+      - menu locations
       responses:
         '200':
           description: OK

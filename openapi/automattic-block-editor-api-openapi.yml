@@ -143,7 +143,7 @@ paths:
               - has_seen_seller_celebration_modal
     patch:
       operationId: patchWpcomV2SitesbyWpcomSiteBlockEditorHasSeenSellerCelebrationModal
-      summary: PATCH /wpcom/v2/sites/{wpcom_site}/block-editor/has-seen-seller-celebration-modal
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/block-editor/has-seen-seller-celebration-moda…
       tags:
       - block-editor
       responses:
@@ -499,7 +499,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/block-editor/should-show-first-post-published-modal:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteBlockEditorShouldShowFirstPostPublishedModal
-      summary: GET /wpcom/v2/sites/{wpcom_site}/block-editor/should-show-first-post-published-modal
+      summary: GET /wpcom/v2/sites/{wpcom_site}/block-editor/should-show-first-post-published-m…
       tags:
       - block-editor
       responses:

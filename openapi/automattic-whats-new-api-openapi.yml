@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: whats-new
+- name: Whats New
 paths:
   /wpcom/v2/whats-new/list:
     get:
       operationId: getWpcomV2WhatsNewList
       summary: GET /wpcom/v2/whats-new/list
       tags:
-      - whats-new
+      - Whats New
       responses:
         '200':
           description: OK
@@ -60,7 +60,7 @@ paths:
       operationId: getWpcomV2WhatsNewSeenAnnouncementIds
       summary: GET /wpcom/v2/whats-new/seen-announcement-ids
       tags:
-      - whats-new
+      - Whats New
       responses:
         '200':
           description: OK
@@ -80,7 +80,7 @@ paths:
       operationId: postWpcomV2WhatsNewSeenAnnouncementIds
       summary: POST /wpcom/v2/whats-new/seen-announcement-ids
       tags:
-      - whats-new
+      - Whats New
       responses:
         '200':
           description: OK

@@ -14,15 +14,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: taxonomy
+- name: Taxonomy
 paths:
   /sites/{site}/categories:
     get:
       operationId: getSitesBySiteCategories
-      summary: Get a list of a site's categories.
+      summary: Get a list of a site's categories
       description: Get a list of a site's categories.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -153,10 +153,10 @@ paths:
   /sites/{site}/categories/new:
     post:
       operationId: postSitesBySiteCategoriesNew
-      summary: Create a new category.
+      summary: Create a new category
       description: Create a new category.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -278,10 +278,10 @@ paths:
   /sites/{site}/categories/slug:{category}:
     get:
       operationId: getSitesBySiteCategoriesSlugCategory
-      summary: Get information about a single category.
+      summary: Get information about a single category
       description: Get information about a single category.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -392,10 +392,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteCategoriesSlugCategory
-      summary: Edit a category.
+      summary: Edit a category
       description: Edit a category.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -523,10 +523,10 @@ paths:
   /sites/{site}/categories/slug:{category}/delete:
     post:
       operationId: postSitesBySiteCategoriesSlugCategoryDelete
-      summary: Delete a category.
+      summary: Delete a category
       description: Delete a category.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -638,10 +638,10 @@ paths:
   /sites/{site}/post-types/{post_type}/taxonomies:
     get:
       operationId: getSitesBySitePostTypesByPostTypeTaxonomies
-      summary: Get a list of taxonomies associated with a post type.
+      summary: Get a list of taxonomies associated with a post type
       description: Get a list of taxonomies associated with a post type.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -736,10 +736,10 @@ paths:
   /sites/{site}/tags:
     get:
       operationId: getSitesBySiteTags
-      summary: Get a list of a site's tags.
+      summary: Get a list of a site's tags
       description: Get a list of a site's tags.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -870,10 +870,10 @@ paths:
   /sites/{site}/tags/new:
     post:
       operationId: postSitesBySiteTagsNew
-      summary: Create a new tag.
+      summary: Create a new tag
       description: Create a new tag.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -986,10 +986,10 @@ paths:
   /sites/{site}/tags/slug:{tag}:
     get:
       operationId: getSitesBySiteTagsSlugTag
-      summary: Get information about a single tag.
+      summary: Get information about a single tag
       description: Get information about a single tag.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -1094,10 +1094,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteTagsSlugTag
-      summary: Edit a tag.
+      summary: Edit a tag
       description: Edit a tag.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -1216,10 +1216,10 @@ paths:
   /sites/{site}/tags/slug:{tag}/delete:
     post:
       operationId: postSitesBySiteTagsSlugTagDelete
-      summary: Delete a tag.
+      summary: Delete a tag
       description: Delete a tag.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -1325,10 +1325,10 @@ paths:
   /sites/{site}/taxonomies/{taxonomy}/terms:
     get:
       operationId: getSitesBySiteTaxonomiesByTaxonomyTerms
-      summary: Get a list of a site's terms by taxonomy.
+      summary: Get a list of a site's terms by taxonomy
       description: Get a list of a site's terms by taxonomy.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -1465,10 +1465,10 @@ paths:
   /sites/{site}/taxonomies/{taxonomy}/terms/new:
     post:
       operationId: postSitesBySiteTaxonomiesByTaxonomyTermsNew
-      summary: Create a new term.
+      summary: Create a new term
       description: Create a new term.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -1596,10 +1596,10 @@ paths:
   /sites/{site}/taxonomies/{taxonomy}/terms/slug:{slug}:
     get:
       operationId: getSitesBySiteTaxonomiesByTaxonomyTermsSlugSlug
-      summary: Get information about a single term.
+      summary: Get information about a single term
       description: Get information about a single term.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -1710,10 +1710,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postSitesBySiteTaxonomiesByTaxonomyTermsSlugSlug
-      summary: Edit a term.
+      summary: Edit a term
       description: Edit a term.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK
@@ -1847,10 +1847,10 @@ paths:
   /sites/{site}/taxonomies/{taxonomy}/terms/slug:{slug}/delete:
     post:
       operationId: postSitesBySiteTaxonomiesByTaxonomyTermsSlugSlugDelete
-      summary: Delete a term.
+      summary: Delete a term
       description: Delete a term.
       tags:
-      - taxonomy
+      - Taxonomy
       responses:
         '200':
           description: OK

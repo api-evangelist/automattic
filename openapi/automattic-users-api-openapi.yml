@@ -14,15 +14,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: users
+- name: Users
 paths:
   /me:
     get:
       operationId: getMe
-      summary: Get metadata about the current user.
+      summary: Get metadata about the current user
       description: Get metadata about the current user.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -233,10 +233,10 @@ paths:
   /me/billing-history:
     get:
       operationId: getMeBillingHistory
-      summary: Get list of current user's billing history and upcoming charges.
+      summary: Get list of current user's billing history and upcoming charges
       description: Get list of current user's billing history and upcoming charges.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -325,10 +325,10 @@ paths:
   /me/connected-applications/:
     get:
       operationId: getMeConnectedApplications
-      summary: Get current user's connected applications.
+      summary: Get current user's connected applications
       description: Get current user's connected applications.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -410,10 +410,10 @@ paths:
   /me/connected-applications/{ID}:
     get:
       operationId: getMeConnectedApplicationsById
-      summary: Get one of current user's connected applications.
+      summary: Get one of current user's connected applications
       description: Get one of current user's connected applications.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -524,10 +524,10 @@ paths:
   /me/connected-applications/{ID}/delete:
     post:
       operationId: postMeConnectedApplicationsByIdDelete
-      summary: Delete one of current user's connected application access tokens.
+      summary: Delete one of current user's connected application access tokens
       description: Delete one of current user's connected application access tokens.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -614,10 +614,10 @@ paths:
   /me/likes/:
     get:
       operationId: getMeLikes
-      summary: Get a list of the current user's likes.
+      summary: Get a list of the current user's likes
       description: Get a list of the current user's likes.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -734,10 +734,10 @@ paths:
   /me/preferences/:
     get:
       operationId: getMePreferences
-      summary: Get the current user's settings.
+      summary: Get the current user's settings
       description: Get the current user's settings.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -815,10 +815,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postMePreferences
-      summary: Update the current user's preferences.
+      summary: Update the current user's preferences
       description: Update the current user's preferences.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -909,10 +909,10 @@ paths:
   /me/settings/:
     get:
       operationId: getMeSettings
-      summary: Get the current user's settings.
+      summary: Get the current user's settings
       description: Get the current user's settings.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -1129,10 +1129,10 @@ paths:
         description: An optional JSONP callback function.
     post:
       operationId: postMeSettings
-      summary: Update the current user's settings.
+      summary: Update the current user's settings
       description: Update the current user's settings.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -1456,10 +1456,10 @@ paths:
   /me/settings/password/validate:
     post:
       operationId: postMeSettingsPasswordValidate
-      summary: Verify strength of a user's new password.
+      summary: Verify strength of a user's new password
       description: Verify strength of a user's new password.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -1556,10 +1556,10 @@ paths:
   /me/settings/profile-links/:
     get:
       operationId: getMeSettingsProfileLinks
-      summary: Get current user's profile links.
+      summary: Get current user's profile links
       description: Get current user's profile links.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -1641,10 +1641,10 @@ paths:
   /me/settings/profile-links/new:
     post:
       operationId: postMeSettingsProfileLinksNew
-      summary: Add a link to current user's profile.
+      summary: Add a link to current user's profile
       description: Add a link to current user's profile.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -1747,10 +1747,10 @@ paths:
   /me/settings/profile-links/{slug}/delete:
     post:
       operationId: postMeSettingsProfileLinksBySlugDelete
-      summary: Delete a link from current user's profile.
+      summary: Delete a link from current user's profile
       description: Delete a link from current user's profile.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -1837,10 +1837,10 @@ paths:
   /me/two-step:
     get:
       operationId: getMeTwoStep
-      summary: Get information about current user's two factor configuration.
+      summary: Get information about current user's two factor configuration
       description: Get information about current user's two factor configuration.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -1917,10 +1917,10 @@ paths:
   /me/two-step/sms/new:
     post:
       operationId: postMeTwoStepSmsNew
-      summary: Sends a two-step code via SMS to the current user.
+      summary: Sends a two-step code via SMS to the current user
       description: Sends a two-step code via SMS to the current user.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2001,10 +2001,10 @@ paths:
   /sites/{site}/invites/new:
     post:
       operationId: postSitesBySiteInvitesNew
-      summary: Invite one or more users to your site.
+      summary: Invite one or more users to your site
       description: Invite one or more users to your site.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2118,10 +2118,10 @@ paths:
   /sites/{site}/users:
     get:
       operationId: getSitesBySiteUsers
-      summary: List the users of a site.
+      summary: List the users of a site
       description: List the users of a site.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2295,10 +2295,10 @@ paths:
   /sites/{site}/users/login:{user_id}:
     get:
       operationId: getSitesBySiteUsersLoginUserId
-      summary: Get details of a user of a site by login.
+      summary: Get details of a user of a site by login
       description: Get details of a user of a site by login.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2426,10 +2426,10 @@ paths:
   /sites/{site}/users/{user_ID}/delete:
     post:
       operationId: postSitesBySiteUsersByUserIdDelete
-      summary: Deletes or removes a user of a site.
+      summary: Deletes or removes a user of a site
       description: Deletes or removes a user of a site.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2532,10 +2532,10 @@ paths:
   /sites/{site}/users/{user_id}:
     post:
       operationId: postSitesBySiteUsersByUserId
-      summary: Update details of a user of a site.
+      summary: Update details of a user of a site
       description: Update details of a user of a site.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2708,10 +2708,10 @@ paths:
   /users/suggest:
     get:
       operationId: getUsersSuggest
-      summary: Get a list of possible users to suggest for @mentions.
+      summary: Get a list of possible users to suggest for @mentions
       description: Get a list of possible users to suggest for @mentions.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2823,10 +2823,10 @@ paths:
   /users/{user}:
     get:
       operationId: getUsersByUser
-      summary: Get metadata about a user.
+      summary: Get metadata about a user
       description: Get metadata about a user.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -2945,10 +2945,10 @@ paths:
   /me/billing-history/{filter}:
     get:
       operationId: getMeBillingHistoryByFilter
-      summary: Get list of current user's billing history and upcoming charges.
+      summary: Get list of current user's billing history and upcoming charges
       description: Get list of current user's billing history and upcoming charges.
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -3054,7 +3054,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteUsers
       summary: GET /wp/v2/sites/{wpcom_site}/users
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -3210,7 +3210,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteUsers
       summary: POST /wp/v2/sites/{wpcom_site}/users
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -3410,7 +3410,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteUsersMe
       summary: GET /wp/v2/sites/{wpcom_site}/users/me
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -3447,7 +3447,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteUsersMe
       summary: POST /wp/v2/sites/{wpcom_site}/users/me
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -3640,7 +3640,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteUsersMe
       summary: PUT /wp/v2/sites/{wpcom_site}/users/me
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -3833,7 +3833,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteUsersMe
       summary: PATCH /wp/v2/sites/{wpcom_site}/users/me
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4026,7 +4026,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteUsersMe
       summary: DELETE /wp/v2/sites/{wpcom_site}/users/me
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4068,7 +4068,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteUsersbyId
       summary: GET /wp/v2/sites/{wpcom_site}/users/{id}
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4110,7 +4110,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteUsersbyId
       summary: POST /wp/v2/sites/{wpcom_site}/users/{id}
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4308,7 +4308,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteUsersbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/users/{id}
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4506,7 +4506,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteUsersbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/users/{id}
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4704,7 +4704,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteUsersbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/users/{id}
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4751,7 +4751,7 @@ paths:
       operationId: getWpcomV2UsersUsernameSuggestions
       summary: GET /wpcom/v2/users/username/suggestions
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK
@@ -4781,7 +4781,7 @@ paths:
       operationId: getWpcomV2UsersbyUserIdSites
       summary: GET /wpcom/v2/users/{user_id}/sites
       tags:
-      - users
+      - Users
       responses:
         '200':
           description: OK

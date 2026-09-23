@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: block-types
+- name: Block Types
 paths:
   /wp/v2/sites/{wpcom_site}/block-types:
     get:
       operationId: getWpV2SitesbyWpcomSiteBlockTypes
       summary: GET /wp/v2/sites/{wpcom_site}/block-types
       tags:
-      - block-types
+      - Block Types
       responses:
         '200':
           description: OK
@@ -64,7 +64,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlockTypesbyNamespace
       summary: GET /wp/v2/sites/{wpcom_site}/block-types/{namespace}
       tags:
-      - block-types
+      - Block Types
       responses:
         '200':
           description: OK
@@ -107,7 +107,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteBlockTypesbyNamespacebyName
       summary: GET /wp/v2/sites/{wpcom_site}/block-types/{namespace}/{name}
       tags:
-      - block-types
+      - Block Types
       responses:
         '200':
           description: OK

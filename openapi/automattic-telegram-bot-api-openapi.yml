@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: telegram-bot
+- name: Telegram Bot
 paths:
   /wpcom/v2/telegram-bot/assistant-webhook/{assistant_bot}:
     post:
       operationId: postWpcomV2TelegramBotAssistantWebhookbyAssistantBot
       summary: POST /wpcom/v2/telegram-bot/assistant-webhook/{assistant_bot}
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: postWpcomV2TelegramBotConnect
       summary: POST /wpcom/v2/telegram-bot/connect
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK
@@ -92,7 +92,7 @@ paths:
       operationId: postWpcomV2TelegramBotConnectViaToken
       summary: POST /wpcom/v2/telegram-bot/connect-via-token
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK
@@ -131,7 +131,7 @@ paths:
       operationId: postWpcomV2TelegramBotDisconnect
       summary: POST /wpcom/v2/telegram-bot/disconnect
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK
@@ -152,7 +152,7 @@ paths:
       operationId: getWpcomV2TelegramBotLocalAgentPoll
       summary: GET /wpcom/v2/telegram-bot/local-agent-poll
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK
@@ -173,7 +173,7 @@ paths:
       operationId: postWpcomV2TelegramBotLocalAgentRespond
       summary: POST /wpcom/v2/telegram-bot/local-agent-respond
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK
@@ -221,7 +221,7 @@ paths:
       operationId: getWpcomV2TelegramBotStatus
       summary: GET /wpcom/v2/telegram-bot/status
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK
@@ -242,7 +242,7 @@ paths:
       operationId: postWpcomV2TelegramBotWebhookbyBot
       summary: POST /wpcom/v2/telegram-bot/webhook/{bot}
       tags:
-      - telegram-bot
+      - Telegram Bot
       responses:
         '200':
           description: OK

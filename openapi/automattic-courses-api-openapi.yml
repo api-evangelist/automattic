@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: courses
+- name: Courses
 paths:
   /wpcom/v2/courses:
     get:
       operationId: getWpcomV2Courses
       summary: GET /wpcom/v2/courses
       tags:
-      - courses
+      - Courses
       responses:
         '200':
           description: OK
@@ -46,7 +46,7 @@ paths:
       operationId: postWpcomV2CoursesVideos
       summary: POST /wpcom/v2/courses/videos
       tags:
-      - courses
+      - Courses
       responses:
         '200':
           description: OK

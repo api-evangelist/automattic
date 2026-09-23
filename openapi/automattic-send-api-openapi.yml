@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: send
+- name: Send
 paths:
   /wpcom/v2/send/pressable-hubspot-form/new:
     post:
       operationId: postWpcomV2SendPressableHubspotFormNew
       summary: POST /wpcom/v2/send/pressable-hubspot-form/new
       tags:
-      - send
+      - Send
       responses:
         '200':
           description: OK
@@ -60,7 +60,7 @@ paths:
       operationId: postWpcomV2SendSpainNewsletterNew
       summary: POST /wpcom/v2/send/spain-newsletter/new
       tags:
-      - send
+      - Send
       responses:
         '200':
           description: OK
@@ -103,7 +103,7 @@ paths:
       operationId: postWpcomV2SendWpcomEducationNew
       summary: POST /wpcom/v2/send/wpcom-education/new
       tags:
-      - send
+      - Send
       responses:
         '200':
           description: OK

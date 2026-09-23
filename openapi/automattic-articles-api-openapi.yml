@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: articles
+- name: Articles
 paths:
   /wpcom/v2/sites/{wpcom_site}/articles:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteArticles
       summary: GET /wpcom/v2/sites/{wpcom_site}/articles
       tags:
-      - articles
+      - Articles
       responses:
         '200':
           description: OK

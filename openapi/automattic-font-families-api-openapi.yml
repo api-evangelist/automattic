@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: font-families
+- name: font families
 paths:
   /wp/v2/sites/{wpcom_site}/font-families:
     get:
       operationId: getWpV2SitesbyWpcomSiteFontFamilies
       summary: GET /wp/v2/sites/{wpcom_site}/font-families
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -131,7 +131,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFontFamilies
       summary: POST /wp/v2/sites/{wpcom_site}/font-families
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -173,7 +173,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFontFamiliesbyFontFamilyIdFontFaces
       summary: GET /wp/v2/sites/{wpcom_site}/font-families/{font_family_id}/font-faces
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -281,7 +281,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFontFamiliesbyFontFamilyIdFontFaces
       summary: POST /wp/v2/sites/{wpcom_site}/font-families/{font_family_id}/font-faces
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -328,7 +328,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFontFamiliesbyFontFamilyIdFontFacesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/font-families/{font_family_id}/font-faces/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -375,7 +375,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteFontFamiliesbyFontFamilyIdFontFacesbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/font-families/{font_family_id}/font-faces/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -419,7 +419,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteFontFamiliesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -461,7 +461,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteFontFamiliesbyId
       summary: POST /wp/v2/sites/{wpcom_site}/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -507,7 +507,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteFontFamiliesbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -553,7 +553,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteFontFamiliesbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK
@@ -599,7 +599,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteFontFamiliesbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/font-families/{id}
       tags:
-      - font-families
+      - font families
       responses:
         '200':
           description: OK

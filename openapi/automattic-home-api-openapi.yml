@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: home
+- name: Home
 paths:
   /wpcom/v2/sites/{wpcom_site}/home/layout:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteHomeLayout
       summary: GET /wpcom/v2/sites/{wpcom_site}/home/layout
       tags:
-      - home
+      - Home
       responses:
         '200':
           description: OK
@@ -60,7 +60,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteHomeLayoutSkip
       summary: POST /wpcom/v2/sites/{wpcom_site}/home/layout/skip
       tags:
-      - home
+      - Home
       responses:
         '200':
           description: OK
@@ -99,7 +99,7 @@ paths:
       operationId: putWpcomV2SitesbyWpcomSiteHomeLayoutSkip
       summary: PUT /wpcom/v2/sites/{wpcom_site}/home/layout/skip
       tags:
-      - home
+      - Home
       responses:
         '200':
           description: OK
@@ -138,7 +138,7 @@ paths:
       operationId: patchWpcomV2SitesbyWpcomSiteHomeLayoutSkip
       summary: PATCH /wpcom/v2/sites/{wpcom_site}/home/layout/skip
       tags:
-      - home
+      - Home
       responses:
         '200':
           description: OK

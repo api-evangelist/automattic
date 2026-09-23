@@ -19,7 +19,7 @@ paths:
   /freshly-pressed/:
     get:
       operationId: getFreshlyPressed
-      summary: Get a list of Freshly Pressed posts.
+      summary: Get a list of Freshly Pressed posts
       description: Get a list of Freshly Pressed posts.
       tags:
       - freshly-pressed

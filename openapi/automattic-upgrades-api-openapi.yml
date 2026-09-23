@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: upgrades
+- name: Upgrades
 paths:
   /wpcom/v2/upgrades/{subscription_id}/cancel-features:
     get:
       operationId: getWpcomV2UpgradesbySubscriptionIdCancelFeatures
       summary: GET /wpcom/v2/upgrades/{subscription_id}/cancel-features
       tags:
-      - upgrades
+      - Upgrades
       responses:
         '200':
           description: OK

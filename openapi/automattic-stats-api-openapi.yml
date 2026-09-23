@@ -14,15 +14,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: stats
+- name: Stats
 paths:
   /sites/{site}/stats:
     get:
       operationId: getSitesBySiteStats
       summary: Get a site's stats
-      description: Get a site's stats
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -116,9 +115,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsArchives
       summary: View a site's archives
-      description: View a site's archives
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -273,9 +271,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsClicks
       summary: View a site's outbound clicks
-      description: View a site's outbound clicks
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -417,10 +414,10 @@ paths:
   /sites/{site}/stats/clicks/emails/summary:
     get:
       operationId: getSitesBySiteStatsClicksEmailsSummary
-      summary: View the total number of email clicks for each post.
+      summary: View the total number of email clicks for each post
       description: View the total number of email clicks for each post.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -537,10 +534,10 @@ paths:
   /sites/{site}/stats/clicks/emails/{post_id}:
     get:
       operationId: getSitesBySiteStatsClicksEmailsByPostId
-      summary: View chart stats related to email clicks by period.
+      summary: View chart stats related to email clicks by period
       description: View chart stats related to email clicks by period.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -652,10 +649,10 @@ paths:
   /sites/{site}/stats/clicks/emails/{post_id}/client:
     get:
       operationId: getSitesBySiteStatsClicksEmailsByPostIdClient
-      summary: View email clicks by client.
+      summary: View email clicks by client
       description: View email clicks by client.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -746,10 +743,10 @@ paths:
   /sites/{site}/stats/clicks/emails/{post_id}/country:
     get:
       operationId: getSitesBySiteStatsClicksEmailsByPostIdCountry
-      summary: View email clicks by country.
+      summary: View email clicks by country
       description: View email clicks by country.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -840,10 +837,10 @@ paths:
   /sites/{site}/stats/clicks/emails/{post_id}/device:
     get:
       operationId: getSitesBySiteStatsClicksEmailsByPostIdDevice
-      summary: View email clicks by device.
+      summary: View email clicks by device
       description: View email clicks by device.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -934,10 +931,10 @@ paths:
   /sites/{site}/stats/clicks/emails/{post_id}/link:
     get:
       operationId: getSitesBySiteStatsClicksEmailsByPostIdLink
-      summary: View email clicks by link.
+      summary: View email clicks by link
       description: View email clicks by link.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1028,10 +1025,10 @@ paths:
   /sites/{site}/stats/clicks/emails/{post_id}/rate:
     get:
       operationId: getSitesBySiteStatsClicksEmailsByPostIdRate
-      summary: View email clicks rate by post. Returns mock data.
+      summary: View email clicks rate by post. Returns mock data
       description: View email clicks rate by post. Returns mock data.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1140,10 +1137,10 @@ paths:
   /sites/{site}/stats/clicks/emails/{post_id}/user-content-link:
     get:
       operationId: getSitesBySiteStatsClicksEmailsByPostIdUserContentLink
-      summary: View email clicks by user content link.
+      summary: View email clicks by user content link
       description: View email clicks by user content link.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1235,9 +1232,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsCommentFollowers
       summary: View a site's comment followers
-      description: View a site's comment followers
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1345,9 +1341,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsComments
       summary: View a site's top comment authors and most-commented posts
-      description: View a site's top comment authors and most-commented posts
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1457,9 +1452,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsCountryViews
       summary: View a site's views by country
-      description: View a site's views by country
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1603,10 +1597,10 @@ paths:
   /sites/{site}/stats/devices/{device_property_name}:
     get:
       operationId: getSitesBySiteStatsDevicesByDevicePropertyName
-      summary: Fetch site's Device properties statistics.
+      summary: Fetch site's Device properties statistics
       description: Fetch site's Device properties statistics.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1725,10 +1719,10 @@ paths:
   /sites/{site}/stats/emails/summary:
     get:
       operationId: getSitesBySiteStatsEmailsSummary
-      summary: View the total number of email opens and clicks for each post.
+      summary: View the total number of email opens and clicks for each post
       description: View the total number of email opens and clicks for each post.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1841,9 +1835,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsFileDownloads
       summary: View a site's file downloads
-      description: View a site's file downloads
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -1983,9 +1976,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsFollowers
       summary: View a site's followers
-      description: View a site's followers
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2119,10 +2111,10 @@ paths:
   /sites/{site}/stats/highlights:
     get:
       operationId: getSitesBySiteStatsHighlights
-      summary: View highlight metrics from the last seven days.
+      summary: View highlight metrics from the last seven days
       description: View highlight metrics from the last seven days.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2217,9 +2209,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsLocationViewsByGeoMode
       summary: View a site's views by country, region and city
-      description: View a site's views by country, region and city
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2379,10 +2370,10 @@ paths:
   /sites/{site}/stats/opens/emails/summary:
     get:
       operationId: getSitesBySiteStatsOpensEmailsSummary
-      summary: View the total number of email opens for each post.
+      summary: View the total number of email opens for each post
       description: View the total number of email opens for each post.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2499,10 +2490,10 @@ paths:
   /sites/{site}/stats/opens/emails/{post_id}:
     get:
       operationId: getSitesBySiteStatsOpensEmailsByPostId
-      summary: View multiple stats related to email opens by post.
+      summary: View multiple stats related to email opens by post
       description: View multiple stats related to email opens by post.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2623,10 +2614,10 @@ paths:
   /sites/{site}/stats/opens/emails/{post_id}/client:
     get:
       operationId: getSitesBySiteStatsOpensEmailsByPostIdClient
-      summary: View email opens stats by client.
+      summary: View email opens stats by client
       description: View email opens stats by client.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2717,10 +2708,10 @@ paths:
   /sites/{site}/stats/opens/emails/{post_id}/country:
     get:
       operationId: getSitesBySiteStatsOpensEmailsByPostIdCountry
-      summary: View email opens stats by country.
+      summary: View email opens stats by country
       description: View email opens stats by country.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2811,10 +2802,10 @@ paths:
   /sites/{site}/stats/opens/emails/{post_id}/device:
     get:
       operationId: getSitesBySiteStatsOpensEmailsByPostIdDevice
-      summary: View email opens stats by device.
+      summary: View email opens stats by device
       description: View email opens stats by device.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -2905,10 +2896,10 @@ paths:
   /sites/{site}/stats/opens/emails/{post_id}/rate:
     get:
       operationId: getSitesBySiteStatsOpensEmailsByPostIdRate
-      summary: View email opens rate by post.
+      summary: View email opens rate by post
       description: View email opens rate by post.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3006,9 +2997,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsPostByPostId
       summary: View a post's views
-      description: View a post's views
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3118,9 +3108,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsPublicize
       summary: View a site's publicize follower counts
-      description: View a site's publicize follower counts
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3207,9 +3196,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsReferrers
       summary: View a site's referrers
-      description: View a site's referrers
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3352,9 +3340,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsReferrersSpam
       summary: List referrers marked as spam
-      description: List referrers marked as spam
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3441,9 +3428,8 @@ paths:
     post:
       operationId: postSitesBySiteStatsReferrersSpamDelete
       summary: Unreport a referrer as spam
-      description: Unreport a referrer as spam
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3526,9 +3512,8 @@ paths:
     post:
       operationId: postSitesBySiteStatsReferrersSpamNew
       summary: Report a referrer as spam
-      description: Report a referrer as spam
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3611,9 +3596,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsSearchTerms
       summary: View search terms used to find the site
-      description: View search terms used to find the site
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3755,10 +3739,10 @@ paths:
   /sites/{site}/stats/streak:
     get:
       operationId: getSitesBySiteStatsStreak
-      summary: Get stats for Calendar Heatmap. Returns data with each post timestamp.
+      summary: Get stats for Calendar Heatmap. Returns data with each post timestamp
       description: Get stats for Calendar Heatmap. Returns data with each post timestamp.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3858,9 +3842,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsSummary
       summary: View a site's summarized views, visitors, likes and comments
-      description: View a site's summarized views, visitors, likes and comments
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -3996,9 +3979,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsTags
       summary: View a site's views by tags and categories
-      description: View a site's views by tags and categories
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -4094,9 +4076,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsTopAuthors
       summary: View a site's top authors
-      description: View a site's top authors
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -4240,9 +4221,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsTopPosts
       summary: View a site's top posts and pages by views
-      description: View a site's top posts and pages by views
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -4397,10 +4377,10 @@ paths:
   /sites/{site}/stats/utm/{utm_param_name}:
     get:
       operationId: getSitesBySiteStatsUtmByUtmParamName
-      summary: Fetch site's UTM param statistics.
+      summary: Fetch site's UTM param statistics
       description: Fetch site's UTM param statistics.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -4539,10 +4519,10 @@ paths:
   /sites/{site}/stats/utm/{utm_param_name}/top_posts:
     get:
       operationId: getSitesBySiteStatsUtmByUtmParamNameTopPosts
-      summary: Fetch top posts for a given UTM parameter value.
+      summary: Fetch top posts for a given UTM parameter value
       description: Fetch top posts for a given UTM parameter value.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -4677,9 +4657,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsVideoPlays
       summary: View a site's video plays
-      description: View a site's video plays
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -4828,9 +4807,8 @@ paths:
     get:
       operationId: getSitesBySiteStatsVideoByPostId
       summary: View the details of a single video
-      description: View the details of a single video
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK
@@ -4982,10 +4960,10 @@ paths:
   /sites/{site}/stats/views/posts:
     get:
       operationId: getSitesBySiteStatsViewsPosts
-      summary: View the total number of views for each post.
+      summary: View the total number of views for each post
       description: View the total number of views for each post.
       tags:
-      - stats
+      - Stats
       responses:
         '200':
           description: OK

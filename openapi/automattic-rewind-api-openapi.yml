@@ -237,7 +237,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/extension/{extension_type}/stream:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteRewindBackupbyBackupIdExtensionbyExtensionTypeStream
-      summary: GET /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/extension/{extension_type}/stream
+      summary: GET /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/extension/{extension_…
       tags:
       - rewind
       responses:
@@ -289,7 +289,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/extension/{extension_type}/url:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteRewindBackupbyBackupIdExtensionbyExtensionTypeUrl
-      summary: POST /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/extension/{extension_type}/url
+      summary: POST /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/extension/{extension…
       tags:
       - rewind
       responses:
@@ -339,7 +339,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/file/{manifest_path}/stream:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteRewindBackupbyBackupIdFilebyManifestPathStream
-      summary: GET /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/file/{manifest_path}/stream
+      summary: GET /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/file/{manifest_path}/…
       tags:
       - rewind
       responses:
@@ -386,7 +386,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/file/{manifest_path}/url:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteRewindBackupbyBackupIdFilebyManifestPathUrl
-      summary: GET /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/file/{manifest_path}/url
+      summary: GET /wpcom/v2/sites/{wpcom_site}/rewind/backup/{backup_id}/file/{manifest_path}/…
       tags:
       - rewind
       responses:

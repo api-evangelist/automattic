@@ -868,7 +868,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/publicize/social-image-generator/generate-token:
     post:
       operationId: postWpcomV2SitesbyWpcomSitePublicizeSocialImageGeneratorGenerateToken
-      summary: POST /wpcom/v2/sites/{wpcom_site}/publicize/social-image-generator/generate-token
+      summary: POST /wpcom/v2/sites/{wpcom_site}/publicize/social-image-generator/generate-toke…
       tags:
       - publicize
       responses:

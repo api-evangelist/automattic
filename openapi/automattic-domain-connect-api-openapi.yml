@@ -19,7 +19,7 @@ paths:
   /domain-connect/authorize/v2/domainTemplates/providers/{provider_id}/services/{service_id}/apply:
     get:
       operationId: getDomainConnectAuthorizeV2DomaintemplatesProvidersByProviderIdServicesByServiceIdApply
-      summary: Authorization request to apply a template to a domain using the Domain Connect Sync Flow method.
+      summary: Authorization request to apply a template to a domain using the Domain Connect…
       description: Authorization request to apply a template to a domain using the Domain Connect Sync Flow method.
       tags:
       - domain-connect
@@ -147,7 +147,7 @@ paths:
   /domain-connect/authorize/v2/domainTemplates/providers/{provider_id}/services/{service_id}/apply/authorized:
     get:
       operationId: getDomainConnectAuthorizeV2DomaintemplatesProvidersByProviderIdServicesByServiceIdApplyAuthorized
-      summary: Apply a template to a domain after a user has granted authorization using the Sync Flow method.
+      summary: Apply a template to a domain after a user has granted authorization using the…
       description: Apply a template to a domain after a user has granted authorization using the Sync Flow method.
       tags:
       - domain-connect
@@ -281,7 +281,7 @@ paths:
   /domain-connect/unsupported:
     get:
       operationId: getDomainConnectUnsupported
-      summary: Returns an error for an unsupported Domain Connect endpoint.
+      summary: Returns an error for an unsupported Domain Connect endpoint
       description: Returns an error for an unsupported Domain Connect endpoint.
       tags:
       - domain-connect
@@ -359,7 +359,7 @@ paths:
   /domain-connect/v2/domainTemplates/providers/{provider_id}/services/{service_id}:
     get:
       operationId: getDomainConnectV2DomaintemplatesProvidersByProviderIdServicesByServiceId
-      summary: Determine if a a specific Domain Connect template is supported.
+      summary: Determine if a a specific Domain Connect template is supported
       description: Determine if a a specific Domain Connect template is supported.
       tags:
       - domain-connect
@@ -449,7 +449,7 @@ paths:
   /domain-connect/v2/{domain}/settings:
     get:
       operationId: getDomainConnectV2ByDomainSettings
-      summary: Get the settings to use for Domain Connect.
+      summary: Get the settings to use for Domain Connect
       description: Get the settings to use for Domain Connect.
       tags:
       - domain-connect

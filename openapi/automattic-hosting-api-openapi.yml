@@ -876,7 +876,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/runs/{deployment_run_id}/logs:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdRunsbyDeploymentRunIdLogs
-      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/runs/{deployment_run_id}/logs
+      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/runs/{…
       tags:
       - hosting
       responses:
@@ -913,7 +913,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/runs/{deployment_run_id}/logs/{command_identifier}:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdRunsbyDeploymentRunIdLogsbyCommandIdentifier
-      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/runs/{deployment_run_id}/logs/{command_identifier}
+      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/runs/{…
       tags:
       - hosting
       responses:
@@ -955,7 +955,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooks
-      summary: POST /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks
+      summary: POST /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webho…
       tags:
       - hosting
       responses:
@@ -1001,7 +1001,7 @@ paths:
               - url
     get:
       operationId: getWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooks
-      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks
+      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhoo…
       tags:
       - hosting
       responses:
@@ -1033,7 +1033,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookId
-      summary: POST /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}
+      summary: POST /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webho…
       tags:
       - hosting
       responses:
@@ -1081,7 +1081,7 @@ paths:
                   description: Comma-separated list of events to subscribe to.
     put:
       operationId: putWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookId
-      summary: PUT /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}
+      summary: PUT /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhoo…
       tags:
       - hosting
       responses:
@@ -1129,7 +1129,7 @@ paths:
                   description: Comma-separated list of events to subscribe to.
     patch:
       operationId: patchWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookId
-      summary: PATCH /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}
+      summary: PATCH /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webh…
       tags:
       - hosting
       responses:
@@ -1177,7 +1177,7 @@ paths:
                   description: Comma-separated list of events to subscribe to.
     delete:
       operationId: deleteWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookId
-      summary: DELETE /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}
+      summary: DELETE /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/web…
       tags:
       - hosting
       responses:
@@ -1214,7 +1214,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}/deliveries:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookIdDeliveries
-      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}/deliveries
+      summary: GET /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhoo…
       tags:
       - hosting
       responses:
@@ -1251,7 +1251,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}/test:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteHostingCodeDeploymentsbyDeploymentIdWebhooksbyWebhookIdTest
-      summary: POST /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webhooks/{webhook_id}/test
+      summary: POST /wpcom/v2/sites/{wpcom_site}/hosting/code-deployments/{deployment_id}/webho…
       tags:
       - hosting
       responses:

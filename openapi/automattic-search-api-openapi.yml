@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: search
+- name: Search
 paths:
   /wp/v2/sites/{wpcom_site}/search:
     get:
       operationId: getWpV2SitesbyWpcomSiteSearch
       summary: GET /wp/v2/sites/{wpcom_site}/search
       tags:
-      - search
+      - Search
       responses:
         '200':
           description: OK

@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: following
+- name: Following
 paths:
   /wpcom/v2/following/mine:
     get:
       operationId: getWpcomV2FollowingMine
       summary: GET /wpcom/v2/following/mine
       tags:
-      - following
+      - Following
       responses:
         '200':
           description: OK
@@ -47,7 +47,7 @@ paths:
       operationId: getWpcomV2FollowingRecommendations
       summary: GET /wpcom/v2/following/recommendations
       tags:
-      - following
+      - Following
       responses:
         '200':
           description: OK

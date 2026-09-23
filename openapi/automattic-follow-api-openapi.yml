@@ -14,15 +14,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: follow
+- name: Follow
 paths:
   /sites/{site}/follows/:
     get:
       operationId: getSitesBySiteFollows
-      summary: List a site's followers in reverse chronological order.
+      summary: List a site's followers in reverse chronological order
       description: List a site's followers in reverse chronological order.
       tags:
-      - follow
+      - Follow
       responses:
         '200':
           description: OK
@@ -115,10 +115,10 @@ paths:
   /sites/{site}/follows/mine:
     get:
       operationId: getSitesBySiteFollowsMine
-      summary: Get blog following status for the current user.
+      summary: Get blog following status for the current user
       description: Get blog following status for the current user.
       tags:
-      - follow
+      - Follow
       responses:
         '200':
           description: OK
@@ -197,10 +197,10 @@ paths:
   /sites/{site}/follows/mine/delete:
     post:
       operationId: postSitesBySiteFollowsMineDelete
-      summary: Unfollow a blog.
+      summary: Unfollow a blog
       description: Unfollow a blog.
       tags:
-      - follow
+      - Follow
       responses:
         '200':
           description: OK
@@ -282,10 +282,10 @@ paths:
   /sites/{site}/follows/new:
     post:
       operationId: postSitesBySiteFollowsNew
-      summary: Follow a blog.
+      summary: Follow a blog
       description: Follow a blog.
       tags:
-      - follow
+      - Follow
       responses:
         '200':
           description: OK

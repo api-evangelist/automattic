@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: discount
+- name: Discount
 paths:
   /wpcom/v2/sites/{wpcom_site}/discount:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteDiscount
       summary: GET /wpcom/v2/sites/{wpcom_site}/discount
       tags:
-      - discount
+      - Discount
       responses:
         '200':
           description: OK

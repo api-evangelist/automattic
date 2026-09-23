@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: legal
+- name: Legal
 paths:
   /wpcom/v2/legal:
     get:
       operationId: getWpcomV2Legal
       summary: GET /wpcom/v2/legal
       tags:
-      - legal
+      - Legal
       responses:
         '200':
           description: OK
@@ -40,7 +40,7 @@ paths:
       operationId: postWpcomV2Legal
       summary: POST /wpcom/v2/legal
       tags:
-      - legal
+      - Legal
       responses:
         '200':
           description: OK
@@ -71,7 +71,7 @@ paths:
       operationId: putWpcomV2Legal
       summary: PUT /wpcom/v2/legal
       tags:
-      - legal
+      - Legal
       responses:
         '200':
           description: OK
@@ -102,7 +102,7 @@ paths:
       operationId: patchWpcomV2Legal
       summary: PATCH /wpcom/v2/legal
       tags:
-      - legal
+      - Legal
       responses:
         '200':
           description: OK

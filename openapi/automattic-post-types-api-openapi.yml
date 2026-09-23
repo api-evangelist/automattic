@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: post-types
+- name: Post Types
 paths:
   /wpcom/v2/sites/{wpcom_site}/post-types:
     get:
       operationId: getWpcomV2SitesbyWpcomSitePostTypes
       summary: GET /wpcom/v2/sites/{wpcom_site}/post-types
       tags:
-      - post-types
+      - Post Types
       responses:
         '200':
           description: OK

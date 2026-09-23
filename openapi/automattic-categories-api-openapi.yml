@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: categories
+- name: Categories
 paths:
   /wp/v2/sites/{wpcom_site}/categories:
     get:
       operationId: getWpV2SitesbyWpcomSiteCategories
       summary: GET /wp/v2/sites/{wpcom_site}/categories
       tags:
-      - categories
+      - Categories
       responses:
         '200':
           description: OK
@@ -148,7 +148,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteCategories
       summary: POST /wp/v2/sites/{wpcom_site}/categories
       tags:
-      - categories
+      - Categories
       responses:
         '200':
           description: OK
@@ -198,7 +198,7 @@ paths:
       operationId: getWpV2SitesbyWpcomSiteCategoriesbyId
       summary: GET /wp/v2/sites/{wpcom_site}/categories/{id}
       tags:
-      - categories
+      - Categories
       responses:
         '200':
           description: OK
@@ -240,7 +240,7 @@ paths:
       operationId: postWpV2SitesbyWpcomSiteCategoriesbyId
       summary: POST /wp/v2/sites/{wpcom_site}/categories/{id}
       tags:
-      - categories
+      - Categories
       responses:
         '200':
           description: OK
@@ -292,7 +292,7 @@ paths:
       operationId: putWpV2SitesbyWpcomSiteCategoriesbyId
       summary: PUT /wp/v2/sites/{wpcom_site}/categories/{id}
       tags:
-      - categories
+      - Categories
       responses:
         '200':
           description: OK
@@ -344,7 +344,7 @@ paths:
       operationId: patchWpV2SitesbyWpcomSiteCategoriesbyId
       summary: PATCH /wp/v2/sites/{wpcom_site}/categories/{id}
       tags:
-      - categories
+      - Categories
       responses:
         '200':
           description: OK
@@ -396,7 +396,7 @@ paths:
       operationId: deleteWpV2SitesbyWpcomSiteCategoriesbyId
       summary: DELETE /wp/v2/sites/{wpcom_site}/categories/{id}
       tags:
-      - categories
+      - Categories
       responses:
         '200':
           description: OK

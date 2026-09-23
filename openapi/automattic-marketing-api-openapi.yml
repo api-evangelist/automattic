@@ -12,15 +12,15 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: marketing
+- name: Marketing
 paths:
   /marketing/survey:
     post:
       operationId: postMarketingSurvey
-      summary: Submit a marketing survey.
+      summary: Submit a marketing survey
       description: Submit a marketing survey.
       tags:
-      - marketing
+      - Marketing
       responses:
         '200':
           description: OK
@@ -123,7 +123,7 @@ paths:
       operationId: postWpcomV2MarketingSurvey
       summary: POST /wpcom/v2/marketing/survey
       tags:
-      - marketing
+      - Marketing
       responses:
         '200':
           description: OK

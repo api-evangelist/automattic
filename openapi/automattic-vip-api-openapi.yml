@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: vip
+- name: VIP
 paths:
   /wpcom/v2/vip/cs-services/perf/edge_cache_stats:
     get:
       operationId: getWpcomV2VipCsServicesPerfEdgeCacheStats
       summary: GET /wpcom/v2/vip/cs-services/perf/edge_cache_stats
       tags:
-      - vip
+      - VIP
       responses:
         '200':
           description: OK
@@ -55,7 +55,7 @@ paths:
       operationId: getWpcomV2VipCsServicesPerfUpstreamResponseTime
       summary: GET /wpcom/v2/vip/cs-services/perf/upstream_response_time
       tags:
-      - vip
+      - VIP
       responses:
         '200':
           description: OK

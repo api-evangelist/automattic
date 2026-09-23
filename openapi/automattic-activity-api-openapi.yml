@@ -13,14 +13,14 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: activity
+- name: Activity
 paths:
   /wpcom/v2/sites/{wpcom_site}/activity:
     post:
       operationId: postWpcomV2SitesbyWpcomSiteActivity
       summary: POST /wpcom/v2/sites/{wpcom_site}/activity
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -56,7 +56,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteActivity
       summary: GET /wpcom/v2/sites/{wpcom_site}/activity
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -177,7 +177,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteActivityActors
       summary: GET /wpcom/v2/sites/{wpcom_site}/activity/actors
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -226,7 +226,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteActivityCount
       summary: GET /wpcom/v2/sites/{wpcom_site}/activity/count
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -347,7 +347,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteActivityCountGroup
       summary: GET /wpcom/v2/sites/{wpcom_site}/activity/count/group
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -468,7 +468,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteActivityRewindable
       summary: GET /wpcom/v2/sites/{wpcom_site}/activity/rewindable
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -589,7 +589,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteActivityRewindableCountGroup
       summary: GET /wpcom/v2/sites/{wpcom_site}/activity/rewindable/count/group
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -710,7 +710,7 @@ paths:
       operationId: getWpcomV2SitesbyWpcomSiteActivitybyRewindId
       summary: GET /wpcom/v2/sites/{wpcom_site}/activity/{rewind_id}
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK
@@ -742,7 +742,7 @@ paths:
       operationId: postWpcomV2SitesbyWpcomSiteActivitybyRewindIdShare
       summary: POST /wpcom/v2/sites/{wpcom_site}/activity/{rewind_id}/share
       tags:
-      - activity
+      - Activity
       responses:
         '200':
           description: OK

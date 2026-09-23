@@ -901,7 +901,7 @@ paths:
   /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/check-ownership/{post_id}:
     get:
       operationId: getWpcomV2SitesbyWpcomSiteVideopressbyVideoGuidCheckOwnershipbyPostId
-      summary: GET /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/check-ownership/{post_id}
+      summary: GET /wpcom/v2/sites/{wpcom_site}/videopress/{video_guid}/check-ownership/{post_i…
       tags:
       - videopress
       responses:
