@@ -13,17 +13,20 @@ description: >-
   server for WordPress.com, publishes OpenAPI for Akismet and for the Jetpack ai-plugin surface, and
   exposes a GraphQL Platform API for the enterprise WordPress VIP product.
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - automattic/akismet-api
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -61,7 +64,7 @@ tags:
 - Analytics
 - Domains
 - E-Commerce
-- Open-Source
+- Open Source
 - Developer Tools
 - MCP
 tags_raw:
@@ -81,6 +84,7 @@ tags_raw:
 - Open Source
 - Developer Tools
 - Model Context Protocol
+- Open-Source
 apis:
 - name: WordPress.com MCP Server
   description: >-
@@ -9425,9 +9429,10 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - wp/v2
+  - wp-v2
   tags_raw:
   - wp-v2
+  - wp/v2
   properties:
   - type: OpenAPI
     url: openapi/automattic-wp-v2-api-openapi.yml

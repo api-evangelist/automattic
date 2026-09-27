@@ -394,9 +394,7 @@
     "automattic-zendesk-notification-api-openapi.yml",
     "automattic-zendesk-notification-staging-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -434,8 +432,7 @@
     "tag 'global-styles' spans 2 source specs (automattic-wordpress-com-wp-v2-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml): per-path servers applied",
     "tag 'plugins' spans 2 source specs (automattic-wordpress-com-wp-v2-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml): per-path servers applied",
     "tag 'tags' spans 2 source specs (automattic-wordpress-com-wp-v2-openapi.yml, automattic-wordpress-com-wpcom-v2-openapi.yml): per-path servers applied",
-    "superseded outputs removed: automattic-o-auth2-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 385 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "automattic-a8c-lore-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -656,7 +653,7 @@
     "automattic-newspack-manager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "automattic-notifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "automattic-nudge-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "automattic-o-auth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "automattic-oauth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "automattic-odie-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "automattic-odie-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "automattic-oembed-proxy-api-openapi.yml: previously refined output, superseded by openapi/_original/",

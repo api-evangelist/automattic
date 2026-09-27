@@ -84,6 +84,21 @@ paths:
       tags:
       - spam
 components:
+  headers:
+    DebugHelpHeader:
+      description: Extra context for any error that has occurred.
+      schema:
+        type: string
+  responses:
+    ThanksResponse:
+      description: Successful submission
+      content:
+        text/plain:
+          schema:
+            type: string
+          examples:
+            thanks:
+              value: Thanks for making the web a better place.
   schemas:
     StandardParameters:
       type: object
@@ -153,21 +168,6 @@ components:
       - api_key
       - blog
       - user_ip
-  headers:
-    DebugHelpHeader:
-      description: Extra context for any error that has occurred.
-      schema:
-        type: string
-  responses:
-    ThanksResponse:
-      description: Successful submission
-      content:
-        text/plain:
-          schema:
-            type: string
-          examples:
-            thanks:
-              value: Thanks for making the web a better place.
 externalDocs:
   description: Akismet Developers Documentation
   url: https://akismet.com/developers
