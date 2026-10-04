@@ -46,11 +46,6 @@ paths:
       tags:
       - key-verification
 components:
-  headers:
-    DebugHelpHeader:
-      description: Extra context for any error that has occurred.
-      schema:
-        type: string
   schemas:
     KeyVerificationParameters:
       type: object
@@ -64,6 +59,11 @@ components:
       required:
       - key
       - blog
+  headers:
+    DebugHelpHeader:
+      description: Extra context for any error that has occurred.
+      schema:
+        type: string
 externalDocs:
   description: Akismet Developers Documentation
   url: https://akismet.com/developers

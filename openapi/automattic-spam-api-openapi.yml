@@ -84,11 +84,6 @@ paths:
       tags:
       - spam
 components:
-  headers:
-    DebugHelpHeader:
-      description: Extra context for any error that has occurred.
-      schema:
-        type: string
   responses:
     ThanksResponse:
       description: Successful submission
@@ -99,6 +94,11 @@ components:
           examples:
             thanks:
               value: Thanks for making the web a better place.
+  headers:
+    DebugHelpHeader:
+      description: Extra context for any error that has occurred.
+      schema:
+        type: string
   schemas:
     StandardParameters:
       type: object
