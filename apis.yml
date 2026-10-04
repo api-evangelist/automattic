@@ -9429,7 +9429,7 @@ apis:
   humanURL: https://developer.wordpress.com/docs/api/
   baseURL: https://public-api.wordpress.com/rest/v1.1
   tags:
-  - wp-v2
+  - wp/v2
   tags_raw:
   - wp-v2
   - wp/v2
