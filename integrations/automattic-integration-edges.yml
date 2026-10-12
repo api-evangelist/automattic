@@ -1,0 +1,22 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/automattic/integrations
+checked:
+- https://composio.dev/toolkits/automattic
+- https://monid.ai/tools/automattic
+- https://n8n.io/integrations/automattic/
+- https://zapier.com/apps/automattic/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: automattic
+  url: https://zapier.com/apps/automattic/integrations
+  external_url: https://automattic.com/
+  partner_tier: null
+  triggers: []
+  actions: []
+  searches: []
+edges: []
+templates: []
