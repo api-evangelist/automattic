@@ -115,6 +115,19 @@ paths:
       - Wpcom
 components:
   schemas:
+    Site:
+      type: object
+      description: A site
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        is_default:
+          type: boolean
+          description: Whether this is the default site. Use this site for all requests that don't specify a site ID.
     ResponsePost:
       type: object
       description: A post
@@ -159,19 +172,6 @@ components:
           type: string
         content:
           type: string
-    Site:
-      type: object
-      description: A site
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        is_default:
-          type: boolean
-          description: Whether this is the default site. Use this site for all requests that don't specify a site ID.
     getPostsResponse:
       type: object
       properties:
