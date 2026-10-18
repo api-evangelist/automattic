@@ -3,12 +3,14 @@ method: searched
 source:
 - https://zapier.com/apps/automattic/integrations
 checked:
+- google-workspace/integrations/google-workspace-integration-edges.yml
 - https://composio.dev/toolkits/automattic
 - https://monid.ai/tools/automattic
 - https://n8n.io/integrations/automattic/
 - https://vendor-list.consensu.org/v3/vendor-list.json
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/automattic/integrations
+- slack/integrations/slack-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -79,4 +81,38 @@ edges:
     builder: unknown (not in the directory record)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/wordpresscom_for_google_docs/460536350236
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - WordPress.com for Google Docs
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A02AGFD0J04-p2
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - P2
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
 templates: []
