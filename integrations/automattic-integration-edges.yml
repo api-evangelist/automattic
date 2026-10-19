@@ -4,9 +4,16 @@ source:
 - https://zapier.com/apps/automattic/integrations
 checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
+- https://api.nuget.org/v3
 - https://composio.dev/toolkits/automattic
+- https://crates.io/api/v1
 - https://monid.ai/tools/automattic
 - https://n8n.io/integrations/automattic/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://vendor-list.consensu.org/v3/vendor-list.json
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/automattic/integrations
@@ -115,4 +122,52 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Slack app
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@automattic/wp-feature-api
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@automattic/wp-feature-api'
+      version: 0.1.8
+      released: '2026-09-25'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@automattic/wp-feature-api
+      repo_leg: shared-github-org:automattic
+      publisher_leg: email:automattic.com
+      matched_by: domain
+    - name: wpcom
+      version: 7.1.1
+      released: '2026-09-25'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/wpcom
+      repo_leg: shared-github-org:automattic
+      publisher_leg: email:automattic.com
+      matched_by: domain
+    - name: wpcom-xhr-request
+      version: 1.3.1
+      released: '2026-09-25'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/wpcom-xhr-request
+      repo_leg: shared-github-org:automattic
+      publisher_leg: email:automattic.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 templates: []
